@@ -21,6 +21,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 56px;
+    box-shadow: 4px 0px 6px 0px #00000014;
+    overflow: auto;
 }
 
 #addContactButton {
@@ -35,7 +38,7 @@ main {
     width: 352px;
     font-size: 21px;
     font-weight: 700;
-    margin-top: 22.5px;
+    margin: 22.5px 0;
 }
 
 #addContactButton img{
@@ -43,8 +46,100 @@ main {
     width: 32px;
 }
 
+#contactListContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactListLetterContainer{
+
+}
+
+.contactListLetter{
+    font-weight: 400;
+    font-size: 20px;
+    padding: 15px 24px;
+}
+
 .contactListSpacer {
-    
+    background: #D1D1D1;
+    border-radius: 3px;
+    margin: 8px 0;
+    height: 1px;
+}
+
+.personInContactList {
+    display: flex;
+    width: 352px;
+    gap: 35px;
+    padding: 15px 24px;
+}
+
+.personInContactListIcon {
+    background-color: violet;
+    padding: 10px;
+    border-radius: 45px;
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    height: 42px;
+    width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.personInContactListData {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.personInContactListName {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.personInContactListMail {
+    color: #007CEE;
+    text-decoration: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    background: transparent;
+    width: 24px;
+}
+
+::-webkit-scrollbar-button {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+    background-image: url("/assets/img/scrollbar_button_up.svg");
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+    background-image: url("/assets/img/scrollbar_button_down.svg");
+}
+
+::-webkit-scrollbar-button:vertical:start:increment,
+::-webkit-scrollbar-button:vertical:end:decrement {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: url(/assets/img/scrollbar_thumb.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 53px;
 }
 
 /* Contact Container */
@@ -80,3 +175,4 @@ main {
 #contactContent {
 
 }
+
