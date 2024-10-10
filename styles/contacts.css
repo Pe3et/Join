@@ -1,0 +1,29 @@
+body {
+    background: #F6F7F8;
+    height: 100svh;
+}
+
+main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    font-family: "Inter", sans-serif;
+}
+
+.contactList {
+    background: white;
+    width: 456px;
+    height: 100%;
+}
+
+.contactContainer {
+
+}
+
+.contactHeading {
+
+}
+
+#contactContent {
+
+}
