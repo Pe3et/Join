@@ -56,5 +56,6 @@ function getContactsArray(contactRestults){
             color: contactRestults[key].color
         })
     });
+    contacts.sort( (a,b) => (a.name).localeCompare(b.name)); //das Array alphabetisch sortieren
     return contacts
 }
