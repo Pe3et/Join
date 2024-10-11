@@ -21,7 +21,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 56px;
+    padding: 0 52px;
     box-shadow: 4px 0px 6px 0px #00000014;
     overflow: auto;
 }
@@ -47,7 +47,7 @@ main {
 }
 
 #contactListContent {
-    width: 100%;
+    width: 352px;
     display: flex;
     flex-direction: column;
 }
