@@ -12,6 +12,9 @@
   position: fixed;
   top: 0;
   left: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
 }
 
 .sidebar_logo {
@@ -32,9 +35,6 @@
 }
 
 .menuButton {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
   font-size: 16px;
   width: 232px;
   height: 46px;

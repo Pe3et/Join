@@ -1,178 +1,175 @@
 body {
-    background: #F6F7F8;
-    height: 100svh;
+  background: #f6f7f8;
+  height: 100svh;
 }
 
 main {
-    padding-top: 96px; 
-    padding-left: 232px;
-    /* adjust padding according to implemented header and sidebar */
-    display: flex;
-    height: 100%;
-    width: 100%;
-    font-family: "Inter", sans-serif;
+  padding-top: 96px;
+  padding-left: 232px;
+  /* adjust padding according to implemented header and sidebar */
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-family: "Inter", sans-serif;
 }
 
 /* Contact List */
 .contactList {
-    background: white;
-    width: 456px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 56px;
-    box-shadow: 4px 0px 6px 0px #00000014;
-    overflow: auto;
+  background: white;
+  width: 456px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 56px;
+  box-shadow: 4px 0px 6px 0px #00000014;
+  overflow: auto;
 }
 
 #addContactButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #2A3647;
-    color: white;
-    border-radius: 10px;
-    gap: 16px;
-    padding: 12px;
-    width: 352px;
-    font-size: 21px;
-    font-weight: 700;
-    margin: 22.5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2a3647;
+  color: white;
+  border-radius: 10px;
+  gap: 16px;
+  padding: 12px;
+  width: 352px;
+  font-size: 21px;
+  font-weight: 700;
+  margin: 22.5px 0;
 }
 
-#addContactButton img{
-    height: 32px;
-    width: 32px;
+#addContactButton img {
+  height: 32px;
+  width: 32px;
 }
 
 #contactListContent {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.contactListLetterContainer{
-
+.contactListLetterContainer {
 }
 
-.contactListLetter{
-    font-weight: 400;
-    font-size: 20px;
-    padding: 15px 24px;
+.contactListLetter {
+  font-weight: 400;
+  font-size: 20px;
+  padding: 15px 24px;
 }
 
 .contactListSpacer {
-    background: #D1D1D1;
-    border-radius: 3px;
-    margin: 8px 0;
-    height: 1px;
+  background: #d1d1d1;
+  border-radius: 3px;
+  margin: 8px 0;
+  height: 1px;
 }
 
 .personInContactList {
-    display: flex;
-    width: 352px;
-    gap: 35px;
-    padding: 15px 24px;
+  display: flex;
+  width: 352px;
+  gap: 35px;
+  padding: 15px 24px;
 }
 
 .personInContactListIcon {
-    background-color: violet;
-    padding: 10px;
-    border-radius: 45px;
-    color: white;
-    font-weight: 400;
-    font-size: 12px;
-    height: 42px;
-    width: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  background-color: violet;
+  padding: 10px;
+  border-radius: 45px;
+  color: white;
+  font-weight: 400;
+  font-size: 12px;
+  height: 42px;
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .personInContactListData {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .personInContactListName {
-    font-weight: 400;
-    font-size: 20px;
+  font-weight: 400;
+  font-size: 20px;
 }
 
 .personInContactListMail {
-    color: #007CEE;
-    text-decoration: none;
+  color: #007cee;
+  text-decoration: none;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-    background: transparent;
-    width: 24px;
+  background: transparent;
+  width: 24px;
 }
 
 ::-webkit-scrollbar-button {
-    background-repeat: no-repeat;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 ::-webkit-scrollbar-button:vertical:start:decrement {
-    background-image: url("/assets/img/scrollbar_button_up.svg");
+  background-image: url("/assets/img/scrollbar_button_up.svg");
 }
 
 ::-webkit-scrollbar-button:vertical:end:increment {
-    background-image: url("/assets/img/scrollbar_button_down.svg");
+  background-image: url("/assets/img/scrollbar_button_down.svg");
 }
 
 ::-webkit-scrollbar-button:vertical:start:increment,
 ::-webkit-scrollbar-button:vertical:end:decrement {
-    display: none;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-image: url(/assets/img/scrollbar_thumb.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 53px;
+  background-image: url(/assets/img/scrollbar_thumb.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 53px;
 }
 
 /* Contact Container */
 .contactContainer {
-    padding-left: 55px;
-    padding-top: 110px;
+  padding-left: 55px;
+  padding-top: 110px;
 }
 
 .contactHeading {
-    display: flex;
-    height: 73px;
-    align-items: center;
-    gap: 30px;
+  display: flex;
+  height: 73px;
+  align-items: center;
+  gap: 30px;
 }
 
 .contactHeading h1 {
-    font-weight: 700;
-    font-size: 61px;
+  font-weight: 700;
+  font-size: 61px;
 }
 
 .contactHeadingSpacer {
-    background: #29ABE2;
-    width: 3px;
-    height: 59px;
-    border-radius: 3px;
+  background: #29abe2;
+  width: 3px;
+  height: 59px;
+  border-radius: 3px;
 }
 
 .contactHeading p {
-    font-weight: 400;
-    font-size: 27px;
+  font-weight: 400;
+  font-size: 27px;
 }
 
 #contactContent {
-
 }
-
