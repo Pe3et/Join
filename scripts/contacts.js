@@ -1,3 +1,16 @@
+colors = [
+    "#FF7A00",
+    "#9327FF",
+    "#6E52FF",
+    "#FC71FF",
+    "#FFBB2B",
+    "#1FD7C1",
+    "#462F8A",
+    "#FF4646",
+    "#00BEE8",
+    "#FF7A00"
+]
+
 function init(){
     loadContactList();
 }
@@ -39,7 +52,8 @@ function getContactsArray(contactRestults){
             id: key,
             name: contactRestults[key].name,
             email: contactRestults[key].email,
-            phone: contactRestults[key].phone
+            phone: contactRestults[key].phone,
+            color: contactRestults[key].color
         })
     });
     return contacts

@@ -10,7 +10,7 @@ function getContactListLetterSection(letter) {
 function getContactListPersonsTemplate(contactWithSpecificLetter) {
     return /*html*/`
         <div class="personInContactList">
-            <div class="personInContactListIcon"><p>${contactWithSpecificLetter.name[0]}${contactWithSpecificLetter.name.split(" ")[1][0]}</p></div>
+            <div class="personInContactListIcon" style='background: ${contactWithSpecificLetter.color}'><p>${contactWithSpecificLetter.name[0]}${contactWithSpecificLetter.name.split(" ")[1][0]}</p></div>
             <div class="personInContactListData">
                 <b class="personInContactListName">${contactWithSpecificLetter.name}</b>
                 <a href='mailto:${contactWithSpecificLetter.email}' class="personInContactListMail">${contactWithSpecificLetter.email}</a>
