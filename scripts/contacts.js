@@ -15,7 +15,6 @@ async function loadContactList() {
 
 function renderContactInList(contact) {
     const contentRef = document.getElementById(contact.name[0]);
-    
     contentRef.innerHTML += getContactListPersonsTemplate(contact);
 }
 
