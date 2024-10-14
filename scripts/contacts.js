@@ -59,3 +59,45 @@ function getContactsArray(contactRestults){
     contacts.sort( (a,b) => (a.name).localeCompare(b.name)); //das Array alphabetisch sortieren
     return contacts
 }
+
+function renderContactDetails(contact) {
+    const contentRef = document.getElementById('contactContent');
+    contactContent.innerHTML = getContactDetailsTemplate(contact);
+}
+
+//incomplete - TODO: get elements from edit contact Overlay
+async function editContact(contact) {
+    const nameInput = document.getElementById('XXXXX').value;
+    const emailInput = document.getElementById('XXXXX').value;
+    const phoneInput = document.getElementById('XXXXX').value;
+    putToDB(nameInput, ("contacts/" + contact.key + "/name"));
+    putToDB(emailInput, ("contacts/" + contact.key + "/email"));
+    putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
+    loadContactList()
+}
+
+//incomplete - TODO: get elements from add contact Overlay
+async function addContact() {
+    const nameInput = document.getElementById('XXXXX').value;
+    const emailInput = document.getElementById('XXXXX').value;
+    const phoneInput = document.getElementById('XXXXX').value;
+    const randomColor = getrandomColor();
+    const newContact = {
+        name: nameInput,
+        email: emailInput,
+        phone: phoneInput,
+        color: randomColor
+    }
+    postToDB(newContact, "contacts");
+    loadContactList();
+}
+
+//TODO: no onclick yet
+async function deleteContact(key) {
+    deleteFromDB("contacts/" + key)
+}
+
+function getrandomColor(){
+    const randomColor = colors[(Math.round(Math.random() * colors.length))];
+    return randomColor
+}

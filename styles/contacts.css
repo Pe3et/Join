@@ -65,8 +65,7 @@ main {
   flex-direction: column;
 }
 
-.contactListLetterContainer {
-}
+.contactListLetterContainer {}
 
 .contactListLetter {
   font-weight: 400;
@@ -184,7 +183,137 @@ main {
   font-size: 27px;
 }
 
+/* Contact Details */
 #contactContent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.iconAndName {
+  display: flex;
+  gap: 54px;
+  align-items: center;
+}
+
+.contactDetailsIcon {
+  font-size: 47px;
+  font-weight: 500;
+  color: white;
+  width: 120px;
+  height: 120px;
+  border: 3px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px;
+  background-color: orange;
+}
+.contactDetailsIcon p{
+  font-size: 47px;
+}
+
+.contactDetailsName {
+  font-family: Inter;
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+  text-align: left;
+  margin-bottom: 8px;
+
+
+
+}
+
+.contactDetailsOptions {
+  display: flex;
+  gap: 13px;
+  font-size: 16px;
+
+}
+
+.contactDetailsNameAndOptions a {
+  display: flex;
+  font-family: Inter;
+  font-size: 16px;
+  text-align: left;
+
+
+}
+
+.contactInformation b {
+  gap: 15px;
+}
+.contactInformation{
+  margin-top: 80px;
+}
+
+.contactDetailsOptions svg {
+  height: 24px;
+  width: 24px;
+
+}
+
+.contactDetailsOption {
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.contactInformation {
+  gap: 59px;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+ margin-top: 80px;
+ margin-bottom: 40px;
+
+}
+.contactDetailsOption:hover{
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+.contactDetailsOption svg :hover{
+  cursor: pointer;
+  color: #29abe2;
+}
+
+.contactSocials {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+}
+
+#overlayContainer {
+  position: fixed;
+  width: 100%;
+  height: 100svh;
+  background-color: rgba(128, 128, 128, 0.159);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  transition: left 300ms ease-out;
+}
+
+@keyframes move-in-right {
+  0% {
+    right: -100%;
+  }
+  100% {
+    left: 0;
+  }
 }
 
 #overlayContainer {

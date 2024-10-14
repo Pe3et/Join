@@ -26,12 +26,17 @@ async function putToDB(putData, path="") {
     });
 }
 
+async function deleteFromDB(path="") {
+    await fetch(BASE_URL + path + ".json", {
+        method: "DELETE",
+    }) 
+}
 
 // const person = {
-//     name: "Fest Melone",
+//     name: "West Ost",
 //     email: "test@mail.com",
 //     phone: "133769420",
-//     color: "#1FD7C1"
+//     color: "#FF4646"
 // };
 
 // filldata();
