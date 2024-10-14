@@ -66,7 +66,7 @@
         </div>
         </div>
         <div class="addContactForm">
-            <img  class="xButton" src="./assets/img/Close.svg" alt="">
+            <img id="closeButton" class="xButton" src="./assets/img/Close.svg" alt="Close Button" onclick="closeOverlayAddContact()">
             <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
             <div class="inputArea">
                 <div class="inputContainer">
@@ -82,7 +82,7 @@
                     <img src="./assets/img/call.svg" alt="Phone Icon">
                 </div>
                 <div class="buttonArea">
-                    <div class="cancelButton">Cancel <img src="./assets/img/Close.svg" alt=""></div>
+                    <div id="cancelButton" class="cancelButton" onclick="closeOverlayAddContact()">Cancel <img src="./assets/img/Close.svg" alt=""></div>
                     <button class="createContactButton">Create contact <img src="./assets/img/check.svg" alt=""></button>
                 </div>
             </div>
