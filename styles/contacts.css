@@ -65,8 +65,7 @@ main {
   flex-direction: column;
 }
 
-.contactListLetterContainer {
-}
+.contactListLetterContainer {}
 
 .contactListLetter {
   font-weight: 400;
@@ -188,11 +187,13 @@ main {
 #contactContent {
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
 }
 
 .iconAndName {
   display: flex;
   gap: 54px;
+  align-items: center;
 }
 
 .contactDetailsIcon {
@@ -207,6 +208,89 @@ main {
   align-items: center;
   justify-content: center;
   letter-spacing: 2px;
+  background-color: orange;
+}
+.contactDetailsIcon p{
+  font-size: 47px;
+}
+
+.contactDetailsName {
+  font-family: Inter;
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+  text-align: left;
+  margin-bottom: 8px;
+
+
+
+}
+
+.contactDetailsOptions {
+  display: flex;
+  gap: 13px;
+  font-size: 16px;
+
+}
+
+.contactDetailsNameAndOptions a {
+  display: flex;
+  font-family: Inter;
+  font-size: 16px;
+  text-align: left;
+
+
+}
+
+.contactInformation b {
+  gap: 15px;
+}
+.contactInformation{
+  margin-top: 80px;
+}
+
+.contactDetailsOptions svg {
+  height: 24px;
+  width: 24px;
+
+}
+
+.contactDetailsOption {
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.contactInformation {
+  gap: 59px;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+ margin-top: 80px;
+ margin-bottom: 40px;
+
+}
+.contactDetailsOption:hover{
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+.contactDetailsOption svg :hover{
+  cursor: pointer;
+  color: #29abe2;
+}
+
+.contactSocials {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
 }
 
 .addContactCardOverlay {
@@ -224,7 +308,7 @@ main {
 
 .hidden {
   right: -100%;
-  
+
 }
 
 .background {
@@ -400,7 +484,8 @@ main {
   position: relative;
 }
 
-.line1, .line2 {
+.line1,
+.line2 {
   width: 48px;
   height: 2px;
   background-color: black;
@@ -417,8 +502,7 @@ main {
   transform: rotate(-45deg);
 }
 
-.container:hover .line1, 
+.container:hover .line1,
 .container:hover .line2 {
-    background: rgba(41, 171, 226, 1);
+  background: rgba(41, 171, 226, 1);
 }
-
