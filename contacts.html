@@ -11,12 +11,13 @@
     <script src="./scripts/contacts.js"></script>
     <script src="./scripts/contactsTemplates.js"></script>
     <script src="./scripts/firebaseAPI.js"></script>
+    <script src="./script.js"></script>
 </head>
 
 <body onload="init()">
     <main>
         <div class="contactList">
-            <div id="addContactButton">
+            <div onclick="openOverlayAddContact()" id="addContactButton">
                 <b>Add new contact</b>
                 <img src="/assets/img/add_contact_icon.svg" alt="add new contact">
             </div>
@@ -56,7 +57,7 @@
             <a class="linkButton" href="#">Legal notice</a>
         </div>
     </section>
-    <section class="addContactCardOverlay">
+    <section id="addContactCardOverlay" class="addContactCardOverlay hidden">
         <div class="background">
             <img class="backgroundLogo" src="./assets/img/background_logo.svg" alt="">
             <div class="backgroundText">
