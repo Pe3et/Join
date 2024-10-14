@@ -73,4 +73,26 @@ async function editContact(contact) {
     putToDB(nameInput, ("contacts/" + contact.key + "/name"));
     putToDB(emailInput, ("contacts/" + contact.key + "/email"));
     putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
+    loadContactList()
+}
+
+//incomplete - TODO: get elements from add contact Overlay
+async function addContact() {
+    const nameInput = document.getElementById('XXXXX').value;
+    const emailInput = document.getElementById('XXXXX').value;
+    const phoneInput = document.getElementById('XXXXX').value;
+    const randomColor = getrandomColor();
+    const newContact = {
+        name: nameInput,
+        email: emailInput,
+        phone: phoneInput,
+        color: randomColor
+    }
+    postToDB(newContact, "contacts")
+    loadContactList();
+}
+
+function getrandomColor(){
+    const randomColor = colors[(Math.round(Math.random() * colors.length))];
+    return randomColor
 }
