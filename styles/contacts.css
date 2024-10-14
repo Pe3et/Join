@@ -195,10 +195,6 @@ main {
   gap: 54px;
 }
 
-.contactDetailsOption:hover path {
-  fill: yellow;
-}
-
 .contactDetailsIcon {
   font-size: 47px;
   font-weight: 500;
