@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join - Contacts</title>
-    <link rel="stylesheet" href="style.css">
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Join - Contacts</title>
+      <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/contacts.css">
     <link rel="stylesheet" href="/assets/fonts/Inter/inter.css">
     <script src="./scripts/firebaseAPI.js"></script>
@@ -12,11 +12,48 @@
     <script src="./scripts/contactsTemplates.js"></script>
     <script src="./script.js"></script>
   </head>
-
+  
   <body onload="init()">
-    <main>
+      <main>
+          <div id="overlayContainer">
+            <section id="addContactCardOverlay" class="addContactCardOverlay hidden">
+              <div class="background">
+                <img
+                  class="backgroundLogo"
+                  src="./assets/img/background_logo.svg"
+                  alt=""
+                />
+                <div class="backgroundText">
+                  <h2>Add contact</h2>
+                  <p>Tasks are better with a Team!</p>
+                </div>
+              </div>
+              <div class="addContactForm">
+                  <img  class="xButton" src="./assets/img/Close.svg" alt="">
+                  <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
+                  <div class="inputArea">
+                      <div class="inputContainer">
+                          <input class="inputFields" type="text" name="name" id="inputName" placeholder="Name">
+                          <img src="./assets/img/person.svg" alt="Person Icon">
+                      </div>
+                      <div class="inputContainer">
+                          <input class="inputFields" type="text" name="email" id="inputMail" placeholder="Email">
+                          <img src="./assets/img/mail.svg" alt="Mail Icon">
+                      </div>
+                      <div class="inputContainer">
+                          <input class="inputFields" type="text" name="phone" id="inputPhone" placeholder="Phone">
+                          <img src="./assets/img/call.svg" alt="Phone Icon">
+                      </div>
+                      <div class="buttonArea">
+                          <div class="cancelButton">Cancel <img src="./assets/img/Close.svg" alt=""></div>
+                          <button class="createContactButton">Create contact <img src="./assets/img/check.svg" alt=""></button>
+                      </div>
+                  </div>
+              </div>
+            </section>
+          </div>
       <div class="contactList">
-        <div onclick="openOverlayAddContact()" id="addContactButton">
+          <div onclick="openOverlayAddContact()" id="addContactButton">
           <b>Add new contact</b>
           <img src="/assets/img/add_contact_icon.svg" alt="add new contact" />
         </div>
@@ -79,42 +116,5 @@
     </section>
 
     
-    <div id="overlayContainer" class="displayNone">
-      <section id="addContactCardOverlay" class="addContactCardOverlay hidden">
-        <div class="background">
-          <img
-            class="backgroundLogo"
-            src="./assets/img/background_logo.svg"
-            alt=""
-          />
-          <div class="backgroundText">
-            <h2>Add contact</h2>
-            <p>Tasks are better with a Team!</p>
-          </div>
-        </div>
-        <div class="addContactForm">
-            <img  class="xButton" src="./assets/img/Close.svg" alt="">
-            <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
-            <div class="inputArea">
-                <div class="inputContainer">
-                    <input class="inputFields" type="text" name="name" id="inputName" placeholder="Name">
-                    <img src="./assets/img/person.svg" alt="Person Icon">
-                </div>
-                <div class="inputContainer">
-                    <input class="inputFields" type="text" name="email" id="inputMail" placeholder="Email">
-                    <img src="./assets/img/mail.svg" alt="Mail Icon">
-                </div>
-                <div class="inputContainer">
-                    <input class="inputFields" type="text" name="phone" id="inputPhone" placeholder="Phone">
-                    <img src="./assets/img/call.svg" alt="Phone Icon">
-                </div>
-                <div class="buttonArea">
-                    <div class="cancelButton">Cancel <img src="./assets/img/Close.svg" alt=""></div>
-                    <button class="createContactButton">Create contact <img src="./assets/img/check.svg" alt=""></button>
-                </div>
-            </div>
-        </div>
-      </section>
-    </div>
   </body>
 </html>

@@ -11,6 +11,8 @@ main {
   height: 100%;
   width: calc(100% - 232px);
   font-family: "Inter", sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Contact List */
@@ -294,7 +296,7 @@ main {
 }
 
 #overlayContainer {
-  position: fixed;
+  /* position: relative;
   width: 100%;
   height: 100svh;
   background-color: rgba(128, 128, 128, 0.159);
@@ -303,9 +305,9 @@ main {
   align-items: center;
   overflow: hidden;
   top: 0;
-  left: 0;
-  transition: left 300ms ease-out;
-}
+  left: 0; */
+  backdrop-filter: blur(10px);
+ }
 
 @keyframes move-in-right {
   0% {
@@ -322,15 +324,23 @@ main {
   border-radius: 30px;
   z-index: 999;
   display: flex;
+  position: absolute;
+  /* animation: ease-out move-in-right;
+  animation-duration: 300ms; */
+  /* backdrop-filter: drop-shadow(4px 4px 10px black); */
+  left: 100%;
+  top: 206px;
+  transition: all 300ms ease-out;
 }
 
 .hidden {
-  right: -100% !important;
+  /* right: -100%; */
+  transform: translateX(-100%);
 }
 
-.displayNone {
+/* .displayNone {
   display: none !important;
-}
+} */
 
 .background {
   background: rgba(42, 54, 71, 1);
