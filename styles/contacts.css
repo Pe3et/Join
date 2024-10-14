@@ -316,29 +316,6 @@ main {
   }
 }
 
-#overlayContainer {
-  position: fixed;
-  width: 100%;
-  height: 100svh;
-  background-color: rgba(128, 128, 128, 0.159);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  transition: left 300ms ease-out;
-}
-
-@keyframes move-in-right {
-  0% {
-    right: -100%;
-  }
-  100% {
-    left: 0;
-  }
-}
-
 .addContactCardOverlay {
   width: 1212px;
   height: 594px;
