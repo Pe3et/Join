@@ -3,3 +3,87 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 232px;
+    height: 100svh;
+    background: rgba(42, 54, 71, 1);
+    padding-top: 64px;
+    padding-bottom: 64px;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+  .sidebar_logo {
+    width: 100.03px;
+    height: 121.97px;
+  }
+  
+  .menu {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .menu a {
+    text-decoration: none;
+  }
+  
+  .menuButton {
+    font-size: 16px;
+    width: 232px;
+    height: 46px;
+    padding: 8px 56px 8px 56px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .menuButton span {
+    color: rgba(205, 205, 205, 1);
+    line-height: 19.2px;
+  }
+  
+  .menuIcon {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .active {
+    background: rgba(9, 25, 49, 1);
+  }
+  .active span {
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 243px;
+    padding-left: 52px;
+    width: 232px;
+  }
+  
+  .links a {
+    color: rgba(168, 168, 168, 1);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px;
+  }
+  
+  .linkButton {
+    display: flex;
+    gap: 8px;
+  }
