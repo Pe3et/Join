@@ -64,3 +64,13 @@ function renderContactDetails(contact) {
     const contentRef = document.getElementById('contactContent');
     contactContent.innerHTML = getContactDetailsTemplate(contact);
 }
+
+//incomplete - TODO: get elements from edit contact Overlay
+async function editContact(contact) {
+    const nameInput = document.getElementById('XXXXX').value;
+    const emailInput = document.getElementById('XXXXX').value;
+    const phoneInput = document.getElementById('XXXXX').value;
+    putToDB(nameInput, ("contacts/" + contact.key + "/name"));
+    putToDB(emailInput, ("contacts/" + contact.key + "/email"));
+    putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
+}
