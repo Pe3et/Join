@@ -88,8 +88,13 @@ async function addContact() {
         phone: phoneInput,
         color: randomColor
     }
-    postToDB(newContact, "contacts")
+    postToDB(newContact, "contacts");
     loadContactList();
+}
+
+//TODO: no onclick yet
+async function deleteContact(key) {
+    deleteFromDB("contacts/" + key)
 }
 
 function getrandomColor(){

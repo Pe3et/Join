@@ -26,6 +26,11 @@ async function putToDB(putData, path="") {
     });
 }
 
+async function deleteFromDB(path="") {
+    await fetch(BASE_URL + path + ".json", {
+        method: "DELETE",
+    }) 
+}
 
 // const person = {
 //     name: "West Ost",
