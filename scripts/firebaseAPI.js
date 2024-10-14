@@ -28,10 +28,10 @@ async function putToDB(putData, path="") {
 
 
 // const person = {
-//     name: "Fest Melone",
+//     name: "West Ost",
 //     email: "test@mail.com",
 //     phone: "133769420",
-//     color: "#1FD7C1"
+//     color: "#FF4646"
 // };
 
 // filldata();

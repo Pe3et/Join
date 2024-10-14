@@ -184,7 +184,33 @@ main {
   font-size: 27px;
 }
 
+/* Contact Details */
 #contactContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.iconAndName {
+  display: flex;
+  gap: 54px;
+}
+
+.contactDetailsOption:hover path {
+  fill: yellow;
+}
+
+.contactDetailsIcon {
+  font-size: 47px;
+  font-weight: 500;
+  color: white;
+  width: 120px;
+  height: 120px;
+  border: 3px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px;
 }
 
 .addContactCardOverlay {
