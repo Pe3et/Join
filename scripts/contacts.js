@@ -59,3 +59,8 @@ function getContactsArray(contactRestults){
     contacts.sort( (a,b) => (a.name).localeCompare(b.name)); //das Array alphabetisch sortieren
     return contacts
 }
+
+function renderContactDetails(contact) {
+    const contentRef = document.getElementById('contactContent');
+    contactContent.innerHTML = getContactDetailsTemplate(contact);
+}
