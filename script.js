@@ -1,3 +1,4 @@
 function openOverlayAddContact() {
-    document.getElementById('addContactCardOverlay').classList.remove('hidden');
+    document.getElementById('overlayContainer').classList.remove('displayNone');
+    document.getElementById('addContactCardOverlay').classList.remove('hidden')
 }

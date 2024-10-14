@@ -1,94 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join - Contacts</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./styles/contacts.css">
-    <link rel="stylesheet" href="/assets/fonts/Inter/inter.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles/contacts.css" />
+    <link rel="stylesheet" href="/assets/fonts/Inter/inter.css" />
     <script src="./scripts/contacts.js"></script>
     <script src="./scripts/contactsTemplates.js"></script>
     <script src="./scripts/firebaseAPI.js"></script>
     <script src="./script.js"></script>
-</head>
+  </head>
 
-<body onload="init()">
+  <body onload="init()">
     <main>
-        <div class="contactList">
-            <div onclick="openOverlayAddContact()" id="addContactButton">
-                <b>Add new contact</b>
-                <img src="/assets/img/add_contact_icon.svg" alt="add new contact">
-            </div>
-
-            <div id="contactListContent"></div>
-            
+      <div class="contactList">
+        <div onclick="openOverlayAddContact()" id="addContactButton">
+          <b>Add new contact</b>
+          <img src="/assets/img/add_contact_icon.svg" alt="add new contact" />
         </div>
-        <div class="contactContainer">
-            <div class="contactHeading">
-                <h1>Contacts</h1>
-                <div class="contactHeadingSpacer"></div>
-                <p>Better with a team</p>
-            </div>
-            <div id="contactContent">
 
-            </div>
+        <div id="contactListContent"></div>
+      </div>
+      <div class="contactContainer">
+        <div class="contactHeading">
+          <h1>Contacts</h1>
+          <div class="contactHeadingSpacer"></div>
+          <p>Better with a team</p>
         </div>
+        <div id="contactContent"></div>
+      </div>
     </main>
     <section id="sidebar">
-        <img class="sidebarLogo" src="./assets/img/Join logo vector.svg" alt="Join Logo">
-        <div id="menu" class="menu">
-            <a id="summary" class="menuButton" href="#">
-                <img class="menuIcon" src="./assets/img/summary_icon.svg" alt="summary icon"> <span>Summary</span>
-            </a>
-            <a id="addTask" class="menuButton" href="#">
-                <img class="menuIcon" src="./assets/img/add_task_icon.svg" alt="add_task_icon"> <span>Add Task</span>
-            </a>
-            <a id="board" class="menuButton" href="#">
-                <img class="menuIcon" src="./assets/img/board_icon.svg" alt="board_icon"> <span>Board</span>
-            </a>
-            <a id="contacts" class="menuButton active" href="#">
-                <img class="menuIcon" src="./assets/img/contacts_icon.svg" alt="contacts_icon"> <span>Contacts</span>
-            </a>
-        </div>
-        <div class="links">
-            <a class="linkButton" href="#">Privacy Policy</a>
-            <a class="linkButton" href="#">Legal notice</a>
-        </div>
+      <img
+        class="sidebarLogo"
+        src="./assets/img/Join logo vector.svg"
+        alt="Join Logo"
+      />
+      <div id="menu" class="menu">
+        <a id="summary" class="menuButton" href="#">
+          <img
+            class="menuIcon"
+            src="./assets/img/summary_icon.svg"
+            alt="summary icon"
+          />
+          <span>Summary</span>
+        </a>
+        <a id="addTask" class="menuButton" href="#">
+          <img
+            class="menuIcon"
+            src="./assets/img/add_task_icon.svg"
+            alt="add_task_icon"
+          />
+          <span>Add Task</span>
+        </a>
+        <a id="board" class="menuButton" href="#">
+          <img
+            class="menuIcon"
+            src="./assets/img/board_icon.svg"
+            alt="board_icon"
+          />
+          <span>Board</span>
+        </a>
+        <a id="contacts" class="menuButton active" href="#">
+          <img
+            class="menuIcon"
+            src="./assets/img/contacts_icon.svg"
+            alt="contacts_icon"
+          />
+          <span>Contacts</span>
+        </a>
+      </div>
+      <div class="links">
+        <a class="linkButton" href="#">Privacy Policy</a>
+        <a class="linkButton" href="#">Legal notice</a>
+      </div>
     </section>
-    <section id="addContactCardOverlay" class="addContactCardOverlay hidden">
+    <div id="overlayContainer" class="displayNone">
+      <section id="addContactCardOverlay" class="addContactCardOverlay hidden">
         <div class="background">
-            <img class="backgroundLogo" src="./assets/img/background_logo.svg" alt="">
-            <div class="backgroundText">
-                <h2>Add contact</h2>
+          <img
+            class="backgroundLogo"
+            src="./assets/img/background_logo.svg"
+            alt=""
+          />
+          <div class="backgroundText">
+            <h2>Add contact</h2>
             <p>Tasks are better with a Team!</p>
+          </div>
         </div>
-        </div>
-        <div class="addContactForm">
-            <img  class="xButton" src="./assets/img/Close.svg" alt="">
-            <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
-            <div class="inputArea">
-                <div class="inputContainer">
-                    <input class="inputFields" type="text" name="name" id="inputName" placeholder="Name">
-                    <img src="./assets/img/person.svg" alt="Person Icon">
-                </div>
-                <div class="inputContainer">
-                    <input class="inputFields" type="text" name="email" id="inputMail" placeholder="Email">
-                    <img src="./assets/img/mail.svg" alt="Mail Icon">
-                </div>
-                <div class="inputContainer">
-                    <input class="inputFields" type="text" name="phone" id="inputPhone" placeholder="Phone">
-                    <img src="./assets/img/call.svg" alt="Phone Icon">
-                </div>
-                <div class="buttonArea">
-                    <div class="cancelButton">Cancel <img src="./assets/img/Close.svg" alt=""></div>
-                    <button class="createContactButton">Create contact <img src="./assets/img/check.svg" alt=""></button>
-                </div>
+        <div id="addContactForm" class="addContactForm">
+          <img
+            class="defaultProfileImg"
+            src="./assets/img/default_profile_img.svg"
+            alt=""
+          />
+          <div class="inputArea">
+            <div class="xButtonArea">
+              <div class="xButtonContainer">
+                <img class="xButton" src="./assets/img/Close.svg" alt="" />
+              </div>
             </div>
+            <div class="inputContainer">
+              <input
+                class="inputFields"
+                type="text"
+                name="name"
+                id="inputName"
+                placeholder="Name"
+              />
+              <img src="./assets/img/person.svg" alt="Person Icon" />
+            </div>
+            <div class="inputContainer">
+              <input
+                class="inputFields"
+                type="text"
+                name="email"
+                id="inputMail"
+                placeholder="Email"
+              />
+              <img src="./assets/img/mail.svg" alt="Mail Icon" />
+            </div>
+            <div class="inputContainer">
+              <input
+                class="inputFields"
+                type="text"
+                name="phone"
+                id="inputPhone"
+                placeholder="Phone"
+              />
+              <img src="./assets/img/call.svg" alt="Phone Icon" />
+            </div>
+            <div class="buttonArea">
+              <div class="cancelButton">
+                Cancel
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <mask
+                    id="mask0_71720_5494"
+                    style="mask-type: alpha"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="24"
+                    height="25"
+                  >
+                    <rect y="0.96582" width="24" height="24" fill="#D9D9D9" />
+                  </mask>
+                  <g mask="url(#mask0_71720_5494)">
+                    <path
+                      d="M11.9998 14.3659L7.0998 19.2659C6.91647 19.4492 6.68314 19.5409 6.3998 19.5409C6.11647 19.5409 5.88314 19.4492 5.6998 19.2659C5.51647 19.0825 5.4248 18.8492 5.4248 18.5659C5.4248 18.2825 5.51647 18.0492 5.6998 17.8659L10.5998 12.9659L5.6998 8.06587C5.51647 7.88254 5.4248 7.6492 5.4248 7.36587C5.4248 7.08254 5.51647 6.8492 5.6998 6.66587C5.88314 6.48254 6.11647 6.39087 6.3998 6.39087C6.68314 6.39087 6.91647 6.48254 7.0998 6.66587L11.9998 11.5659L16.8998 6.66587C17.0831 6.48254 17.3165 6.39087 17.5998 6.39087C17.8831 6.39087 18.1165 6.48254 18.2998 6.66587C18.4831 6.8492 18.5748 7.08254 18.5748 7.36587C18.5748 7.6492 18.4831 7.88254 18.2998 8.06587L13.3998 12.9659L18.2998 17.8659C18.4831 18.0492 18.5748 18.2825 18.5748 18.5659C18.5748 18.8492 18.4831 19.0825 18.2998 19.2659C18.1165 19.4492 17.8831 19.5409 17.5998 19.5409C17.3165 19.5409 17.0831 19.4492 16.8998 19.2659L11.9998 14.3659Z"
+                      fill="#2A3647"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <button class="createContactButton">
+                Create contact <img src="./assets/img/check.svg" alt="" />
+              </button>
+            </div>
+          </div>
         </div>
-    </section>
-    </section>
-</body>
-
+      </section>
+    </div>
+  </body>
 </html>
