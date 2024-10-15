@@ -13,7 +13,7 @@ function getContactListPersonsTemplate(contactWithSpecificLetter) {
             <div class="personInContactListIcon" style='background: ${contactWithSpecificLetter.color}'><p>${contactWithSpecificLetter.name[0]}${contactWithSpecificLetter.name.split(" ")[1][0]}</p></div>
             <div class="personInContactListData">
                 <b class="personInContactListName">${contactWithSpecificLetter.name}</b>
-                <a href='mailto:${contactWithSpecificLetter.email}' class="personInContactListMail">${contactWithSpecificLetter.email}</a>
+                <a class="personInContactListMail">${contactWithSpecificLetter.email}</a>
             </div>
         </div>
     `
@@ -39,9 +39,9 @@ function getContactDetailsTemplate(contact) {
                 <p class="contactInformation">Contact Information</p>
                 <div class="contactSocials">
                 <b>Email</b>
-                <a href='mailto:${contact.email}'>${contact.email}</a>
+                <a>${contact.email}</a>
                 <b>Phone</b>
-                <a href='tel:${contact.phone}'>${contact.phone}</a>
+                <a>${contact.phone}</a>
                 </div>  
             </div>
         </div>
