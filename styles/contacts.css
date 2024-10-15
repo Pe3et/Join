@@ -302,27 +302,14 @@ main {
 #overlayContainer {
   position: absolute;
   width: 100%;
-  height: 100svh;
-  background-color: rgba(128, 128, 128, 0.159);
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
   top: 0;
-  left: 0;
-  backdrop-filter: blur(10px);
   left: 100%;
   z-Index: 998;
  }
-
-/* @keyframes move-in-right {
-  0% {
-    right: -100%;
-  }
-  100% {
-    left: 0;
-  }
-} */
 
 .addContactCardOverlay {
   width: 1212px;
@@ -330,18 +317,22 @@ main {
   border-radius: 30px;
   z-index: 999;
   display: flex;
-  position: absolute;
-  /* animation: ease-out move-in-right;
-  animation-duration: 300ms; */
-  /* backdrop-filter: drop-shadow(4px 4px 10px black); */
-  left: 100%;
-  top: 206px;
+  position: relative;
+  left: 100vw;
+  transition: all 300ms ease-out;
+}
+
+.overlayAppear {
+  transform: translateX(-100%);
+}
+
+.overlayBackgroundColor {
+  transition: background-color 300ms ease-out;
+  background-color: rgb(0, 0, 0, 0.3);
 }
 
 .slideInRight {
-  /* right: -100%; */
-  transition: all 300ms ease-out;
-  transform: translateX(-100%);
+  transform: translateX(-100vw);
 }
 
 .displayNone {
@@ -395,10 +386,39 @@ main {
 
 .addContactForm {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  align-items: end;
+  padding: 48px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+}
+
+.xButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-bottom: 90px;
+}
+
+.xButton:hover {
+  cursor: pointer;
+  background-color: rgb(0, 0, 0, 0.069)
+}
+
+.profileImgAndForm {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 48px; 
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 69px;
 }
 
 .defaultProfileImg {
@@ -414,7 +434,8 @@ main {
 
 .inputFields {
   width: 380px;
-  border: hidden;
+  border: none;
+  outline: none;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -436,6 +457,7 @@ main {
 .buttonArea {
   display: flex;
   gap: 24px;
+  padding-top: 8px;
 }
 
 .cancelButton {
@@ -446,7 +468,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -455,12 +477,18 @@ main {
   color: rgba(42, 54, 71, 1);
 }
 
-.cancelButton img {
-  height: 24px;
-  width: 24px;
+.cancelButton svg {
+  height: 14px;
+  width: 14px;
+}
+
+.cancelButton:hover path {
+  transition: all 100ms ease-in-out;
+  stroke: rgba(41, 171, 226, 1);
 }
 
 .cancelButton:hover {
+  transition: all 100ms ease-in-out;
   cursor: pointer;
   border-color: rgba(41, 171, 226, 1);
   color: rgba(41, 171, 226, 1);
@@ -494,41 +522,9 @@ main {
 }
 
 .createContactButton:hover {
+  transition: all 100ms ease-in-out;
   cursor: pointer;
   background: rgba(41, 171, 226, 1);
   border-color: rgba(41, 171, 226, 1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-.xButtonArea {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.xButton {
-  width: 32px;
-  height: 32px;
-  top: 48px;
-  left: 1132px;
-  padding: 4px 0px 0px 0px;
-  gap: 0px;
-}
-
-.xButton:hover {
-  cursor: pointer;
-}
-
-.xButtonContainer {
-  height: 32px;
-  width: 32px;
-  border-width: 1px;
-  border-style: solid;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-
-.xButtonContainer:hover {
-  background-color: grey;
 }
