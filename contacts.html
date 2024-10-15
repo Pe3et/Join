@@ -78,7 +78,7 @@
       </div>
     </section>
 
-    
+
     <div id="overlayContainer" class="displayNone">
       <section id="addContactCardOverlay" class="addContactCardOverlay hidden">
         <div class="background">
@@ -93,7 +93,7 @@
           </div>
         </div>
         <div class="addContactForm">
-            <img  class="xButton" src="./assets/img/Close.svg" alt="">
+            <img onclick="closeOverlayAddContact()" class="xButton" src="./assets/img/Close.svg" alt="">
             <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
             <div class="inputArea">
                 <div class="inputContainer">
@@ -109,7 +109,7 @@
                     <img src="./assets/img/call.svg" alt="Phone Icon">
                 </div>
                 <div class="buttonArea">
-                    <div class="cancelButton">Cancel <img src="./assets/img/Close.svg" alt=""></div>
+                    <div onclick="closeOverlayAddContact()" class="cancelButton">Cancel <img src="./assets/img/Close.svg" alt=""></div>
                     <button class="createContactButton">Create contact <img src="./assets/img/check.svg" alt=""></button>
                 </div>
             </div>
