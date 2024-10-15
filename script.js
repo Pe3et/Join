@@ -6,8 +6,9 @@ function openOverlayAddContact() {
 }
    
 function closeOverlayAddContact() {
-    // document.getElementById('overlayContainer').classList.add('displayNone');
-    // document.getElementById('addContactCardOverlay').classList.add('hidden');
+    document.getElementById('overlayContainer').classList.remove('overlayBackgroundColor');
+    document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
+    setTimeout(() => {document.getElementById('overlayContainer').classList.remove('overlayAppear')}, 300);
 }
 
 
