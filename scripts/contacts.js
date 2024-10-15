@@ -66,6 +66,25 @@ function renderContactDetails(contact) {
     contactContent.innerHTML = getContactDetailsTemplate(contact);
 }
 
+function openOverlayAddContact() {
+    document.getElementById('overlayContainer').classList.add('overlayAppear');
+    document.getElementById('overlayContainer').classList.add('overlayBackgroundColor');
+    document.getElementById('addContactCardOverlay').classList.add('slideInRight');
+}
+   
+function closeOverlayAddContact() {
+    document.getElementById('overlayContainer').classList.remove('overlayBackgroundColor');
+    document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
+    setTimeout(() => {document.getElementById('overlayContainer').classList.remove('overlayAppear')}, 300);
+    emptyInputFields();
+}
+
+function emptyInputFields() {
+    document.getElementById('addContactInputName').value = "";
+    document.getElementById('addContactInputEmail').value = "";
+    document.getElementById('addContactInputPhone').value = "";
+}
+
 //incomplete - TODO: get elements from edit contact Overlay
 async function editContact(contact) {
     const nameInput = document.getElementById('editContactInputName').value;
@@ -82,12 +101,23 @@ async function addContact() {
     const nameInput = document.getElementById('addContactInputName').value;
     const emailInput = document.getElementById('addContactInputEmail').value;
     const phoneInput = document.getElementById('addContactInputPhone').value;
-    const randomColor = getrandomColor();
-    const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
-    await postToDB(newContact, "contacts");
-    loadContactList();
-    closeOverlayAddContact();
-    contactCreatedSuccess();
+    if(checkIfNameInputIsCorrect(nameInput)){
+        const randomColor = getrandomColor();
+        const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
+        await postToDB(newContact, "contacts");
+        loadContactList();
+        closeOverlayAddContact();
+        contactCreatedSuccess();
+    }
+}
+
+function checkIfNameInputIsCorrect(nameInput) {
+    if(nameInput.includes(" ") && nameInput.split(" ")[1][0]) {
+        return true
+    } else {
+        document.getElementById('addContactInputName').value = "Please enter first and last name.";
+        return false
+    }
 }
 
 //TODO: no onclick yet
