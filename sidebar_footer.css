@@ -1,0 +1,48 @@
+.footerMenu {
+    height: 80px;
+    width: 100%;
+    background: rgba(42, 54, 71, 1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+}
+
+.active {
+    background: rgba(9, 25, 49, 1);
+}
+
+.respMenuButton {
+    height: 76px;
+    width: 76px;
+    display: flex;
+    border-radius: 8px;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.respMenuButton span {
+    color: rgba(205, 205, 205, 1);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.respMenuButton img {
+    height: 22px;
+    width: 22px;
+}
+
+
+

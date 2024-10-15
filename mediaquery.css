@@ -1,0 +1,16 @@
+@media (max-width: 1300px){
+    .menuButton{
+        padding: 8px 12px 8px 12px;
+  }
+
+  #sidebar {
+    width: 152px;
+  }
+}
+
+
+@media (max-width: 900px){
+   #sidebar {
+    display: none;
+   }
+}
