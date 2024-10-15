@@ -529,6 +529,72 @@ main {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+@media(max-width: 1502px){
+  .contactList{
+    width: 100%;
+  }
+  .contactContainer{
+    display: none;
+  }
+  
+}
+@media(min-width: 400px){
+  .contactList{
+    width: 100%;
+  }
+  .contactContainer{
+    display: none;
+  }
+  
+}
+@media(max-width: 861px){
+  .contactList{
+    width: 100%;
+  }
+  .contactContainer{
+    display: none;
+  }
+  
+}
+
+@media(max-width: 1000px){
+  h1{
+    font-size: 8px;
+
+  }
+  .contactHeading{
+    font-size: 40px;
+  }
+}
+@media(max-width: 800px){
+  h1{
+    font-size: 5px;
+
+  }
+  .contactHeading{
+    font-size: 40px;
+  }
+}
+
+@media(max-width: 1342px){
+  h1{
+    font-size: 12px;
+
+  }
+  .contactHeading{
+    font-size: 40px;
+  }
+}
+@media(max-width: 1342px){
+  h1{
+    font-size: 12px;
+
+  }
+  .contactHeading{
+    font-size: 40px;
+  }
+}
+
 #contactCreateSuccess {
   background: #2A3647;
   color: white;
