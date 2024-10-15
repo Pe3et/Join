@@ -10,5 +10,3 @@ function closeOverlayAddContact() {
     document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
     setTimeout(() => {document.getElementById('overlayContainer').classList.remove('overlayAppear')}, 300);
 }
-
-
