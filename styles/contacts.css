@@ -3,6 +3,11 @@ body {
   height: 100svh;
 }
 
+.pageContent {
+  position: relative;
+  overflow-x: hidden;
+}
+
 main {
   padding-top: 96px;
   padding-left: 232px;
@@ -11,8 +16,6 @@ main {
   height: 100%;
   width: calc(100% - 232px);
   font-family: "Inter", sans-serif;
-  position: relative;
-  overflow-x: hidden;
 }
 
 /* Contact List */
@@ -295,8 +298,9 @@ main {
   flex-direction: column;
 }
 
+/* Overlay */
 #overlayContainer {
-  /* position: relative;
+  position: absolute;
   width: 100%;
   height: 100svh;
   background-color: rgba(128, 128, 128, 0.159);
@@ -305,18 +309,20 @@ main {
   align-items: center;
   overflow: hidden;
   top: 0;
-  left: 0; */
+  left: 0;
   backdrop-filter: blur(10px);
+  left: 100%;
+  z-Index: 998;
  }
 
-@keyframes move-in-right {
+/* @keyframes move-in-right {
   0% {
     right: -100%;
   }
   100% {
     left: 0;
   }
-}
+} */
 
 .addContactCardOverlay {
   width: 1212px;
@@ -330,17 +336,17 @@ main {
   /* backdrop-filter: drop-shadow(4px 4px 10px black); */
   left: 100%;
   top: 206px;
-  transition: all 300ms ease-out;
 }
 
-.hidden {
+.slideInRight {
   /* right: -100%; */
+  transition: all 300ms ease-out;
   transform: translateX(-100%);
 }
 
-/* .displayNone {
+.displayNone {
   display: none !important;
-} */
+}
 
 .background {
   background: rgba(42, 54, 71, 1);

@@ -1,6 +1,8 @@
 function openOverlayAddContact() {
     // document.getElementById('overlayContainer').classList.remove('displayNone');
-    document.getElementById('addContactCardOverlay').classList.remove('hidden')
+    document.getElementById('addContactCardOverlay').classList.add('slideInRight');
+    document.getElementById('overlayContainer').classList.add('slideInRight');
+
 }
    
 function closeOverlayAddContact() {
