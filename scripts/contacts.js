@@ -17,6 +17,7 @@ function init(){
 
 async function loadContactList() {
     const contactRestults = await getFromDB("contacts");
+    document.getElementById("contactListContent").innerHTML = "";
     contactsArray = getContactsArray(contactRestults);
     firstLettersArray = getFirstLettersArray(contactsArray);
     firstLettersArray.forEach(letter => {
@@ -83,10 +84,10 @@ async function addContact() {
     const phoneInput = document.getElementById('addContactInputPhone').value;
     const randomColor = getrandomColor();
     const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
-    postToDB(newContact, "contacts");
+    await postToDB(newContact, "contacts");
     loadContactList();
     closeOverlayAddContact();
-    contactCreatedSuccessSlideIn();
+    contactCreatedSuccess();
 }
 
 //TODO: no onclick yet
@@ -99,8 +100,11 @@ function getrandomColor(){
     return randomColor
 }
 
-function contactCreatedSuccessSlideIn() {
+function contactCreatedSuccess() {
     const ref = document.getElementById('contactCreateSuccess');
+    document.getElementById('overlayContainer').classList.remove('overlayBackgroundColor');
+    document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
+    document.getElementById('overlayContainer').classList.remove('overlayAppear');
     ref.classList.add("slideInRight");
     setTimeout( () => {ref.classList.remove("slideInRight")}, 800);
 }

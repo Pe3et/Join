@@ -2,7 +2,6 @@ function openOverlayAddContact() {
     document.getElementById('overlayContainer').classList.add('overlayAppear');
     document.getElementById('overlayContainer').classList.add('overlayBackgroundColor');
     document.getElementById('addContactCardOverlay').classList.add('slideInRight');
-
 }
    
 function closeOverlayAddContact() {
