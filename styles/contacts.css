@@ -6,6 +6,7 @@ body {
 
 .pageContent {
   min-height: 100svh;
+  max-height: 100svh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -13,6 +14,7 @@ body {
 }
 
 main {
+  flex-grow: 1;
   height: 100%;
   overflow: hidden;
   display: flex;
@@ -30,7 +32,6 @@ main {
   box-shadow: 4px 0px 6px 0px #00000014;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: #565656 transparent;
 }
 
 #addContactButton {
@@ -70,10 +71,10 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
-
 }
 
-.contactListLetterContainer {}
+.contactListLetterContainer {
+}
 
 .contactListLetter {
   font-weight: 400;
@@ -129,7 +130,7 @@ main {
 /* Scrollbar */
 ::-webkit-scrollbar {
   background: transparent;
-  width: 24px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-button {
@@ -155,9 +156,8 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: url(/assets/img/scrollbar_thumb.svg);
-  background-repeat: no-repeat;
-  background-position: center;
+  border-radius: 50px;
+  background-color: #c0c0c0;
   height: 53px;
 }
 
@@ -220,7 +220,7 @@ main {
   justify-content: center;
   letter-spacing: 2px;
   background-color: orange;
-  box-shadow: 0px 0px 4px 0px #0000001A;
+  box-shadow: 0px 0px 4px 0px #0000001a;
 }
 
 .contactDetailsIcon p {
@@ -240,7 +240,16 @@ main {
   display: flex;
   gap: 13px;
   font-size: 16px;
+}
 
+.contactDetailsOption:hover {
+  font-weight: bold;
+  color: #29abe2;
+  cursor: pointer;
+}
+
+.contactDetailsOption:hover path {
+  fill: #29abe2;
 }
 
 .contactDetailsNameAndOptions a {
@@ -271,7 +280,7 @@ main {
   align-items: center;
   display: flex;
   gap: 8px;
-  color: #2A3647;
+  color: #2a3647;
 }
 
 .contactInformation {
@@ -284,33 +293,26 @@ main {
   margin-top: 80px;
   margin-bottom: 40px;
 }
-.personInContactList:hover {
-  background-color: #f0f0f0; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-  border-radius: 10px;
-}
 
-.contactDetailsOption:hover {
-  color: blue;
+.personInContactList:hover {
+  background-color: #f0f0f0;
   cursor: pointer;
-  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
 }
 
 /* Styling für den aktiven Kontakt */
 .personInContactList.active {
-  background-color: #2A3647; 
+  background-color: #2a3647;
   color: white;
-  padding: 20px; 
-  height: auto; 
+  padding: 20px;
+  height: auto;
   border-radius: 10px;
-  transition: background-color 0.3s, padding 0.3s, height 0.3s; 
+  transition: background-color 0.3s, padding 0.3s, height 0.3s;
 }
 
-
 .personInContactList.active .personInContactListMail {
-  color: #007cee; 
-
+  color: #007cee;
 }
 
 .contactDetailsOption:hover svg {
@@ -322,10 +324,10 @@ main {
   gap: 15px;
   flex-direction: column;
 }
-.personInContactList :hover{
+.personInContactList :hover {
   cursor: pointer;
 }
-@media(max-width: 868px) {
+@media (max-width: 868px) {
   #sidebar {
     display: none;
   }
@@ -339,7 +341,7 @@ main {
   }
 }
 
-@media(max-width: 856px) {
+@media (max-width: 856px) {
   #addContactButton b {
     font-size: 10px;
   }
@@ -351,10 +353,9 @@ main {
   .contactList {
     width: 20%;
   }
-
 }
 
-@media(max-width: 856px) {
+@media (max-width: 856px) {
   #contactListContent {
     font-size: 10px;
   }
@@ -364,7 +365,7 @@ main {
   }
 }
 
-@media(max-width: 720px) {
+@media (max-width: 720px) {
   main {
     padding-left: 0;
     padding-right: 0;
@@ -379,7 +380,7 @@ main {
   }
 }
 
-@media(max-width: 720px) {
+@media (max-width: 720px) {
   .pageContent {
     width: 100%;
   }
@@ -436,8 +437,6 @@ main {
   #addContactCardOverlay {
     display: none;
   }
-
-
 }
 
 /* //Contact button */
