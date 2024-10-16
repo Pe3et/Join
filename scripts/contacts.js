@@ -93,6 +93,10 @@ function loadEditContactCard(contact) {
     document.getElementById('editContactInputPhone').value = contact.phone;
     document.getElementById('editContactButton').setAttribute("onclick", `editContact(${JSON.stringify(contact)})`);
     document.getElementById('deleteContactOverlayButton').setAttribute("onclick", `deleteContact("${contact.id}")`);
+    const profileIconRef = document.getElementById('editCardProfileIcon');
+    profileIconRef.innerHTML = `
+        <div class="contactDetailsIcon" style="background: ${contact.color}"><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>
+    `
 }
    
 function emptyInputFields() {
@@ -140,7 +144,7 @@ async function deleteContact(key) {
     await deleteFromDB("contacts/" + key);
     document.getElementById('contactContent').innerHTML = "";
     loadContactList();
-    //id deleted via overlay, close overlay TODO:
+    //id deleted via overlay, close overlay
     if (document.getElementById('editOverlayContainer').classList.contains("overlayAppear")){
         document.getElementById('editOverlayContainer').classList.remove('overlayBackgroundColor');
         document.getElementById('editContactCardOverlay').classList.remove('slideInRight');
