@@ -96,7 +96,6 @@ async function editContact(contact) {
     loadContactList()
 }
 
-//incomplete - TODO: get elements from add contact Overlay
 async function addContact() {
     const nameInput = document.getElementById('addContactInputName').value;
     const emailInput = document.getElementById('addContactInputEmail').value;
@@ -112,7 +111,7 @@ async function addContact() {
 }
 
 function checkIfNameInputIsCorrect(nameInput) {
-    if(nameInput.includes(" ") && nameInput.split(" ")[1][0]) {
+    if(nameInput.includes(" ") && nameInput.split(" ")[1][0] && nameInput != "Please enter first and last name.") {
         return true
     } else {
         document.getElementById('addContactInputName').value = "Please enter first and last name.";
