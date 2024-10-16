@@ -123,8 +123,7 @@
       <div class="background">
         <img class="backgroundLogo" src="./assets/img/background_logo.svg" alt="" />
         <div class="backgroundText">
-          <h2>Add contact</h2>
-          <p>Tasks are better with a Team!</p>
+          <h2>Edit contact</h2>
         </div>
       </div>
       <div class="addContactForm">
@@ -159,14 +158,14 @@
               <img src="./assets/img/call.svg" alt="Phone Icon">
             </div>
             <div class="buttonArea">
-              <div class="cancelButton" onclick="closeOverlay('editOverlayContainer', 'editContactCardOverlay')">Cancel
+              <div class="cancelButton" id="deleteContactOverlayButton" onclick="deleteContact()">Delete
                 <svg width="24" height="24" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M7.001 6.50008L12.244 11.7431M1.758 11.7431L7.001 6.50008L1.758 11.7431ZM12.244 1.25708L7 6.50008L12.244 1.25708ZM7 6.50008L1.758 1.25708L7 6.50008Z"
                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
-              <button class="createContactButton" id="editContactButton" onclick="">Create contact <img
+              <button class="createContactButton" id="editContactButton" onclick="editContact()">Save <img
                   src="./assets/img/check.svg" alt=""></button>
             </div>
           </div>

@@ -74,13 +74,6 @@ function openOverlay(containerRefID, cardRefId, contact) {
     contact != undefined && loadEditContactCard(contact);
 }
 
-function loadEditContactCard(contact) {
-    document.getElementById('editContactInputName').value = contact.name;
-    document.getElementById('editContactInputEmail').value = contact.email;
-    document.getElementById('editContactInputPhone').value = contact.phone;
-    document.getElementById("editContactButton").setAttribute("onclick", `editContact(${JSON.stringify(contact)})`);
-}
-   
 function closeOverlay(containerRefID, cardRefId) {
     document.getElementById(containerRefID).classList.remove('overlayBackgroundColor');
     document.getElementById(cardRefId).classList.remove('slideInRight');
@@ -88,21 +81,30 @@ function closeOverlay(containerRefID, cardRefId) {
     emptyInputFields();
 }
 
+function loadEditContactCard(contact) {
+    document.getElementById('editContactInputName').value = contact.name;
+    document.getElementById('editContactInputEmail').value = contact.email;
+    document.getElementById('editContactInputPhone').value = contact.phone;
+    document.getElementById('editContactButton').setAttribute("onclick", `editContact(${JSON.stringify(contact)})`);
+    document.getElementById('deleteContactOverlayButton').setAttribute("onclick", `deleteContact("${contact.id}")`);
+}
+   
 function emptyInputFields() {
     document.getElementById('addContactInputName').value = "";
     document.getElementById('addContactInputEmail').value = "";
     document.getElementById('addContactInputPhone').value = "";
 }
 
-//incomplete - TODO: get elements from edit contact Overlay
 async function editContact(contact) {
     const nameInput = document.getElementById('editContactInputName').value;
     const emailInput = document.getElementById('editContactInputEmail').value;
     const phoneInput = document.getElementById('editContactInputPhone').value;
-    putToDB(nameInput, ("contacts/" + contact.key + "/name"));
-    putToDB(emailInput, ("contacts/" + contact.key + "/email"));
-    putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
-    loadContactList()
+    if(checkIfNameInputIsCorrect(nameInput)){
+        putToDB(nameInput, ("contacts/" + contact.key + "/name"));
+        putToDB(emailInput, ("contacts/" + contact.key + "/email"));
+        putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
+        loadContactList()
+    }
 }
 
 async function addContact() {
@@ -114,7 +116,7 @@ async function addContact() {
         const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
         await postToDB(newContact, "contacts");
         loadContactList();
-        closeOverlayAddContact();
+        closeOverlay("addContactOverlayContainer", "addContactCardOverlay");
         contactCreatedSuccess();
     }
 }
@@ -128,9 +130,16 @@ function checkIfNameInputIsCorrect(nameInput) {
     }
 }
 
-//TODO: no onclick yet
 async function deleteContact(key) {
-    deleteFromDB("contacts/" + key)
+    await deleteFromDB("contacts/" + key);
+    document.getElementById('contactContent').innerHTML = "";
+    loadContactList();
+    //id deleted via overlay, close overlay TODO:
+    if (document.getElementById('editOverlayContainer').classList.contains("overlayAppear")){
+        document.getElementById('editOverlayContainer').classList.remove('overlayBackgroundColor');
+        document.getElementById('editContactCardOverlay').classList.remove('slideInRight');
+        document.getElementById('editOverlayContainer').classList.remove('overlayAppear');
+    }
 }
 
 function getrandomColor(){
@@ -140,9 +149,9 @@ function getrandomColor(){
 
 function contactCreatedSuccess() {
     const ref = document.getElementById('contactCreateSuccess');
-    document.getElementById('overlayContainer').classList.remove('overlayBackgroundColor');
+    document.getElementById('addContactOverlayContainer').classList.remove('overlayBackgroundColor');
     document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
-    document.getElementById('overlayContainer').classList.remove('overlayAppear');
+    document.getElementById('addContactOverlayContainer').classList.remove('overlayAppear');
     ref.classList.add("slideInRight");
     setTimeout( () => {ref.classList.remove("slideInRight")}, 800);
 }
