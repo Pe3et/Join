@@ -1,27 +1,28 @@
 body {
   background: #f6f7f8;
   max-height: 100svh;
+  min-height: 100svh;
 }
 
 .pageContent {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow-x: hidden;
 }
 
 main {
-  
-  /* adjust padding according to implemented header and sidebar */
-  display: flex;
   height: 100%;
+  overflow: hidden;
+  display: flex;
   width: calc(100% - 232px);
   font-family: "Inter", sans-serif;
 }
 
-
 .contactList {
   background: white;
   width: 456px;
-  max-height: 92.5svh;
   display: flex;
   flex-direction: column;
   align-items: center;
