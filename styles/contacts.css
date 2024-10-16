@@ -539,17 +539,17 @@ main {
 @media(max-width: 1350px) {
   .contactContainer {
     display: none;
-   
-    
+
+
   }
 }
-  
+
 @media(max-width: 868px) {
   #sidebar {
     display: none;
   }
 
-  #addContactButton{
+  #addContactButton {
     display: none;
   }
 
