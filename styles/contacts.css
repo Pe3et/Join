@@ -219,6 +219,7 @@ main {
   justify-content: center;
   letter-spacing: 2px;
   background-color: orange;
+  box-shadow: 0px 0px 4px 0px #0000001A;
 }
 
 .contactDetailsIcon p {
@@ -298,6 +299,7 @@ main {
   gap: 15px;
   flex-direction: column;
 }
+<<<<<<< HEAD
 .personInContactList:hover {
   background-color: #f0f0f0; 
   cursor: pointer; 
@@ -306,6 +308,11 @@ main {
 
 
 
+=======
+.personInContactList :hover{
+  cursor: pointer;
+}
+>>>>>>> 4a3ff1dee5f64ee13ee7137eb2375a274ae64bdf
 @media(max-width: 868px) {
   #sidebar {
     display: none;
