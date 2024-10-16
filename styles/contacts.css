@@ -283,6 +283,11 @@ main {
   margin-top: 80px;
   margin-bottom: 40px;
 }
+.personInContactList:hover {
+  background-color: #f0f0f0; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
 
 .contactDetailsOption:hover {
   color: blue;
