@@ -19,8 +19,32 @@
    }
 
    header {
-    padding-left: 0;
+    padding-top: 20px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 20px;
    }
+
+   .project img {
+    height: 56px;
+    width: 50px;
+   }
+
+   .help img {
+    display: none;
+   }
+}
+
+@media (max-width: 650px){
+    .userIcon {
+     height: 40px;
+     width: 40px;
+    }
+
+    .project img {
+        height: 40px;
+        width: 32px;
+       }
 }
 
 @media (min-width: 650px){
@@ -51,4 +75,21 @@
     .project img {
         display: none;
        }
+ }
+
+ @media (max-width: 450px){
+    .respMenuButton img {
+     width: 20px;
+     height: 20px;
+    }
+
+    .respMenuButton span {
+        font-size: 12px;
+    }
+
+    .respMenuButton {
+        height: 70px;
+        width: 80px;
+    }
+
  }

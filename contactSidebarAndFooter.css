@@ -30,7 +30,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4px;
 }
 
 .respMenuButton span {
@@ -43,6 +42,10 @@
 .respMenuButton img {
     height: 22px;
     width: 22px;
+}
+
+.respActive {
+    background: rgba(9, 25, 49, 1);
 }
 
 
