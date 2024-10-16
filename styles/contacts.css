@@ -219,6 +219,7 @@ main {
   justify-content: center;
   letter-spacing: 2px;
   background-color: orange;
+  box-shadow: 0px 0px 4px 0px #0000001A;
 }
 
 .contactDetailsIcon p {
