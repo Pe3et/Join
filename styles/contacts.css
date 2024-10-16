@@ -305,20 +305,9 @@ main {
   gap: 15px;
   flex-direction: column;
 }
-<<<<<<< HEAD
-.personInContactList:hover {
-  background-color: #f0f0f0; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-}
-
-
-
-=======
 .personInContactList :hover{
   cursor: pointer;
 }
->>>>>>> 4a3ff1dee5f64ee13ee7137eb2375a274ae64bdf
 @media(max-width: 868px) {
   #sidebar {
     display: none;
