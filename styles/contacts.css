@@ -297,6 +297,23 @@ main {
   font-weight: bold;
 }
 
+/* Styling für den aktiven Kontakt */
+.personInContactList.active {
+  background-color: #2A3647; 
+  color: #fff; 
+  border-radius: 10px; 
+  padding: 15px; 
+  box-sizing: border-box; 
+  transition: background-color 0.3s, padding 0.3s; 
+
+}
+
+
+.personInContactList.active .personInContactListMail {
+  color: #007cee; 
+
+}
+
 .contactDetailsOption:hover svg {
   fill: blue;
 }
@@ -306,20 +323,9 @@ main {
   gap: 15px;
   flex-direction: column;
 }
-<<<<<<< HEAD
-.personInContactList:hover {
-  background-color: #f0f0f0; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-}
-
-
-
-=======
 .personInContactList :hover{
   cursor: pointer;
 }
->>>>>>> 4a3ff1dee5f64ee13ee7137eb2375a274ae64bdf
 @media(max-width: 868px) {
   #sidebar {
     display: none;
