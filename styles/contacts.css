@@ -298,25 +298,14 @@ main {
   gap: 15px;
   flex-direction: column;
 }
-.personInContactList :hover{
-  cursor: pointer;
-}
-<<<<<<< HEAD
-.personInContactList :hover {
-  cursor: pointer;
+.personInContactList:hover {
+  background-color: #f0f0f0; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
 }
 
 
 
-
-@media(max-width: 1350px) {
-  .contactContainer {
-    display: none;
-  }
-}
-
-=======
->>>>>>> 568518e0153fc162c1a09d9d4245f216366e61ff
 @media(max-width: 868px) {
   #sidebar {
     display: none;
