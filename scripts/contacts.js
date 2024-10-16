@@ -63,7 +63,13 @@ function getContactsArray(contactRestults){
 
 function renderContactDetails(contact) {
     const contentRef = document.getElementById('contactContent');
-    contactContent.innerHTML = getContactDetailsTemplate(contact);
+    contentRef.style.transition = "none"
+    contentRef.style.left = "100vw",
+    contentRef.innerHTML = getContactDetailsTemplate(contact);
+    setTimeout( () => {
+        contentRef.style.transition = "all 300ms ease-out";
+        contentRef.style.left = "0"
+    }, 1);
 }
 
 function openOverlay(containerRefID, cardRefId, contact) {
