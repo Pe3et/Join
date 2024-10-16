@@ -10,6 +10,7 @@
     align-items: center;
     gap: 15px;
     padding: 16px;
+    font-family: "Inter";
 }
 
 .footerMenu a {
@@ -22,7 +23,7 @@
 
 .respMenuButton {
     height: 76px;
-    width: 76px;
+    width: 80px;
     display: flex;
     border-radius: 8px;
     gap: 4px;

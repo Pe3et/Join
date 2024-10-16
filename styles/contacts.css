@@ -302,7 +302,7 @@ main {
   flex-direction: column;
 }
 
-<<<<<<< HEAD
+<<<<<<< HEAD <<<<<<< HEAD
 
 /* Overlay */
 #overlayContainer {
@@ -539,6 +539,18 @@ main {
 @media(max-width: 1350px) {
   .contactContainer {
     display: none;
+   
+    
+  }
+}
+  
+@media(max-width: 868px) {
+  #sidebar {
+    display: none;
+  }
+
+  #addContactButton{
+    display: none;
   }
 
   .contactList {
@@ -585,6 +597,7 @@ main {
     display: none;
   }
 }
+
 
 @media(max-width: 720px) {
   .pageContent {
@@ -639,7 +652,7 @@ main {
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 390px) {
   #addContactCardOverlay {
     display: none;
   }
