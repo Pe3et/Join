@@ -9,8 +9,7 @@ body {
 }
 
 main {
-  padding-top: 96px;
-  padding-left: 232px;
+  
   /* adjust padding according to implemented header and sidebar */
   display: flex;
   height: 100%;
@@ -294,12 +293,6 @@ main {
   display: flex;
   gap: 15px;
   flex-direction: column;
-}
-
-@media(max-width: 1350px) {
-  .contactContainer {
-    display: none;
-  }
 }
 
 @media(max-width: 868px) {
