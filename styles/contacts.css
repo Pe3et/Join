@@ -215,7 +215,8 @@ main {
   letter-spacing: 2px;
   background-color: orange;
 }
-.contactDetailsIcon p{
+
+.contactDetailsIcon p {
   font-size: 47px;
 }
 
@@ -250,7 +251,8 @@ main {
 .contactInformation b {
   gap: 15px;
 }
-.contactInformation{
+
+.contactInformation {
   margin-top: 80px;
 }
 
@@ -277,17 +279,19 @@ main {
   font-weight: 400;
   line-height: 24px;
   text-align: left;
- margin-top: 80px;
- margin-bottom: 40px;
+  margin-top: 80px;
+  margin-bottom: 40px;
 
 }
-.contactDetailsOption:hover{
+
+.contactDetailsOption:hover {
   color: blue;
   cursor: pointer;
   font-weight: bold;
 
 }
-.contactDetailsOption svg :hover{
+
+.contactDetailsOption svg :hover {
   cursor: pointer;
   color: #29abe2;
 }
@@ -299,6 +303,7 @@ main {
 }
 
 <<<<<<< HEAD
+
 /* Overlay */
 #overlayContainer {
   position: absolute;
@@ -310,7 +315,7 @@ main {
   top: 0;
   left: 100%;
   z-Index: 998;
- }
+}
 
 .addContactCardOverlay {
   width: 1212px;
@@ -410,7 +415,7 @@ main {
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 48px; 
+  gap: 48px;
 }
 
 .imgContainer {
@@ -531,90 +536,115 @@ main {
 }
 
 
-@media(max-width: 1350px){
-  .contactContainer{
-    display: none;
-  }
-  .contactList{
-    width: 100%;
-  }
-}
-
-@media(max-width: 856px){
-  #addContactButton{
-   width: 150px;
-  }
-  #addContactButton b{
-    font-size: 10px;
-  }
- 
-  
-}
-@media(max-width: 856px){
-  #contactListContent{
-    font-size: 10px;
-  }
-  .personInContactListData b{
-    font-size: 10px;
-  }
-  
-}
-
-
-
-@media(min-width: 320px){
-  
-  .contactList{
-    width: 100%;
-  }
-}
-
-
-
-
-
-
-
-
-=======
->>>>>>> aaf90c98cead7e3e279627ddb4e95c6820d33d15
-@media(max-width: 1502px){
-  .contactList{
-    width: 100%;
-  }
- 
-  
-}
-@media(min-width: 400px){
-  .contactList{
-    width: 100%;
-  }
-  
-  
-}
-
-
-@media(max-width: 868px){
-  #sidebar{
+@media(max-width: 1350px) {
+  .contactContainer {
     display: none;
   }
 
-  
+  .contactList {
+    width: 100%;
+  }
 }
 
-@media(max-width: 700px){
-  #sidebar{
+@media(max-width: 856px) {
+  #addContactButton b {
+    font-size: 10px;
+  }
+
+  .personInContactListMail {
+    font-size: 16px;
+  }
+
+  .contactList {
+    width: 20%;
+  }
+
+}
+
+@media(max-width: 856px) {
+  #contactListContent {
+    font-size: 10px;
+  }
+
+  .personInContactListData b {
+    font-size: 20px;
+  }
+}
+
+@media(max-width: 720px) {
+  main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .contactList {
+    padding-left: 0;
+  }
+
+  .contactContainer {
     display: none;
   }
-<<<<<<< HEAD
-  
-  
 }
 
-
-
-
-
-=======
+@media(max-width: 720px) {
+  .pageContent {
+    width: 100%;
+  }
 }
->>>>>>> aaf90c98cead7e3e279627ddb4e95c6820d33d15
+
+@media (max-width: 320px) {
+  .contactList {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  main {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  #addContactButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .contactList {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  main {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  #sidebar {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .contactList {
+    width: 456px;
+  }
+
+  main {
+    padding-left: 232px;
+    width: calc(100% - 232px);
+  }
+}
+
+@media (max-width: 350px) {
+  #addContactCardOverlay {
+    display: none;
+  }
+
+  #addContactButton {
+    display: none;
+  }
+}
