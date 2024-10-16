@@ -298,6 +298,7 @@ main {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 /* Overlay */
 #overlayContainer {
   position: absolute;
@@ -575,6 +576,8 @@ main {
 
 
 
+=======
+>>>>>>> aaf90c98cead7e3e279627ddb4e95c6820d33d15
 @media(max-width: 1502px){
   .contactList{
     width: 100%;
@@ -603,6 +606,7 @@ main {
   #sidebar{
     display: none;
   }
+<<<<<<< HEAD
   
   
 }
@@ -611,3 +615,6 @@ main {
 
 
 
+=======
+}
+>>>>>>> aaf90c98cead7e3e279627ddb4e95c6820d33d15

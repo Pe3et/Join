@@ -17,6 +17,7 @@ function init(){
 
 async function loadContactList() {
     const contactRestults = await getFromDB("contacts");
+    document.getElementById("contactListContent").innerHTML = "";
     contactsArray = getContactsArray(contactRestults);
     firstLettersArray = getFirstLettersArray(contactsArray);
     firstLettersArray.forEach(letter => {
@@ -65,11 +66,30 @@ function renderContactDetails(contact) {
     contactContent.innerHTML = getContactDetailsTemplate(contact);
 }
 
+function openOverlayAddContact() {
+    document.getElementById('overlayContainer').classList.add('overlayAppear');
+    document.getElementById('overlayContainer').classList.add('overlayBackgroundColor');
+    document.getElementById('addContactCardOverlay').classList.add('slideInRight');
+}
+   
+function closeOverlayAddContact() {
+    document.getElementById('overlayContainer').classList.remove('overlayBackgroundColor');
+    document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
+    setTimeout(() => {document.getElementById('overlayContainer').classList.remove('overlayAppear')}, 300);
+    emptyInputFields();
+}
+
+function emptyInputFields() {
+    document.getElementById('addContactInputName').value = "";
+    document.getElementById('addContactInputEmail').value = "";
+    document.getElementById('addContactInputPhone').value = "";
+}
+
 //incomplete - TODO: get elements from edit contact Overlay
 async function editContact(contact) {
-    const nameInput = document.getElementById('XXXXX').value;
-    const emailInput = document.getElementById('XXXXX').value;
-    const phoneInput = document.getElementById('XXXXX').value;
+    const nameInput = document.getElementById('editContactInputName').value;
+    const emailInput = document.getElementById('editContactInputEmail').value;
+    const phoneInput = document.getElementById('editContactInputPhone').value;
     putToDB(nameInput, ("contacts/" + contact.key + "/name"));
     putToDB(emailInput, ("contacts/" + contact.key + "/email"));
     putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
@@ -78,18 +98,26 @@ async function editContact(contact) {
 
 //incomplete - TODO: get elements from add contact Overlay
 async function addContact() {
-    const nameInput = document.getElementById('XXXXX').value;
-    const emailInput = document.getElementById('XXXXX').value;
-    const phoneInput = document.getElementById('XXXXX').value;
-    const randomColor = getrandomColor();
-    const newContact = {
-        name: nameInput,
-        email: emailInput,
-        phone: phoneInput,
-        color: randomColor
+    const nameInput = document.getElementById('addContactInputName').value;
+    const emailInput = document.getElementById('addContactInputEmail').value;
+    const phoneInput = document.getElementById('addContactInputPhone').value;
+    if(checkIfNameInputIsCorrect(nameInput)){
+        const randomColor = getrandomColor();
+        const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
+        await postToDB(newContact, "contacts");
+        loadContactList();
+        closeOverlayAddContact();
+        contactCreatedSuccess();
     }
-    postToDB(newContact, "contacts");
-    loadContactList();
+}
+
+function checkIfNameInputIsCorrect(nameInput) {
+    if(nameInput.includes(" ") && nameInput.split(" ")[1][0]) {
+        return true
+    } else {
+        document.getElementById('addContactInputName').value = "Please enter first and last name.";
+        return false
+    }
 }
 
 //TODO: no onclick yet
@@ -100,4 +128,13 @@ async function deleteContact(key) {
 function getrandomColor(){
     const randomColor = colors[(Math.round(Math.random() * colors.length))];
     return randomColor
+}
+
+function contactCreatedSuccess() {
+    const ref = document.getElementById('contactCreateSuccess');
+    document.getElementById('overlayContainer').classList.remove('overlayBackgroundColor');
+    document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
+    document.getElementById('overlayContainer').classList.remove('overlayAppear');
+    ref.classList.add("slideInRight");
+    setTimeout( () => {ref.classList.remove("slideInRight")}, 800);
 }
