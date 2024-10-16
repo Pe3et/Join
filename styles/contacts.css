@@ -21,7 +21,7 @@ main {
 .contactList {
   background: white;
   width: 456px;
-  max-height: 80vh;
+  max-height: 92.5svh;
   display: flex;
   flex-direction: column;
   align-items: center;
