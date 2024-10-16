@@ -9,8 +9,7 @@ body {
 }
 
 main {
-  padding-top: 96px;
-  padding-left: 232px;
+  
   /* adjust padding according to implemented header and sidebar */
   display: flex;
   height: 100%;
@@ -22,7 +21,7 @@ main {
 .contactList {
   background: white;
   width: 456px;
-  max-height: 80vh;
+  max-height: 92.5svh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,6 +195,9 @@ main {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  position: relative;
+  left: 100vw;
+  transition: all 300ms ease-out;
 }
 
 .iconAndName {
@@ -297,6 +299,7 @@ main {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 .personInContactList :hover {
   cursor: pointer;
 }
@@ -310,6 +313,8 @@ main {
   }
 }
 
+=======
+>>>>>>> 568518e0153fc162c1a09d9d4245f216366e61ff
 @media(max-width: 868px) {
   #sidebar {
     display: none;
