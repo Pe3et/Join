@@ -243,3 +243,9 @@
     transition: all 300ms ease-out;
     width: 310px;
 }
+
+@media (max-width: 1050px) {
+    .overlayContainer {
+        top: 100%;
+    }
+}

@@ -18,20 +18,29 @@ main {
   height: 100%;
   overflow: hidden;
   display: flex;
-  width: calc(100% - 232px);
+  width: 100%;
   font-family: "Inter", sans-serif;
+  padding-left: 232px;
+  padding-right: 16px;
 }
 
 .contactList {
   background: white;
-  width: 456px;
+  min-width: 456px;
+  max-width: 456px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 56px;
   box-shadow: 4px 0px 6px 0px #00000014;
   overflow-y: auto;
-  overflow-x: hidden;
+}
+
+.addContactButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #addContactButton {
@@ -43,10 +52,11 @@ main {
   border-radius: 10px;
   gap: 16px;
   padding: 12px;
-  width: 352px;
+  max-width: 352px;
   font-size: 21px;
   font-weight: 700;
   margin: 22.5px 0;
+  flex: 1;
 }
 
 #addContactButton:hover {
@@ -91,7 +101,7 @@ main {
 
 .personInContactList {
   display: flex;
-  width: 352px;
+  flex: 1;
   gap: 35px;
   padding: 15px 24px;
 }
@@ -165,6 +175,7 @@ main {
 .contactContainer {
   padding-left: 55px;
   padding-top: 110px;
+  flex: 1;
 }
 
 .contactHeading {
@@ -327,17 +338,13 @@ main {
 .personInContactList :hover {
   cursor: pointer;
 }
-@media (max-width: 868px) {
-  #sidebar {
-    display: none;
-  }
-
-  #addContactButton {
-    display: none;
-  }
-
+@media (max-width: 880px) {
   .contactList {
     width: 100%;
+  }
+
+  .contactContainer {
+    display: none;
   }
 }
 
@@ -348,10 +355,6 @@ main {
 
   .personInContactListMail {
     font-size: 16px;
-  }
-
-  .contactList {
-    width: 20%;
   }
 }
 
@@ -367,16 +370,8 @@ main {
 
 @media (max-width: 720px) {
   main {
-    padding-left: 0;
+    padding-left: 0px;
     padding-right: 0;
-  }
-
-  .contactList {
-    padding-left: 0;
-  }
-
-  .contactContainer {
-    display: none;
   }
 }
 
@@ -389,8 +384,7 @@ main {
 @media (max-width: 320px) {
   .contactList {
     width: 100%;
-    padding-left: 0;
-    padding-right: 0;
+
   }
 
   main {
@@ -407,8 +401,6 @@ main {
 @media (max-width: 720px) {
   .contactList {
     width: 100%;
-    padding-left: 0;
-    padding-right: 0;
   }
 
   main {
@@ -419,17 +411,6 @@ main {
 
   #sidebar {
     display: none;
-  }
-}
-
-@media (min-width: 720px) {
-  .contactList {
-    width: 456px;
-  }
-
-  main {
-    padding-left: 232px;
-    width: calc(100% - 232px);
   }
 }
 
