@@ -66,16 +66,25 @@ function renderContactDetails(contact) {
     contactContent.innerHTML = getContactDetailsTemplate(contact);
 }
 
-function openOverlayAddContact() {
-    document.getElementById('overlayContainer').classList.add('overlayAppear');
-    document.getElementById('overlayContainer').classList.add('overlayBackgroundColor');
-    document.getElementById('addContactCardOverlay').classList.add('slideInRight');
+function openOverlay(containerRefID, cardRefId, contact) {
+    document.getElementById(containerRefID).classList.add('overlayAppear');
+    document.getElementById(containerRefID).classList.add('overlayBackgroundColor');
+    document.getElementById(cardRefId).classList.add('slideInRight');
+    //if editOverlay is opened, load the contact values and set onclick param for edit button
+    contact != undefined && loadEditContactCard(contact);
+}
+
+function loadEditContactCard(contact) {
+    document.getElementById('editContactInputName').value = contact.name;
+    document.getElementById('editContactInputEmail').value = contact.email;
+    document.getElementById('editContactInputPhone').value = contact.phone;
+    document.getElementById("editContactButton").setAttribute("onclick", `editContact(${JSON.stringify(contact)})`);
 }
    
-function closeOverlayAddContact() {
-    document.getElementById('overlayContainer').classList.remove('overlayBackgroundColor');
-    document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
-    setTimeout(() => {document.getElementById('overlayContainer').classList.remove('overlayAppear')}, 300);
+function closeOverlay(containerRefID, cardRefId) {
+    document.getElementById(containerRefID).classList.remove('overlayBackgroundColor');
+    document.getElementById(cardRefId).classList.remove('slideInRight');
+    setTimeout(() => {document.getElementById(containerRefID).classList.remove('overlayAppear')}, 300);
     emptyInputFields();
 }
 
