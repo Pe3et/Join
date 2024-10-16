@@ -1,4 +1,4 @@
-@media (max-width: 1300px){
+@media (max-width: 1100px){
     .menuButton{
         padding: 8px 12px 8px 12px;
   }
@@ -13,4 +13,42 @@
    #sidebar {
     display: none;
    }
+
+   .project p {
+    display: none;
+   }
+
+   header {
+    padding-left: 0;
+   }
 }
+
+@media (min-width: 650px){
+    .footerMenu {
+     height: 100px;
+    }
+
+    .respMenuButton {
+        height: 86px;
+        width: 100px;
+    }
+
+    .respMenuButton img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .respMenuButton span {
+        font-size: 20px;
+    }
+ }
+
+ @media (min-width: 901px){
+    .footerMenu {
+     display: none;
+    }
+
+    .project img {
+        display: none;
+       }
+ }
