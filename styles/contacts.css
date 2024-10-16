@@ -298,7 +298,9 @@ main {
   gap: 15px;
   flex-direction: column;
 }
-
+.personInContactList :hover{
+  cursor: pointer;
+}
 <<<<<<< HEAD
 .personInContactList :hover {
   cursor: pointer;
