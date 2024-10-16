@@ -28,8 +28,8 @@ main {
   align-items: center;
   padding: 0 56px;
   box-shadow: 4px 0px 6px 0px #00000014;
-  overflow-y: auto; 
-  overflow-x: hidden; 
+  overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-color: #565656 transparent;
 }
 
@@ -70,7 +70,7 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .contactListLetterContainer {}
@@ -236,6 +236,7 @@ main {
   display: flex;
   gap: 13px;
   font-size: 16px;
+
 }
 
 .contactDetailsNameAndOptions a {
@@ -266,6 +267,7 @@ main {
   align-items: center;
   display: flex;
   gap: 8px;
+  color: #2A3647;
 }
 
 .contactInformation {
@@ -285,9 +287,8 @@ main {
   font-weight: bold;
 }
 
-.contactDetailsOption svg :hover {
-  cursor: pointer;
-  color: #29abe2;
+.contactDetailsOption:hover svg {
+  fill: blue;
 }
 
 .contactSocials {
@@ -295,6 +296,13 @@ main {
   gap: 15px;
   flex-direction: column;
 }
+
+.personInContactList :hover {
+  cursor: pointer;
+}
+
+
+
 
 @media(max-width: 1350px) {
   .contactContainer {
@@ -414,8 +422,7 @@ main {
     display: none;
   }
 
- 
+
 }
 
 /* //Contact button */
-
