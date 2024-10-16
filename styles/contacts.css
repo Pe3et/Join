@@ -302,64 +302,28 @@ main {
   .contactList{
     width: 100%;
   }
-  .contactContainer{
-    display: none;
-  }
+ 
   
 }
 @media(min-width: 400px){
   .contactList{
     width: 100%;
   }
-  .contactContainer{
-    display: none;
-  }
   
-}
-@media(max-width: 861px){
-  .contactList{
-    width: 100%;
-  }
-  .contactContainer{
-    display: none;
-  }
   
 }
 
-@media(max-width: 1000px){
-  h1{
-    font-size: 8px;
 
+@media(max-width: 868px){
+  #sidebar{
+    display: none;
   }
-  .contactHeading{
-    font-size: 40px;
-  }
-}
-@media(max-width: 800px){
-  h1{
-    font-size: 5px;
 
-  }
-  .contactHeading{
-    font-size: 40px;
-  }
+  
 }
 
-@media(max-width: 1342px){
-  h1{
-    font-size: 12px;
-
-  }
-  .contactHeading{
-    font-size: 40px;
-  }
-}
-@media(max-width: 1342px){
-  h1{
-    font-size: 12px;
-
-  }
-  .contactHeading{
-    font-size: 40px;
+@media(max-width: 700px){
+  #sidebar{
+    display: none;
   }
 }
