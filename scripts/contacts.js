@@ -25,11 +25,28 @@ async function loadContactList() {
         const contactsWithSameFirstLetter = contactsArray.filter(contact => contact.name[0] == letter);
         contactsWithSameFirstLetter.forEach(contact => renderContactInList(contact))
     });
+
+    // Füge Event-Listener hinzu, um den aktiven Kontakt bei Klick zu markieren
+    addClickListenersToContacts();
 }
 
 function renderContactInList(contact) {
     const contentRef = document.getElementById(contact.name[0]);
     contentRef.innerHTML += getContactListPersonsTemplate(contact);
+}
+
+function addClickListenersToContacts() {
+    // Alle Kontakte auswählen
+    const contactElements = document.querySelectorAll('.personInContactList');
+    contactElements.forEach(contact => {
+        // Event-Listener für Klick auf jeden Kontakt
+        contact.addEventListener('click', function() {
+            // Entferne die 'active'-Klasse von allen Kontakten
+            contactElements.forEach(c => c.classList.remove('active'));
+            // Füge die 'active'-Klasse dem geklickten Kontakt hinzu
+            contact.classList.add('active');
+        });
+    });
 }
 
 function renderLetterSection(letter) {
@@ -43,32 +60,32 @@ function getFirstLettersArray(contactsArray) {
         const firstLetter = contact.name[0];
         !firstLettersArray.includes(firstLetter) && firstLettersArray.push(firstLetter)
     })
-    return firstLettersArray
+    return firstLettersArray;
 }
 
 function getContactsArray(contactRestults){
     contacts = [];
-    Object.keys(contactRestults).forEach( key => {
+    Object.keys(contactRestults).forEach(key => {
         contacts.push({
             id: key,
             name: contactRestults[key].name,
             email: contactRestults[key].email,
             phone: contactRestults[key].phone,
             color: contactRestults[key].color
-        })
+        });
     });
-    contacts.sort( (a,b) => (a.name).localeCompare(b.name)); //das Array alphabetisch sortieren
-    return contacts
+    contacts.sort((a, b) => (a.name).localeCompare(b.name)); // das Array alphabetisch sortieren
+    return contacts;
 }
 
 function renderContactDetails(contact) {
     const contentRef = document.getElementById('contactContent');
-    contentRef.style.transition = "none"
-    contentRef.style.left = "100vw",
+    contentRef.style.transition = "none";
+    contentRef.style.left = "100vw";
     contentRef.innerHTML = getContactDetailsTemplate(contact);
-    setTimeout( () => {
+    setTimeout(() => {
         contentRef.style.transition = "all 300ms ease-out";
-        contentRef.style.left = "0"
+        contentRef.style.left = "0";
     }, 1);
 }
 
@@ -76,7 +93,6 @@ function openOverlay(containerRefID, cardRefId, contact) {
     document.getElementById(containerRefID).classList.add('overlayAppear');
     document.getElementById(containerRefID).classList.add('overlayBackgroundColor');
     document.getElementById(cardRefId).classList.add('slideInRight');
-    //if editOverlay is opened, load the contact values and set onclick param for edit button
     contact != undefined && loadEditContactCard(contact);
 }
 
@@ -95,10 +111,12 @@ function loadEditContactCard(contact) {
     document.getElementById('deleteContactOverlayButton').setAttribute("onclick", `deleteContact("${contact.id}")`);
     const profileIconRef = document.getElementById('editCardProfileIcon');
     profileIconRef.innerHTML = `
-        <div class="contactDetailsIcon" style="background: ${contact.color}"><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>
-    `
+        <div class="contactDetailsIcon" style="background: ${contact.color}">
+            <p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p>
+        </div>
+    `;
 }
-   
+
 function emptyInputFields() {
     document.getElementById('addContactInputName').value = "";
     document.getElementById('addContactInputEmail').value = "";
@@ -109,11 +127,11 @@ async function editContact(contact) {
     const nameInput = document.getElementById('editContactInputName').value;
     const emailInput = document.getElementById('editContactInputEmail').value;
     const phoneInput = document.getElementById('editContactInputPhone').value;
-    if(checkIfNameInputIsCorrect(nameInput)){
+    if (checkIfNameInputIsCorrect(nameInput)) {
         putToDB(nameInput, ("contacts/" + contact.key + "/name"));
         putToDB(emailInput, ("contacts/" + contact.key + "/email"));
         putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
-        loadContactList()
+        loadContactList();
     }
 }
 
@@ -121,7 +139,7 @@ async function addContact() {
     const nameInput = document.getElementById('addContactInputName').value;
     const emailInput = document.getElementById('addContactInputEmail').value;
     const phoneInput = document.getElementById('addContactInputPhone').value;
-    if(checkIfNameInputIsCorrect(nameInput)){
+    if (checkIfNameInputIsCorrect(nameInput)) {
         const randomColor = getrandomColor();
         const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
         await postToDB(newContact, "contacts");
@@ -132,11 +150,11 @@ async function addContact() {
 }
 
 function checkIfNameInputIsCorrect(nameInput) {
-    if(nameInput.includes(" ") && nameInput.split(" ")[1][0] && nameInput != "Please enter first and last name.") {
-        return true
+    if (nameInput.includes(" ") && nameInput.split(" ")[1][0] && nameInput != "Please enter first and last name.") {
+        return true;
     } else {
         document.getElementById('addContactInputName').value = "Please enter first and last name.";
-        return false
+        return false;
     }
 }
 
@@ -144,17 +162,16 @@ async function deleteContact(key) {
     await deleteFromDB("contacts/" + key);
     document.getElementById('contactContent').innerHTML = "";
     loadContactList();
-    //id deleted via overlay, close overlay
-    if (document.getElementById('editOverlayContainer').classList.contains("overlayAppear")){
+    if (document.getElementById('editOverlayContainer').classList.contains("overlayAppear")) {
         document.getElementById('editOverlayContainer').classList.remove('overlayBackgroundColor');
         document.getElementById('editContactCardOverlay').classList.remove('slideInRight');
         document.getElementById('editOverlayContainer').classList.remove('overlayAppear');
     }
 }
 
-function getrandomColor(){
+function getrandomColor() {
     const randomColor = colors[(Math.round(Math.random() * colors.length))];
-    return randomColor
+    return randomColor;
 }
 
 function contactCreatedSuccess() {
@@ -163,5 +180,5 @@ function contactCreatedSuccess() {
     document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
     document.getElementById('addContactOverlayContainer').classList.remove('overlayAppear');
     ref.classList.add("slideInRight");
-    setTimeout( () => {ref.classList.remove("slideInRight")}, 800);
+    setTimeout(() => { ref.classList.remove("slideInRight"); }, 800);
 }
