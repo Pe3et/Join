@@ -351,6 +351,17 @@ main {
 .personInContactList :hover {
   cursor: pointer;
 }
+
+/* Wenn die Liste ausgeblendet werden soll */
+.hideContactList .contactList {
+  display: none;
+}
+
+/* Kontaktliste wieder anzeigen und Kontaktbereich ausblenden */
+.showContactList .contactContainer {
+  display: none;
+}
+
 @media (max-width: 880px) {
   .contactList {
     width: 100%;
@@ -428,5 +439,7 @@ main {
     display: none;
   }
 }
+
+
 
 /* //Contact button */
