@@ -128,19 +128,21 @@
             <div class="imgContainer">
               <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
             </div>
+            <form id="addContactForm">
             <div class="inputArea">
-              <div class="inputContainer">
-                <input class="inputFields" type="text" name="name" id="addContactInputName" placeholder="Name">
-                <img src="./assets/img/person.svg" alt="Person Icon">
-              </div>
-              <div class="inputContainer">
-                <input class="inputFields" type="text" name="email" id="addContactInputEmail" placeholder="Email">
-                <img src="./assets/img/mail.svg" alt="Mail Icon">
-              </div>
-              <div class="inputContainer">
-                <input class="inputFields" type="text" name="phone" id="addContactInputPhone" placeholder="Phone">
-                <img src="./assets/img/call.svg" alt="Phone Icon">
-              </div>
+                <div class="inputContainer">
+                  <input class="inputFields" type="text" name="name" id="addContactInputName" placeholder="Name" required>
+                  <img src="./assets/img/person.svg" alt="Person Icon">
+                </div>
+                <div class="inputContainer">
+                  <input class="inputFields" type="email" name="email" id="addContactInputEmail" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                  <img src="./assets/img/mail.svg" alt="Mail Icon">
+                </div>
+                <div class="inputContainer">
+                  <input class="inputFields" type="number" name="phone" id="addContactInputPhone" placeholder="Phone" required>
+                  <img src="./assets/img/call.svg" alt="Phone Icon">
+                </div>
+              </form>
               <div class="buttonArea">
                 <div class="cancelButton" onclick="closeOverlay('addContactOverlayContainer', 'addContactCardOverlay')">Cancel
                   <svg width="24" height="24" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +151,7 @@
                       stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </div>
-                <button class="createContactButton" onclick="addContact()">Create contact <img
+                <button class="createContactButton" onclick="addContact()" type="submit" form="addContactForm">Create contact <img
                     src="./assets/img/check.svg" alt=""></button>
               </div>
             </div>
