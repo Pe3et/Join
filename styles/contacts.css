@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 main {
@@ -149,11 +149,11 @@ main {
 }
 
 ::-webkit-scrollbar-button:vertical:start:decrement {
-  background-image: url("/assets/img/scrollbar_button_up.svg");
+  background-image: url("../assets/img/scrollbar_button_up.svg");
 }
 
 ::-webkit-scrollbar-button:vertical:end:increment {
-  background-image: url("/assets/img/scrollbar_button_down.svg");
+  background-image: url("../assets/img/scrollbar_button_down.svg");
 }
 
 ::-webkit-scrollbar-button:vertical:start:increment,
@@ -292,6 +292,7 @@ main {
   display: flex;
   gap: 8px;
   color: #2a3647;
+  width: 82px;
 }
 
 .contactInformation {
