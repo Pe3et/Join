@@ -1,0 +1,155 @@
+:root {
+    --sidebarWidth: 232px;
+    --mainPaddingLeft: calc(90px + var(--sidebarWidth));
+    --mainPadding: 90px 90px 45px var(--mainPaddingLeft);
+}
+
+@media (max-width: 1200px){
+    :root {
+        --sidebarWidth: 152px;
+        --mainPaddingLeft: calc(45px + var(--sidebarWidth));
+        --mainPadding: 45px 45px 24px var(--mainPaddingLeft);
+    }
+}
+
+/* mobile view */
+@media (max-width: 1050px){
+    :root {
+        --sidebarWidth: 0px 0px;
+        --mainPadding: 64px 16px 16px;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    max-height: 100svh;
+}
+
+main {
+    padding: var(--mainPadding);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-family: "Inter", sans-serif;
+    background: #F6F7F8;
+}
+
+h1 {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.addTaskForm{
+    display: flex;
+    padding: 64px 0px;
+}
+
+.addTaskColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 440px;
+}
+
+.addTaskForm span{
+    color: #FF8190;
+}
+
+.addTaskForm p{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.addTaskForm input, textarea, .dropDownButton{
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 32px;
+}
+
+.addTaskForm input::placeholder, textarea::placeholder{
+    color: #D1D1D1;
+}
+
+.addTaskForm input:focus, textarea:focus {
+    outline: 1px solid #29ABE2;
+}
+
+#descriptionInput {
+    height: 130px;
+    font-family: "Inter", sans-serif;
+}
+
+.dropDownButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.spacer {
+    background-color: #D1D1D1;
+    width: 1px;
+    margin: 0px 64px;
+}
+
+.prioContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.prio {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background-color: white;
+    padding: 18px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    transition: all 100ms ease-in-out;
+}
+
+.prio:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 6px 0px #00000071;
+}
+
+.activePrio, .activePrio path, .activePrio p {
+    color: white;
+    fill: white;
+    font-weight: 700;
+}
+
+#mediumPrio {
+    background-color: #FFA800;
+}
+
+#subtaskInput {
+    margin-bottom: 0;
+}
+
+.subtaskInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.subtaskInputContainer input {
+    flex: 1;
+}
+
+.subtaskInputContainer svg{
+    position:absolute;
+    transform: translateX(-16px);
+}
+
+#subtaskListContainer{
+    padding-top: 8px;
+}

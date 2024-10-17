@@ -10,6 +10,7 @@ header {
     align-items: center;
     font-family: 'Inter';
     background-color: white;
+    z-index: 1;
 }
 
 .project p {
