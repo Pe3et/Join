@@ -355,10 +355,6 @@ main {
   .contactList {
     width: 100%;
   }
-
-  .contactContainer {
-    display: none;
-  }
 }
 
 @media (max-width: 856px) {
