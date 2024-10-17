@@ -43,7 +43,7 @@ h1 {
 
 .addTaskForm{
     display: flex;
-    padding: 64px 0px;
+    padding-top: 64px;
 }
 
 .addTaskColumn {
@@ -151,5 +151,56 @@ h1 {
 }
 
 #subtaskListContainer{
-    padding-top: 8px;
+    padding: 8px 0px;
+    height: 100px;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+}
+
+.hollowButton {
+    display: flex;
+    padding: 16px;
+    color: #2A3647;
+    border: 1px solid currentColor;
+    border-radius: 10px;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    transition: all 100ms ease-in-out;
+}
+
+.hollowButton:hover, .hollowButton:hover path {
+    cursor: pointer;
+    color: #29ABE2;
+    stroke: currentColor;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.fullButton {
+    display: flex;
+    padding: 16px;
+    color: white;
+    background: #2A3647;
+    border-radius: 10px;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 21px;
+    transition: all 100ms ease-in-out;
+}
+
+.fullButton:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+#requiredInfo {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-100px);
 }
