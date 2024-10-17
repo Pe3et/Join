@@ -128,11 +128,18 @@ async function editContact(contact) {
     const emailInput = document.getElementById('editContactInputEmail').value;
     const phoneInput = document.getElementById('editContactInputPhone').value;
     if (checkIfNameInputIsCorrect(nameInput)) {
-        putToDB(nameInput, ("contacts/" + contact.key + "/name"));
-        putToDB(emailInput, ("contacts/" + contact.key + "/email"));
-        putToDB(phoneInput, ("contacts/" + contact.key + "/phone"));
-        loadContactList();
+        await putToDB(nameInput, ("contacts/" + contact.id + "/name"));
+        await putToDB(emailInput, ("contacts/" + contact.id + "/email"));
+        await putToDB(phoneInput, ("contacts/" + contact.id + "/phone"));
+        await loadContactList();
+        hardcloseEditOverlay();
     }
+}
+
+function hardcloseEditOverlay(){
+    document.getElementById('editOverlayContainer').classList.remove('overlayBackgroundColor');
+    document.getElementById('editContactCardOverlay').classList.remove('slideInRight');
+    document.getElementById('editOverlayContainer').classList.remove('overlayAppear');
 }
 
 async function addContact() {
