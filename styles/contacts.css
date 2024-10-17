@@ -217,6 +217,18 @@ main {
   gap: 54px;
   align-items: center;
 }
+.arrowIcon {
+  width: 32px;
+  height: 32px;
+  margin-left: 10px; 
+  vertical-align: middle;
+  color: #29ABE2;
+  margin-bottom: 50px;
+ 
+}
+.arrowIcon:hover{
+  cursor: pointer;
+}
 
 .contactDetailsIcon {
   font-size: 47px;
