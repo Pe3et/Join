@@ -439,7 +439,28 @@ main {
     display: none;
   }
 }
+#contactContent {
+  display: none; 
+}
+
+#contactContent.fullscreen {
+  display: block;
+  transform: translateX(0);
+}
+
+@media (min-width: 1050px) {
+  #contactContent {
+      position: static;
+      transform: none;
+      display: block;
+      width: auto;
+      height: auto;
+  }
+}
 
 
 
-/* //Contact button */
+
+
+
+

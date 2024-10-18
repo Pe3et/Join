@@ -11,7 +11,7 @@ colors = [
     "#FF7A00"
 ]
 
-function init(){
+function init() {
     loadContactList();
 }
 
@@ -35,18 +35,54 @@ function renderContactInList(contact) {
     contentRef.innerHTML += getContactListPersonsTemplate(contact);
 }
 
+function getContactListPersonsTemplate(contact) {
+    console.log("Rendering Contact: ", contact); // Überprüfe, ob das contact-Objekt richtig ist
+    return `
+        <div class="personInContactList" data-contact-id="${contact.id}">
+            <p>${contact.name}</p>
+        </div>
+    `;
+}
+
 function addClickListenersToContacts() {
-    // Alle Kontakte auswählen
     const contactElements = document.querySelectorAll('.personInContactList');
     contactElements.forEach(contact => {
-        // Event-Listener für Klick auf jeden Kontakt
-        contact.addEventListener('click', function() {
-            // Entferne die 'active'-Klasse von allen Kontakten
+
+        contact.addEventListener('click', function () {
+
             contactElements.forEach(c => c.classList.remove('active'));
-            // Füge die 'active'-Klasse dem geklickten Kontakt hinzu
             contact.classList.add('active');
+
+
+            const selectedContact = getContactFromElement(contact);
+            renderContactDetails(selectedContact);
+
+            if (window.matchMedia("(max-width: 1050px)").matches) {
+                showContactInFullscreen();
+            }
         });
     });
+}
+
+// Funktion, die die Kontaktkarte im Vollbild anzeigt
+function showContactInFullscreen() {
+    const contactContent = document.getElementById('contactContent');
+    contactContent.classList.add('fullscreen'); // Vollbildklasse hinzufügen
+}
+
+
+function hideContactInFullscreen() {
+    const contactContent = document.getElementById('contactContent');
+    contactContent.classList.remove('fullscreen'); 
+}
+
+
+function getContactFromElement(contactElement) {
+    const contactId = contactElement.getAttribute('data-contact-id');
+    console.log("Contact ID: ", contactId); 
+    const contact = contactsArray.find(contact => contact.id === contactId);
+    console.log("Contact Object: ", contact); 
+    return contact;
 }
 
 function renderLetterSection(letter) {
@@ -63,7 +99,7 @@ function getFirstLettersArray(contactsArray) {
     return firstLettersArray;
 }
 
-function getContactsArray(contactRestults){
+function getContactsArray(contactRestults) {
     contacts = [];
     Object.keys(contactRestults).forEach(key => {
         contacts.push({
@@ -79,6 +115,11 @@ function getContactsArray(contactRestults){
 }
 
 function renderContactDetails(contact) {
+    if (!contact) {
+        console.error("Contact is undefined in renderContactDetails");
+        return;
+    }
+
     const contentRef = document.getElementById('contactContent');
     contentRef.style.transition = "none";
     contentRef.style.left = "100vw";
@@ -87,6 +128,21 @@ function renderContactDetails(contact) {
         contentRef.style.transition = "all 300ms ease-out";
         contentRef.style.left = "0";
     }, 1);
+}
+
+function getContactDetailsTemplate(contact) {
+    console.log("Contact in getContactDetailsTemplate: ", contact); // Debugging
+    if (!contact) {
+        console.error("Contact is undefined in getContactDetailsTemplate");
+        return '';
+    }
+    return `
+        <div class="contact-details">
+            <p>${contact.name}</p>
+            <p>${contact.email}</p>
+            <p>${contact.phone}</p>
+        </div>
+    `;
 }
 
 function openOverlay(containerRefID, cardRefId, contact) {
@@ -99,7 +155,9 @@ function openOverlay(containerRefID, cardRefId, contact) {
 function closeOverlay(containerRefID, cardRefId) {
     document.getElementById(containerRefID).classList.remove('overlayBackgroundColor');
     document.getElementById(cardRefId).classList.remove('slideInRight');
-    setTimeout(() => {document.getElementById(containerRefID).classList.remove('overlayAppear')}, 300);
+    setTimeout(() => {
+        document.getElementById(containerRefID).classList.remove('overlayAppear')
+    }, 300);
     emptyInputFields();
 }
 
@@ -136,7 +194,7 @@ async function editContact(contact) {
     }
 }
 
-function hardcloseEditOverlay(){
+function hardcloseEditOverlay() {
     document.getElementById('editOverlayContainer').classList.remove('overlayBackgroundColor');
     document.getElementById('editContactCardOverlay').classList.remove('slideInRight');
     document.getElementById('editOverlayContainer').classList.remove('overlayAppear');
