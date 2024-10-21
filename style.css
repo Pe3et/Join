@@ -102,3 +102,37 @@
     display: flex;
     gap: 8px;
   }
+
+  /* Scrollbar */
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+
+::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background-image: url("../assets/img/scrollbar_button_up.svg");
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background-image: url("../assets/img/scrollbar_button_down.svg");
+}
+
+::-webkit-scrollbar-button:vertical:start:increment,
+::-webkit-scrollbar-button:vertical:end:decrement {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: #c0c0c0;
+  height: 53px;
+}

@@ -31,15 +31,3 @@ async function deleteFromDB(path="") {
         method: "DELETE",
     }) 
 }
-
-// const person = {
-//     name: "West Ost",
-//     email: "test@mail.com",
-//     phone: "133769420",
-//     color: "#FF4646"
-// };
-
-// filldata();
-// async function filldata() {
-//     postToDB(person, "contacts");    
-// }
