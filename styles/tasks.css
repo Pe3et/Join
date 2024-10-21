@@ -212,7 +212,7 @@ h1 {
 
 /* dropdown */
 .dropdown {
-    /* display: none; */
+    display: none;
     background-color: white;
     margin-top: -10px;
     border-radius: 0 0 10px 10px;
@@ -223,7 +223,7 @@ h1 {
     left: 0;
     width: 100%;
     box-shadow: 0px 0px 4px 0px #0000001A;
-    padding-top: 4px;
+    padding-top: 8px;
 }
 
 #assignedToDropDownButton{
@@ -233,7 +233,7 @@ h1 {
 
 #assignedToDropdown {
     top: 76%;
-    height: 280px;
+    max-height: 25svh;
 }
 
 .dropdownContact {
@@ -249,8 +249,34 @@ h1 {
     background-color: #EEEEEE;
 }
 
+.activeDropdownContact {
+    color: white;
+    background: #2A3647;
+}
+
+.activeDropdownContact:hover {
+    background: #091931;
+    cursor: pointer;
+}
+
 .dropdownContactIconAndName {
     display: flex;
     align-items: center;
     gap: 7px;
+}
+
+.contactIcon{
+    color: white;
+    width: 42px;
+    height: 42px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 4px 0px #0000001a;
+}
+
+.contactIcon p {
+    font-size: 12px;
 }

@@ -16,9 +16,9 @@ function init() {
 }
 
 async function loadContactList() {
-    const contactRestults = await getFromDB("contacts");
+    const contactResults = await getFromDB("contacts");
     document.getElementById("contactListContent").innerHTML = "";
-    contactsArray = getContactsArray(contactRestults);
+    contactsArray = getContactsArray(contactResults);
     firstLettersArray = getFirstLettersArray(contactsArray);
     firstLettersArray.forEach(letter => {
         renderLetterSection(letter);
@@ -235,7 +235,7 @@ async function deleteContact(key) {
 }
 
 function getrandomColor() {
-    const randomColor = colors[(Math.round(Math.random() * colors.length))];
+    const randomColor = colors[(Math.round(Math.random() * (colors.length - 1)))];
     return randomColor;
 }
 
