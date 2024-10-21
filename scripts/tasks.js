@@ -1,12 +1,11 @@
 window.addEventListener("DOMContentLoaded", renderContactsDropdown);
-
 const activePrioColors = {
     urgent: "#FF3D00",
     medium: "#FFA800",
     low: "#7AE229"
 };
-
-let assignedContactsArray = [];
+let assignedContacts = [];
+let subtasks = [];
 
 async function renderContactsDropdown() {
     const dropdownRef = document.getElementById("assignedToDropdown");
@@ -17,7 +16,7 @@ async function renderContactsDropdown() {
 
 function getContactDropdownTemplate(contact) {
     return `
-        <div class="dropdownContact" id="${contact.id}" onclick='assignContact(${JSON.stringify(contact)})'>
+        <div class="dropdownContent" id="${contact.id}" onclick='assignContact(${JSON.stringify(contact)})'>
             <div class="dropdownContactIconAndName">
               <div class="contactIcon" style='background: ${contact.color}'><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>
               <p>${contact.name}</p>
@@ -40,9 +39,9 @@ function setActivePrio(prio) {
     //TODO: functionality
 }
 
-function toggleDropdown() {
-    const dropdown = document.getElementById("assignedToDropdown");
-    const dropdownArrow = document.querySelector("#assignedToDropdownButton svg");
+function toggleDropdown(dropdownID) {
+    const dropdown = document.getElementById(dropdownID);
+    const dropdownArrow = document.querySelector(`#${dropdownID}Button svg`);
     dropdown.style.display === "block" ? dropdown.style.display = "none" : dropdown.style.display = "block";
     dropdownArrow.classList.toggle("arrowFlip");
 }
@@ -53,10 +52,10 @@ function assignContact(contact) {
     idElement.classList.toggle("activeDropdownContact");
     if(idElement.classList.contains("activeDropdownContact")){
         svgElement.innerHTML = getCheckboxSVG("checked");
-        assignedContactsArray.push(contact);
+        assignedContacts.push(contact);
     } else {
         svgElement.innerHTML = getCheckboxSVG("unchecked");
-        assignedContactsArray = assignedContactsArray.filter(item => item.id != contact.id);
+        assignedContacts = assignedContacts.filter(item => item.id != contact.id);
     }
     renderAssignedContactsIconRow()
 }
@@ -76,5 +75,40 @@ function getCheckboxSVG(status) {
 function renderAssignedContactsIconRow() {
     const rowRef = document.getElementById("assignedContactsIconRow");
     rowRef.innerHTML = "";
-    assignedContactsArray.forEach(contact => rowRef.innerHTML += `<div class="contactIcon" style='background: ${contact.color}'><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>`);
+    assignedContacts.forEach(contact => rowRef.innerHTML += `<div class="contactIcon" style='background: ${contact.color}'><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>`);
+}
+
+function setCategory(category) {
+    document.querySelector("#categoryDropdownButton p").innerHTML = category;
+    toggleDropdown("categoryDropdown");
+}
+
+function toggleSubtaskInputIcons() {
+    document.getElementById("subtaskInputClearIcon").classList.toggle("dnone");
+    document.getElementById("subtaskInputCheckIcon").classList.toggle("dnone");
+    document.getElementById("subtaskInputIconSpacer").classList.toggle("dnone");
+    document.getElementById("subtaskPlusIcon").classList.toggle("dnone");
+}
+
+function clearSubtaskInput() {
+    document.getElementById("subtaskInput").value = "";
+    toggleSubtaskInputIcons();
+}
+
+function addSubtask() {
+    subtasks.push(document.getElementById("subtaskInput").value);
+    clearSubtaskInput();
+    renderSubtaskList();
+}
+
+function renderSubtaskList() {
+    const listRef = document.getElementById("subtaskListContainer");
+    listRef.innerHTML = "";
+    subtasks.forEach(subtask => listRef.innerHTML += getSubtaskListTemplate(subtask));
+}
+
+function getSubtaskListTemplate(subtask) {
+    return `
+        <div class="subtaskListElement"><li>${subtask}</li><p>test</p>
+    `
 }
