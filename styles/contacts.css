@@ -83,8 +83,7 @@ main {
   flex-direction: column;
 }
 
-.contactListLetterContainer {
-}
+.contactListLetterContainer {}
 
 .contactListLetter {
   font-weight: 400;
@@ -217,16 +216,18 @@ main {
   gap: 54px;
   align-items: center;
 }
+
 .arrowIcon {
   width: 32px;
   height: 32px;
-  margin-left: 10px; 
+  margin-left: 10px;
   vertical-align: middle;
   color: #29ABE2;
   margin-bottom: 50px;
- 
+
 }
-.arrowIcon:hover{
+
+.arrowIcon:hover {
   cursor: pointer;
 }
 
@@ -348,6 +349,7 @@ main {
   gap: 15px;
   flex-direction: column;
 }
+
 .personInContactList :hover {
   cursor: pointer;
 }
@@ -361,11 +363,17 @@ main {
 .showContactList .contactContainer {
   display: none;
 }
+.arrowIcon {
+  display: none;
+}
+
+
 
 @media (max-width: 880px) {
   .contactList {
     width: 100%;
   }
+
 }
 
 @media (max-width: 856px) {
@@ -404,8 +412,8 @@ main {
 @media (max-width: 320px) {
   .contactList {
     width: 100%;
-
   }
+
 
   main {
     padding-left: 0;
@@ -438,9 +446,63 @@ main {
   #addContactCardOverlay {
     display: none;
   }
+  .contactHeading h1{
+    font-size: 47px;
+    
+  }
+  .contactHeading p{
+    display: flex;
+    font-size: 20px;
+  
+  }
+  .contactHeading{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    
+  }
+  .contactDetailsIcon{
+    border-radius: 70px;
+    border: 3px;
+    height: 80px;
+    
+    
+
+  }
+  .contactDetailsIcon p{
+    font-size: 27px;
+  }
+  .contactDetailsName{
+    font-size: 36px;
+  }
+  .contactDetailsOptions{
+    display: none;
+  }
+  .iconAndName{
+    flex-direction: row;
+    padding-left: 16px;
+  }
+  .contactInformation {
+    margin-top: 30px;
+    padding-left: 16px;
+  }
+  .contactContainer{
+    padding-left: 16px;
+  }
+  .contactHeading{
+    padding-right: 20%;
+  }
+  #contactDetails{
+    padding-left: 16px;
+  }
+  .contactSocials{
+    padding-left: 16px;
+  }
+
 }
 
-
-
-
-
+@media (max-width: 1050px) {
+  .arrowIcon {
+    display: block;
+  }
+}

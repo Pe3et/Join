@@ -55,7 +55,7 @@ function addClickListenersToContacts() {
 
 
             const selectedContact = getContactFromElement(contact);
-            renderContactDetails(selectedContact);
+            // renderContactDetails(selectedContact);
 
             if (window.matchMedia("(max-width: 1050px)").matches) {
                 showContactInFullscreen();
@@ -67,12 +67,20 @@ function addClickListenersToContacts() {
 // Funktion, die die Kontaktkarte im Vollbild anzeigt
 function showContactInFullscreen() {
     const contactContent = document.getElementById('contactContent');
+    let content = document.getElementById('globalContentContainer')
+    content.classList.toggle('contactContainer');
+    let contents = document.getElementById('globalContentList')
+    contents.classList.toggle('contactContainer');
     contactContent.classList.add('fullscreen'); // Vollbildklasse hinzufügen
 }
 
 
 function hideContactInFullscreen() {
     const contactContent = document.getElementById('contactContent');
+    let content = document.getElementById('globalContentContainer')
+    content.classList.toggle('contactContainer');
+    let contents = document.getElementById('globalContentList')
+    contents.classList.toggle('contactContainer');
     contactContent.classList.remove('fullscreen'); 
 }
 
@@ -115,10 +123,7 @@ function getContactsArray(contactRestults) {
 }
 
 function renderContactDetails(contact) {
-    if (!contact) {
-        console.error("Contact is undefined in renderContactDetails");
-        return;
-    }
+    
 
     const contentRef = document.getElementById('contactContent');
     contentRef.style.transition = "none";
@@ -130,20 +135,20 @@ function renderContactDetails(contact) {
     }, 1);
 }
 
-function getContactDetailsTemplate(contact) {
-    console.log("Contact in getContactDetailsTemplate: ", contact); // Debugging
-    if (!contact) {
-        console.error("Contact is undefined in getContactDetailsTemplate");
-        return '';
-    }
-    return `
-        <div class="contact-details">
-            <p>${contact.name}</p>
-            <p>${contact.email}</p>
-            <p>${contact.phone}</p>
-        </div>
-    `;
-}
+// function getContactDetailsTemplate(contact) {
+//     console.log("Contact in getContactDetailsTemplate: ", contact); // Debugging
+//     if (!contact) {
+//         console.error("Contact is undefined in getContactDetailsTemplate");
+//         return '';
+//     }
+//     return `
+//         <div class="contact-details">
+//             <p>${contact.name}</p>
+//             <p>${contact.email}</p>
+//             <p>${contact.phone}</p>
+//         </div>
+//     `;
+// }
 
 function openOverlay(containerRefID, cardRefId, contact) {
     document.getElementById(containerRefID).classList.add('overlayAppear');
