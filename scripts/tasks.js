@@ -6,7 +6,7 @@ const activePrioColors = {
     low: "#7AE229"
 };
 
-const assignedContactsArray = [];
+let assignedContactsArray = [];
 
 async function renderContactsDropdown() {
     const dropdownRef = document.getElementById("assignedToDropdown");
@@ -42,18 +42,23 @@ function setActivePrio(prio) {
 
 function toggleDropdown() {
     const dropdown = document.getElementById("assignedToDropdown");
+    const dropdownArrow = document.querySelector("#assignedToDropdownButton svg");
     dropdown.style.display === "block" ? dropdown.style.display = "none" : dropdown.style.display = "block";
+    dropdownArrow.classList.toggle("arrowFlip");
 }
 
 function assignContact(contact) {
     const idElement = document.getElementById(contact.id);
     const svgElement = document.querySelector(`#${contact.id} svg`);
     idElement.classList.toggle("activeDropdownContact");
-    idElement.classList.contains("activeDropdownContact") ? svgElement.innerHTML = getCheckboxSVG("checked") : svgElement.innerHTML = getCheckboxSVG("unchecked");
-    //assignedContactsArray.includes(contact) ? assignedContactsArray.splice(assignedContactsArray.indexOf(contact), 1) : assignedContactsArray.push(contact);
-    //mit filter arbeiten
-    console.log(assignedContactsArray);
-    
+    if(idElement.classList.contains("activeDropdownContact")){
+        svgElement.innerHTML = getCheckboxSVG("checked");
+        assignedContactsArray.push(contact);
+    } else {
+        svgElement.innerHTML = getCheckboxSVG("unchecked");
+        assignedContactsArray = assignedContactsArray.filter(item => item.id != contact.id);
+    }
+    renderAssignedContactsIconRow()
 }
 
 function getCheckboxSVG(status) {
@@ -66,4 +71,10 @@ function getCheckboxSVG(status) {
         default:
             break;
     }
+}
+
+function renderAssignedContactsIconRow() {
+    const rowRef = document.getElementById("assignedContactsIconRow");
+    rowRef.innerHTML = "";
+    assignedContactsArray.forEach(contact => rowRef.innerHTML += `<div class="contactIcon" style='background: ${contact.color}'><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>`);
 }
