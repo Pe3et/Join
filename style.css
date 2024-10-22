@@ -103,51 +103,36 @@
     gap: 8px;
   }
 
-  .footerMenu {
-    height: 80px;
-    width: 100%;
-    background: rgba(42, 54, 71, 1);
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 16px;
-    font-family: "Inter";
+  /* Scrollbar */
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
 }
 
-.footerMenu a {
-    text-decoration: none;
+::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.active {
-    background: rgba(9, 25, 49, 1);
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background-image: url("../assets/img/scrollbar_button_up.svg");
 }
 
-.respMenuButton {
-    height: 76px;
-    width: 80px;
-    display: flex;
-    border-radius: 8px;
-    gap: 4px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+::-webkit-scrollbar-button:vertical:end:increment {
+  background-image: url("../assets/img/scrollbar_button_down.svg");
 }
 
-.respMenuButton span {
-    color: rgba(205, 205, 205, 1);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
+::-webkit-scrollbar-button:vertical:start:increment,
+::-webkit-scrollbar-button:vertical:end:decrement {
+  display: none;
 }
 
-.respMenuButton img {
-    height: 22px;
-    width: 22px;
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
-.respActive {
-    background: rgba(9, 25, 49, 1);
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: #c0c0c0;
+  height: 53px;
 }

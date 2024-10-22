@@ -39,7 +39,7 @@ function getContactDetailsTemplate(contact) {
                         </p>
                     </div>
                 </div> 
-                <img src="./assets/img/pfeil.png" alt="Pfeil Icon" class="arrowIcon" onclick="toggleContactDetails('${contact.id}')">
+                <img src="./assets/img/pfeil.png" alt="Pfeil Icon" class="arrowIcon" onclick="hideContactInFullscreen('${contact.id}')">
             </div>      
             <div id="contactDetails_${contact.id}">
                 <p class="contactInformation">Contact Information</p>
@@ -54,11 +54,26 @@ function getContactDetailsTemplate(contact) {
     `;
 }
 
-function toggleContactDetails(contactId) {
-    const contactContainer = document.getElementById(`contactContainer_${contactId}`);
-    if (contactContainer.style.display === "none" || contactContainer.style.display === "") {
-        contactContainer.style.display = "none";  
-    } else {
-        contactContainer.style.display = "block";  
-    }
-}
+// function toggleContactDetails(contactId) {
+//     const contactContainer = document.getElementById(`contactContainer_${contactId}`);
+//     if (contactContainer.style.display === "none" || contactContainer.style.display === "") {
+//         contactContainer.style.display = "none";  
+//     } else {
+//         contactContainer.style.display = "block";  
+//     }
+// }
+
+// function showContactDetails(contactId) {
+//     // Kontaktliste ausblenden
+//     document.querySelector('.contact-list').style.display = 'none';
+    
+//     // Den ausgewählten Kontakt anzeigen
+//     document.getElementById(`contactContainer_${contactId}`).style.display = 'block';
+// }
+// function hideContactDetails(contactId) {
+//     // Den aktuellen Kontakt ausblenden
+//     document.getElementById(`contactContainer_${contactId}`).style.display = 'none';
+    
+//     // Kontaktliste wieder einblenden
+//     document.querySelector('.contact-list').style.display = 'block';
+// }
