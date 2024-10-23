@@ -15,6 +15,7 @@ let taskToPost = {
 
 async function initTasksPage() {
     await renderContactsDropdown();
+    document.addEventListener("click", (event) => closeAssignedToDropdownCheck(event.target))
 }
 
 async function renderContactsDropdown() {
@@ -55,6 +56,15 @@ function toggleDropdown(dropdownID) {
     const dropdownArrow = document.querySelector(`#${dropdownID}Button svg`);
     dropdown.style.display === "block" ? dropdown.style.display = "none" : dropdown.style.display = "block";
     dropdownArrow.classList.toggle("arrowFlip");
+}
+
+function closeAssignedToDropdownCheck(clickedElement) {
+    if (!document.getElementById("assignedToDropdown").contains(clickedElement) &&
+        !document.getElementById("assignedToDropdownButton").contains(clickedElement) &&
+        window.getComputedStyle(document.getElementById("assignedToDropdown")).display != "none"
+        ){
+        toggleDropdown("assignedToDropdown");
+    }
 }
 
 function assignContact(contact) {
