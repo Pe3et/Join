@@ -130,10 +130,12 @@
     height: 70px;
     width: 80px;
   }
+
   .iconAndName {
     flex-direction: row;
   }
+  
   .contactHeading p {
-font-size: 14px;
-}
+    font-size: 14px;
+  }
 }
