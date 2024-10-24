@@ -346,18 +346,41 @@ h1 {
     display: none;
 }
 
-#subtaskListContainer{
-    padding: 4px 16px;
+#subtaskListContainer {
     height: 100px;
     overflow: auto;
-}
-
-#subtaskListContainer li{
-    padding: 4px 16px;
 }
 
 .subtaskListElement {
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
+    padding: 4px 16px;
+    height: 32px;
+}
+
+.subtaskListElement:hover{
+    background: #EEEEEE;
+    cursor: pointer;
+}
+
+.subtaskListElement:hover div{
+    display: flex !important;
+}
+
+.subtaskListSpacer {
+    width: 1px;
+    height: 24px;
+    background: #D1D1D1;
+}
+
+.subtaskListIcons {
+    display: none; 
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dflex {
+    display: flex !important;
 }
