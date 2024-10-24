@@ -245,7 +245,7 @@ h1 {
 }
 
 #assignedToDropdown {
-    top: 76%;
+    top: 74%;
     max-height: 25svh;
 }
 
@@ -359,6 +359,10 @@ h1 {
     height: 32px;
 }
 
+.subtaskListElement li{
+    flex: 1;
+}
+
 .subtaskListElement:hover{
     background: #EEEEEE;
     cursor: pointer;
@@ -383,4 +387,20 @@ h1 {
 
 .dflex {
     display: flex !important;
+}
+
+li[contenteditable="true"]:focus {
+    outline: none;
+}
+
+.subtaskEditMode {
+    background: white !important;
+    border-radius: 0px;
+    border-bottom: 1px solid #29ABE2;
+    cursor: auto !important;
+}
+
+.subtaskEditMode .subtaskListIcons{
+    display: flex !important;
+    flex-direction: row-reverse;
 }
