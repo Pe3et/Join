@@ -140,7 +140,7 @@ function editSubtaskMode(index) {
     liElement.focus();
     const subtaskElement = liElement.parentNode;
     subtaskElement.classList.add("subtaskEditMode");
-    liElement.addEventListener("focusout", () => exitEditSubtaskMode(index), { once: true });
+    liElement.addEventListener("focusout", () => setTimeout(() => exitEditSubtaskMode(index), 500) , { once: true });
     swapSubtaskEditIcon(index, true);
 }
 
@@ -156,12 +156,16 @@ function swapSubtaskEditIcon(index, editMode = true) {
 }
 
 function exitEditSubtaskMode(index) {
-    const liElement = document.getElementById(`subtaskLiElement${index}`);
-    liElement.contentEditable = false;
-    const subtaskElement = liElement.parentNode;
-    subtaskElement.classList.remove("subtaskEditMode");
-    swapSubtaskEditIcon(index, false);
-    taskToPost.subtasks[index] = liElement.innerText;
+    const liElement = document.getElementById(`subtaskLiElement${index}`)
+    try {
+        liElement.contentEditable = false;
+        const subtaskElement = liElement.parentNode;
+        subtaskElement.classList.remove("subtaskEditMode");
+        swapSubtaskEditIcon(index, false);
+        taskToPost.subtasks[index] = liElement.innerText;
+    } catch (error) {
+        return
+    }
 }
 
 function getSubtaskListTemplate(subtask, index) {
