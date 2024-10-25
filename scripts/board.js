@@ -33,6 +33,7 @@ function renderTasks() {
         containerRef.innerHTML += getTaskCardTemplate(task);
         noTasks[task.status] = false; //to give dnone to the noTask-div's after checkNoTaskDisplayNone()
         renderContactIcons(task);
+        renderPrioIcon(task);
     });
     checkNoTaskDisplayNone();
 }
@@ -58,31 +59,19 @@ function renderContactIcons(task) {
     });
 }
 
-function getTaskCardTemplate(task) {
-    return `
-        <div id="${task.id}" class="taskCardWithProgress">
-            <div class="taskCategoryArea">
-              <div class="userstory" style="background: ${categoryColors[task.category]}">
-                <p>${task.category}</p>
-              </div>
-            </div>
-            <div class="taskTitle">
-              <h3>${task.title}</h3>
-            </div>
-            <div class="shortDescription">
-                ${task.description}...
-            </div>
-            <div class="progressArea">
-              <div class="progressBarContainer">
-                <div class="progressBar"></div>
-              </div>
-              <p>0/${task.subtasks.length} Subtasks</p>
-            </div>
-            <div class="iconsAndPrioArea">
-              <div id="contactIconsArea${task.id}" class="contactIconsArea">
-              </div>
-              <img src="./assets/img/Prio media =.svg" alt="">
-            </div>
-        </div>
-    `
+function renderPrioIcon(task) {
+    const prioIconRef = document.getElementById("prioIcon" + task.id);
+    switch (task.prio) {
+        case "low":
+            prioIconRef.innerHTML = getPrioLowSVG();
+            break;
+        case "medium":
+            prioIconRef.innerHTML = getPrioMediumSVG();
+            break;
+        case "urgent":
+            prioIconRef.innerHTML = getPrioUrgentSVG();
+            break;
+        default:
+            break;
+    }
 }
