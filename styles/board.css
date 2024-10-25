@@ -120,13 +120,15 @@ h1 {
   justify-content: space-between;
   align-items: center;
   max-width: 1208px;
+  /* gap: 20px; */
 }
 
 .taskState {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 244px;
+  flex: 1;
+  padding: 0 10px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -148,6 +150,7 @@ h1 {
   display: flex;
   flex: 1;
   overflow: hidden;
+  max-width: 1208px;
 }
 
 .taskList {
@@ -180,7 +183,8 @@ h1 {
 .taskCardWithProgress {
   display: flex;
   flex-direction: column;
-  width: 252px;
+  /* width: 252px; */
+  width: 100%;
   /*height just for visualizing during styling*/
   height: 236px;
   height: auto;
@@ -200,9 +204,8 @@ h1 {
 
 .userstory {
   padding: 4px 16px 4px 16px;
-  background-color: rgba(0, 56, 255, 1);
   border-radius: 8px;
-  width: 113px;
+  margin-bottom: 16px;
 }
 
 .userstory p {
@@ -269,7 +272,7 @@ h1 {
   justify-content: space-between;
 }
 
-.iconsArea {
+.contactIconsArea {
   display: flex;
   align-items: center;
 }
@@ -280,31 +283,12 @@ h1 {
   align-items: center;
   height: 32px;
   width: 32px;
-  background-color: orange;
   border: solid 1px rgba(255, 255, 255, 1);
   border-radius: 45px;
-}
-
-.overlap {
-  position: absolute;
-  top: 0;
-  left: 25px;
-  z-index: 1;
-  background-color: aqua;
-}
-
-.overlap2 {
-  position: absolute;
-  top: 0;
-  left: 50px;
-  z-index: 1;
-  background-color: violet
-}
-
-.iconWithLetters span {
   color: white;
   font-size: 12px;
   font-weight: 400;
+  position: relative;
 }
 
 .dnone {

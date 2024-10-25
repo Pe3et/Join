@@ -1,5 +1,9 @@
 let tasks = [];
 let noTasks = {toDo: true, inProgress: true, awaitFeedback: true, done: true};
+const categoryColors = {
+    "User Story": "#0038FF",
+    "Technical Task": "#1FD7C1"
+};
 
 async function initBoard() {
     await getTasksFromDB();
@@ -28,6 +32,7 @@ function renderTasks() {
         const containerRef = document.getElementById(`${task.status}Container`);
         containerRef.innerHTML += getTaskCardTemplate(task);
         noTasks[task.status] = false; //to give dnone to the noTask-div's after checkNoTaskDisplayNone()
+        renderContactIcons(task);
     });
     checkNoTaskDisplayNone();
 }
@@ -39,11 +44,25 @@ function checkNoTaskDisplayNone() {
     });
 }
 
+function renderContactIcons(task) {
+    const containerRef = document.getElementById("contactIconsArea" + task.id);
+    let rightOffset = 0;
+    task.assignedContacts.forEach( (contact) => {
+        const contactIcon = document.createElement("div");
+        contactIcon.classList.add("iconWithLetters");
+        contactIcon.style.background = contact.color;
+        contactIcon.innerText = contact.name[0] + contact.name.split(" ")[1][0];
+        contactIcon.style.right = rightOffset + "px";
+        containerRef.append(contactIcon);
+        rightOffset += 8;
+    });
+}
+
 function getTaskCardTemplate(task) {
     return `
         <div id="${task.id}" class="taskCardWithProgress">
             <div class="taskCategoryArea">
-              <div class="userstory">
+              <div class="userstory" style="background: ${categoryColors[task.category]}">
                 <p>${task.category}</p>
               </div>
             </div>
@@ -60,16 +79,7 @@ function getTaskCardTemplate(task) {
               <p>0/${task.subtasks.length} Subtasks</p>
             </div>
             <div class="iconsAndPrioArea">
-              <div class="iconsArea">
-                <div class="iconWithLetters">
-                  <span>AM</span>
-                </div>
-                <div class="iconWithLetters overlap">
-                  <span>BA</span>
-                </div>
-                <div class="iconWithLetters overlap2">
-                  <span>ME</span>
-                </div>
+              <div id="contactIconsArea${task.id}" class="contactIconsArea">
               </div>
               <img src="./assets/img/Prio media =.svg" alt="">
             </div>
