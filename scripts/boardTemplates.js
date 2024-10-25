@@ -1,6 +1,6 @@
 function getTaskCardTemplate(task) {
     return `
-        <div id="${task.id}" class="taskCardWithProgress">
+        <div id="${task.id}" class="taskCardWithProgress" onclick='openBoardOverlay(${JSON.stringify(task)})'>
             <div class="taskCategoryArea">
               <div class="userstory" style="background: ${categoryColors[task.category]}">
                 <p>${task.category}</p>

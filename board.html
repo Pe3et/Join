@@ -261,8 +261,8 @@
     </section>
 
     <!-- Overlay -->
-     <div id="taskOverlayContainer" class="overlayContainer">
-      <section id="taskCardOverlay" class="taskCardOverlay">
+     <div id="boardOverlayContainer" class="overlayContainer" onclick="closeBoardOverlay()">
+      <section id="boardCardOverlay" class="boardCardOverlay" onclick="event.stopPropagation()">
         <div class="overlayUserstory">
           <p>User Story</p>
         </div>

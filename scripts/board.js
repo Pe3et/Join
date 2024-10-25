@@ -75,3 +75,18 @@ function renderPrioIcon(task) {
             break;
     }
 }
+
+function openBoardOverlay(task) {
+    document.getElementById("boardOverlayContainer").classList.add('overlayAppear');
+    document.getElementById("boardOverlayContainer").classList.add('overlayBackgroundColor');
+    document.getElementById("boardCardOverlay").classList.add('slideInRight');
+    //TODO: Render Overlay card
+}
+
+function closeBoardOverlay() {
+    document.getElementById("boardOverlayContainer").classList.remove('overlayBackgroundColor');
+    document.getElementById("boardCardOverlay").classList.remove('slideInRight');
+    setTimeout(() => {
+        document.getElementById("boardOverlayContainer").classList.remove('overlayAppear')
+    }, 300);
+}

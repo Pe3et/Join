@@ -1,104 +1,116 @@
 .overlayContainer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    z-Index: 998;
-    /* to be out of screen */
-    left: 100vw;
-    display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  z-Index: 998;
+  left: 100vw;
 }
 
-.taskCardOverlay {
-    display: flex;
-    flex-direction: column;
-    width: 525px;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 30px;
-    padding: 48px 40px 48px 40px;
-    gap: 24px;
-    box-shadow: rgba(0, 0, 0, 0.16);
-    position: relative;
-    /* to be out of overlay & screen */
-    left: 100vw;
+.overlayAppear {
+  transform: translateX(-100vw);
+}
+
+.overlayBackgroundColor {
+  transition: background-color 300ms ease-out;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+
+.slideInRight {
+  transform: translateX(-100vw);
+}
+
+.boardCardOverlay {
+  display: flex;
+  flex-direction: column;
+  width: 525px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 30px;
+  padding: 48px 40px 48px 40px;
+  gap: 24px;
+  box-shadow: rgba(0, 0, 0, 0.16);
+  position: relative;
+  left: 100vw;
+  transition: transform 300ms ease-out;
 }
 
 .overlayUserstory {
-    padding: 4px 24px 4px 24px;
-    background-color: rgba(0, 56, 255, 1);
-    border-radius: 8px;
-    width: 164px;
-  }
+  padding: 4px 24px 4px 24px;
+  background-color: rgba(0, 56, 255, 1);
+  border-radius: 8px;
+  width: 164px;
+}
 
-  .overlayUserstory p {
-    color: white;
-    font-size: 23px;
-    font-weight: 400;
-  }
+.overlayUserstory p {
+  color: white;
+  font-size: 23px;
+  font-weight: 400;
+}
 
-  .overlayTaskTitle h3 {
-    font-size: 61px;
-    font-weight: 700;
-  }
+.overlayTaskTitle h3 {
+  font-size: 61px;
+  font-weight: 700;
+}
 
-  .overlayTaskDescription p {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
-  }
+.overlayTaskDescription p {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+}
 
-  .overlayDueDateArea {
-    align-items: center;
-    display: flex;
-    gap: 25px;
-  }
+.overlayDueDateArea {
+  align-items: center;
+  display: flex;
+  gap: 25px;
+}
 
-  .overlayDueDateText {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(42, 54, 71, 1);
-  }
+.overlayDueDateText {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(42, 54, 71, 1);
+}
 
-  .overlayDueDate {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
-  }
+.overlayDueDate {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+}
 
-  .overlayPrioArea {
-    align-items: center;
-    display: flex;
-    gap: 25px;
-  }
+.overlayPrioArea {
+  align-items: center;
+  display: flex;
+  gap: 25px;
+}
 
-  .overlayPrioText {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(42, 54, 71, 1);
-  }
+.overlayPrioText {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(42, 54, 71, 1);
+}
 
-  .overlayPrio {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
-  }
+.overlayPrio {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+}
 
-  .assignedToArea p {
-    color: rgba(42, 54, 71, 1);
-    font-size: 20px;
-    font-weight: 400;
-  }
+.assignedToArea p {
+  color: rgba(42, 54, 71, 1);
+  font-size: 20px;
+  font-weight: 400;
+}
 
-  .assignedContacts {
-    display: flex;
-    flex-direction: column;
-    padding: 7px 16px 1px 16px;
-    gap: 8px;
-  }
-  
-  .singleAssignedContact {
-    display: flex;
-    align-items: center;
-  }
+.assignedContacts {
+  display: flex;
+  flex-direction: column;
+  padding: 7px 16px 1px 16px;
+  gap: 8px;
+}
+
+.singleAssignedContact {
+  display: flex;
+  align-items: center;
+}
