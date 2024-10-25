@@ -8,14 +8,12 @@ body {
 
 main {
   flex-grow: 1;
-  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
   font-family: "Inter", sans-serif;
   padding-left: 232px;
-  padding-right: 16px;
 }
 
 .headSection {
@@ -36,6 +34,7 @@ main {
   padding: 8px 16px 8px 16px;
   align-items: center;
   justify-content: space-between;
+  background: white;
 }
 
 .searchAndAddTasksArea {
@@ -116,8 +115,7 @@ h1 {
 }
 
 .taskStateContainer {
-  padding-left: 64px;
-  padding-right: 64px;
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,7 +131,7 @@ h1 {
   font-weight: 700;
   font-size: 20px;
   color: rgba(42, 54, 71, 1);
-  padding-top: 96px;
+  padding-top: 48px;
 }
 
 .taskStateContainer h2 {
@@ -146,19 +144,22 @@ h1 {
 }
 
 .taskContainer {
-  padding-left: 64px;
-  padding-right: 64px;
+  padding: 16px 32px 0px 32px;
   display: flex;
-  gap: 26px;
-  padding-top: 64px;
+  flex: 1;
+  overflow: hidden;
 }
 
 .taskList {
   display: flex;
   flex-direction: column;
-  height: 100%;
   gap: 24px;
-  width: 246px;
+  overflow-y: auto;
+  overflow-x: visible;
+  flex: 1;
+  align-items: center;
+  /* so the box-shadow has enough space to be visible */
+  padding: 10px 20px 10px 10px;
 }
 
 .noTask {
@@ -166,7 +167,6 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 48px;
-  width: auto;
   gap: 10px;
   color: rgba(168, 168, 168, 1);
   background-color:rgba(231, 231, 231, 1);
@@ -174,6 +174,7 @@ h1 {
   border-radius: 10px;
   font-size: 16px;
   font-weight: 400;
+  width: 100%;
 }
 
 .taskCardWithProgress {
@@ -189,7 +190,7 @@ h1 {
   border: hidden 1px;
   border-radius: 10px;
   gap: 10px;
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08)
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
 .taskCategoryArea {
