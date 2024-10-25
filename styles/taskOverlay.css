@@ -81,3 +81,20 @@
     color: rgba(0, 0, 0, 1);
   }
 
+  .assignedToArea p {
+    color: rgba(42, 54, 71, 1);
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .assignedContacts {
+    display: flex;
+    flex-direction: column;
+    padding: 7px 16px 1px 16px;
+    gap: 8px;
+  }
+  
+  .singleAssignedContact {
+    display: flex;
+    align-items: center;
+  }
