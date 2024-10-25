@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="./assets/fonts/Inter/inter.css" />
     <link rel="stylesheet" href="./styles/mediaquerySidebarAndFooter.css" />
     <link rel="stylesheet" href="./styles/board.css" />
-    <link rel="stylesheet" href="./styles/taskOverlay.css">
+    <link rel="stylesheet" href="./styles/boardOverlay.css">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <script src="./scripts/firebaseAPI.js"></script>
+    <script src="./scripts/tasks.js"></script>
+    <script src="./scripts/board.js"></script>
     <title>Board</title>
   </head>
-  <body>
+  <body onload="initBoard()">
     <header>
       <div class="project">
         <p>Kanban Project Managment Tool</p>
@@ -185,13 +188,16 @@
       </section>
       <section class="taskContainer">
         <div id="toDoContainer" class="taskList">
-          <div id="noTask">
-            <span>No tasks To do</span>
+          <div id="toDoNoTasks" class="noTask">
+            <span>No tasks to do</span>
           </div>
         </div>
         <div id="inProgressContainer" class="taskList">
+          <div id="inProgressNoTasks" class="noTask">
+            <span>No tasks in progress</span>
+          </div>
           <!--cardTemplate-->
-          <div class="taskCardWithProgress">
+          <!-- <div class="taskCardWithProgress">
             <div class="taskCategoryArea">
               <div class="userstory">
                 <p>User Story</p>
@@ -223,10 +229,18 @@
               </div>
               <img src="./assets/img/Prio media =.svg" alt="">
             </div>
+          </div> -->
+        </div>
+        <div id="awaitFeedbackContainer" class="taskList">
+          <div id="awaitFeedbackNoTasks" class="noTask">
+            <span>No tasks await feedback</span>
           </div>
         </div>
-        <div id="awaitFeedbackContainer" class="taskList"></div>
-        <div id="doneContainer" class="taskList"></div>
+        <div id="doneContainer" class="taskList">
+          <div id="doneNoTasks" class="noTask">
+            <span>No tasks done</span>
+          </div>
+        </div>
       </section>
     </main>
 

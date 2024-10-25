@@ -10,7 +10,8 @@ let taskToPost = {
     dueDate: "",
     prio: "medium",
     category: "",
-    subtasks: []
+    subtasks: [],
+    status: "toDo"
 };
 
 async function initTasksPage() {
@@ -228,4 +229,5 @@ function resetTaskJSON(){
     taskToPost.dueDate = "";
     taskToPost.category = "";
     taskToPost.subtasks = [];
+    taskToPost.status = "toDo"
 }

@@ -161,7 +161,7 @@ h1 {
   width: 246px;
 }
 
-#noTask {
+.noTask {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -304,4 +304,8 @@ h1 {
   color: white;
   font-size: 12px;
   font-weight: 400;
+}
+
+.dnone {
+  display: none !important;
 }
