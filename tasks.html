@@ -92,7 +92,7 @@
         </div>
         <p>Subtasks</p>
         <div class="subtaskInputContainer">
-          <input id="subtaskInput" type="text" placeholder="Add new subtask" onfocus="toggleSubtaskInputIcons()">
+          <input id="subtaskInput" type="text" placeholder="Add new subtask" onfocus="toggleSubtaskInputIcons()" onblur="toggleSubtaskInputIcons()" onkeydown="if(event.key === 'Enter') addSubtask()">
           <div class="subtaskInputIconContainer">
             <div class="subtaskInputIcon" id="subtaskPlusIcon" onclick="document.getElementById('subtaskInput').focus()">
               <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">

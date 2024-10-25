@@ -15,7 +15,8 @@ let taskToPost = {
 
 async function initTasksPage() {
     await renderContactsDropdown();
-    document.addEventListener("click", (event) => closeAssignedToDropdownCheck(event.target))
+    document.addEventListener("click", (event) => closeDropdownCheck(event.target, "assignedToDropdown"));
+    document.addEventListener("click", (event) => closeDropdownCheck(event.target, "categoryDropdown"))
 }
 
 async function renderContactsDropdown() {
@@ -58,12 +59,12 @@ function toggleDropdown(dropdownID) {
     dropdownArrow.classList.toggle("arrowFlip");
 }
 
-function closeAssignedToDropdownCheck(clickedElement) {
-    if (!document.getElementById("assignedToDropdown").contains(clickedElement) &&
-        !document.getElementById("assignedToDropdownButton").contains(clickedElement) &&
-        window.getComputedStyle(document.getElementById("assignedToDropdown")).display != "none"
+function closeDropdownCheck(clickedElement, dropdownID) {
+    if (!document.getElementById(dropdownID).contains(clickedElement) &&
+        !document.getElementById(dropdownID + "Button").contains(clickedElement) &&
+        window.getComputedStyle(document.getElementById(dropdownID)).display != "none"
         ){
-        toggleDropdown("assignedToDropdown");
+        toggleDropdown(dropdownID);
     }
 }
 
@@ -106,15 +107,16 @@ function setCategory(category) {
 }
 
 function toggleSubtaskInputIcons() {
-    document.getElementById("subtaskInputClearIcon").classList.toggle("dnone");
-    document.getElementById("subtaskInputCheckIcon").classList.toggle("dnone");
-    document.getElementById("subtaskInputIconSpacer").classList.toggle("dnone");
-    document.getElementById("subtaskPlusIcon").classList.toggle("dnone");
+    setTimeout( () => {
+        document.getElementById("subtaskInputClearIcon").classList.toggle("dnone");
+        document.getElementById("subtaskInputCheckIcon").classList.toggle("dnone");
+        document.getElementById("subtaskInputIconSpacer").classList.toggle("dnone");
+        document.getElementById("subtaskPlusIcon").classList.toggle("dnone");
+    }, 100)
 }
 
 function clearSubtaskInput() {
     document.getElementById("subtaskInput").value = "";
-    toggleSubtaskInputIcons();
 }
 
 function addSubtask() {
@@ -140,7 +142,7 @@ function editSubtaskMode(index) {
     liElement.focus();
     const subtaskElement = liElement.parentNode;
     subtaskElement.classList.add("subtaskEditMode");
-    liElement.addEventListener("focusout", () => setTimeout(() => exitEditSubtaskMode(index), 500) , { once: true });
+    liElement.addEventListener("focusout", () => setTimeout(() => exitEditSubtaskMode(index), 100) , { once: true });
     swapSubtaskEditIcon(index, true);
 }
 
