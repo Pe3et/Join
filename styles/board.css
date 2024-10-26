@@ -188,7 +188,7 @@ h1 {
   width: 100%;
 }
 
-.taskCardWithProgress {
+.boardTask {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -199,7 +199,7 @@ h1 {
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
-.taskCardWithProgress:hover {
+.boardTask:hover {
   cursor: pointer;
 }
 

@@ -135,3 +135,16 @@ function toggleSubtaskCheck(task, subtaskIndex) {
     putToDB(subtaskStatus, `tasks/${task.id}/subtasks/${subtaskIndex}/status`);
     renderOverlaySubtasks(task);
 }
+
+async function deleteTask(key) {
+    await deleteFromDB("tasks/" + key);
+    tasks = tasks.filter(task => task.id != key);
+    closeBoardOverlay();
+    reloadBoard();
+}
+
+function reloadBoard() {
+    document.querySelectorAll(".boardTask").forEach(boardTask => boardTask.remove());
+    noTasks = {toDo: true, inProgress: true, awaitFeedback: true, done: true};
+    renderBoardTasks();
+}
