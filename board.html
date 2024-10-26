@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./assets/fonts/Inter/inter.css" />
-    <link rel="stylesheet" href="./styles/mediaquerySidebarAndFooter.css" />
-    <link rel="stylesheet" href="./styles/board.css" />
-    <link rel="stylesheet" href="./styles/boardOverlay.css">
-    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
-    <script src="./scripts/firebaseAPI.js"></script>
-    <script src="./scripts/tasks.js"></script>
-    <script src="./scripts/boardTemplates.js"></script>
-    <script src="./scripts/board.js"></script>
-    <title>Board</title>
-  </head>
-  <body onload="initBoard()">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./assets/fonts/Inter/inter.css" />
+  <link rel="stylesheet" href="./styles/mediaquerySidebarAndFooter.css" />
+  <link rel="stylesheet" href="./styles/board.css" />
+  <link rel="stylesheet" href="./styles/boardOverlay.css">
+  <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+  <script src="./scripts/firebaseAPI.js"></script>
+  <script src="./scripts/tasks.js"></script>
+  <script src="./scripts/boardTemplates.js"></script>
+  <script src="./scripts/board.js"></script>
+  <title>Join - Board</title>
+</head>
+
+<body onload="initBoard()">
+  <div class="pageContent">
     <header>
       <div class="project">
         <p>Kanban Project Managment Tool</p>
@@ -52,104 +55,29 @@
       <section class="taskStateContainer">
         <div class="taskState">
           <h2>To Do</h2>
-          <svg
-            id="toDoPlusButton"
-            class="plusButton"
-            width="24"
-            height="25"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="1"
-              y="1.5"
-              width="22"
-              height="22"
-              rx="7"
-              stroke="#2A3647"
-              stroke-width="2"
-            />
-            <path
-              d="M12 8.5V16.5"
-              stroke="#2A3647"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M16 12.5754L8 12.5754"
-              stroke="#2A3647"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
+          <svg id="toDoPlusButton" class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+            <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
           </svg>
         </div>
         <div class="taskState">
           <h2>In progress</h2>
-          <svg
-            id="inProgressPlusButton"
-            class="plusButton"
-            width="24"
-            height="25"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="1"
-              y="1.5"
-              width="22"
-              height="22"
-              rx="7"
-              stroke="#2A3647"
-              stroke-width="2"
-            />
-            <path
-              d="M12 8.5V16.5"
-              stroke="#2A3647"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M16 12.5754L8 12.5754"
-              stroke="#2A3647"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
+          <svg id="inProgressPlusButton" class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+            <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
           </svg>
         </div>
         <div class="taskState">
           <h2>Await Feedback</h2>
-          <svg
-            id="awaitFeedbackPlusButton"
-            class="plusButton"
-            width="24"
-            height="25"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="1"
-              y="1.5"
-              width="22"
-              height="22"
-              rx="7"
-              stroke="#2A3647"
-              stroke-width="2"
-            />
-            <path
-              d="M12 8.5V16.5"
-              stroke="#2A3647"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M16 12.5754L8 12.5754"
-              stroke="#2A3647"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
+          <svg id="awaitFeedbackPlusButton" class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+            <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
           </svg>
         </div>
         <div class="taskState">
@@ -166,40 +94,6 @@
           <div id="inProgressNoTasks" class="noTask">
             <span>No tasks in progress</span>
           </div>
-          <!--cardTemplate-->
-          <!-- <div class="taskCardWithProgress">
-            <div class="taskCategoryArea">
-              <div class="userstory">
-                <p>User Story</p>
-              </div>
-            </div>
-            <div class="taskTitle">
-              <h3>Kochwelt Page & Recipe Recommender</h3>
-            </div>
-            <div class="shortDescription">
-              Build startpage with recipe recommendation...
-            </div>
-            <div class="progressArea">
-              <div class="progressBarContainer">
-                <div class="progressBar"></div>
-              </div>
-              <p>1/2 Subtasks</p>
-            </div>
-            <div class="iconsAndPrioArea">
-              <div class="iconsArea">
-                <div class="iconWithLetters">
-                  <span>AM</span>
-                </div>
-                <div class="iconWithLetters overlap">
-                  <span>BA</span>
-                </div>
-                <div class="iconWithLetters overlap2">
-                  <span>ME</span>
-                </div>
-              </div>
-              <img src="./assets/img/Prio media =.svg" alt="">
-            </div>
-          </div> -->
         </div>
         <div id="awaitFeedbackContainer" class="taskList">
           <div id="awaitFeedbackNoTasks" class="noTask">
@@ -214,43 +108,30 @@
       </section>
     </main>
 
+    <!-- Overlay -->
+    <div id="boardOverlayContainer" class="overlayContainer" onclick="closeBoardOverlay()">
+      <section id="boardCardOverlay" class="boardCardOverlay" onclick="event.stopPropagation()">
+      </section>
+    </div>
+
+    <!-- Sidebar -->
     <section id="sidebar">
-      <img
-        class="sidebarLogo"
-        src="./assets/img/Join logo vector.svg"
-        alt="Join Logo"
-      />
+      <img class="sidebarLogo" src="./assets/img/Join logo vector.svg" alt="Join Logo" />
       <div id="menu" class="menu">
         <a id="summary" class="menuButton" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/summary_icon.svg"
-            alt="summary icon"
-          />
+          <img class="menuIcon" src="./assets/img/summary_icon.svg" alt="summary icon" />
           <span>Summary</span>
         </a>
         <a id="addTask" class="menuButton" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/add_task_icon.svg"
-            alt="add_task_icon"
-          />
+          <img class="menuIcon" src="./assets/img/add_task_icon.svg" alt="add_task_icon" />
           <span>Add Task</span>
         </a>
         <a id="board" class="active" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/board_icon.svg"
-            alt="board_icon"
-          />
+          <img class="menuIcon" src="./assets/img/board_icon.svg" alt="board_icon" />
           <span>Board</span>
         </a>
         <a id="contacts" class="menuButton" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/contacts_icon.svg"
-            alt="contacts_icon"
-          />
+          <img class="menuIcon" src="./assets/img/contacts_icon.svg" alt="contacts_icon" />
           <span>Contacts</span>
         </a>
       </div>
@@ -260,81 +141,28 @@
       </div>
     </section>
 
-    <!-- Overlay -->
-     <div id="boardOverlayContainer" class="overlayContainer" onclick="closeBoardOverlay()">
-      <section id="boardCardOverlay" class="boardCardOverlay" onclick="event.stopPropagation()">
-        <div class="overlayUserstory">
-          <p>User Story</p>
-        </div>
-        <div class="overlayTaskTitle">
-          <h3>Kochwelt Page & Recipe Recommender</h3>
-        </div>
-        <div class="overlayTaskDescription">
-          Build startpage with recipe recommendation.
-        </div>
-        <div class="overlayDueDateArea">
-          <span class="overlayDueDateText">Due date:</span> <span class="overlayDueDate">10/05/23</span>
-        </div>
-        <div class="overlayPrioArea">
-          <span class="overlayPrioText">Priority:</span> <span class="overlayPrio">Medium <img src="./assets/img/overlay_prio_medium.svg" alt=""></span>
-        </div>
-        <div class="assignedToArea">
-          <p>Assigned To</p>
-          <div class="assignedContacts">
-          <div class="singleAssignedContact">
-            <div class="iconWithLetters">
-              <span>EM</span>
-            </div>
-            <p>Emmanuel Mauer</p>
-          </div>
-          <div class="singleAssignedContact">
-            <div class="iconWithLetters">
-              <span>AM</span>
-            </div>
-            <div class="singleAssignedContact">
-              <div class="iconWithLetters">
-                <span>AM</span>
-              </div>
-          </div>
-        </div>
-      </section>
-     </div>
-
+    <!-- Footer -->
     <footer>
       <section class="footerMenu">
         <a id="respSummary" class="respMenuButton" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/summary_icon.svg"
-            alt="summary icon"
-          />
+          <img class="menuIcon" src="./assets/img/summary_icon.svg" alt="summary icon" />
           <span>Summary</span>
         </a>
         <a id="addTask" class="respMenuButton" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/add_task_icon.svg"
-            alt="add_task_icon"
-          />
+          <img class="menuIcon" src="./assets/img/add_task_icon.svg" alt="add_task_icon" />
           <span>Add Task</span>
         </a>
         <a id="board" class="respMenuButton respActive" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/board_icon.svg"
-            alt="board_icon"
-          />
+          <img class="menuIcon" src="./assets/img/board_icon.svg" alt="board_icon" />
           <span>Board</span>
         </a>
         <a id="contacts" class="respMenuButton" href="#">
-          <img
-            class="menuIcon"
-            src="./assets/img/contacts_icon.svg"
-            alt="contacts_icon"
-          />
+          <img class="menuIcon" src="./assets/img/contacts_icon.svg" alt="contacts_icon" />
           <span>Contacts</span>
         </a>
       </section>
     </footer>
-  </body>
+  </div>
+</body>
+
 </html>

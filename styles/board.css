@@ -6,6 +6,15 @@ body {
   min-height: 100svh;
 }
 
+.pageContent {
+  min-height: 100svh;
+  max-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
 main {
   flex-grow: 1;
   overflow: hidden;
@@ -161,7 +170,6 @@ h1 {
   overflow-x: visible;
   flex: 1;
   align-items: center;
-  /* so the box-shadow has enough space to be visible */
   padding: 10px 20px 10px 10px;
 }
 
@@ -191,18 +199,22 @@ h1 {
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
+.taskCardWithProgress:hover {
+  cursor: pointer;
+}
+
 .taskCategoryArea {
   display: flex;
   justify-content: flex-start;
 }
 
-.userstory {
+.taskCategory {
   padding: 4px 16px 4px 16px;
   border-radius: 8px;
   margin-bottom: 16px;
 }
 
-.userstory p {
+.taskCategory p {
   color: white;
   font-size: 16px;
   font-weight: 400;

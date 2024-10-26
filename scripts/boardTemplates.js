@@ -2,7 +2,7 @@ function getTaskCardTemplate(task) {
     return `
         <div id="${task.id}" class="taskCardWithProgress" onclick='openBoardOverlay(${JSON.stringify(task)})'>
             <div class="taskCategoryArea">
-              <div class="userstory" style="background: ${categoryColors[task.category]}">
+              <div class="taskCategory" style="background:${categoryColors[task.category]}">
                 <p>${task.category}</p>
               </div>
             </div>
@@ -24,6 +24,69 @@ function getTaskCardTemplate(task) {
               <div id="prioIcon${task.id}">
               </div>
             </div>
+        </div>
+    `
+}
+
+function getOverlayTaskCard(task) {
+    return `
+        <div class="overlayCategoryAndCloseButtonContainer">
+            <div class="overlayTaskCategory" style="background:${categoryColors[task.category]}; font-size: 23px">
+              <p>${task.category}</p>
+            </div>
+            <div class="overlayCloseButton" onclick="closeBoardOverlay()">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.99999 8.40005L2.09999 13.3C1.91665 13.4834 1.68332 13.575 1.39999 13.575C1.11665 13.575 0.883321 13.4834 0.699988 13.3C0.516654 13.1167 0.424988 12.8834 0.424988 12.6C0.424988 12.3167 0.516654 12.0834 0.699988 11.9L5.59999 7.00005L0.699988 2.10005C0.516654 1.91672 0.424988 1.68338 0.424988 1.40005C0.424988 1.11672 0.516654 0.883382 0.699988 0.700049C0.883321 0.516715 1.11665 0.425049 1.39999 0.425049C1.68332 0.425049 1.91665 0.516715 2.09999 0.700049L6.99999 5.60005L11.9 0.700049C12.0833 0.516715 12.3167 0.425049 12.6 0.425049C12.8833 0.425049 13.1167 0.516715 13.3 0.700049C13.4833 0.883382 13.575 1.11672 13.575 1.40005C13.575 1.68338 13.4833 1.91672 13.3 2.10005L8.39999 7.00005L13.3 11.9C13.4833 12.0834 13.575 12.3167 13.575 12.6C13.575 12.8834 13.4833 13.1167 13.3 13.3C13.1167 13.4834 12.8833 13.575 12.6 13.575C12.3167 13.575 12.0833 13.4834 11.9 13.3L6.99999 8.40005Z" fill="#2A3647"/>
+                </svg>
+            </div>
+        </div>
+        <div class="overlayTaskTitle">
+          <h3>${task.title}</h3>
+        </div>
+        <div class="overlayTaskDescription">
+            ${task.description}
+        </div>
+        <div class="overlayDueDateArea">
+          <span class="overlayDueDateText">Due date:</span> <span class="overlayDueDate">${task.dueDate}</span>
+        </div>
+        <div class="overlayPrioArea">
+            <span class="overlayPrioText">Priority:</span>
+            <span class="overlayPrio">
+                ${task.prio.charAt(0).toUpperCase() + task.prio.slice(1)}
+                <div id="overlayPrio${task.id}"></div>
+            </span>
+        </div>
+        <div class="assignedToArea">
+            <p>Assigned To:</p>
+            <div class="assignedContacts" id="overlayAssignedContactsList${task.id}">
+            </div>
+        </div>
+        <div class="overlaySubtasksArea">
+            <p>Subtasks</p>
+            <div class="overlaySubtasks" id="overlaySubtasks${task.id}">
+            </div>
+        </div>
+    `
+}
+
+function getOverlayContactTemplate(contact) {
+    return `
+        <div class="singleAssignedContact">
+            <div class="iconWithLetters" style="background: ${contact.color}">
+                ${contact.name[0] + contact.name.split(" ")[1][0]}
+            </div>
+            <span>${contact.name}</span>
+        </div>
+    `
+}
+
+function getOverlaySubtaskTemplate(subtask, index) {
+    return `
+        <div class="singleSubtask">
+            <div id="subtaskCheckbox${index}" class="subtaskCheckbox">
+                X
+            </div>
+            <p>${subtask}</p>
         </div>
     `
 }
@@ -54,4 +117,20 @@ function getPrioUrgentSVG() {
         </svg>
 
     `
+}
+
+function getSubtaskCheckboxSVG(status) {
+    switch (status) {
+        case "checked":
+            return `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M5 9L9 13L17 1.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>`;
+        case "unchecked":
+            return  `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                    </svg>`;
+        default:
+            break;
+    }
 }

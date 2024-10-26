@@ -121,15 +121,18 @@ function clearSubtaskInput() {
 }
 
 function addSubtask() {
-    taskToPost.subtasks.push(document.getElementById("subtaskInput").value);
+    taskToPost.subtasks.push({
+        text: document.getElementById("subtaskInput").value,
+        status: "unchecked"
+    });
     clearSubtaskInput();
-    renderSubtaskList();
+    renderSubtaskList()
 }
 
 function renderSubtaskList() {
     const listRef = document.getElementById("subtaskListContainer");
     listRef.innerHTML = "";
-    taskToPost.subtasks.forEach((subtask, index) => listRef.innerHTML += getSubtaskListTemplate(subtask, index));
+    taskToPost.subtasks.forEach((subtask, index) => listRef.innerHTML += getSubtaskListTemplate(subtask.text, index));
 }
 
 function deleteSubtask(index) {
@@ -165,7 +168,7 @@ function exitEditSubtaskMode(index) {
         const subtaskElement = liElement.parentNode;
         subtaskElement.classList.remove("subtaskEditMode");
         swapSubtaskEditIcon(index, false);
-        taskToPost.subtasks[index] = liElement.innerText;
+        taskToPost.subtasks[index].text = liElement.innerText;
     } catch (error) {
         return
     }

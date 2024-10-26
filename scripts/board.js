@@ -33,7 +33,8 @@ function renderTasks() {
         containerRef.innerHTML += getTaskCardTemplate(task);
         noTasks[task.status] = false; //to give dnone to the noTask-div's after checkNoTaskDisplayNone()
         renderContactIcons(task);
-        renderPrioIcon(task);
+        const prioIconRef = document.getElementById("prioIcon" + task.id);
+        prioIconRef.innerHTML = getPrioSVG(task.prio);
     });
     checkNoTaskDisplayNone();
 }
@@ -59,34 +60,47 @@ function renderContactIcons(task) {
     });
 }
 
-function renderPrioIcon(task) {
-    const prioIconRef = document.getElementById("prioIcon" + task.id);
-    switch (task.prio) {
+function getPrioSVG(prio) {
+    let prioSVG = "";
+    switch (prio) {
         case "low":
-            prioIconRef.innerHTML = getPrioLowSVG();
+            prioSVG = getPrioLowSVG();
             break;
         case "medium":
-            prioIconRef.innerHTML = getPrioMediumSVG();
+            prioSVG = getPrioMediumSVG();
             break;
         case "urgent":
-            prioIconRef.innerHTML = getPrioUrgentSVG();
-            break;
-        default:
+            prioSVG = getPrioUrgentSVG();
             break;
     }
+    return prioSVG
 }
 
 function openBoardOverlay(task) {
-    document.getElementById("boardOverlayContainer").classList.add('overlayAppear');
+    renderOverlayTask(task);
+    document.getElementById("boardOverlayContainer").classList.add('slideInRight');
     document.getElementById("boardOverlayContainer").classList.add('overlayBackgroundColor');
     document.getElementById("boardCardOverlay").classList.add('slideInRight');
-    //TODO: Render Overlay card
 }
 
 function closeBoardOverlay() {
     document.getElementById("boardOverlayContainer").classList.remove('overlayBackgroundColor');
     document.getElementById("boardCardOverlay").classList.remove('slideInRight');
     setTimeout(() => {
-        document.getElementById("boardOverlayContainer").classList.remove('overlayAppear')
-    }, 300);
+        document.getElementById("boardOverlayContainer").classList.remove('slideInRight')
+    }, 200);
+}
+
+function renderOverlayTask(task) {
+    const containerRef = document.getElementById('boardCardOverlay');
+    containerRef.innerHTML = getOverlayTaskCard(task);
+    const prioIconRef = document.getElementById('overlayPrio' + task.id);
+    prioIconRef.innerHTML = getPrioSVG(task.prio);
+    const contactsListRef = document.getElementById('overlayAssignedContactsList' + task.id);
+    task.assignedContacts.forEach(contact => contactsListRef.innerHTML += getOverlayContactTemplate(contact));
+    const subtasksRef = document.getElementById('overlaySubtasks' + task.id);
+    task.subtasks.forEach( (subtask, index) => {
+        subtasksRef.innerHTML += getOverlaySubtaskTemplate(subtask.text, index);
+        document.getElementById("subtaskCheckbox" + index).innerHTML = getSubtaskCheckboxSVG(subtask.status);
+    });
 }
