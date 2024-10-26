@@ -7,7 +7,7 @@ const categoryColors = {
 
 async function initBoard() {
     await getTasksFromDB();
-    renderTasks();
+    renderBoardTasks();
 }
 
 async function getTasksFromDB() {
@@ -15,19 +15,19 @@ async function getTasksFromDB() {
     Object.keys(fetchResult).forEach(key => {
         tasks.push({
             id: key,
-            assignedContacts: fetchResult[key].assignedContacts,
+            assignedContacts: fetchResult[key].assignedContacts ?? [],
             category: fetchResult[key].category,
             description: fetchResult[key].description,
             dueDate: fetchResult[key].dueDate,
             prio: fetchResult[key].prio,
-            subtasks: fetchResult[key].subtasks,
+            subtasks: fetchResult[key].subtasks ?? [],
             title: fetchResult[key].title,
             status: fetchResult[key].status
         })
     });
 }
 
-function renderTasks() {
+function renderBoardTasks() {
     tasks.forEach(task => {
         const containerRef = document.getElementById(`${task.status}Container`);
         containerRef.innerHTML += getTaskCardTemplate(task);
@@ -94,10 +94,22 @@ function closeBoardOverlay() {
 function renderOverlayTask(task) {
     const containerRef = document.getElementById('boardCardOverlay');
     containerRef.innerHTML = getOverlayTaskCard(task);
+    renderOverlayPrio(task);
+    renderOverlayAssignedContactsList(task);
+    renderOverlaySubtasks(task);
+}
+
+function renderOverlayPrio(task) {
     const prioIconRef = document.getElementById('overlayPrio' + task.id);
     prioIconRef.innerHTML = getPrioSVG(task.prio);
+}
+
+function renderOverlayAssignedContactsList(task) {
     const contactsListRef = document.getElementById('overlayAssignedContactsList' + task.id);
     task.assignedContacts.forEach(contact => contactsListRef.innerHTML += getOverlayContactTemplate(contact));
+}
+
+function renderOverlaySubtasks(task) {
     const subtasksRef = document.getElementById('overlaySubtasks' + task.id);
     task.subtasks.forEach( (subtask, index) => {
         subtasksRef.innerHTML += getOverlaySubtaskTemplate(subtask.text, index);
