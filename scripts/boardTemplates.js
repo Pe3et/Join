@@ -80,13 +80,12 @@ function getOverlayContactTemplate(contact) {
     `
 }
 
-function getOverlaySubtaskTemplate(subtask, index) {
+function getOverlaySubtaskTemplate(subtaskText, subtaskIndex, task) {
     return `
         <div class="singleSubtask">
-            <div id="subtaskCheckbox${index}" class="subtaskCheckbox">
-                X
+            <div id="subtaskCheckbox${subtaskIndex}" class="subtaskCheckbox" onclick='toggleSubtaskCheck(${JSON.stringify(task)}, ${subtaskIndex})'>
             </div>
-            <p>${subtask}</p>
+            <p>${subtaskText}</p>
         </div>
     `
 }

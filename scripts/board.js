@@ -77,7 +77,7 @@ function getPrioSVG(prio) {
 }
 
 function openBoardOverlay(task) {
-    renderOverlayTask(task);
+    renderOverlayTaskCard(task);
     document.getElementById("boardOverlayContainer").classList.add('slideInRight');
     document.getElementById("boardOverlayContainer").classList.add('overlayBackgroundColor');
     document.getElementById("boardCardOverlay").classList.add('slideInRight');
@@ -91,7 +91,7 @@ function closeBoardOverlay() {
     }, 200);
 }
 
-function renderOverlayTask(task) {
+function renderOverlayTaskCard(task) {
     const containerRef = document.getElementById('boardCardOverlay');
     containerRef.innerHTML = getOverlayTaskCard(task);
     renderOverlayPrio(task);
@@ -106,13 +106,32 @@ function renderOverlayPrio(task) {
 
 function renderOverlayAssignedContactsList(task) {
     const contactsListRef = document.getElementById('overlayAssignedContactsList' + task.id);
-    task.assignedContacts.forEach(contact => contactsListRef.innerHTML += getOverlayContactTemplate(contact));
+    task.assignedContacts.forEach(contact => {
+        contactsListRef.innerHTML += getOverlayContactTemplate(contact)
+    });
 }
 
 function renderOverlaySubtasks(task) {
     const subtasksRef = document.getElementById('overlaySubtasks' + task.id);
+    subtasksRef.innerHTML = "";
     task.subtasks.forEach( (subtask, index) => {
-        subtasksRef.innerHTML += getOverlaySubtaskTemplate(subtask.text, index);
-        document.getElementById("subtaskCheckbox" + index).innerHTML = getSubtaskCheckboxSVG(subtask.status);
+        subtasksRef.innerHTML += getOverlaySubtaskTemplate(subtask.text, index, task);
+        const checkBoxRef = document.getElementById("subtaskCheckbox" + index);
+        checkBoxRef.innerHTML = getSubtaskCheckboxSVG(subtask.status);
     });
+}
+
+function toggleSubtaskCheck(task, subtaskIndex) {
+    let subtaskStatus = task.subtasks[subtaskIndex].status;
+    const checkBoxRef = document.getElementById("subtaskCheckbox" + subtaskIndex);
+    if(subtaskStatus == "unchecked") {
+        subtaskStatus = "checked";
+        checkBoxRef.innerHTML = getSubtaskCheckboxSVG("checked");
+    } else if(subtaskStatus == "checked") {
+        subtaskStatus = "unchecked";
+        checkBoxRef.innerHTML = getSubtaskCheckboxSVG("unchecked")
+    }
+    task.subtasks[subtaskIndex].status = subtaskStatus;
+    putToDB(subtaskStatus, `tasks/${task.id}/subtasks/${subtaskIndex}/status`);
+    renderOverlaySubtasks(task);
 }
