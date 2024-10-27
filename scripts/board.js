@@ -31,10 +31,11 @@ function renderBoardTasks() {
     tasks.forEach(task => {
         const containerRef = document.getElementById(`${task.status}Container`);
         containerRef.innerHTML += getTaskCardTemplate(task);
-        noTasks[task.status] = false; //to give dnone to the noTask-div's after checkNoTaskDisplayNone()
+        calculateProgressBar(task);
         renderContactIcons(task);
         const prioIconRef = document.getElementById("prioIcon" + task.id);
         prioIconRef.innerHTML = getPrioSVG(task.prio);
+        noTasks[task.status] = false; //to give dnone to the noTask-div's after checkNoTaskDisplayNone()
     });
     checkNoTaskDisplayNone();
 }
@@ -134,6 +135,7 @@ function toggleSubtaskCheck(task, subtaskIndex) {
     task.subtasks[subtaskIndex].status = subtaskStatus;
     putToDB(subtaskStatus, `tasks/${task.id}/subtasks/${subtaskIndex}/status`);
     renderOverlaySubtasks(task);
+    calculateProgressBar(task);
 }
 
 async function deleteTask(key) {
@@ -156,4 +158,14 @@ async function renderOverlayAddTaskCard() {
     await renderContactsDropdown();
     document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "assignedToDropdown"));
     document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "categoryDropdown"))
+}
+
+function calculateProgressBar(task) {
+    const barRef = document.getElementById(`progressBar${task.id}`);
+    const counterRef = document.getElementById(`progressCounter${task.id}`);
+    const checkedSubtaskCount = task.subtasks.filter(s=>s.status=="checked").length;
+    const totalSubtaskCount = task.subtasks.length;
+    const progressPercentage = (checkedSubtaskCount / totalSubtaskCount) * 100;
+    barRef.style.width = `${progressPercentage}%`;
+    
 }

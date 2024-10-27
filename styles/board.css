@@ -260,17 +260,14 @@ h1 {
 .progressBarContainer {
   display: flex;
   width: 128px;
-  height: auto;
+  height: 8px;
   top: 4px;
   border-radius: 8px;
-  padding-right: 64px;
-  gap: 10px;
   background-color: rgba(244, 244, 244, 1);
 }
 
 .progressBar {
   height: 8px;
-  width: 64px;
   border-radius: 16px;
   background-color: rgba(69, 137, 255, 1);
 }

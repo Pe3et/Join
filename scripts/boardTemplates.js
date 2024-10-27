@@ -14,9 +14,9 @@ function getTaskCardTemplate(task) {
             </div>
             <div class="progressArea">
               <div class="progressBarContainer">
-                <div class="progressBar"></div>
+                <div class="progressBar" id="progressBar${task.id}"></div>
               </div>
-              <p>X/X Subtasks</p>
+              <p id="progressCounter" ${task.id}>${task.subtasks.filter(s=>s.status=="checked").length}/${task.subtasks.length} Subtasks</p>
             </div>
             <div class="iconsAndPrioArea">
               <div id="contactIconsArea${task.id}" class="contactIconsArea">
