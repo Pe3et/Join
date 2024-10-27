@@ -153,5 +153,7 @@ async function renderOverlayAddTaskCard() {
     const containerRef = document.getElementById('boardCardOverlay');
     containerRef.innerHTML = getOverlayAddTaskCard();
     containerRef.style.width = "auto";
-    await initAddTaskForm();
+    await renderContactsDropdown();
+    document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "assignedToDropdown"));
+    document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "categoryDropdown"))
 }

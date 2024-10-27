@@ -98,7 +98,9 @@ function getCheckboxSVG(status) {
 function renderAssignedContactsIconRow() {
     const rowRef = document.getElementById("assignedContactsIconRow");
     rowRef.innerHTML = "";
-    taskToPost.assignedContacts.forEach(contact => rowRef.innerHTML += `<div class="contactIcon" style='background: ${contact.color}'><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>`);
+    taskToPost.assignedContacts.forEach(contact => {
+        rowRef.innerHTML += `<div class="contactIcon" style='background: ${contact.color}'><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>`
+    });
 }
 
 function setCategory(category) {
@@ -206,6 +208,7 @@ function getSubtaskEditIcon() {
 }
 
 async function createTask() {
+    //TODO: Validation
     taskToPost.title = document.getElementById("titleInput").value;
     taskToPost.description = document.getElementById("descriptionInput").value;
     taskToPost.dueDate = document.getElementById("dateInput").value;
