@@ -164,6 +164,10 @@ textarea:focus {
   bottom: 0;
 }
 
+#requiredInfoResp {
+    display: none;
+}
+
 /* dropdown */
 .dropdown {
   display: none;
@@ -372,11 +376,40 @@ li[contenteditable="true"]:focus {
 @media (max-width: 1050px) {
   .addTaskForm {
     flex-direction: column;
-    align-items: center;
+    align-self: center;
+    overflow-y: auto;
+    padding: 8px 16px;
+    margin: 8px;
   }
 
   #requiredInfo {
     display: none;
+  }
+
+  #requiredInfoResp {
+    display: block;
+  }
+
+  #subtaskListContainer {
+    height: auto;
+    margin-bottom: 8px;
+  }
+
+  .dropdown {
+    position: relative;
+    top: -7px !important;
+  }
+
+  #categoryDropdownButton {
+    margin-bottom: 0;
+  }
+
+  .addTaskColumn {
+    padding-top: 8px;
+  }
+
+  .buttonContainer {
+    gap: 32px;
   }
 }
 @media (max-width: 500px) {
@@ -387,4 +420,32 @@ li[contenteditable="true"]:focus {
     #assignedToDropdownButton {
         width: 100%;
     }
+
+    .addTaskColumn {
+        width: 90vw;
+    }
+
+    .prioContainer {
+        flex-direction: column;
+    }
+
+    .buttonContainer {
+        gap: 8px;
+    }
+
+    .addTaskForm p {
+        font-size: 16px;
+    }
+
+    .fullButton, .hollowButton {
+        font-size: 18px;
+    } 
+
+    .addTaskForm input, textarea, .dropdownButton {
+        font-size: 16px;
+    }
+
+    .addTaskForm {
+        padding: 4px 8px;
+      }
 }
