@@ -158,6 +158,7 @@ async function renderOverlayAddTaskCard() {
     await renderContactsDropdown();
     document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "assignedToDropdown"));
     document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "categoryDropdown"))
+    resetTaskJSON();
 }
 
 function calculateProgressBar(task) {
@@ -168,4 +169,28 @@ function calculateProgressBar(task) {
     const progressPercentage = (checkedSubtaskCount / totalSubtaskCount) * 100;
     barRef.style.width = `${progressPercentage}%`;
     counterRef.innerText = `${checkedSubtaskCount}/${totalSubtaskCount} Subtasks`;
+}
+
+async function renderEditTask(task) {
+    const containerRef = document.getElementById('boardCardOverlay');
+    containerRef.innerHTML = getOverlayEditTaskCard(task);
+    setActivePrio(task.prio);
+    await renderContactsDropdown();
+    task.assignedContacts.forEach(contact => assignContact(contact));
+    document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "assignedToDropdown"));
+    renderSubtaskList(task.subtasks);
+    newTask.subtasks = task.subtasks;
+}
+
+async function saveEditTask(key) {
+    newTask.title = document.getElementById("titleInput").value;
+    newTask.description = document.getElementById("descriptionInput").value;
+    newTask.dueDate = document.getElementById("dateInput").value;
+    newTask.category = tasks.find(t=>t.id==key).category;
+    newTask.status = tasks.find(t=>t.id==key).status;
+    await putToDB(newTask,`tasks/${key}`);
+    tasks = [];
+    await initBoard();
+    reloadBoard();
+    renderOverlayTaskCard(tasks.find(t=>t.id==key));
 }

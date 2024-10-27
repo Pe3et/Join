@@ -3,7 +3,7 @@ const activePrioColors = {
     medium: "#FFA800",
     low: "#7AE229"
 };
-let taskToPost = {
+let newTask = {
     title: "",
     description: "",
     assignedContacts: [],
@@ -50,7 +50,7 @@ function setActivePrio(prio) {
     const clickedPrioRef = document.getElementById((prio) + "Prio");
     clickedPrioRef.classList.add("activePrio");
     clickedPrioRef.style.background = activePrioColors[prio];
-    taskToPost.prio = prio;
+    newTask.prio = prio;
 }
 
 function toggleDropdown(dropdownID) {
@@ -61,12 +61,17 @@ function toggleDropdown(dropdownID) {
 }
 
 function closeDropdownCheck(clickedElement, dropdownID) {
-    if (!document.getElementById(dropdownID).contains(clickedElement) &&
-        !document.getElementById(dropdownID + "Button").contains(clickedElement) &&
-        window.getComputedStyle(document.getElementById(dropdownID)).display != "none"
-        ){
-        toggleDropdown(dropdownID);
-    }
+    try {
+        if (!document.getElementById(dropdownID).contains(clickedElement) &&
+            !document.getElementById(dropdownID + "Button").contains(clickedElement) &&
+            window.getComputedStyle(document.getElementById(dropdownID)).display != "none"
+            ){
+            toggleDropdown(dropdownID);
+        }
+    } catch (error) {
+        //to prevent error messages in console, when navigating overlays on the board without dropdowns
+        return 
+    }   
 }
 
 function assignContact(contact) {
@@ -74,11 +79,11 @@ function assignContact(contact) {
     const svgElement = document.querySelector(`#${contact.id} svg`);
     idElement.classList.toggle("activeDropdownContact");
     if(idElement.classList.contains("activeDropdownContact")){
-        svgElement.innerHTML = getCheckboxSVG("checked");
-        taskToPost.assignedContacts.push(contact);
+        svgElement.innerHTML = getCheckboxSVG("checked");  
+        !newTask.assignedContacts.some(c => c.id == contact.id) && newTask.assignedContacts.push(contact); //if contact isn't already assigned to assignedContacts, then assign contact (to fix icon-duplication bug in board editTask)
     } else {
         svgElement.innerHTML = getCheckboxSVG("unchecked");
-        taskToPost.assignedContacts = taskToPost.assignedContacts.filter(item => item.id != contact.id);
+        newTask.assignedContacts = newTask.assignedContacts.filter(item => item.id != contact.id);
     }
     renderAssignedContactsIconRow()
 }
@@ -98,14 +103,14 @@ function getCheckboxSVG(status) {
 function renderAssignedContactsIconRow() {
     const rowRef = document.getElementById("assignedContactsIconRow");
     rowRef.innerHTML = "";
-    taskToPost.assignedContacts.forEach(contact => {
+    newTask.assignedContacts.forEach(contact => {
         rowRef.innerHTML += `<div class="contactIcon" style='background: ${contact.color}'><p>${contact.name[0]}${contact.name.split(" ")[1][0]}</p></div>`
     });
 }
 
 function setCategory(category) {
     document.querySelector("#categoryDropdownButton p").innerHTML = category;
-    taskToPost.category = category;
+    newTask.category = category;
     toggleDropdown("categoryDropdown");
 }
 
@@ -123,23 +128,23 @@ function clearSubtaskInput() {
 }
 
 function addSubtask() {
-    taskToPost.subtasks.push({
+    newTask.subtasks.push({
         text: document.getElementById("subtaskInput").value,
         status: "unchecked"
     });
     clearSubtaskInput();
-    renderSubtaskList()
+    renderSubtaskList(newTask.subtasks)
 }
 
-function renderSubtaskList() {
+function renderSubtaskList(subtasks) {
     const listRef = document.getElementById("subtaskListContainer");
     listRef.innerHTML = "";
-    taskToPost.subtasks.forEach((subtask, index) => listRef.innerHTML += getSubtaskListTemplate(subtask.text, index));
+    subtasks.forEach((subtask, index) => listRef.innerHTML += getSubtaskListTemplate(subtask.text, index));
 }
 
 function deleteSubtask(index) {
-    taskToPost.subtasks.splice(index, 1);
-    renderSubtaskList();
+    newTask.subtasks.splice(index, 1);
+    renderSubtaskList(newTask.subtasks);
 }
 
 function editSubtaskMode(index) {
@@ -170,7 +175,7 @@ function exitEditSubtaskMode(index) {
         const subtaskElement = liElement.parentNode;
         subtaskElement.classList.remove("subtaskEditMode");
         swapSubtaskEditIcon(index, false);
-        taskToPost.subtasks[index].text = liElement.innerText;
+        newTask.subtasks[index].text = liElement.innerText;
     } catch (error) {
         return
     }
@@ -209,10 +214,10 @@ function getSubtaskEditIcon() {
 
 async function createTask() {
     //TODO: Validation
-    taskToPost.title = document.getElementById("titleInput").value;
-    taskToPost.description = document.getElementById("descriptionInput").value;
-    taskToPost.dueDate = document.getElementById("dateInput").value;
-    await postToDB(taskToPost,"tasks");
+    newTask.title = document.getElementById("titleInput").value;
+    newTask.description = document.getElementById("descriptionInput").value;
+    newTask.dueDate = document.getElementById("dateInput").value;
+    await postToDB(newTask,"tasks");
     //to relocate a user to the Board after adding a task (adjust link, when project is on your own FTP)
     location.href = "https://join-0724-aw-2.developerakademie.net/Join/board.html";
 }
@@ -231,11 +236,12 @@ async function clearTask() {
 }
 
 function resetTaskJSON(){
-    taskToPost.title = "";
-    taskToPost.description = "";
-    taskToPost.assignedContacts = [];
-    taskToPost.dueDate = "";
-    taskToPost.category = "";
-    taskToPost.subtasks = [];
-    taskToPost.status = "toDo"
+    newTask.title = "";
+    newTask.description = "";
+    newTask.assignedContacts = [];
+    newTask.dueDate = "";
+    newTask.prio = "medium"
+    newTask.category = "";
+    newTask.subtasks = [];
+    newTask.status = "toDo"
 }

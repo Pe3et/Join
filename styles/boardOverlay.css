@@ -33,6 +33,7 @@
   left: 100vw;
   transition: transform 200ms ease-out;
   font-family: 'Inter', sans-serif;
+  max-height: 90%;
 }
 
 .overlayTaskCategory {
@@ -235,4 +236,52 @@
   width: 100%;
   justify-content: space-between;
   margin-bottom: 32px;
+}
+
+/* Edit Task - Overlay */
+#editTaskContainer {
+  overflow-y: auto;
+}
+
+#editTaskContainer .addTaskForm {
+  flex-direction: column;
+  align-self: center;
+  overflow-y: auto;
+  padding: 0 4px;
+}
+
+#editTaskContainer #requiredInfo {
+  display: none;
+}
+
+#editTaskContainer #requiredInfoResp {
+  display: block;
+}
+
+#editTaskContainer #subtaskListContainer {
+  height: auto;
+  margin-bottom: 8px;
+}
+
+#editTaskContainer .dropdown {
+  position: relative;
+  top: -7px !important;
+}
+
+#editTaskContainer #categoryDropdownButton {
+  margin-bottom: 0;
+}
+
+#editTaskContainer .addTaskColumn {
+  padding-top: 8px;
+}
+
+#editTaskContainer .buttonContainer {
+  margin-top: 8px;
+}
+
+.editTaskOverlayCloseButtonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: end;
 }
