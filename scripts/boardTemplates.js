@@ -1,6 +1,6 @@
 function getTaskCardTemplate(task) {
     return `
-        <div id="${task.id}" class="boardTask" onclick='openBoardOverlay(); renderOverlayTaskCard(${JSON.stringify(task)})'>
+        <div id="${task.id}" class="boardTask dragItem" onclick='openBoardOverlay(); renderOverlayTaskCard(${JSON.stringify(task)})' draggable="true">
             <div class="taskCategoryArea">
               <div class="taskCategory" style="background:${categoryColors[task.category]}">
                 <p>${task.category}</p>

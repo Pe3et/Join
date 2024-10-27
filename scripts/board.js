@@ -1,5 +1,5 @@
 let tasks = [];
-let noTasks = {toDo: true, inProgress: true, awaitFeedback: true, done: true};
+let noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
 const categoryColors = {
     "User Story": "#0038FF",
     "Technical Task": "#1FD7C1"
@@ -50,7 +50,7 @@ function checkNoTaskDisplayNone() {
 function renderContactIcons(task) {
     const containerRef = document.getElementById("contactIconsArea" + task.id);
     let rightOffset = 0;
-    task.assignedContacts.forEach( (contact) => {
+    task.assignedContacts.forEach((contact) => {
         const contactIcon = document.createElement("div");
         contactIcon.classList.add("iconWithLetters");
         contactIcon.style.background = contact.color;
@@ -115,7 +115,7 @@ function renderOverlayAssignedContactsList(task) {
 function renderOverlaySubtasks(task) {
     const subtasksRef = document.getElementById('overlaySubtasks' + task.id);
     subtasksRef.innerHTML = "";
-    task.subtasks.forEach( (subtask, index) => {
+    task.subtasks.forEach((subtask, index) => {
         subtasksRef.innerHTML += getOverlaySubtaskTemplate(subtask.text, index, task);
         const checkBoxRef = document.getElementById("subtaskCheckbox" + index);
         checkBoxRef.innerHTML = getSubtaskCheckboxSVG(subtask.status);
@@ -125,10 +125,10 @@ function renderOverlaySubtasks(task) {
 function toggleSubtaskCheck(task, subtaskIndex) {
     let subtaskStatus = task.subtasks[subtaskIndex].status;
     const checkBoxRef = document.getElementById("subtaskCheckbox" + subtaskIndex);
-    if(subtaskStatus == "unchecked") {
+    if (subtaskStatus == "unchecked") {
         subtaskStatus = "checked";
         checkBoxRef.innerHTML = getSubtaskCheckboxSVG("checked");
-    } else if(subtaskStatus == "checked") {
+    } else if (subtaskStatus == "checked") {
         subtaskStatus = "unchecked";
         checkBoxRef.innerHTML = getSubtaskCheckboxSVG("unchecked")
     }
@@ -147,7 +147,7 @@ async function deleteTask(key) {
 
 function reloadBoard() {
     document.querySelectorAll(".boardTask").forEach(boardTask => boardTask.remove());
-    noTasks = {toDo: true, inProgress: true, awaitFeedback: true, done: true};
+    noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
     renderBoardTasks();
 }
 
@@ -164,7 +164,7 @@ async function renderOverlayAddTaskCard() {
 function calculateProgressBar(task) {
     const barRef = document.getElementById(`progressBar${task.id}`);
     const counterRef = document.getElementById(`progressCounter${task.id}`);
-    const checkedSubtaskCount = task.subtasks.filter(s=>s.status=="checked").length;
+    const checkedSubtaskCount = task.subtasks.filter(s => s.status == "checked").length;
     const totalSubtaskCount = task.subtasks.length;
     const progressPercentage = (checkedSubtaskCount / totalSubtaskCount) * 100;
     barRef.style.width = `${progressPercentage}%`;
@@ -186,11 +186,11 @@ async function saveEditTask(key) {
     newTask.title = document.getElementById("titleInput").value;
     newTask.description = document.getElementById("descriptionInput").value;
     newTask.dueDate = document.getElementById("dateInput").value;
-    newTask.category = tasks.find(t=>t.id==key).category;
-    newTask.status = tasks.find(t=>t.id==key).status;
-    await putToDB(newTask,`tasks/${key}`);
+    newTask.category = tasks.find(t => t.id == key).category;
+    newTask.status = tasks.find(t => t.id == key).status;
+    await putToDB(newTask, `tasks/${key}`);
     tasks = [];
     await initBoard();
     reloadBoard();
-    renderOverlayTaskCard(tasks.find(t=>t.id==key));
+    renderOverlayTaskCard(tasks.find(t => t.id == key));
 }

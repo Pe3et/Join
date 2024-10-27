@@ -15,6 +15,7 @@
   <script src="./scripts/tasks.js"></script>
   <script src="./scripts/boardTemplates.js"></script>
   <script src="./scripts/contacts.js"></script>
+  <script src="./scripts/dragAndDrop.js"></script>
   <script src="./scripts/board.js"></script>
   <title>Join - Board</title>
 </head>
@@ -87,22 +88,22 @@
         </div>
       </section>
       <section class="taskContainer">
-        <div id="toDoContainer" class="taskList">
+        <div id="toDoContainer" class="taskList dropZone">
           <div id="toDoNoTasks" class="noTask">
             <span>No tasks to do</span>
           </div>
         </div>
-        <div id="inProgressContainer" class="taskList">
+        <div id="inProgressContainer" class="taskList dropZone">
           <div id="inProgressNoTasks" class="noTask">
             <span>No tasks in progress</span>
           </div>
         </div>
-        <div id="awaitFeedbackContainer" class="taskList">
+        <div id="awaitFeedbackContainer" class="taskList dropZone">
           <div id="awaitFeedbackNoTasks" class="noTask">
             <span>No tasks await feedback</span>
           </div>
         </div>
-        <div id="doneContainer" class="taskList">
+        <div id="doneContainer" class="taskList dropZone">
           <div id="doneNoTasks" class="noTask">
             <span>No tasks done</span>
           </div>
