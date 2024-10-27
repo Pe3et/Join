@@ -216,3 +216,18 @@
   height: 100%;
   background: #D1D1D1;
 }
+
+/* Add Task - Overlay */
+.addTaskContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.addTaskContainer h1 {
+  font-size: 61px;
+  font-weight: 700;
+}

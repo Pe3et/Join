@@ -14,7 +14,7 @@ let taskToPost = {
     status: "toDo"
 };
 
-async function initTasksPage() {
+async function initAddTaskForm() {
     await renderContactsDropdown();
     document.addEventListener("click", (event) => closeDropdownCheck(event.target, "assignedToDropdown"));
     document.addEventListener("click", (event) => closeDropdownCheck(event.target, "categoryDropdown"))

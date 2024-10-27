@@ -76,8 +76,7 @@ function getPrioSVG(prio) {
     return prioSVG
 }
 
-function openBoardOverlay(task) {
-    renderOverlayTaskCard(task);
+function openBoardOverlay() {
     document.getElementById("boardOverlayContainer").classList.add('slideInRight');
     document.getElementById("boardOverlayContainer").classList.add('overlayBackgroundColor');
     document.getElementById("boardCardOverlay").classList.add('slideInRight');
@@ -94,6 +93,7 @@ function closeBoardOverlay() {
 function renderOverlayTaskCard(task) {
     const containerRef = document.getElementById('boardCardOverlay');
     containerRef.innerHTML = getOverlayTaskCard(task);
+    containerRef.style.width = "525px";
     renderOverlayPrio(task);
     renderOverlayAssignedContactsList(task);
     renderOverlaySubtasks(task);
@@ -147,4 +147,11 @@ function reloadBoard() {
     document.querySelectorAll(".boardTask").forEach(boardTask => boardTask.remove());
     noTasks = {toDo: true, inProgress: true, awaitFeedback: true, done: true};
     renderBoardTasks();
+}
+
+async function renderOverlayAddTaskCard() {
+    const containerRef = document.getElementById('boardCardOverlay');
+    containerRef.innerHTML = getOverlayAddTaskCard();
+    containerRef.style.width = "auto";
+    await initAddTaskForm();
 }

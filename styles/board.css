@@ -154,6 +154,10 @@ h1 {
   cursor: pointer;
 }
 
+.plusButton:hover path, .plusButton:hover rect{
+  stroke: rgba(41, 171, 226, 1);
+}
+
 .taskContainer {
   padding: 16px 32px 0px 32px;
   display: flex;
