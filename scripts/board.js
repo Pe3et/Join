@@ -167,5 +167,5 @@ function calculateProgressBar(task) {
     const totalSubtaskCount = task.subtasks.length;
     const progressPercentage = (checkedSubtaskCount / totalSubtaskCount) * 100;
     barRef.style.width = `${progressPercentage}%`;
-    
+    counterRef.innerText = `${checkedSubtaskCount}/${totalSubtaskCount} Subtasks`;
 }
