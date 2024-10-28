@@ -518,6 +518,20 @@ main {
     width: 24px;
     right: 6px;
   }
+ 
+  .contactHeading p::after {
+    content: "";
+    position: absolute;
+    border: 3px;
+    bottom: -5px; 
+    width: 30%; 
+    height: 3px; 
+    background-color: #29ABE2; 
+    top: 30px;
+    
+    
+  }
+ 
 
 }
 
