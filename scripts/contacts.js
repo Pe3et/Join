@@ -129,7 +129,7 @@ function renderContactDetails(contact) {
     contentRef.style.transition = "none";
     contentRef.style.left = "100vw";
     contentRef.innerHTML = getContactDetailsTemplate(contact);
-    setTimeout(() => {s
+    setTimeout(() => {
         contentRef.style.transition = "all 300ms ease-out";
         contentRef.style.left = "0";
     }, 1);

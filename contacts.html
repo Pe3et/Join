@@ -110,21 +110,18 @@
             <div class="imgContainer">
               <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
             </div>
-            <form id="addContactForm">
+            <div id="addContactForm">
               <div class="inputArea">
                 <div class="inputContainer">
-                  <input class="inputFields" type="text" name="name" id="addContactInputName" placeholder="Name"
-                    required>
+                  <input class="inputFields" type="text" name="name" id="addContactInputName" placeholder="Name">
                   <img src="./assets/img/person.svg" alt="Person Icon">
                 </div>
                 <div class="inputContainer">
-                  <input class="inputFields" type="email" name="email" id="addContactInputEmail" placeholder="Email"
-                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                  <input class="inputFields" type="email" name="email" id="addContactInputEmail" placeholder="Email">
                   <img src="./assets/img/mail.svg" alt="Mail Icon">
                 </div>
                 <div class="inputContainer">
-                  <input class="inputFields" type="number" name="phone" id="addContactInputPhone" placeholder="Phone"
-                    required>
+                  <input class="inputFields" type="number" name="phone" id="addContactInputPhone" placeholder="Phone">
                   <img src="./assets/img/call.svg" alt="Phone Icon">
                 </div>
             </form>
@@ -137,7 +134,7 @@
                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
-              <button class="createContactButton" onclick="addContact()" type="submit" form="addContactForm">Create
+              <button class="createContactButton" onclick="addContact()">Create
                 contact <img src="./assets/img/check.svg" alt=""></button>
             </div>
           </div>
