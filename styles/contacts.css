@@ -221,8 +221,7 @@ main {
   margin-left: 10px;
   vertical-align: middle;
   color: #29ABE2;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  
 
 }
 
@@ -389,6 +388,7 @@ main {
   #contactListContent {
     font-size: 10px;
   }
+  
 
   .personInContactListData b {
     font-size: 20px;
@@ -490,6 +490,8 @@ main {
   }
   .contactHeading{
     padding-right: 20%;
+    margin-top: 128px;
+    position: relative;
   }
   #contactDetails{
     padding-left: 16px;
@@ -497,10 +499,17 @@ main {
   .contactSocials{
     padding-left: 16px;
   }
+  .arrowIcon{
+    position: absolute;
+    top: 18px;
+    height: 24px;
+    width: 24px;
+    right: 6px;
+  }
 
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 390px) {
   .arrowIcon {
     display: block;
   }

@@ -135,20 +135,7 @@ function renderContactDetails(contact) {
     }, 1);
 }
 
-// function getContactDetailsTemplate(contact) {
-//     console.log("Contact in getContactDetailsTemplate: ", contact); // Debugging
-//     if (!contact) {
-//         console.error("Contact is undefined in getContactDetailsTemplate");
-//         return '';
-//     }
-//     return `
-//         <div class="contact-details">
-//             <p>${contact.name}</p>
-//             <p>${contact.email}</p>
-//             <p>${contact.phone}</p>
-//         </div>
-//     `;
-// }
+
 
 function openOverlay(containerRefID, cardRefId, contact) {
     document.getElementById(containerRefID).classList.add('overlayAppear');
