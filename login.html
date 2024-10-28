@@ -22,6 +22,24 @@
                 <path class="logoFill" d="M90.3359 118.593V104.76H93.0631L95.9947 110.461C96.7494 111.952 97.4209 113.483 98.006 115.049C97.8526 113.337 97.7844 111.368 97.7844 109.177V104.76H100.034V118.593H97.4946L94.5289 112.772C93.7437 111.243 93.0438 109.671 92.4324 108.064C92.4324 109.776 92.5517 111.711 92.5517 114.09V118.576L90.3359 118.593Z" fill="white"/>
             </svg>       
         </div>
+        <section id="contentContainer">
+            <h1>Log in</h1>
+            <div class="spacer"></div>
+            <input type="text" id="emailInput" placeholder="Email">
+            <input type="text" id="passwordInput" placeholder="Password">
+            <div class="rememberMe">
+                <div id="checkbox" onclick="toggleRememberMe()">
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1.5" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                    </svg>
+                </div>
+                <p>Remember me</p>
+            </div>
+            <div class="buttonContainer">
+                <div id="loginButton" class="fullButton button" onclick="login()">Log in</div>
+                <div id="loginGuestButton" class="hollowButton button" onclick="loginGuest()">Guest Log in</div>
+            </div>
+        </section>
     </main>
 </body>
 </html>

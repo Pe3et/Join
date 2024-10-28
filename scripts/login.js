@@ -8,4 +8,17 @@ function startAnimation() {
     logo.classList.add('logoEndPoint');
     document.querySelectorAll('.logo .logoFill').forEach( e => e.style.fill = "#2A3647");
     logoContainer.style.background = "#2a364700";
+    setTimeout( () => logoContainer.style.height = 0, 800);
+}
+
+function toggleRememberMe() {
+    //TODO:
+}
+
+function login() {
+
+}
+
+function loginGuest() {
+    
 }
