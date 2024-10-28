@@ -16,7 +16,7 @@ body {
 }
 
 main {
-  flex-grow: 1;
+  flex: 1;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -123,31 +123,19 @@ h1 {
   font-size: 61px;
 }
 
-.taskStateContainer {
-  padding: 0 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1208px;
-  /* gap: 20px; */
-}
-
 .taskState {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex: 1;
-  padding: 0 10px;
+  padding: 16px 10px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 20px;
   color: rgba(42, 54, 71, 1);
+  position: sticky;
+  top: 0;
+  background: #f6f7f8;
   padding-top: 48px;
-}
-
-.taskStateContainer h2 {
-  font-size: 20px;
-  font-weight: 700;
 }
 
 .plusButton:hover {
@@ -164,7 +152,13 @@ h1 {
   flex: 1;
   max-width: 1208px;
   overflow-y: auto;
-  margin: 8px 0px;
+  justify-content: space-between;
+}
+
+.tasksColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .taskList {
@@ -172,9 +166,9 @@ h1 {
   flex-direction: column;
   gap: 24px;
   overflow-x: visible;
-  flex: 1;
   align-items: center;
-  padding: 10px 20px 10px 10px;
+  padding: 10px;
+  flex: 1;
 }
 
 .noTask {
@@ -300,4 +294,13 @@ h1 {
 
 .dnone {
   display: none !important;
+}
+
+.dragRotate {
+  transition: rotate ease 200ms;
+  transform: rotate(5deg);
+}
+
+.dragHighlight {
+  outline: 4px dotted rgba(42, 54, 71, 1);
 }

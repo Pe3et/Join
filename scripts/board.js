@@ -1,5 +1,4 @@
 let tasks = [];
-let noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
 const categoryColors = {
     "User Story": "#0038FF",
     "Technical Task": "#1FD7C1"
@@ -35,12 +34,13 @@ function renderBoardTasks() {
         renderContactIcons(task);
         const prioIconRef = document.getElementById("prioIcon" + task.id);
         prioIconRef.innerHTML = getPrioSVG(task.prio);
-        noTasks[task.status] = false; //to give dnone to the noTask-div's after checkNoTaskDisplayNone()
     });
     checkNoTaskDisplayNone();
 }
 
 function checkNoTaskDisplayNone() {
+    let noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
+    tasks.forEach(task => noTasks[task.status] = false);
     Object.keys(noTasks).forEach((noTask) => {
         const containerRef = document.getElementById(noTask + "NoTasks");
         noTasks[noTask] ? containerRef.classList.remove("dnone") : containerRef.classList.add("dnone");
