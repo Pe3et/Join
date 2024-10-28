@@ -91,7 +91,8 @@ function closeBoardOverlay() {
     }, 200);
 }
 
-function renderOverlayTaskCard(task) {
+function renderOverlayTaskCard(taskID) {
+    let task = tasks.find(t => t.id == taskID);
     const containerRef = document.getElementById('boardCardOverlay');
     containerRef.innerHTML = getOverlayTaskCard(task);
     containerRef.style.width = "525px";
@@ -122,7 +123,8 @@ function renderOverlaySubtasks(task) {
     });
 }
 
-function toggleSubtaskCheck(task, subtaskIndex) {
+function toggleSubtaskCheck(taskID, subtaskIndex) {
+    let task = tasks.find(t => t.id == taskID);
     let subtaskStatus = task.subtasks[subtaskIndex].status;
     const checkBoxRef = document.getElementById("subtaskCheckbox" + subtaskIndex);
     if (subtaskStatus == "unchecked") {

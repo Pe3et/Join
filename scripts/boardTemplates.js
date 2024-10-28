@@ -1,6 +1,6 @@
 function getTaskCardTemplate(task) {
     return `
-        <div id="${task.id}" class="boardTask dragItem" onclick='openBoardOverlay(); renderOverlayTaskCard(${JSON.stringify(task)})' draggable="true">
+        <div id="${task.id}" class="boardTask dragItem" onclick='openBoardOverlay(); renderOverlayTaskCard("${task.id}")' draggable="true">
             <div class="taskCategoryArea">
               <div class="taskCategory" style="background:${categoryColors[task.category]}">
                 <p>${task.category}</p>
@@ -94,7 +94,7 @@ function getOverlayContactTemplate(contact) {
 function getOverlaySubtaskTemplate(subtaskText, subtaskIndex, task) {
     return `
         <div class="singleSubtask">
-            <div id="subtaskCheckbox${subtaskIndex}" class="subtaskCheckbox" onclick='toggleSubtaskCheck(${JSON.stringify(task)}, ${subtaskIndex})'>
+            <div id="subtaskCheckbox${subtaskIndex}" class="subtaskCheckbox" onclick='toggleSubtaskCheck("${task.id}", ${subtaskIndex})'>
             </div>
             <p>${subtaskText}</p>
         </div>
