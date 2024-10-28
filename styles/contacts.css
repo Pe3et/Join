@@ -180,11 +180,13 @@ main {
   height: 73px;
   align-items: center;
   gap: 30px;
+  
 }
 
 .contactHeading h1 {
   font-weight: 700;
   font-size: 61px;
+  
 }
 
 .contactHeadingSpacer {
@@ -362,11 +364,27 @@ main {
   display: none;
 }
 
-.arrowIcon {
-  display: none;
+@media(max-width: 1092px) {
+  .arrowIcon {
+    display: none;
+  }
+  
 }
 
+@media(min-width: 1050px) {
+  .arrowIcon {
+    display: block;
+  }
 
+
+
+}
+
+@media(max-width: 1152px) {
+  .contactHeading p {
+    font-size: 25px;
+  }
+}
 
 @media (max-width: 880px) {
   .contactList {
@@ -401,6 +419,22 @@ main {
     padding-left: 0px;
     padding-right: 0;
   }
+
+}
+
+@media(min-width: 520px) {
+  .contactHeading {
+
+    margin-top: 40px;
+    position: relative;
+  }
+}
+
+@media(min-width: 482px) {
+  .arrowIcon {
+    display: block;
+  }
+
 }
 
 @media (max-width: 720px) {
@@ -469,6 +503,7 @@ main {
     border-radius: 70px;
     border: 3px;
     height: 80px;
+    width: 80px;
   }
 
   .contactDetailsIcon p {
@@ -497,11 +532,7 @@ main {
     padding-left: 16px;
   }
 
-  .contactHeading {
-    padding-right: 20%;
-    margin-top: 40px;
-    position: relative;
-  }
+
 
   #contactDetails {
     padding-left: 16px;
@@ -539,8 +570,17 @@ main {
 
 
   }
+}
 
-
+@media(min-width: 320px) {
+  .contactHeading {
+    padding-right: 20%;
+    margin-top: 40px;
+    position: relative;
+  }
+  .iconAndName{
+    margin-top: 50px; 
+  }
 }
 
 @media (max-width: 390px) {

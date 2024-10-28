@@ -133,11 +133,12 @@
 
   .iconAndName {
     flex-direction: row;
+    margin-top: 50px;
   }
 
   .contactHeading p {
     font-size: 20px;
-    padding-right: 70px;
+    padding-right: 30px;
     display: flex;
     position: relative;
   }
