@@ -516,22 +516,30 @@ main {
     top: 18px;
     height: 24px;
     width: 24px;
-    right: 6px;
+    right: 20px;
   }
- 
+
+  .arrowIcon {
+    transition: transform 0.1s ease;
+  }
+
+  .arrowIcon:active {
+    transform: scale(1.4);
+  }
+
   .contactHeading p::after {
     content: "";
     position: absolute;
     border: 3px;
-    bottom: -5px; 
-    width: 30%; 
-    height: 3px; 
-    background-color: #29ABE2; 
+    bottom: -5px;
+    width: 30%;
+    height: 3px;
+    background-color: #29ABE2;
     top: 30px;
-    
-    
+
+
   }
- 
+
 
 }
 
