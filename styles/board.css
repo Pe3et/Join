@@ -162,15 +162,15 @@ h1 {
   padding: 16px 32px 0px 32px;
   display: flex;
   flex: 1;
-  overflow: hidden;
   max-width: 1208px;
+  overflow-y: auto;
+  margin: 8px 0px;
 }
 
 .taskList {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  overflow-y: auto;
   overflow-x: visible;
   flex: 1;
   align-items: center;

@@ -173,11 +173,13 @@ function calculateProgressBar(task) {
     counterRef.innerText = `${checkedSubtaskCount}/${totalSubtaskCount} Subtasks`;
 }
 
-async function renderEditTask(task) {
+async function renderEditTask(taskID) {
+    let task = tasks.find(t => t.id == taskID);
     const containerRef = document.getElementById('boardCardOverlay');
     containerRef.innerHTML = getOverlayEditTaskCard(task);
     setActivePrio(task.prio);
     await renderContactsDropdown();
+    newTask.assignedContacts = task.assignedContacts;
     task.assignedContacts.forEach(contact => assignContact(contact));
     document.getElementById("boardCardOverlay").addEventListener("click", (event) => closeDropdownCheck(event.target, "assignedToDropdown"));
     renderSubtaskList(task.subtasks);

@@ -138,6 +138,8 @@
   padding: 7px 16px 7px 16px;
   gap: 8px;
   margin-top: 4px;
+  overflow: auto;
+  max-height: 120px;
 }
 
 .singleAssignedContact {
@@ -162,6 +164,8 @@
   padding: 6px 16px 6px 16px;
   gap: 4px;
   margin-top: 4px;
+  max-height: 150px;
+  overflow: auto;
 }
 
 .singleSubtask {
