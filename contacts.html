@@ -36,11 +36,11 @@
     <main>
       <div class="contactList" id="globalContentList">
         <div class="addContactButtonContainer">
-        <div onclick="openOverlay('addContactOverlayContainer', 'addContactCardOverlay')" id="addContactButton">
-          <b>Add new contact</b>
-          <img src="./assets/img/add_contact_icon.svg" alt="add new contact" />
+          <div onclick="openOverlay('addContactOverlayContainer', 'addContactCardOverlay')" id="addContactButton">
+            <b>Add new contact</b>
+            <img src="./assets/img/add_contact_icon.svg" alt="add new contact" />
+          </div>
         </div>
-      </div>
 
         <div id="contactListContent"></div>
       </div>
@@ -49,50 +49,31 @@
           <h1>Contacts</h1>
           <div class="contactHeadingSpacer"></div>
           <p>Better with a team</p>
-          
-          <img src="./assets/img/pfeil.png" alt="Pfeil Icon" class="arrowIcon" onclick="hideContactInFullscreen('${contact.id}')">
-        
+
+          <img src="./assets/img/pfeil.png" alt="Pfeil Icon" class="arrowIcon"
+            onclick="hideContactInFullscreen('${contact.id}')">
+
         </div>
         <div id="contactContent"></div>
       </div>
     </main>
     <section id="sidebar">
-      <img
-        class="sidebarLogo"
-        src="./assets/img/Join logo vector.svg"
-        alt="Join Logo"
-      />
+      <img class="sidebarLogo" src="./assets/img/Join logo vector.svg" alt="Join Logo" />
       <div id="menu" class="menu">
         <a id="summary" class="menuButton" href="https://join-0724-aw-2.developerakademie.net/Join/summary.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/summary_icon.svg"
-            alt="summary icon"
-          />
+          <img class="menuIcon" src="./assets/img/summary_icon.svg" alt="summary icon" />
           <span>Summary</span>
         </a>
         <a id="addTask" class="menuButton" href="https://join-0724-aw-2.developerakademie.net/Join/addTasks.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/add_task_icon.svg"
-            alt="add_task_icon"
-          />
+          <img class="menuIcon" src="./assets/img/add_task_icon.svg" alt="add_task_icon" />
           <span>Add Task</span>
         </a>
         <a id="board" class="menuButton" href="https://join-0724-aw-2.developerakademie.net/Join/board.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/board_icon.svg"
-            alt="board_icon"
-          />
+          <img class="menuIcon" src="./assets/img/board_icon.svg" alt="board_icon" />
           <span>Board</span>
         </a>
         <a id="contacts" class="active" href="https://join-0724-aw-2.developerakademie.net/Join/contacts.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/contacts_icon.svg"
-            alt="contacts_icon"
-          />
+          <img class="menuIcon" src="./assets/img/contacts_icon.svg" alt="contacts_icon" />
           <span>Contacts</span>
         </a>
       </div>
@@ -130,38 +111,42 @@
               <img class="defaultProfileImg" src="./assets/img/default_profile_img.svg" alt="">
             </div>
             <form id="addContactForm">
-            <div class="inputArea">
+              <div class="inputArea">
                 <div class="inputContainer">
-                  <input class="inputFields" type="text" name="name" id="addContactInputName" placeholder="Name" required>
+                  <input class="inputFields" type="text" name="name" id="addContactInputName" placeholder="Name"
+                    required>
                   <img src="./assets/img/person.svg" alt="Person Icon">
                 </div>
                 <div class="inputContainer">
-                  <input class="inputFields" type="email" name="email" id="addContactInputEmail" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                  <input class="inputFields" type="email" name="email" id="addContactInputEmail" placeholder="Email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
                   <img src="./assets/img/mail.svg" alt="Mail Icon">
                 </div>
                 <div class="inputContainer">
-                  <input class="inputFields" type="number" name="phone" id="addContactInputPhone" placeholder="Phone" required>
+                  <input class="inputFields" type="number" name="phone" id="addContactInputPhone" placeholder="Phone"
+                    required>
                   <img src="./assets/img/call.svg" alt="Phone Icon">
                 </div>
-              </form>
-              <div class="buttonArea">
-                <div class="cancelButton" onclick="closeOverlay('addContactOverlayContainer', 'addContactCardOverlay')">Cancel
-                  <svg width="24" height="24" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M7.001 6.50008L12.244 11.7431M1.758 11.7431L7.001 6.50008L1.758 11.7431ZM12.244 1.25708L7 6.50008L12.244 1.25708ZM7 6.50008L1.758 1.25708L7 6.50008Z"
-                      stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <button class="createContactButton" onclick="addContact()" type="submit" form="addContactForm">Create contact <img
-                    src="./assets/img/check.svg" alt=""></button>
+            </form>
+            <div class="buttonArea">
+              <div class="cancelButton" onclick="closeOverlay('addContactOverlayContainer', 'addContactCardOverlay')">
+                Cancel
+                <svg width="24" height="24" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M7.001 6.50008L12.244 11.7431M1.758 11.7431L7.001 6.50008L1.758 11.7431ZM12.244 1.25708L7 6.50008L12.244 1.25708ZM7 6.50008L1.758 1.25708L7 6.50008Z"
+                    stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
               </div>
+              <button class="createContactButton" onclick="addContact()" type="submit" form="addContactForm">Create
+                contact <img src="./assets/img/check.svg" alt=""></button>
             </div>
           </div>
         </div>
-      </section>
     </div>
-    <div id="editOverlayContainer" class="overlayContainer">
-      <section id="editContactCardOverlay" class="contactCardOverlay">
+    </section>
+  </div>
+  <div id="editOverlayContainer" class="overlayContainer">
+    <section id="editContactCardOverlay" class="contactCardOverlay">
       <div class="background">
         <img class="backgroundLogo" src="./assets/img/background_logo.svg" alt="" />
         <div class="backgroundText">
@@ -213,48 +198,33 @@
           </div>
         </div>
       </div>
-      </section>
-    </div>
+    </section>
+  </div>
 
-    <div id="contactCreateSuccess">
-      <p>Contact successfully created</p>
-    </div>
-    <footer>
-      <section class="footerMenu">
-        <a id="respSummary" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/summary.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/summary_icon.svg"
-            alt="summary icon"
-          />
-          <span>Summary</span>
-        </a>
-        <a id="addTask" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/addTasks.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/add_task_icon.svg"
-            alt="add_task_icon"
-          />
-          <span>Add Task</span>
-        </a>
-        <a id="board" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/board.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/board_icon.svg"
-            alt="board_icon"
-          />
-          <span>Board</span>
-        </a>
-        <a id="contacts" class="respMenuButton respActive" href="https://join-0724-aw-2.developerakademie.net/Join/contacts.html">
-          <img
-            class="menuIcon"
-            src="./assets/img/contacts_icon.svg"
-            alt="contacts_icon"
-          />
-          <span>Contacts</span>
-        </a>
-      </section>
-    </footer>
+  <div id="contactCreateSuccess">
+    <p>Contact successfully created</p>
+  </div>
+  <footer>
+    <section class="footerMenu">
+      <a id="respSummary" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/summary.html">
+        <img class="menuIcon" src="./assets/img/summary_icon.svg" alt="summary icon" />
+        <span>Summary</span>
+      </a>
+      <a id="addTask" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/addTasks.html">
+        <img class="menuIcon" src="./assets/img/add_task_icon.svg" alt="add_task_icon" />
+        <span>Add Task</span>
+      </a>
+      <a id="board" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/board.html">
+        <img class="menuIcon" src="./assets/img/board_icon.svg" alt="board_icon" />
+        <span>Board</span>
+      </a>
+      <a id="contacts" class="respMenuButton respActive"
+        href="https://join-0724-aw-2.developerakademie.net/Join/contacts.html">
+        <img class="menuIcon" src="./assets/img/contacts_icon.svg" alt="contacts_icon" />
+        <span>Contacts</span>
+      </a>
+    </section>
+  </footer>
   </div>
 </body>
 

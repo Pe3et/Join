@@ -81,15 +81,15 @@ function hideContactInFullscreen() {
     content.classList.toggle('contactContainer');
     let contents = document.getElementById('globalContentList')
     contents.classList.toggle('contactContainer');
-    contactContent.classList.remove('fullscreen'); 
+    contactContent.classList.remove('fullscreen');
 }
 
 
 function getContactFromElement(contactElement) {
     const contactId = contactElement.getAttribute('data-contact-id');
-    console.log("Contact ID: ", contactId); 
+    console.log("Contact ID: ", contactId);
     const contact = contactsArray.find(contact => contact.id === contactId);
-    console.log("Contact Object: ", contact); 
+    console.log("Contact Object: ", contact);
     return contact;
 }
 
@@ -123,7 +123,7 @@ function getContactsArray(contactRestults) {
 }
 
 function renderContactDetails(contact) {
-    
+
 
     const contentRef = document.getElementById('contactContent');
     contentRef.style.transition = "none";

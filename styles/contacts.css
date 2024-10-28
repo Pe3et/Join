@@ -221,7 +221,7 @@ main {
   margin-left: 10px;
   vertical-align: middle;
   color: #29ABE2;
-  
+
 
 }
 
@@ -361,6 +361,7 @@ main {
 .showContactList .contactContainer {
   display: none;
 }
+
 .arrowIcon {
   display: none;
 }
@@ -388,7 +389,7 @@ main {
   #contactListContent {
     font-size: 10px;
   }
-  
+
 
   .personInContactListData b {
     font-size: 20px;
@@ -445,61 +446,72 @@ main {
   #addContactCardOverlay {
     display: none;
   }
-  .contactHeading h1{
+
+  .contactHeading h1 {
     font-size: 47px;
-    
+
   }
-  .contactHeading p{
+
+  .contactHeading p {
     display: flex;
     font-size: 20px;
-  
+
   }
-  .contactHeading{
+
+  .contactHeading {
     display: flex;
     flex-direction: column;
     gap: 1px;
-    
+
   }
-  .contactDetailsIcon{
+
+  .contactDetailsIcon {
     border-radius: 70px;
     border: 3px;
     height: 80px;
-    
-    
-
   }
-  .contactDetailsIcon p{
+
+  .contactDetailsIcon p {
     font-size: 27px;
   }
-  .contactDetailsName{
-    font-size: 36px;
+
+  .contactDetailsName {
+    font-size: 30px;
   }
-  .contactDetailsOptions{
+
+  .contactDetailsOptions {
     display: none;
   }
-  .iconAndName{
+
+  .iconAndName {
     flex-direction: row;
     padding-left: 16px;
   }
+
   .contactInformation {
     margin-top: 30px;
     padding-left: 16px;
   }
-  .contactContainer{
+
+  .contactContainer {
     padding-left: 16px;
   }
-  .contactHeading{
+
+  .contactHeading {
     padding-right: 20%;
     margin-top: 128px;
     position: relative;
   }
-  #contactDetails{
+
+  #contactDetails {
     padding-left: 16px;
   }
-  .contactSocials{
+
+  .contactSocials {
     padding-left: 16px;
   }
-  .arrowIcon{
+
+  .arrowIcon {
     position: absolute;
     top: 18px;
     height: 24px;
