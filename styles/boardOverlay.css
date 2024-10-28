@@ -132,12 +132,21 @@
   font-weight: 400;
 }
 
+.assignedToArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .assignedContacts {
   display: flex;
   flex-direction: column;
   padding: 7px 16px 7px 16px;
   gap: 8px;
   margin-top: 4px;
+  overflow: auto;
+  max-height: 120px;
+  width: 100%;
 }
 
 .singleAssignedContact {
@@ -156,12 +165,21 @@
   font-weight: 400;
 }
 
+.overlaySubtasksArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .overlaySubtasks {
   display: flex;
   flex-direction: column;
   padding: 6px 16px 6px 16px;
   gap: 4px;
   margin-top: 4px;
+  max-height: 150px;
+  overflow: auto;
+  width: 100%;
 }
 
 .singleSubtask {
