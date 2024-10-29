@@ -1,7 +1,7 @@
 function allowDrop(ev) {
     ev.preventDefault();
-    const newStatusRef = ev.target.closest(".taskList");
-    newStatusRef.classList.add("dragHighlight");
+    const highlightRef = ev.target.closest(".taskList");
+    highlightRef.classList.add("dragHighlight");
 }
 
 function removeHighlight(element) {

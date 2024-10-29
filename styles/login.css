@@ -163,3 +163,34 @@ input:hover {
     color: #29abe2;
     stroke: currentColor;
 }
+
+.signUpOption {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    top: 32px;
+}
+
+.signUpOption p {
+    font-size: 20px;
+}
+
+#signUpButton {
+    width: 104px;
+    height: none;
+    padding: 15px 16px;
+}
+
+footer {
+    display: flex;
+    gap: 32px;
+    position: absolute;
+    bottom: 32px;
+}
+
+a {
+    color: #A8A8A8;
+    text-decoration: none;
+    font-size: 16px;
+}
