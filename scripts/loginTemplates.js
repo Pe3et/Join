@@ -19,7 +19,7 @@ function getLoginTemplate() {
             <h1>Log in</h1>
             <div class="spacer"></div>
             <input type="text" id="emailInput" placeholder="Email">
-            <input type="text" id="passwordInput" placeholder="Password">
+            <input type="password" id="passwordInput" placeholder="Password">
             <div class="rememberMe">
                 <div id="checkbox" onclick="toggleCheckbox('checked')">
                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">

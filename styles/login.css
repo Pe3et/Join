@@ -316,3 +316,7 @@ a {
 .acceptPrivatePolicy a:hover {
     text-decoration: underline;
 }
+
+.validationContainer {
+    width: 100%;
+}

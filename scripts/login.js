@@ -63,12 +63,27 @@ function toggleCheckbox(status) {
     }
 }
 
-function login() {
+async function login() {
+    // checkLoginSucces() ?
+}
 
+async function checkLoginSucces() {
+    const email = document.getElementById('emailInput').value;
+    const password = document.getElementById('passwordInput').value;
+    const contactResults = await getFromDB('contacts');
+    Object.keys(contactResults).forEach(id => {
+        if (contactResults[id].email == email && contactResults[id].password == password) {
+            //TODO: redirect with id as param (maybe in local storage)
+        } else {
+            document.getElementById('emailInput').classList.add('inputError');
+            removeErrorMessage(document.getElementById('passwordInput'));
+            appendErrorMessage(document.getElementById('passwordInput'), 'Check your email and password. Please try again.')
+        }
+    });
 }
 
 function loginGuest() {
-    
+    //TODO: redirect
 }
 
 async function signUp() {
@@ -79,6 +94,7 @@ async function signUp() {
     newUser.color = getRandomColor();
     newUser.phone = '';
     await postToDB(newUser, 'contacts');
+    //TODO: redirect user
 }
 
 function togglePolicyAccept() {
