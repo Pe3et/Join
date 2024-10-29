@@ -59,6 +59,7 @@ function addClickListenersToContacts() {
 
             if (window.matchMedia("(max-width: 1050px)").matches) {
                 showContactInFullscreen();
+                showMenuIcon();
             }
         });
     });
@@ -72,6 +73,7 @@ function showContactInFullscreen() {
     let contents = document.getElementById('globalContentList')
     contents.classList.toggle('contactContainer');
     contactContent.classList.add('fullscreen'); // Vollbildklasse hinzufügen
+    showMenuIcon();
 }
 
 
@@ -82,6 +84,7 @@ function hideContactInFullscreen() {
     let contents = document.getElementById('globalContentList')
     contents.classList.toggle('contactContainer');
     contactContent.classList.remove('fullscreen');
+    showAddIcon();
 }
 
 
@@ -129,7 +132,7 @@ function renderContactDetails(contact) {
     contentRef.style.transition = "none";
     contentRef.style.left = "100vw";
     contentRef.innerHTML = getContactDetailsTemplate(contact);
-    setTimeout(() => {s
+    setTimeout(() => {
         contentRef.style.transition = "all 300ms ease-out";
         contentRef.style.left = "0";
     }, 1);
@@ -239,3 +242,15 @@ function contactCreatedSuccess() {
     ref.classList.add("slideInRight");
     setTimeout(() => { ref.classList.remove("slideInRight"); }, 800);
 }
+function showAddIcon() {
+    document.querySelector('.icon-add').style.display = 'block';
+    document.querySelector('.icon-menu').style.display = 'none';
+    document.querySelector('.fab-button').onclick = openAddContactOverlay;
+}
+
+function showMenuIcon() {
+    document.querySelector('.icon-add').style.display = 'none';
+    document.querySelector('.icon-menu').style.display = 'block';
+    document.querySelector('.fab-button').onclick = openContactOptions;
+}
+
