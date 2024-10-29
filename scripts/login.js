@@ -48,9 +48,9 @@ function toggleCheckbox(status) {
     const checkbox = document.getElementById('checkbox');
     checkbox.innerHTML = getCheckboxSVG(status);
     if (status == 'checked') {
-        checkbox.setAttribute('onclick', "toggleRememberMe('unchecked')");
+        checkbox.setAttribute('onclick', "toggleCheckbox('unchecked')");
     } else {
-        checkbox.setAttribute('onclick', "toggleRememberMe('checked')");
+        checkbox.setAttribute('onclick', "toggleCheckbox('checked')");
     }
 }
 
