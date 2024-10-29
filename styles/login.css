@@ -47,7 +47,7 @@ main {
 }
 
 #contentContainer {
-    transition: all 200ms ease-in-out;
+    transition: all 300ms ease-out;
     display: flex;
     background: white;
     border-radius: 30px;
@@ -55,7 +55,6 @@ main {
     flex-direction: column;
     padding: 32px;
     align-items: center;
-    width: 100%;
     gap: 32px;
     position: relative;
 }
@@ -100,7 +99,7 @@ input:hover {
     background-position: 94% 50%;
 }
 
-#passwordInput {
+#passwordInput, #confirmPasswordInput {
     background-image: url(../assets/img/login_lock.svg);
     background-repeat: no-repeat;
     background-position: 95% 50%;
@@ -217,6 +216,12 @@ a {
 #backArrow:hover {
     cursor: pointer;
     background: #EEEEEE;
+}
+
+#nameInput {
+    background-image: url(../assets/img/login_person.svg);
+    background-repeat: no-repeat;
+    background-position: 94% 50%;
 }
 
 .acceptPrivatePolicy {
