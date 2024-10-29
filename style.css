@@ -4,6 +4,23 @@
     scroll-behavior: smooth;
 }
 
+/* Validation */
+.inputError {
+  border: 1px solid #FF001F;
+}
+
+.errorText {
+  color: #FF8190;
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+.validationContainer {
+  position: relative;
+}
+
 /* Header */
 header {
   display: flex;

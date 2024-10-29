@@ -14,6 +14,12 @@ main {
     padding: 16px;
 }
 
+@media(min-width: 768px) {
+    main {
+        padding: 64px;
+    }
+}
+
 #logoContainer {
     display: flex;
     width: 100%;
@@ -150,6 +156,12 @@ input:hover {
     padding-left: 10%;
 }
 
+@media(min-width: 768px) {
+    .rememberMe {
+        padding-left: 0;
+    }
+}
+
 #checkbox {
     display: flex;
     align-items: center;
@@ -164,6 +176,13 @@ input:hover {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+@media(min-width: 768px) {
+    .buttonContainer {
+        flex-direction: row;
+        gap: 35px;
+    }
 }
 
 .button {
@@ -189,7 +208,7 @@ input:hover {
 }
 
 .fullButton:hover {
-    background-color: #29abe2;
+    background: #29abe2;
 }
 
 .hollowButton {
@@ -202,6 +221,15 @@ input:hover {
     stroke: currentColor;
 }
 
+.disabledButton {
+    cursor: not-allowed !important;
+}
+
+.disabledButton:hover {
+    background: #444d5a;
+    box-shadow: none;
+}
+
 #signUpOption {
     display: flex;
     align-items: center;
@@ -210,11 +238,19 @@ input:hover {
     top: 32px;
 }
 
+@media(min-width: 768px) {
+    #signUpOption {
+        position: absolute;
+        top: 67px;
+        right: 67px;
+    }
+}
+
 .signUpOption p {
     font-size: 20px;
 }
 
-#signUpButton {
+#switchToSignUpButton {
     width: 104px;
     height: none;
     padding: 15px 16px;
@@ -225,6 +261,12 @@ footer {
     gap: 32px;
     position: absolute;
     bottom: 32px;
+}
+
+@media(min-width: 768px) {
+    footer {
+        bottom: 64px;
+    }
 }
 
 a {

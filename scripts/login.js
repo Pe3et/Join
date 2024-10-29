@@ -1,5 +1,12 @@
 window.addEventListener('resize', ensureCorrectContainerTransitionOnRezise);
-let containerMode ='login';
+let containerMode = 'login';
+let policyAccepted = false;
+let signUpValidation = {
+
+}
+let user = {
+
+};
 
 function initLogin() {
     startAnimation();
@@ -33,10 +40,10 @@ function renderSignUp() {
 
 function setupContainerTransition(containerRef) {
     let transitionDirection = { start: '', end: ''};
-    let starterValue = containerMode == 'login' ? 0 : '1000px';
+    let startValue = containerMode == 'login' ? 0 : '1000px';
     containerMode == 'login' ? transitionDirection = {start:'min', end:'max'} : transitionDirection = {start:'max', end:'min'};
-    containerRef.style[`${transitionDirection.start}Height`] = starterValue;
-    containerRef.style[`${transitionDirection.start}Width`] = starterValue;
+    containerRef.style[`${transitionDirection.start}Height`] = startValue;
+    containerRef.style[`${transitionDirection.start}Width`] = startValue;
     setTimeout( () => {
         containerRef.style[`${transitionDirection.end}Height`] = `${containerRef.getBoundingClientRect().height}px`;
         containerRef.style[`${transitionDirection.end}Width`] = `${containerRef.getBoundingClientRect().width}px`;
@@ -71,5 +78,27 @@ function loginGuest() {
 }
 
 function signUp() {
+    console.log('test');
+}
 
+function togglePolicyAccept() {
+    const checkbox = document.getElementById('checkbox');
+    policyAccepted ? policyAccepted = false : policyAccepted = true;
+    checkbox.addEventListener('click', togglePolicyAccept);
+}
+
+function validateSignUpInput(refID) {
+    
+}
+
+function enableSignUpButton() {
+    const signUpButton = document.getElementById('signUpButton');
+    signUpButton.classList.remove('disabledButton');
+    signUpButton.onclick = 'signUp()';
+}
+
+function disableSignUpButton() {
+    const signUpButton = document.getElementById('signUpButton');
+    signUpButton.classList.add('disabledButton');
+    signUpButton.onclick = '';
 }
