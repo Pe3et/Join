@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./assets/fonts/Inter/inter.css">
     <link rel="stylesheet" href="./styles/login.css">
+    <script src="./scripts/loginTemplates.js"></script>
     <script src="./scripts/login.js"></script>
 </head>
 <body onload="initLogin()">
@@ -23,26 +24,10 @@
             </svg>       
         </div>
         <section id="contentContainer">
-            <h1>Log in</h1>
-            <div class="spacer"></div>
-            <input type="text" id="emailInput" placeholder="Email">
-            <input type="text" id="passwordInput" placeholder="Password">
-            <div class="rememberMe">
-                <div id="checkbox" onclick="toggleRememberMe()">
-                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="1" y="1.5" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-                    </svg>
-                </div>
-                <p>Remember me</p>
-            </div>
-            <div class="buttonContainer">
-                <div id="loginButton" class="fullButton button" onclick="login()">Log in</div>
-                <div id="loginGuestButton" class="hollowButton button" onclick="loginGuest()">Guest Log in</div>
-            </div>
         </section>
-        <section class="signUpOption">
+        <section id="signUpOption">
             <p>Not a Join user?</p>
-            <div id="signUpButton" class="button fullButton">Sign up</div>
+            <div id="signUpButton" class="button fullButton" onclick="renderSignUp()">Sign up</div>
         </section>
         <footer>
             <a href="#">Privacy Policy</a>

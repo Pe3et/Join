@@ -1,5 +1,6 @@
 function initLogin() {
     startAnimation();
+    renderLogin();
 }
 
 function startAnimation() {
@@ -11,8 +12,19 @@ function startAnimation() {
     setTimeout( () => logoContainer.style.height = 0, 800);
 }
 
-function toggleRememberMe() {
-    //TODO:
+function renderLogin() {
+    const containerRef = document.getElementById('contentContainer');
+    containerRef.innerHTML = getLoginTemplate();
+}
+
+function toggleCheckbox(status) {
+    const checkbox = document.getElementById('checkbox');
+    checkbox.innerHTML = getCheckboxSVG(status);
+    if (status == 'checked') {
+        checkbox.setAttribute('onclick', "toggleRememberMe('unchecked')");
+    } else {
+        checkbox.setAttribute('onclick', "toggleRememberMe('checked')");
+    }
 }
 
 function login() {
@@ -21,4 +33,13 @@ function login() {
 
 function loginGuest() {
     
+}
+
+function renderSignUp() {
+    const containerRef = document.getElementById('contentContainer');
+    containerRef.innerHTML = getSignUpTemplate();
+}
+
+function signUp() {
+
 }

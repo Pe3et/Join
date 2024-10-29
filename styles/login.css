@@ -22,6 +22,7 @@ main {
     top: 0;
     background: #2A3647;
     padding: 37px;
+    z-index: 1;
 }
 
 .logo {
@@ -56,6 +57,7 @@ main {
     align-items: center;
     width: 100%;
     gap: 32px;
+    position: relative;
 }
 
 h1 {
@@ -164,7 +166,7 @@ input:hover {
     stroke: currentColor;
 }
 
-.signUpOption {
+#signUpOption {
     display: flex;
     align-items: center;
     gap: 32px;
@@ -193,4 +195,36 @@ a {
     color: #A8A8A8;
     text-decoration: none;
     font-size: 16px;
+}
+
+/* Sign up */
+#backArrow {
+    position: absolute;
+    left: 30px;
+    top: 48px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#backArrow:hover {
+    cursor: pointer;
+    background: #EEEEEE;
+}
+
+.acceptPrivatePolicy {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.acceptPrivatePolicy a {
+    color: #29ABE2;
+}
+
+.acceptPrivatePolicy a:hover {
+    text-decoration: underline;
 }
