@@ -73,7 +73,7 @@ function showContactInFullscreen() {
     let contents = document.getElementById('globalContentList')
     contents.classList.toggle('contactContainer');
     contactContent.classList.add('fullscreen'); // Vollbildklasse hinzufügen
-    showMenuIcon();
+    // showMenuIcon();
 }
 
 
@@ -84,7 +84,7 @@ function hideContactInFullscreen() {
     let contents = document.getElementById('globalContentList')
     contents.classList.toggle('contactContainer');
     contactContent.classList.remove('fullscreen');
-    showAddIcon();
+    // showAddIcon();
 }
 
 
@@ -153,7 +153,7 @@ function closeOverlay(containerRefID, cardRefId) {
     setTimeout(() => {
         document.getElementById(containerRefID).classList.remove('overlayAppear')
     }, 300);
-    emptyInputFields();
+    // emptyInputFields();
 }
 
 function loadEditContactCard(contact) {
@@ -185,7 +185,7 @@ async function editContact(contact) {
         await putToDB(emailInput, ("contacts/" + contact.id + "/email"));
         await putToDB(phoneInput, ("contacts/" + contact.id + "/phone"));
         await loadContactList();
-        hardcloseEditOverlay();
+        // hardcloseEditOverlay();
     }
 }
 
@@ -242,15 +242,15 @@ function contactCreatedSuccess() {
     ref.classList.add("slideInRight");
     setTimeout(() => { ref.classList.remove("slideInRight"); }, 800);
 }
-function showAddIcon() {
-    document.querySelector('.icon-add').style.display = 'block';
-    document.querySelector('.icon-menu').style.display = 'none';
-    document.querySelector('.fab-button').onclick = openAddContactOverlay;
-}
+// function showAddIcon() {
+//     document.querySelector('.icon-add').style.display = 'block';
+//     document.querySelector('.icon-menu').style.display = 'none';
+//     document.querySelector('.fab-button').onclick = openAddContactOverlay;
+// }
 
-function showMenuIcon() {
-    document.querySelector('.icon-add').style.display = 'none';
-    document.querySelector('.icon-menu').style.display = 'block';
-    document.querySelector('.fab-button').onclick = openContactOptions;
-}
+// function showMenuIcon() {
+//     document.querySelector('.icon-add').style.display = 'none';
+//     document.querySelector('.icon-menu').style.display = 'block';
+//     document.querySelector('.fab-button').onclick = openContactOptions;
+// }
 
