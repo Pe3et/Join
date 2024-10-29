@@ -1,3 +1,6 @@
+window.addEventListener('resize', ensureCorrectContainerTransitionOnRezise);
+let containerMode ='login';
+
 function initLogin() {
     startAnimation();
     renderLogin();
@@ -16,32 +19,37 @@ function renderLogin() {
     const containerRef = document.getElementById('contentContainer');
     containerRef.innerHTML = getLoginTemplate();
     document.getElementById('signUpOption').classList.remove('dnone');
-    containerTransitionEffectToSignUp(containerRef);
+    containerMode = "login";
+    setupContainerTransition(containerRef);
 }
 
 function renderSignUp() {
     const containerRef = document.getElementById('contentContainer');
     containerRef.innerHTML = getSignUpTemplate();
     document.getElementById('signUpOption').classList.add('dnone');
-    containerTransitionEffectToLogin(containerRef);
+    containerMode = "signup";
+    setupContainerTransition(containerRef);
 }
 
-function containerTransitionEffectToSignUp(containerRef) {
-    containerRef.style.minHeight = `0`;
-    containerRef.style.minWidth = `0`;
+function setupContainerTransition(containerRef) {
+    let transitionDirection = { start: '', end: ''};
+    let starterValue = containerMode == 'login' ? 0 : '1000px';
+    containerMode == 'login' ? transitionDirection = {start:'min', end:'max'} : transitionDirection = {start:'max', end:'min'};
+    containerRef.style[`${transitionDirection.start}Height`] = starterValue;
+    containerRef.style[`${transitionDirection.start}Width`] = starterValue;
     setTimeout( () => {
-        containerRef.style.maxHeight = `${containerRef.getBoundingClientRect().height}px`;
-        containerRef.style.maxWidth = `${containerRef.getBoundingClientRect().width}px`;
-    }, 300);
+        containerRef.style[`${transitionDirection.end}Height`] = `${containerRef.getBoundingClientRect().height}px`;
+        containerRef.style[`${transitionDirection.end}Width`] = `${containerRef.getBoundingClientRect().width}px`;
+    }, 125);
 }
 
-function containerTransitionEffectToLogin(containerRef) {
-    containerRef.style.maxHeight = '1000px';
-    containerRef.style.maxWidth = '1000px';
-    setTimeout( () => {
-        containerRef.style.minHeight = `${containerRef.getBoundingClientRect().height}px`;
-        containerRef.style.minWidth = `${containerRef.getBoundingClientRect().width}px`;
-    }, 300);
+function ensureCorrectContainerTransitionOnRezise() {
+    const containerRef = document.getElementById('contentContainer');
+    containerRef.style.maxHeight = '';
+    containerRef.style.maxWidth = '';
+    containerRef.style.minHeight = '';
+    containerRef.style.minWidth = '';
+    setupContainerTransition(containerRef);
 }
 
 function toggleCheckbox(status) {

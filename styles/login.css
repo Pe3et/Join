@@ -25,18 +25,27 @@ main {
     z-index: 1;
 }
 
+@media(min-width: 768px) {
+    #logoContainer {
+        background-color: #f6f7f8;
+    }
+}
+
 .logo {
     position: relative;
     width: 100px;
     height: 122px;
-    top: calc(50% - 61px);
     left: calc(50% - 50px);
+    top: calc(50% - 61px);
 }
 
-.logoFill,
-.logo,
-#logoContainer {
-    transition: all 800ms ease-in-out 200ms;
+@media(min-width: 768px) {
+    .logo {
+        width: 274px;
+        height: 334px;
+        left: calc(50% - 137px);
+        top: calc(50% - 167px);
+    }
 }
 
 .logoEndPoint {
@@ -46,8 +55,30 @@ main {
     left: 0;
 }
 
+@media(min-width: 768px) {
+    .logoEndPoint {
+        width: 100px;
+        height: 122px;
+        top: 0;
+        left: 0;
+    }
+}
+
+.logoFill,
+.logo,
+#logoContainer {
+    transition: all 400ms ease-in-out 300ms;
+}
+
+@media(min-width: 768px) {
+    .logoFill {
+        fill: #2A3647;
+    }
+}
+
+/* Content */
 #contentContainer {
-    transition: all 300ms ease-out;
+    transition: all 125ms ease-in-out;
     display: flex;
     background: white;
     border-radius: 30px;
@@ -57,6 +88,12 @@ main {
     align-items: center;
     gap: 32px;
     position: relative;
+}
+
+@media(min-width: 768px) {
+    #contentContainer {
+        padding: 48px 115px;
+    }
 }
 
 h1 {
