@@ -1,12 +1,6 @@
 window.addEventListener('resize', ensureCorrectContainerTransitionOnRezise);
 let containerMode = 'login';
 let policyAccepted = false;
-let signUpValidation = {
-
-}
-let user = {
-
-};
 
 function initLogin() {
     startAnimation();
@@ -77,28 +71,44 @@ function loginGuest() {
     
 }
 
-function signUp() {
-    console.log('test');
+async function signUp() {
+    const newUser = {};
+    newUser.name = getUpperCaseName(document.getElementById('nameInput').value);
+    newUser.email = document.getElementById('emailInput').value;
+    newUser.password = document.getElementById('confirmPasswordInput').value;
+    newUser.color = getRandomColor();
+    await postToDB(newUser, 'contacts');
 }
 
 function togglePolicyAccept() {
     const checkbox = document.getElementById('checkbox');
-    policyAccepted ? policyAccepted = false : policyAccepted = true;
+    policyAccepted = !policyAccepted;
     checkbox.addEventListener('click', togglePolicyAccept);
+    policyAccepted == true && validateSignUpInput();
 }
 
-function validateSignUpInput(refID) {
-    
+function validateSignUpInput() {
+    validateName(document.getElementById('nameInput'));
+    validateEmail(document.getElementById('emailInput'));
+    validateConfirmedPassword(document.getElementById('confirmPasswordInput'));
+    if(validated.name == true && validated.email == true && validated.password == true && policyAccepted) {
+        enableSignUpButton();
+    } else {
+        disableSignUpButton();
+        togglePolicyAccept();
+        toggleCheckbox('unchecked');
+    }
 }
 
 function enableSignUpButton() {
     const signUpButton = document.getElementById('signUpButton');
     signUpButton.classList.remove('disabledButton');
-    signUpButton.onclick = 'signUp()';
+    signUpButton.addEventListener('click', signUp);
 }
 
 function disableSignUpButton() {
     const signUpButton = document.getElementById('signUpButton');
     signUpButton.classList.add('disabledButton');
-    signUpButton.onclick = '';
+    signUpButton.removeEventListener('click', signUp);
+
 }

@@ -1,16 +1,3 @@
-colors = [
-    "#FF7A00",
-    "#9327FF",
-    "#6E52FF",
-    "#FC71FF",
-    "#FFBB2B",
-    "#1FD7C1",
-    "#462F8A",
-    "#FF4646",
-    "#00BEE8",
-    "#FF7A00"
-]
-
 function init() {
     loadContactList();
 }
@@ -200,7 +187,7 @@ async function addContact() {
     const emailInput = document.getElementById('addContactInputEmail').value;
     const phoneInput = document.getElementById('addContactInputPhone').value;
     if (checkIfNameInputIsCorrect(nameInput)) {
-        const randomColor = getrandomColor();
+        const randomColor = getRandomColor();
         const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
         await postToDB(newContact, "contacts");
         loadContactList();
@@ -227,11 +214,6 @@ async function deleteContact(key) {
         document.getElementById('editContactCardOverlay').classList.remove('slideInRight');
         document.getElementById('editOverlayContainer').classList.remove('overlayAppear');
     }
-}
-
-function getrandomColor() {
-    const randomColor = colors[(Math.round(Math.random() * (colors.length - 1)))];
-    return randomColor;
 }
 
 function contactCreatedSuccess() {

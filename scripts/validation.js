@@ -1,8 +1,8 @@
-let provided = {
-    name: false,
-    email: false,
-    password: false
-};
+// let provided = {
+//     name: false,
+//     email: false,
+//     password: false
+// };
 
 let validated = {
     name: false,
@@ -10,10 +10,10 @@ let validated = {
     password: false
 };
 
-function checkProvidedInput(inputRef) {
-    const inputType = inputRef.id.slice(0, -5); //the id's are built like 'nameInput', so the type would be 'name'
-    inputRef.value.trim() != '' ? provided[inputType] = true : provided[inputType] = false;
-}
+// function checkProvidedInput(inputRef) {
+//     const inputType = inputRef.id.slice(0, -5); //the input id's are built like 'nameInput', so the type would be 'name'
+//     inputRef.value.trim() != '' ? provided[inputType] = true : provided[inputType] = false;
+// }
 
 function validateName(inputRef) {
     const name = inputRef.value;
@@ -21,11 +21,42 @@ function validateName(inputRef) {
         validated.name = true
         removeErrorMessage(inputRef);
     } else {
-        validated.name == false;
+        validated.name = false;
         appendErrorMessage(inputRef, 'Please enter first and last name.');
     }
 }
 
+function getUpperCaseName(nameInput="") {
+    let splitName = nameInput.split(' ');
+    splitName = splitName.map(name => name = name[0].toUpperCase() + name.slice(1));
+    const upperCaseName = splitName[0] + " " + splitName[1];
+    return upperCaseName
+}
+
+function validateEmail(inputRef) {
+    const email = inputRef.value;
+    if (email.includes('@') && email.includes('.')) {
+        validated.email = true;
+        removeErrorMessage(inputRef);
+    } else {
+        validated.email = false;
+        appendErrorMessage(inputRef, 'Please enter valid email address.');
+    }
+}
+
+function validateConfirmedPassword(inputRef) {
+    const password = inputRef.value;
+    const checkPassword = document.getElementById('passwordInput').value;
+    if (password == checkPassword && password.trim() != '') {
+        validated.password = true;
+        removeErrorMessage(inputRef);
+    } else {
+        validated.password = false;
+        appendErrorMessage(inputRef, "Your passwords don't match. Please try again.");
+    }
+}
+
+//to minimize html restructuring, this function wraps the input field in a div and creates the error message absolute below the wrapper
 function appendErrorMessage(inputRef, errorMessage) {
     const errorText = document.createElement('p');
     const validationContainer = document.createElement('div');
@@ -41,6 +72,6 @@ function appendErrorMessage(inputRef, errorMessage) {
 
 function removeErrorMessage(inputRef) {
     const errorText = document.getElementById('error' + inputRef.id);
-    errorText.remove();
+    errorText && errorText.remove();
     inputRef.classList.remove('inputError');
 }

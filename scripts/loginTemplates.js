@@ -44,10 +44,10 @@ function getSignUpTemplate() {
             </div>                
             <h1>Sign up</h1>
             <div class="spacer"></div>
-            <input type="text" id="nameInput" placeholder="Name" oninput="checkProvidedInput(this)" onchange="validateName(this)">
-            <input type="text" id="emailInput" placeholder="Email">
-            <input type="text" id="passwordInput" placeholder="Password">
-            <input type="text" id="confirmPasswordInput" placeholder="Confirm Password">
+            <input type="text" id="nameInput" placeholder="Name" onchange="validateName(this)">
+            <input type="text" id="emailInput" placeholder="Email" onchange="validateEmail(this)">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <input type="password" id="confirmPasswordInput" placeholder="Confirm Password" onchange="validateConfirmedPassword(this)">
             <div class="acceptPrivatePolicy">
                 <div id="checkbox" onclick="toggleCheckbox('checked'); togglePolicyAccept()">
                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
