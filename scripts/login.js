@@ -77,6 +77,7 @@ async function signUp() {
     newUser.email = document.getElementById('emailInput').value;
     newUser.password = document.getElementById('confirmPasswordInput').value;
     newUser.color = getRandomColor();
+    newUser.phone = '';
     await postToDB(newUser, 'contacts');
 }
 
