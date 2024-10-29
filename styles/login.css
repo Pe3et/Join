@@ -197,6 +197,10 @@ a {
     font-size: 16px;
 }
 
+.dnone {
+    display: none !important;
+}
+
 /* Sign up */
 #backArrow {
     position: absolute;
