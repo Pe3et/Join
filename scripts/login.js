@@ -15,6 +15,7 @@ function startAnimation() {
 function renderLogin() {
     const containerRef = document.getElementById('contentContainer');
     containerRef.innerHTML = getLoginTemplate();
+    document.getElementById('signUpOption').classList.remove('dnone');
 }
 
 function toggleCheckbox(status) {
@@ -38,6 +39,7 @@ function loginGuest() {
 function renderSignUp() {
     const containerRef = document.getElementById('contentContainer');
     containerRef.innerHTML = getSignUpTemplate();
+    document.getElementById('signUpOption').classList.add('dnone');
 }
 
 function signUp() {

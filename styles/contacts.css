@@ -388,18 +388,17 @@ main {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
-  
 }
 
 .fab-button:hover {
   background-color: #555; /* Hover-Effekt */
 }
+
 .fab img {
   width: 28px;
   height: 24px;
   position: absolute;
 }
-
 
 @media(max-width: 1092px) {
   .arrowIcon {
@@ -610,8 +609,6 @@ main {
     height: 3px;
     background-color: #29ABE2;
     top: 30px;
-
-
   }
 }
 
