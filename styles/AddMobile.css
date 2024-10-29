@@ -1,0 +1,41 @@
+@media(max-width: 1050px){
+    #addContactCardOverlay{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 310px;
+        
+        
+    }
+    .overlayContainer{
+        top: 0;
+    }
+    .inpuContainer{
+        height:30px ;
+    }
+    .background{
+        position: relative;
+        height: 396px;
+        width: 352px;
+    }
+    .addContactForm {
+        height: 396px;
+        width: 352px;
+    }
+    .profileImgAndForm{
+        width: 356px;
+        height: 156px;
+        flex-direction: column;
+    }
+    .backgroundText h2{
+        font-size: 45px;
+    }
+    .backgroundLogo{
+        display: none;
+    }
+    .backgroundText p{
+        font-size: 18px;
+    }
+    .backgroundText{
+        gap: 8px;
+    }
+}
