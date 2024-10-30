@@ -21,7 +21,7 @@ function getLoginTemplate() {
             <input type="text" id="emailInput" placeholder="Email">
             <input type="password" id="passwordInput" placeholder="Password">
             <div class="rememberMe">
-                <div id="checkbox" onclick="toggleCheckbox('checked')">
+                <div id="checkbox" onclick="toggleCheckbox('checked'); toggleRememberMe()">
                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1.5" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                     </svg>
@@ -29,7 +29,7 @@ function getLoginTemplate() {
                 <p>Remember me</p>
             </div>
             <div class="buttonContainer">
-                <div id="loginButton" class="fullButton button" onclick="login()">Log in</div>
+                <div id="loginButton" class="fullButton button" onclick="checkLoginSucces()">Log in</div>
                 <div id="loginGuestButton" class="hollowButton button" onclick="loginGuest()">Guest Log in</div>
             </div>
     `

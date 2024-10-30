@@ -1,10 +1,12 @@
 window.addEventListener('resize', ensureCorrectContainerTransitionOnRezise);
 let containerMode = 'login';
 let policyAccepted = false;
+let rememberMe = false;
 
 function initLogin() {
     startAnimation();
-    renderLogin();
+    rememberMe = localStorage.getItem('rememberMe') ?? false;
+    rememberMe == true ? location.href = 'http://127.0.0.1:5500/summary.html' : renderLogin();
 }
 
 function startAnimation() {
@@ -63,27 +65,41 @@ function toggleCheckbox(status) {
     }
 }
 
-async function login() {
-    // checkLoginSucces() ?
+function toggleRememberMe() {
+    const checkbox = document.getElementById('checkbox');
+    rememberMe = !rememberMe;
+    checkbox.addEventListener('click', toggleRememberMe);
 }
 
 async function checkLoginSucces() {
     const email = document.getElementById('emailInput').value;
     const password = document.getElementById('passwordInput').value;
     const contactResults = await getFromDB('contacts');
+    let loginSucces = false;
     Object.keys(contactResults).forEach(id => {
         if (contactResults[id].email == email && contactResults[id].password == password) {
-            //TODO: redirect with id as param (maybe in local storage)
-        } else {
-            document.getElementById('emailInput').classList.add('inputError');
-            removeErrorMessage(document.getElementById('passwordInput'));
-            appendErrorMessage(document.getElementById('passwordInput'), 'Check your email and password. Please try again.')
+            loginSucces = true;
+            setActiveUser(id, contactResults[id].name);
+            //redirect user (change link on your own FTP)
+            // location.href = "https://join-0724-aw-2.developerakademie.net/Join/summary.html"
+            location.href = "http://127.0.0.1:5500/summary.html"
         }
     });
+    (loginSucces == false) && loginError();
+}
+
+function loginError() {
+    document.getElementById('emailInput').classList.add('inputError');
+    removeErrorMessage(document.getElementById('passwordInput'));
+    appendErrorMessage(document.getElementById('passwordInput'), 'Check your email and password. Please try again.')
+}
+
+function setActiveUser(id, name) {
+    localStorage.setItem('rememberMe', rememberMe);
 }
 
 function loginGuest() {
-    //TODO: redirect
+    //TODO: redirect, localstorage guest login track
 }
 
 async function signUp() {
