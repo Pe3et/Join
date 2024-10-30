@@ -15,3 +15,7 @@ function getRandomColor() {
     const randomColor = colors[(Math.round(Math.random() * (colors.length - 1)))];
     return randomColor;
 }
+
+function goBack() {
+    window.history.back();
+    }
