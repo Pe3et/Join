@@ -18,6 +18,11 @@ h1 {
   font-weight: 700;
 }
 
+::-webkit-scrollbar {
+  background: transparent;
+  width: 0;
+}
+
 .backButton {
   position: fixed;
   top: 225px;

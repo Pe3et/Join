@@ -27,6 +27,8 @@ function redirectUnauthorizedUserToLogin() {
     joinStorage = JSON.parse(localStorage.getItem('joinStorage')) ?? {rememberMe: false};
     if ((userIsAuthorized == false) 
         && (window.location.pathname.split("/").pop() != 'index.html')
+        && (window.location.pathname.split("/").pop() != 'legalNoticeExternal.html')
+        && (window.location.pathname.split("/").pop() != 'privacyPolicyExternal.html')
         && joinStorage.rememberMe == false) {
         location.href = "./index.html";
     }
