@@ -14,13 +14,13 @@ function daytimeGreeting() {
     const greetingTextRef = document.getElementById('greetingText');
     let greeting;
     if (timeOfDay < 6) {
-        greeting = "Good Night,";
+        greeting = "Good night,";
     } else if (timeOfDay < 12) {
-        greeting = "Good Morning,";
+        greeting = "Good morning,";
     } else if (timeOfDay < 18) {
-        greeting = "Welcome,";
+        greeting = "Good afternoon,";
     } else {
-        greeting = "Good Evening,";
+        greeting = "Good evening,";
     }
     greetingTextRef.innerText = greeting;
 }
