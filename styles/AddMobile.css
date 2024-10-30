@@ -2,20 +2,25 @@
     #addContactCardOverlay{
         display: flex;
         flex-direction: column;
-        margin-bottom: 310px;
+        height: 595px;
+        align-items: center;
         
         
     }
     .overlayContainer{
         top: 0;
     }
-    .inpuContainer{
+    .inputContainer{
         height:30px ;
+        width: 310px;
+        padding: 0px 5px 1px 14px;
     }
     .background{
         position: relative;
         height: 396px;
         width: 352px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 30px;
     }
     .addContactForm {
         height: 396px;
@@ -23,7 +28,6 @@
     }
     .profileImgAndForm{
         width: 356px;
-        height: 156px;
         flex-direction: column;
     }
     .backgroundText h2{
@@ -38,4 +42,111 @@
     .backgroundText{
         gap: 8px;
     }
+    .defaultProfileImg {
+        height: 120px;
+        width: 120px;
+        position: absolute;
+        top: 228px;
+    }
+    .xButton svg{
+        margin-bottom: 0;
+    }
+    .imgContainer{
+        padding-bottom: 0;
+        margin-top: -129px;
+    }
+    .addContactForm{
+        padding-left: 0;
+        padding: 12px;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 30px;
+    }
+    .cancelButton{
+        display: none;
+    }
+    .inputArea{
+        align-items: center;
+        gap: 19px;
+        margin-top: 30px;
+       
+    }
+    .inputFields{
+        width: 300px;
+        font-size: 17px;
+    }
+    .createContactButton{
+        font-size: 20px;
+    }
+    .xButton svg{
+        /* display: none; */
+        margin-bottom: 300px;
+    }
+    .inputFields:hover{
+        cursor: pointer;
+    }
+    
+   
+    
+    
 }
+
+@media(max-width: 480px){
+    #addContactCardOverlay{
+        display: flex;
+        flex-direction: column;
+        height: 595px;
+        
+        padding-left: 5%;
+        
+        
+    }
+    .background {
+        position: relative;
+        height: 396px;
+        width: 288px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 30px;
+    }
+    .addContactForm {
+        height: 396px;
+        width: 288px;
+    }
+    .backgroundText H2{
+        font-size: 33px;
+    }
+    .backgroundText p{
+        font-size: 13px;
+    }
+    .inputContainer {
+        height: 30px;
+        width: 282px;
+        padding: 1px 4px 2px 0px;
+    }
+    .inputFields{
+        width: 300px;
+        font-size: 17px;
+    }
+    
+    .xButton svg{
+        display: none;
+    }
+    .defaultProfileImg {
+        height: 120px;
+        width: 120px;
+        position: absolute;
+        top: 253px;
+    }
+    .profileImgAndForm {
+        width: 266px;
+        flex-direction: column;
+    }
+    .inputArea {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 30px;
+    }
+   
+}
+
+

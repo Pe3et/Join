@@ -4,7 +4,7 @@ let policyAccepted = false;
 
 function initLogin() {
     startAnimation();
-    renderLogin();
+    joinStorage.rememberMe == true ? location.href = '../summary.html' : renderLogin();
 }
 
 function startAnimation() {
@@ -21,6 +21,7 @@ function renderLogin() {
     containerRef.innerHTML = getLoginTemplate();
     document.getElementById('signUpOption').classList.remove('dnone');
     containerMode = "login";
+    joinStorage.rememberMe == true && toggleCheckbox('checked');
     setupContainerTransition(containerRef);
 }
 
@@ -63,27 +64,46 @@ function toggleCheckbox(status) {
     }
 }
 
-async function login() {
-    // checkLoginSucces() ?
+function toggleRememberMe() {
+    const checkbox = document.getElementById('checkbox');
+    joinStorage.rememberMe = !joinStorage.rememberMe;
+    checkbox.addEventListener('click', toggleRememberMe);
 }
 
 async function checkLoginSucces() {
     const email = document.getElementById('emailInput').value;
     const password = document.getElementById('passwordInput').value;
     const contactResults = await getFromDB('contacts');
+    let loginSucces = false;
     Object.keys(contactResults).forEach(id => {
         if (contactResults[id].email == email && contactResults[id].password == password) {
-            //TODO: redirect with id as param (maybe in local storage)
-        } else {
-            document.getElementById('emailInput').classList.add('inputError');
-            removeErrorMessage(document.getElementById('passwordInput'));
-            appendErrorMessage(document.getElementById('passwordInput'), 'Check your email and password. Please try again.')
+            loginSucces = true;
+            localStoreActiveUser(contactResults[id].name);
+            location.href = "../summary.html"
         }
     });
+    (loginSucces == false) && loginError();
+}
+
+function loginError() {
+    document.getElementById('emailInput').classList.add('inputError');
+    removeErrorMessage(document.getElementById('passwordInput'));
+    appendErrorMessage(document.getElementById('passwordInput'), 'Check your email and password. Please try again.')
+}
+
+function localStoreActiveUser(name) {
+    joinStorage.userName = name;
+    joinStorage.iconInitials = `${name[0]}${name.split(" ")[1][0]}`;
+    localStorage.setItem('joinStorage', JSON.stringify(joinStorage));
+    sessionStorage.setItem('loggedIn', JSON.stringify(true));
 }
 
 function loginGuest() {
-    //TODO: redirect
+    localStorage.clear();
+    joinStorage = {iconInitials: 'G', rememberMe: false};
+    localStorage.setItem('joinStorage', JSON.stringify(joinStorage));
+    sessionStorage.setItem('loggedIn', JSON.stringify(true));
+    location.href = '../summary.html'
 }
 
 async function signUp() {
@@ -94,7 +114,8 @@ async function signUp() {
     newUser.color = getRandomColor();
     newUser.phone = '';
     await postToDB(newUser, 'contacts');
-    //TODO: redirect user
+    localStoreActiveUser(newUser.name);
+    location.href = '../summary.html'
 }
 
 function togglePolicyAccept() {

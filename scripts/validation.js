@@ -1,19 +1,8 @@
-// let provided = {
-//     name: false,
-//     email: false,
-//     password: false
-// };
-
 let validated = {
     name: false,
     email: false,
     password: false
 };
-
-// function checkProvidedInput(inputRef) {
-//     const inputType = inputRef.id.slice(0, -5); //the input id's are built like 'nameInput', so the type would be 'name'
-//     inputRef.value.trim() != '' ? provided[inputType] = true : provided[inputType] = false;
-// }
 
 function validateName(inputRef) {
     const name = inputRef.value;

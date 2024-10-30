@@ -22,18 +22,24 @@
   <div class="pageContent">
     <header>
       <div class="project">
-        <p>Kanban Project Managment Tool</p>
-        <img src="./assets/img/resp_header.svg" alt="" />
+          <p>Kanban Project Managment Tool</p>
+          <img src="./assets/img/resp_header.svg" alt="" />
       </div>
       <div class="picture">
-        <div class="help">
-          <img src="./assets/img/help.png" alt="" />
-        </div>
-        <div class="userIcon">
-          <p>aa</p>
-        </div>
+          <div class="help">
+              <img src="./assets/img/help.png" alt="" />
+          </div>
+          <div class="userIcon">
+              <p></p>
+          </div>
       </div>
-    </header>
+      <div id="headerDropdown" class="dnone">
+          <a href="#">Legal Notice</a>
+          <a href="#">Privacy Policy</a>
+          <a href="./index.html" onclick="logOut()">Log out</a>
+      </div>
+  </header>
+
     <main>
       <div class="contactList" id="globalContentList">
         <div class="addContactButtonContainer">
@@ -64,7 +70,7 @@
         alt="Join Logo"
       />
       <div id="menu" class="menu">
-        <a id="summary" class="menuButton" href="https://join-0724-aw-2.developerakademie.net/Join/summary.html">
+        <a id="summary" class="menuButton" href="./summary.html">
           <img
             class="menuIcon"
             src="./assets/img/summary_icon.svg"
@@ -72,7 +78,7 @@
           />
           <span>Summary</span>
         </a>
-        <a id="addTask" class="menuButton" href="https://join-0724-aw-2.developerakademie.net/Join/addTasks.html">
+        <a id="addTask" class="menuButton" href="./addTasks.html">
           <img
             class="menuIcon"
             src="./assets/img/add_task_icon.svg"
@@ -80,7 +86,7 @@
           />
           <span>Add Task</span>
         </a>
-        <a id="board" class="menuButton" href="https://join-0724-aw-2.developerakademie.net/Join/board.html">
+        <a id="board" class="menuButton" href="./board.html">
           <img
             class="menuIcon"
             src="./assets/img/board_icon.svg"
@@ -88,7 +94,7 @@
           />
           <span>Board</span>
         </a>
-        <a id="contacts" class="active" href="https://join-0724-aw-2.developerakademie.net/Join/contacts.html">
+        <a id="contacts" class="active" href="./contacts.html">
           <img
             class="menuIcon"
             src="./assets/img/contacts_icon.svg"
@@ -222,7 +228,7 @@
     </div>
     <footer>
       <section class="footerMenu">
-        <a id="respSummary" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/summary.html">
+        <a id="respSummary" class="respMenuButton" href="./summary.html">
           <img
             class="menuIcon"
             src="./assets/img/summary_icon.svg"
@@ -230,7 +236,7 @@
           />
           <span>Summary</span>
         </a>
-        <a id="addTask" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/addTasks.html">
+        <a id="addTask" class="respMenuButton" href="./addTasks.html">
           <img
             class="menuIcon"
             src="./assets/img/add_task_icon.svg"
@@ -238,7 +244,7 @@
           />
           <span>Add Task</span>
         </a>
-        <a id="board" class="respMenuButton" href="https://join-0724-aw-2.developerakademie.net/Join/board.html">
+        <a id="board" class="respMenuButton" href="./board.html">
           <img
             class="menuIcon"
             src="./assets/img/board_icon.svg"
@@ -246,7 +252,7 @@
           />
           <span>Board</span>
         </a>
-        <a id="contacts" class="respMenuButton respActive" href="https://join-0724-aw-2.developerakademie.net/Join/contacts.html">
+        <a id="contacts" class="respMenuButton respActive" href="./contacts.html">
           <img
             class="menuIcon"
             src="./assets/img/contacts_icon.svg"

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Summary</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/summary.css">
+    <link rel="stylesheet" href="./styles/mediaquerySidebarAndFooter.css">
+    <link rel="stylesheet" href="./assets/fonts/Inter/inter.css">
+    <script src="./script.js"></script>
+    <script src="./scripts/firebaseAPI.js"></script>
+    <script src="./scripts/summary.js"></script>
+</head>
+
+<body onload="initSummary()">
+    <div class="pageContent">
+        <header>
+            <div class="project">
+                <p>Kanban Project Managment Tool</p>
+                <img src="./assets/img/resp_header.svg" alt="" />
+            </div>
+            <div class="picture">
+                <div class="help">
+                    <img src="./assets/img/help.png" alt="" />
+                </div>
+                <div class="userIcon">
+                    <p></p>
+                </div>
+            </div>
+            <div id="headerDropdown" class="dnone">
+                <a href="#">Legal Notice</a>
+                <a href="#">Privacy Policy</a>
+                <a href="./index.html" onclick="logOut()">Log out</a>
+            </div>
+        </header>
+
+        <main>
+            <div id="greetingContainer">
+                <p id="greetingText"></p>
+                <b id="userName"></b>
+            </div>
+        </main>
+
+        <section id="sidebar">
+            <img class="sidebarLogo" src="./assets/img/Join logo vector.svg" alt="Join Logo" />
+            <div id="menu" class="menu">
+                <a id="summary" class="menuButton" href="./summary.html">
+                    <img class="menuIcon" src="./assets/img/summary_icon.svg" alt="summary icon" />
+                    <span>Summary</span>
+                </a>
+                <a id="addTask" class="menuButton" href="./addTasks.html">
+                    <img class="menuIcon" src="./assets/img/add_task_icon.svg" alt="add_task_icon" />
+                    <span>Add Task</span>
+                </a>
+                <a id="board" class="menuButton" href="./board.html">
+                    <img class="menuIcon" src="./assets/img/board_icon.svg" alt="board_icon" />
+                    <span>Board</span>
+                </a>
+                <a id="contacts" class="menuButton active" href="./contacts.html">
+                    <img class="menuIcon" src="./assets/img/contacts_icon.svg" alt="contacts_icon" />
+                    <span>Contacts</span>
+                </a>
+            </div>
+            <div class="links">
+                <a class="linkButton" href="#">Privacy Policy</a>
+                <a class="linkButton" href="#">Legal notice</a>
+            </div>
+        </section>
+
+        <footer>
+            <section class="footerMenu">
+                <a id="respSummary" class="respMenuButton" href="./summary.html">
+                    <img class="menuIcon" src="./assets/img/summary_icon.svg" alt="summary icon" />
+                    <span>Summary</span>
+                </a>
+                <a id="addTask" class="respMenuButton" href="./addTasks.html">
+                    <img class="menuIcon" src="./assets/img/add_task_icon.svg" alt="add_task_icon" />
+                    <span>Add Task</span>
+                </a>
+                <a id="board" class="respMenuButton" href="./board.html">
+                    <img class="menuIcon" src="./assets/img/board_icon.svg" alt="board_icon" />
+                    <span>Board</span>
+                </a>
+                <a id="contacts" class="respMenuButton respActive" href="./contacts.html">
+                    <img class="menuIcon" src="./assets/img/contacts_icon.svg" alt="contacts_icon" />
+                    <span>Contacts</span>
+                </a>
+            </section>
+        </footer>
+    </div>
+</body>
+
+</html>

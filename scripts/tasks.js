@@ -218,8 +218,7 @@ async function createTask() {
     newTask.description = document.getElementById("descriptionInput").value;
     newTask.dueDate = document.getElementById("dateInput").value;
     await postToDB(newTask,"tasks");
-    //to relocate a user to the Board after adding a task (adjust link, when project is on your own FTP)
-    location.href = "https://join-0724-aw-2.developerakademie.net/Join/board.html";
+    location.href = "../board.html";
 }
 
 async function clearTask() {
