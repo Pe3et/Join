@@ -47,7 +47,6 @@ async function getStats() {
     category.forEach( cat => renderStatusStat(cat));
     renderUrgentStat();
     document.getElementById('totalTasksSummary').innerText = tasks.length;
-
 }
 
 function renderStatusStat(stat='') {
