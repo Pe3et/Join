@@ -11,11 +11,11 @@ colors = [
     "#FF7A00"
 ];
 let joinStorage = {};
-document.addEventListener('DOMContentLoaded', redirectUnauthorizedUserToLogin);
+document.addEventListener('DOMContentLoaded', generalInit);
 
-function getRandomColor() {
-    const randomColor = colors[(Math.round(Math.random() * (colors.length - 1)))];
-    return randomColor;
+function generalInit() {
+    redirectUnauthorizedUserToLogin();
+    loadUserIconForHeader();
 }
 
 function redirectUnauthorizedUserToLogin() {
@@ -26,4 +26,16 @@ function redirectUnauthorizedUserToLogin() {
         && joinStorage.rememberMe == false) {
         location.href = "./index.html";
     }
+}
+
+function loadUserIconForHeader() {
+    const headerIconTextRef = document.querySelector('.userIcon p');
+    if(headerIconTextRef) {
+        headerIconTextRef.innerText = joinStorage.iconInitials;
+    }
+}
+
+function getRandomColor() {
+    const randomColor = colors[(Math.round(Math.random() * (colors.length - 1)))];
+    return randomColor;
 }
