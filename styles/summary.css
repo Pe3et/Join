@@ -12,7 +12,7 @@ main {
     flex: 1;
 }
 
-.greetingContainer {
+#greetingContainer {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -29,4 +29,9 @@ main {
     font-size: 47px;
     font-weight: 700;
     color: #29ABE2;
+}
+
+.greetingAnimation {
+    transition: all 400ms ease-in 1200ms;
+    opacity: 0;
 }

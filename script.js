@@ -50,12 +50,11 @@ function toggleHeaderDropdown() {
 }
 
 function closeHeaderDropdownCheck(event) {
-    event.preventDefault();
     const headerDropdown = document.getElementById('headerDropdown');
     const clickedElement = event.target;
     if ((!headerDropdown.classList.contains('dnone') && !headerDropdown.contains(clickedElement)) || document.querySelector('.userIcon').contains(clickedElement)) {
         toggleHeaderDropdown();
-    } 
+    }
 }
 
 function logOut() {

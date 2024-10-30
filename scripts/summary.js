@@ -4,8 +4,10 @@ function initSummary() {
 }
 
 function greeting() {
+    const greetingContainer = document.getElementById('greetingContainer');
     daytimeGreeting();
-    document.getElementById('userName').innerText = localStorage.getItem('userName');
+    joinStorage.iconInitials == 'G' ? greetGuest() : greetUser();
+    greetingContainer.classList.add('greetingAnimation');
 }
 
 function daytimeGreeting() {
@@ -13,14 +15,25 @@ function daytimeGreeting() {
     timeOfDay = timeOfDay.getHours();
     const greetingTextRef = document.getElementById('greetingText');
     let greeting;
-    if (timeOfDay < 6) {
-        greeting = "Good night,";
+    if (timeOfDay < 4) {
+        greeting = "Good evening";
     } else if (timeOfDay < 12) {
-        greeting = "Good morning,";
+        greeting = "Good morning";
     } else if (timeOfDay < 18) {
-        greeting = "Good afternoon,";
+        greeting = "Good afternoon";
     } else {
-        greeting = "Good evening,";
+        greeting = "Good evening";
     }
     greetingTextRef.innerText = greeting;
+}
+
+function greetGuest() {
+    const greetingTextRef = document.getElementById('greetingText');
+    greetingTextRef.innerText += '!';
+}
+
+function greetUser() {
+    const greetingTextRef = document.getElementById('greetingText');
+    greetingTextRef.innerText += ',';
+    document.getElementById('userName').innerText = joinStorage.userName;
 }
