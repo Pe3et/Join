@@ -1,6 +1,11 @@
 
 function initSummary() {
+    greeting();
+}
+
+function greeting() {
     daytimeGreeting();
+    document.getElementById('userName').innerText = localStorage.getItem('userName');
 }
 
 function daytimeGreeting() {

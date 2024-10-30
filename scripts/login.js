@@ -1,12 +1,10 @@
 window.addEventListener('resize', ensureCorrectContainerTransitionOnRezise);
 let containerMode = 'login';
 let policyAccepted = false;
-let rememberMe = false;
 
 function initLogin() {
     startAnimation();
-    rememberMe = localStorage.getItem('rememberMe') ?? false;
-    rememberMe == true ? location.href = 'http://127.0.0.1:5500/summary.html' : renderLogin();
+    joinStorage.rememberMe == true ? location.href = '../summary.html' : renderLogin();
 }
 
 function startAnimation() {
@@ -23,6 +21,7 @@ function renderLogin() {
     containerRef.innerHTML = getLoginTemplate();
     document.getElementById('signUpOption').classList.remove('dnone');
     containerMode = "login";
+    joinStorage.rememberMe == true && toggleCheckbox('checked');
     setupContainerTransition(containerRef);
 }
 
@@ -67,7 +66,7 @@ function toggleCheckbox(status) {
 
 function toggleRememberMe() {
     const checkbox = document.getElementById('checkbox');
-    rememberMe = !rememberMe;
+    joinStorage.rememberMe = !joinStorage.rememberMe;
     checkbox.addEventListener('click', toggleRememberMe);
 }
 
@@ -79,10 +78,8 @@ async function checkLoginSucces() {
     Object.keys(contactResults).forEach(id => {
         if (contactResults[id].email == email && contactResults[id].password == password) {
             loginSucces = true;
-            setActiveUser(id, contactResults[id].name);
-            //redirect user (change link on your own FTP)
-            // location.href = "https://join-0724-aw-2.developerakademie.net/Join/summary.html"
-            location.href = "http://127.0.0.1:5500/summary.html"
+            localStoreActiveUser(contactResults[id].name);
+            location.href = "../summary.html"
         }
     });
     (loginSucces == false) && loginError();
@@ -94,12 +91,18 @@ function loginError() {
     appendErrorMessage(document.getElementById('passwordInput'), 'Check your email and password. Please try again.')
 }
 
-function setActiveUser(id, name) {
-    localStorage.setItem('rememberMe', rememberMe);
+function localStoreActiveUser(name) {
+    joinStorage.userName = name;
+    joinStorage.iconInitials = `${name[0]}${name.split(" ")[1][0]}`;
+    localStorage.setItem('joinStorage', JSON.stringify(joinStorage));
+    sessionStorage.setItem('loggedIn', JSON.stringify(true));
 }
 
 function loginGuest() {
-    //TODO: redirect, localstorage guest login track
+    localStorage.clear();
+    joinStorage = {iconInitials: 'G', rememberMe: false}
+    sessionStorage.setItem('loggedIn', JSON.stringify(true));
+    location.href = '../summary.html'
 }
 
 async function signUp() {
@@ -110,7 +113,8 @@ async function signUp() {
     newUser.color = getRandomColor();
     newUser.phone = '';
     await postToDB(newUser, 'contacts');
-    //TODO: redirect user
+    localStoreActiveUser(newUser.name);
+    location.href = '../summary.html'
 }
 
 function togglePolicyAccept() {
