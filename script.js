@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', generalInit);
 function generalInit() {
     redirectUnauthorizedUserToLogin();
     loadUserIconForHeader();
+    const headerDropdown = document.getElementById('headerDropdown');
+    if(headerDropdown) {
+        document.addEventListener('click', closeHeaderDropdownCheck);
+    }
 }
 
 function redirectUnauthorizedUserToLogin() {
@@ -38,4 +42,24 @@ function loadUserIconForHeader() {
 function getRandomColor() {
     const randomColor = colors[(Math.round(Math.random() * (colors.length - 1)))];
     return randomColor;
+}
+
+function toggleHeaderDropdown() {
+    const headerDropdown = document.getElementById('headerDropdown');
+    headerDropdown.classList.toggle('dnone');
+}
+
+function closeHeaderDropdownCheck(event) {
+    event.preventDefault();
+    const headerDropdown = document.getElementById('headerDropdown');
+    const clickedElement = event.target;
+    if ((!headerDropdown.classList.contains('dnone') && !headerDropdown.contains(clickedElement)) || document.querySelector('.userIcon').contains(clickedElement)) {
+        toggleHeaderDropdown();
+    } 
+}
+
+function logOut() {
+    localStorage.clear();
+    sessionStorage.clear();
+    location.href = './index.html'
 }
