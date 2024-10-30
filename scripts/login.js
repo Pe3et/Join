@@ -100,7 +100,8 @@ function localStoreActiveUser(name) {
 
 function loginGuest() {
     localStorage.clear();
-    joinStorage = {iconInitials: 'G', rememberMe: false}
+    joinStorage = {iconInitials: 'G', rememberMe: false};
+    localStorage.setItem('joinStorage', JSON.stringify(joinStorage));
     sessionStorage.setItem('loggedIn', JSON.stringify(true));
     location.href = '../summary.html'
 }
