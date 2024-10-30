@@ -78,8 +78,13 @@
         font-size: 20px;
     }
     .xButton svg{
-        display: none;
+        /* display: none; */
+        margin-bottom: 300px;
     }
+    .inputFields:hover{
+        cursor: pointer;
+    }
+    
    
     
     

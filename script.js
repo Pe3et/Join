@@ -44,6 +44,10 @@ function getRandomColor() {
     return randomColor;
 }
 
+function goBack() {
+    window.history.back();
+}
+
 function toggleHeaderDropdown() {
     const headerDropdown = document.getElementById('headerDropdown');
     headerDropdown.classList.toggle('dnone');
