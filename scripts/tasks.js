@@ -189,11 +189,12 @@ function resetTaskJSON(){
     newTask.status = "toDo"
 }
 
-function taskValidation() {
+function taskValidation(editMode = false) {
+    validated = {};
     validateInputNotEmpty(document.getElementById('titleInput'));
     validateInputNotEmpty(document.getElementById('dateInput'));
-    validateTaskCategory();
-    if (validated.title && validated.date && validated.category) {
+    !editMode && validateTaskCategory();
+    if (validated.title && validated.date && (validated.category || editMode)) {
         return true
     } else {
         return false
