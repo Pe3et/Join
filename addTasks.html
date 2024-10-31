@@ -15,30 +15,31 @@
   <script src="./scripts/contacts.js"></script>
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./script.js"></script>
+  <script src="./scripts/validation.js"></script>
   <title>Join - Add Task</title>
 </head>
 
 <body onload="initAddTaskForm()">
+
   <header>
     <div class="project">
-        <p>Kanban Project Managment Tool</p>
-        <img src="./assets/img/resp_header.svg" alt="" />
+      <p>Kanban Project Managment Tool</p>
+      <img src="./assets/img/resp_header.svg" alt="" />
     </div>
     <div class="picture">
-        <div class="help">
-            <img src="./assets/img/help.png" alt="" />
-        </div>
-        <div class="userIcon">
-            <p></p>
-        </div>
+      <div class="help">
+        <img src="./assets/img/help.png" alt="" />
+      </div>
+      <div class="userIcon">
+        <p></p>
+      </div>
     </div>
     <div id="headerDropdown" class="dnone">
-        <a href="#">Legal Notice</a>
-        <a href="#">Privacy Policy</a>
-        <a href="./index.html" onclick="logOut()">Log out</a>
+      <a href="#">Legal Notice</a>
+      <a href="#">Privacy Policy</a>
+      <a href="./index.html" onclick="logOut()">Log out</a>
     </div>
-</header>
-
+  </header>
 
   <main>
     <div class="headlineContainer">
@@ -47,9 +48,9 @@
     <section class="addTaskForm">
       <div class="addTaskColumn">
         <p>Title<span>*</span></p>
-        <input id="titleInput" type="text" placeholder="Enter a title" />
+        <input id="titleInput" type="text" placeholder="Enter a title"/>
         <p>Description</p>
-        <textarea id="descriptionInput" type="text" placeholder="Enter a Description"></textarea>
+        <textarea id="descriptionInput" type="text" placeholder="Enter a description"></textarea>
         <p>Assigned to</p>
         <div id="assignedToDropdownButton" class="dropdownButton" onclick="toggleDropdown('assignedToDropdown')">
           <p>Select contacts to assign</p>
@@ -68,7 +69,7 @@
       <div class="spacer"></div>
       <div class="addTaskColumn">
         <p>Due date<span>*</span></p>
-        <input id="dateInput" type="date" placeholder="dd/mm/yyyy" />
+        <input id="dateInput" type="date" placeholder="dd/mm/yyyy"/>
         <p>Prio</p>
         <div class="prioContainer">
           <div id="urgentPrio" class="prio" onclick="setActivePrio('urgent')">

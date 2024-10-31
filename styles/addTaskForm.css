@@ -27,6 +27,7 @@ textarea,
   border-radius: 10px;
   padding: 12px 21px;
   border: 1px solid #d1d1d1;
+  width: 100%;
 }
 
 .addTaskForm input,
@@ -165,7 +166,7 @@ textarea:focus {
 }
 
 #requiredInfoResp {
-    display: none;
+  display: none;
 }
 
 /* dropdown */
@@ -412,40 +413,55 @@ li[contenteditable="true"]:focus {
     gap: 32px;
   }
 }
+
 @media (max-width: 500px) {
-    .addTaskForm input, textarea {
-      width: 100%;
-    }
 
-    #assignedToDropdownButton {
-        width: 100%;
-    }
+  .addTaskForm input,
+  textarea {
+    width: 100%;
+  }
 
-    .addTaskColumn {
-        width: 90vw;
-    }
+  #assignedToDropdownButton {
+    width: 100%;
+  }
 
-    .prioContainer {
-        flex-direction: column;
-    }
+  .addTaskColumn {
+    width: 90vw;
+  }
 
-    .buttonContainer {
-        gap: 8px;
-    }
+  .prioContainer {
+    flex-direction: column;
+  }
 
-    .addTaskForm p {
-        font-size: 16px;
-    }
+  .buttonContainer {
+    gap: 8px;
+  }
 
-    .fullButton, .hollowButton {
-        font-size: 18px;
-    } 
+  .addTaskForm p {
+    font-size: 16px;
+  }
 
-    .addTaskForm input, textarea, .dropdownButton {
-        font-size: 16px;
-    }
+  .fullButton,
+  .hollowButton {
+    font-size: 18px;
+  }
 
-    .addTaskForm {
-        padding: 4px 8px;
-      }
+  .addTaskForm input,
+  textarea,
+  .dropdownButton {
+    font-size: 16px;
+  }
+
+  .addTaskForm {
+    padding: 4px 8px;
+  }
+}
+
+/* validation error-message adaptation */
+.errorText {
+  top: 60%;
+}
+
+.validationContainer {
+  width: 100%;
 }

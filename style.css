@@ -6,7 +6,7 @@
 
 /* Validation */
 .inputError {
-  border: 1px solid #FF001F;
+  border: 1px solid #FF001F !important;
 }
 
 .errorText {

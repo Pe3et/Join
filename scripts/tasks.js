@@ -156,12 +156,13 @@ function exitEditSubtaskMode(index) {
 }
 
 async function createTask() {
-    //TODO: Validation
-    newTask.title = document.getElementById("titleInput").value;
-    newTask.description = document.getElementById("descriptionInput").value;
-    newTask.dueDate = document.getElementById("dateInput").value;
-    await postToDB(newTask,"tasks");
-    location.href = "../board.html";
+    if(taskValidation()) {
+        newTask.title = document.getElementById("titleInput").value;
+        newTask.description = document.getElementById("descriptionInput").value;
+        newTask.dueDate = document.getElementById("dateInput").value;
+        await postToDB(newTask,"tasks");
+        location.href = "../board.html";
+    }
 }
 
 async function clearTask() {
@@ -186,4 +187,15 @@ function resetTaskJSON(){
     newTask.category = "";
     newTask.subtasks = [];
     newTask.status = "toDo"
+}
+
+function taskValidation() {
+    validateInputNotEmpty(document.getElementById('titleInput'));
+    validateInputNotEmpty(document.getElementById('dateInput'));
+    validateTaskCategory();
+    if (validated.title && validated.date && validated.category) {
+        return true
+    } else {
+        return false
+    }
 }
