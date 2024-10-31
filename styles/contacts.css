@@ -598,6 +598,8 @@ main {
 
   .arrowIcon:active {
     transform: scale(1.4);
+    background-color: rgb(222, 219, 219);
+    border-radius: 40px;
   }
 
   .contactHeading p::after {

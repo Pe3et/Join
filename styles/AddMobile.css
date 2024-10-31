@@ -1,3 +1,9 @@
+@media(max-width: 3000px){
+    .closeButton svg{
+        display: none;
+    }
+}
+
 @media(max-width: 1050px){
     #addContactCardOverlay{
         display: flex;
@@ -7,6 +13,13 @@
         
         
     }
+    .closeButton svg{
+        display: block;
+        height: 24px;
+        width: 24px;
+
+    }
+
     .overlayContainer{
         top: 0;
     }
@@ -50,6 +63,7 @@
     }
     .xButton svg{
         margin-bottom: 0;
+        display: none;
     }
     .imgContainer{
         padding-bottom: 0;
@@ -146,7 +160,39 @@
         gap: 12px;
         margin-top: 30px;
     }
-   
+    .closeButton svg {
+        fill: white;
+        width: 24px;
+        height: 24px;
+    }
+
+    
 }
+
+.background {
+    position: relative; 
+    background-color: #2f3e54; 
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer;
+    z-index: 10; 
+}
+
+.closeButton svg {
+    fill: white;
+    transition: fill 0.2s ease;
+}
+.closeButton:active {
+    background-color: #27a0f7; 
+    border-radius: 20px;
+}
+
 
 
