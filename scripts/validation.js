@@ -1,7 +1,10 @@
 let validated = {
     name: false,
     email: false,
-    password: false
+    password: false,
+    title: false,
+    dueDate: false,
+    category: false
 };
 
 function validateName(inputRef) {
@@ -45,18 +48,45 @@ function validateConfirmedPassword(inputRef) {
     }
 }
 
+function validateInputNotEmpty(inputRef) {
+    const inputValue = inputRef.value;
+    const inputType = inputRef.id.slice(0, -5);
+    if (inputValue.trim() != '') {
+        validated[inputType] = true
+        removeErrorMessage(inputRef);
+    } else {
+        validated[inputType] = false;
+        appendErrorMessage(inputRef, 'This field is required.');
+    }
+}
+
+function validateTaskCategory() {
+    const categoryTextRef = document.querySelector('#categoryDropdownButton p');
+    if (categoryTextRef.textContent != 'Select task category') {
+        validated.category = true;
+        categoryTextRef.style.color = '';
+        categoryTextRef.parentElement.style.border = '1px solid #d1d1d1'
+    } else {
+        validated.category = false;
+        categoryTextRef.style.color = '#FF8190';
+        categoryTextRef.parentElement.style.border = '1px solid #FF001F'
+    }
+}
+
 //to minimize html restructuring, this function wraps the input field in a div and creates the error message absolute below the wrapper
 function appendErrorMessage(inputRef, errorMessage) {
-    const errorText = document.createElement('p');
-    const validationContainer = document.createElement('div');
-    validationContainer.classList.add('validationContainer');
-    inputRef.insertAdjacentElement('beforebegin', validationContainer);
-    validationContainer.append(inputRef);
-    errorText.classList.add('errorText');
-    errorText.innerText = errorMessage;
-    errorText.id = 'error' + inputRef.id;
-    inputRef.classList.add('inputError');
-    inputRef.insertAdjacentElement('afterend', errorText);
+    if(!inputRef.classList.contains('inputError')){
+        const errorText = document.createElement('p');
+        const validationContainer = document.createElement('div');
+        validationContainer.classList.add('validationContainer');
+        inputRef.insertAdjacentElement('beforebegin', validationContainer);
+        validationContainer.append(inputRef);
+        errorText.classList.add('errorText');
+        errorText.innerText = errorMessage;
+        errorText.id = 'error' + inputRef.id;
+        inputRef.classList.add('inputError');
+        inputRef.insertAdjacentElement('afterend', errorText);
+    }
 }
 
 function removeErrorMessage(inputRef) {

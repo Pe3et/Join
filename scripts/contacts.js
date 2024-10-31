@@ -224,15 +224,55 @@ function contactCreatedSuccess() {
     ref.classList.add("slideInRight");
     setTimeout(() => { ref.classList.remove("slideInRight"); }, 800);
 }
-// function showAddIcon() {
-//     document.querySelector('.icon-add').style.display = 'block';
-//     document.querySelector('.icon-menu').style.display = 'none';
-//     document.querySelector('.fab-button').onclick = openAddContactOverlay;
-// }
 
-// function showMenuIcon() {
-//     document.querySelector('.icon-add').style.display = 'none';
-//     document.querySelector('.icon-menu').style.display = 'block';
-//     document.querySelector('.fab-button').onclick = openContactOptions;
-// }
+let isEditMode = false; // Standardmäßig im Hinzufügen-Modus
+let selectedContact = null; // Speichert den aktuell ausgewählten Kontakt
+
+
+function setFabToAddMode() {
+    const fabIcon = document.querySelector('.fab-button img');
+    isEditMode = false; 
+    fabIcon.src = './assets/img/addButton.png'; 
+
+    // Setzt die Klickfunktion des FAB auf das Hinzufügen-Overlay
+    document.querySelector('.fab-button').onclick = function() {
+        openOverlay('addContactOverlayContainer', 'addContactCardOverlay');
+    };
+}
+
+function setFabToEditMode(contact) {
+    const fabIcon = document.querySelector('.fab-button img');
+    isEditMode = true; 
+    selectedContact = contact; 
+    fabIcon.src = './assets/img/points.png'; 
+
+   
+    document.querySelector('.fab-button').onclick = function() {
+        openOverlay('editOverlayContainer', 'editContactCardOverlay', selectedContact);
+    };
+}
+function addClickListenersToContacts() {
+    const contactElements = document.querySelectorAll('.personInContactList');
+    contactElements.forEach(contact => {
+        contact.addEventListener('click', function () {
+           
+            contactElements.forEach(c => c.classList.remove('active'));
+            contact.classList.add('active');
+
+           
+            const selectedContact = getContactFromElement(contact);
+            setFabToEditMode(selectedContact);
+
+            if (window.matchMedia("(max-width: 1050px)").matches) {
+                showContactInFullscreen();
+                showMenuIcon();
+            }
+        });
+    });
+}
+function deselectContact() {
+    hideContactDetails(); // Versteckt die Kontaktdetails
+    setFabToAddMode(); // Setzt den FAB-Button zurück in den Hinzufügen-Modus
+}
+
 

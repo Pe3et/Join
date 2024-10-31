@@ -115,7 +115,14 @@ async function signUp() {
     newUser.phone = '';
     await postToDB(newUser, 'contacts');
     localStoreActiveUser(newUser.name);
-    location.href = '../summary.html'
+    signUpSuccessAnimationAndRedirect();
+}
+
+function signUpSuccessAnimationAndRedirect() {
+    document.querySelector('.signUpSuccess').classList.remove('signupSuccessAnimationStartpoint');
+    document.querySelector('.signUpSuccessBackground').classList.remove('hidden');
+    document.querySelector('.signUpSuccessBackground').classList.remove('animationBackgroundColor');
+    setTimeout(()=>{location.href = '../summary.html'}, 1000)
 }
 
 function togglePolicyAccept() {

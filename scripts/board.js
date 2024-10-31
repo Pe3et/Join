@@ -187,14 +187,16 @@ async function renderEditTask(taskID) {
 }
 
 async function saveEditTask(key) {
-    newTask.title = document.getElementById("titleInput").value;
-    newTask.description = document.getElementById("descriptionInput").value;
-    newTask.dueDate = document.getElementById("dateInput").value;
-    newTask.category = tasks.find(t => t.id == key).category;
-    newTask.status = tasks.find(t => t.id == key).status;
-    await putToDB(newTask, `tasks/${key}`);
-    tasks = [];
-    await initBoard();
-    reloadBoard();
-    renderOverlayTaskCard(tasks.find(t => t.id == key));
+    if(taskValidation(editMode = true)) {
+        newTask.title = document.getElementById("titleInput").value;
+        newTask.description = document.getElementById("descriptionInput").value;
+        newTask.dueDate = document.getElementById("dateInput").value;
+        newTask.category = tasks.find(t => t.id == key).category;
+        newTask.status = tasks.find(t => t.id == key).status;
+        await putToDB(newTask, `tasks/${key}`);
+        tasks = [];
+        await initBoard();
+        reloadBoard();
+        renderOverlayTaskCard(tasks.find(t => t.id == key).id);
+    }
 }
