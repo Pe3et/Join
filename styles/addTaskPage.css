@@ -24,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100svh;
+  background: #f6f7f8;
 }
 
 main {
@@ -32,9 +33,9 @@ main {
   flex-direction: column;
   flex: 1;
   font-family: "Inter", sans-serif;
-  background: #f6f7f8;
   overflow: hidden;
   justify-content: space-between;
+  max-width: 1440px;
 }
 
 h1 {
