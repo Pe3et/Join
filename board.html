@@ -27,30 +27,39 @@
   <div class="pageContent">
     <header>
       <div class="project">
-          <p>Kanban Project Managment Tool</p>
-          <img src="./assets/img/resp_header.svg" alt="" />
+        <p>Kanban Project Managment Tool</p>
+        <img src="./assets/img/resp_header.svg" alt="" />
       </div>
       <div class="picture">
-          <div class="help">
-              <img src="./assets/img/help.png" alt="" />
-          </div>
-          <div class="userIcon">
-              <p></p>
-          </div>
+        <div class="help">
+          <img src="./assets/img/help.png" alt="" />
+        </div>
+        <div class="userIcon">
+          <p></p>
+        </div>
       </div>
       <div id="headerDropdown" class="dnone">
-          <a href="#">Legal Notice</a>
-          <a href="#">Privacy Policy</a>
-          <a href="./index.html" onclick="logOut()">Log out</a>
+        <a href="#">Legal Notice</a>
+        <a href="#">Privacy Policy</a>
+        <a href="./index.html" onclick="logOut()">Log out</a>
       </div>
-  </header>
-
+    </header>
 
     <main>
       <section class="headSection">
-        <h1>Board</h1>
+        <h1>Board
+          <div class="respAddTaskButton">
+            <a href="./addTasks.html">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="10" fill="#2A3647" />
+                <path d="M20 10V30" stroke="white" stroke-width="2" stroke-linecap="round" />
+                <path d="M30 20L10.0005 20.138" stroke="white" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+        </h1>
         <div class="searchAndAddTasksArea">
-          <div class="Searchbar">
+          <div class="searchbar">
             <input id="search" type="text" placeholder="Find Task" />
             <div class="searchButtonArea">
               <div class="searchButtonSpacer"></div>
@@ -64,66 +73,82 @@
           </div>
         </div>
       </section>
-      <section class="taskContainer">
-        <div class="tasksColumn">
-          <div class="taskState">
-            <p>To do</p>
-            <svg onclick="openBoardOverlay(); renderOverlayAddTaskCard()" id="toDoPlusButton" class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
-              <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-              <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </div>
-          <div id="toDoContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="removeHighlight(this)">
-            <div id="toDoNoTasks" class="noTask">
-              <span>No tasks to do</span>
+      <div class="scrollabeTaskContainerWrapper">
+        <section class="taskContainer">
+          <div class="columnWrapper">
+            <div class="tasksColumn">
+              <div class="taskState">
+                <p>To do</p>
+                <svg onclick="openBoardOverlay(); renderOverlayAddTaskCard()" id="toDoPlusButton" class="plusButton"
+                  width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                  <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                  <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div id="toDoContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
+                ondragleave="removeHighlight(this)">
+                <div id="toDoNoTasks" class="noTask">
+                  <span>No tasks to do</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="tasksColumn">
-          <div class="taskState">
-            <p>In progress</p>
-            <svg onclick="openBoardOverlay(); renderOverlayAddTaskCard()" id="inProgressPlusButton" class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
-              <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-              <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </div>
-          <div id="inProgressContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="removeHighlight(this)">
-            <div id="inProgressNoTasks" class="noTask">
-              <span>No tasks in progress</span>
+          <div class="columnWrapper">
+            <div class="tasksColumn">
+              <div class="taskState">
+                <p>In progress</p>
+                <svg onclick="openBoardOverlay(); renderOverlayAddTaskCard()" id="inProgressPlusButton"
+                  class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                  <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                  <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div id="inProgressContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
+                ondragleave="removeHighlight(this)">
+                <div id="inProgressNoTasks" class="noTask">
+                  <span>No tasks in progress</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="tasksColumn">
-          <div class="taskState">
-            <p>Await feedback</p>
-            <svg onclick="openBoardOverlay(); renderOverlayAddTaskCard()" id="awaitFeedbackPlusButton" class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
-              <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-              <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </div>
-          <div id="awaitFeedbackContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="removeHighlight(this)">
-            <div id="awaitFeedbackNoTasks" class="noTask">
-              <span>No tasks await feedback</span>
+          <div class="columnWrapper">
+            <div class="tasksColumn">
+              <div class="taskState">
+                <p>Await feedback</p>
+                <svg onclick="openBoardOverlay(); renderOverlayAddTaskCard()" id="awaitFeedbackPlusButton"
+                  class="plusButton" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                  <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                  <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div id="awaitFeedbackContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
+                ondragleave="removeHighlight(this)">
+                <div id="awaitFeedbackNoTasks" class="noTask">
+                  <span>No tasks await feedback</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="tasksColumn">
-          <div class="taskState">
-            <p>Done</p>
-          </div>
-          <div id="doneContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="removeHighlight(this)">
-            <div id="doneNoTasks" class="noTask">
-              <span>No tasks done</span>
+          <div class="columnWrapper">
+            <div class="tasksColumn">
+              <div class="taskState">
+                <p>Done</p>
+              </div>
+              <div id="doneContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
+                ondragleave="removeHighlight(this)">
+                <div id="doneNoTasks" class="noTask">
+                  <span>No tasks done</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
 
     <!-- Overlay -->

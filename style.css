@@ -277,6 +277,7 @@ header {
 ::-webkit-scrollbar {
   background: transparent;
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-button {

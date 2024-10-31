@@ -36,6 +36,48 @@
   max-height: 90%;
 }
 
+@media(max-width: 560px) {
+  .boardCardOverlay {
+    width: 90% !important;
+  }
+   
+  .boardCardOverlay h3 {
+    font-size: 36px !important;
+  }
+
+  .boardCardOverlay p {
+    font-size: 16px !important;
+  }
+
+  .addTaskColumn {
+    width: 74svw !important;
+  }
+}
+
+@media(max-width: 1110px) {
+  .spacer{
+    margin: 0 32px !important;
+  }
+
+  .addTaskForm {
+    margin: 0;
+  }
+
+  .buttonContainer {
+    padding-right: 32px;
+  }
+
+  .boardCardOverlay {
+    padding: 24px;
+  }
+}
+
+@media(max-width: 400px) {
+  .boardCardOverlay {
+    padding: 12px;
+  }
+}
+
 .overlayTaskCategory {
   padding: 4px 24px 4px 24px;
   background-color: rgba(0, 56, 255, 1);
@@ -69,10 +111,14 @@
   background-color: rgb(0, 0, 0, 0.069);
 }
 
-
 .overlayTaskTitle h3 {
   font-size: 61px;
   font-weight: 700;
+}
+
+.overlayTaskDescription {
+  max-width: 100%;
+  overflow: auto;
 }
 
 .overlayTaskDescription p {
@@ -254,6 +300,8 @@
   width: 100%;
   justify-content: space-between;
   margin-bottom: 32px;
+  display: flex;
+  align-items: center;
 }
 
 /* Edit Task - Overlay */

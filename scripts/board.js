@@ -7,6 +7,7 @@ const categoryColors = {
 async function initBoard() {
     await getTasksFromDB();
     renderBoardTasks();
+    window.addEventListener('resize', responsiveAddTaskButtonFunctions);
 }
 
 async function getTasksFromDB() {
@@ -199,4 +200,17 @@ async function saveEditTask(key) {
         reloadBoard();
         renderOverlayTaskCard(tasks.find(t => t.id == key).id);
     }
+}
+
+function responsiveAddTaskButtonFunctions() {
+    const addTaskButtons = document.querySelectorAll('.plusButton');
+    if (window.innerWidth > 1050) {
+        addTaskButtons.forEach( b => b.setAttribute('onclick', 'redirectToAddTasks()'));
+    } else {
+        addTaskButtons.forEach( b => b.setAttribute('onclick', 'redirectToAddTasks()'));
+    }
+}
+
+function redirectToAddTasks() {
+    location.href = '../addTasks.html';
 }
