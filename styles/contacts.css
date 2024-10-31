@@ -397,6 +397,7 @@ main {
   width: 28px;
   height: 24px;
   position: absolute;
+  
 }
 
 @media(max-width: 1092px) {
