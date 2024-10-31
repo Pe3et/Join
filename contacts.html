@@ -34,8 +34,8 @@
           </div>
       </div>
       <div id="headerDropdown" class="dnone">
-          <a href="#">Legal Notice</a>
-          <a href="#">Privacy Policy</a>
+          <a href="./legalNotice.html">Legal Notice</a>
+          <a href="./privacyPolicy.html">Privacy Policy</a>
           <a href="./index.html" onclick="logOut()">Log out</a>
       </div>
   </header>
@@ -104,18 +104,31 @@
         </a>
       </div>
       <div class="links">
-        <a class="linkButton" href="#">Privacy Policy</a>
-        <a class="linkButton" href="#">Legal notice</a>
+        <a class="linkButton" href="./privacyPolicy.html">Privacy Policy</a>
+        <a class="linkButton" href="./legalNotice.html">Legal notice</a>
       </div>
     </section>
     <!-- Overlay -->
     <div id="addContactOverlayContainer" class="overlayContainer">
       <section id="addContactCardOverlay" class="contactCardOverlay">
+        
+        
         <div class="background">
+          <div class="closeButton" onclick="closeOverlay('addContactOverlayContainer', 'addContactCardOverlay')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+          
+        
+          
+          
           <img class="backgroundLogo" src="./assets/img/background_logo.svg" alt="" />
           <div class="backgroundText">
             <h2>Add contact</h2>
             <p>Tasks are better with a Team!</p>
+           
           </div>
         </div>
         <div class="addContactForm">

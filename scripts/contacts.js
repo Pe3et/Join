@@ -225,12 +225,6 @@ function contactCreatedSuccess() {
     setTimeout(() => { ref.classList.remove("slideInRight"); }, 800);
 }
 
-
-
-
-
-
-
 let isEditMode = false; // Standardmäßig im Hinzufügen-Modus
 let selectedContact = null; // Speichert den aktuell ausgewählten Kontakt
 
