@@ -114,6 +114,8 @@
 .overlayTaskTitle h3 {
   font-size: 61px;
   font-weight: 700;
+  max-width: 445px;
+  overflow: auto;
 }
 
 .overlayTaskDescription {
@@ -224,14 +226,25 @@
   gap: 4px;
   margin-top: 4px;
   max-height: 150px;
-  overflow: auto;
+  overflow-y: auto;
   width: 100%;
+  max-width: 100%;
 }
 
 .singleSubtask {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex: 1;
+  height: fit-content;
+  max-width: 404px;
+}
+
+.singleSubtask p{
+  max-width: 95%;
+  height: fit-content;
+  flex: 1;
+  word-wrap: break-word;
 }
 
 .subtaskCheckbox {
