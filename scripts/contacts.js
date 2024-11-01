@@ -125,8 +125,6 @@ function renderContactDetails(contact) {
     }, 1);
 }
 
-
-
 function openOverlay(containerRefID, cardRefId, contact) {
     document.getElementById(containerRefID).classList.add('overlayAppear');
     document.getElementById(containerRefID).classList.add('overlayBackgroundColor');
@@ -140,7 +138,7 @@ function closeOverlay(containerRefID, cardRefId) {
     setTimeout(() => {
         document.getElementById(containerRefID).classList.remove('overlayAppear')
     }, 300);
-    // emptyInputFields();
+    emptyInputFields();
 }
 
 function loadEditContactCard(contact) {
@@ -161,13 +159,18 @@ function emptyInputFields() {
     document.getElementById('addContactInputName').value = "";
     document.getElementById('addContactInputEmail').value = "";
     document.getElementById('addContactInputPhone').value = "";
+    document.getElementById('editContactInputName').value = "";
+    document.getElementById('editContactInputEmail').value = "";
+    document.getElementById('editContactInputPhone').value = "";
+    document.querySelectorAll('.inputError').forEach(errorRef => removeErrorMessage(errorRef));
 }
 
 async function editContact(contact) {
-    const nameInput = getUpperCaseName(document.getElementById('editContactInputName').value);
+    const nameInput = document.getElementById('editContactInputName').value;
     const emailInput = document.getElementById('editContactInputEmail').value;
     const phoneInput = document.getElementById('editContactInputPhone').value;
     if (validateAddContact('editContactInputName', 'editContactInputEmail')) {
+        nameInput = getUpperCaseName(nameInput);
         await putToDB(nameInput, ("contacts/" + contact.id + "/name"));
         await putToDB(emailInput, ("contacts/" + contact.id + "/email"));
         await putToDB(phoneInput, ("contacts/" + contact.id + "/phone"));
@@ -183,10 +186,11 @@ function hardcloseEditOverlay() {
 }
 
 async function addContact() {
-    const nameInput = getUpperCaseName(document.getElementById('addContactInputName').value);
+    const nameInput = document.getElementById('addContactInputName').value;
     const emailInput = document.getElementById('addContactInputEmail').value;
     const phoneInput = document.getElementById('addContactInputPhone').value;
     if (validateAddContact('addContactInputName', 'addContactInputEmail')) {
+        nameInput = getUpperCaseName(nameInput);
         const randomColor = getRandomColor();
         const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
         await postToDB(newContact, "contacts");
