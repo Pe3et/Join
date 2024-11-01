@@ -180,13 +180,11 @@ main {
   height: 73px;
   align-items: center;
   gap: 30px;
-
 }
 
 .contactHeading h1 {
   font-weight: 700;
   font-size: 61px;
-
 }
 
 .contactHeadingSpacer {
@@ -224,8 +222,6 @@ main {
   vertical-align: middle;
   color: #29ABE2;
   display: none;
-
-
 }
 
 .arrowIcon:hover {
@@ -397,16 +393,16 @@ main {
   width: 28px;
   height: 24px;
   position: absolute;
-
 }
-
-
 
 @media(max-width: 1050px) {
   .arrowIcon {
     display: block;
   }
 
+  .contactDetailsOptions {
+    display: none;
+  }
 }
 
 @media(max-width: 1152px) {
@@ -418,7 +414,6 @@ main {
 @media(max-width: 1048px) {
   .fab {
     display: block;
-
   }
 }
 
@@ -426,7 +421,6 @@ main {
   .contactList {
     width: 100%;
   }
-
 }
 
 @media (max-width: 856px) {
@@ -444,7 +438,6 @@ main {
     font-size: 10px;
   }
 
-
   .personInContactListData b {
     font-size: 20px;
   }
@@ -455,12 +448,10 @@ main {
     padding-left: 0px;
     padding-right: 0;
   }
-
 }
 
 @media(min-width: 520px) {
   .contactHeading {
-
     margin-top: 40px;
     position: relative;
   }
@@ -476,7 +467,6 @@ main {
   .contactList {
     width: 100%;
   }
-
 
   main {
     padding-left: 0;
@@ -512,20 +502,17 @@ main {
 
   .contactHeading h1 {
     font-size: 47px;
-
   }
 
   .contactHeading p {
     display: flex;
     font-size: 20px;
-
   }
 
   .contactHeading {
     display: flex;
     flex-direction: column;
     gap: 1px;
-
   }
 
   .contactDetailsIcon {
@@ -543,10 +530,6 @@ main {
     font-size: 30px;
   }
 
-  .contactDetailsOptions {
-    display: none;
-  }
-
   .iconAndName {
     flex-direction: row;
     padding-left: 16px;
@@ -560,8 +543,6 @@ main {
   .contactContainer {
     padding-left: 16px;
   }
-
-
 
   #contactDetails {
     padding-left: 16px;
@@ -579,25 +560,10 @@ main {
     right: 20px;
   }
 
-  .arrowIcon {
-    transition: transform 0.1s ease;
-  }
-
   .arrowIcon:active {
     transform: scale(1.4);
     background-color: rgb(222, 219, 219);
     border-radius: 40px;
-  }
-
-  .contactHeading p::after {
-    content: "";
-    position: absolute;
-    border: 3px;
-    bottom: -5px;
-    width: 30%;
-    height: 3px;
-    background-color: #29ABE2;
-    top: 30px;
   }
 }
 
@@ -616,8 +582,17 @@ main {
 @media (max-width: 390px) {
   .arrowIcon {
     display: block;
-
   }
+}
+
+#contactContent, .contactHeading {
+  padding-left: 32px;
+}
+
+.arrowIcon {
+  position: absolute !important;
+  right: 0;
+  top: 32px;
 }
 
 /* Validation adapation */

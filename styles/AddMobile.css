@@ -126,6 +126,20 @@
     .inputFields:hover {
         cursor: pointer;
     }
+
+    .contactHeading {
+        flex-direction: column;
+        align-items: start;
+        height: auto;
+        gap: 8px;
+        width: fit-content;
+    }
+
+    .contactHeadingSpacer {
+        height: 3px;
+        width: 100px;
+        order: 1;
+    }
 }
 
 @media(max-width: 480px) {

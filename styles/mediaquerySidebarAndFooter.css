@@ -22,10 +22,6 @@
   .contactContainer {
     padding-left: 16px;
   }
-
-  .iconAndName {
-    flex-direction: column;
-  }
 }
 
 @media (max-width: 1050px) {
@@ -138,6 +134,7 @@
   .iconAndName {
     flex-direction: row;
     margin-top: 50px;
+    gap: 20px;
   }
 
   .contactHeading p {

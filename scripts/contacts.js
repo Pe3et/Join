@@ -12,7 +12,6 @@ async function loadContactList() {
         const contactsWithSameFirstLetter = contactsArray.filter(contact => contact.name[0] == letter);
         contactsWithSameFirstLetter.forEach(contact => renderContactInList(contact))
     });
-
     // Füge Event-Listener hinzu, um den aktiven Kontakt bei Klick zu markieren
     addClickListenersToContacts();
 }
@@ -23,33 +22,11 @@ function renderContactInList(contact) {
 }
 
 function getContactListPersonsTemplate(contact) {
-    console.log("Rendering Contact: ", contact); // Überprüfe, ob das contact-Objekt richtig ist
     return `
         <div class="personInContactList" data-contact-id="${contact.id}">
             <p>${contact.name}</p>
         </div>
     `;
-}
-
-function addClickListenersToContacts() {
-    const contactElements = document.querySelectorAll('.personInContactList');
-    contactElements.forEach(contact => {
-
-        contact.addEventListener('click', function () {
-
-            contactElements.forEach(c => c.classList.remove('active'));
-            contact.classList.add('active');
-
-
-            const selectedContact = getContactFromElement(contact);
-            // renderContactDetails(selectedContact);
-
-            if (window.matchMedia("(max-width: 1050px)").matches) {
-                showContactInFullscreen();
-                showMenuIcon();
-            }
-        });
-    });
 }
 
 // Funktion, die die Kontaktkarte im Vollbild anzeigt
@@ -60,9 +37,7 @@ function showContactInFullscreen() {
     let contents = document.getElementById('globalContentList')
     contents.classList.toggle('contactContainer');
     contactContent.classList.add('fullscreen'); // Vollbildklasse hinzufügen
-    // showMenuIcon();
 }
-
 
 function hideContactInFullscreen() {
     const contactContent = document.getElementById('contactContent');
@@ -74,12 +49,9 @@ function hideContactInFullscreen() {
     showAddIcon();
 }
 
-
 function getContactFromElement(contactElement) {
     const contactId = contactElement.getAttribute('data-contact-id');
-    console.log("Contact ID: ", contactId);
     const contact = contactsArray.find(contact => contact.id === contactId);
-    console.log("Contact Object: ", contact);
     return contact;
 }
 
@@ -113,8 +85,6 @@ function getContactsArray(contactRestults) {
 }
 
 function renderContactDetails(contact) {
-
-
     const contentRef = document.getElementById('contactContent');
     contentRef.style.transition = "none";
     contentRef.style.left = "100vw";
@@ -166,7 +136,7 @@ function emptyInputFields() {
 }
 
 async function editContact(contact) {
-    const nameInput = document.getElementById('editContactInputName').value;
+    let nameInput = document.getElementById('editContactInputName').value;
     const emailInput = document.getElementById('editContactInputEmail').value;
     const phoneInput = document.getElementById('editContactInputPhone').value;
     if (validateAddContact('editContactInputName', 'editContactInputEmail')) {
@@ -186,7 +156,7 @@ function hardcloseEditOverlay() {
 }
 
 async function addContact() {
-    const nameInput = document.getElementById('addContactInputName').value;
+    let nameInput = document.getElementById('addContactInputName').value;
     const emailInput = document.getElementById('addContactInputEmail').value;
     const phoneInput = document.getElementById('addContactInputPhone').value;
     if (validateAddContact('addContactInputName', 'addContactInputEmail')) {
@@ -223,12 +193,10 @@ function contactCreatedSuccess() {
 let isEditMode = false; // Standardmäßig im Hinzufügen-Modus
 let selectedContact = null; // Speichert den aktuell ausgewählten Kontakt
 
-
 function setFabToAddMode() {
     const fabIcon = document.querySelector('.fab-button img');
     isEditMode = false; 
     fabIcon.src = './assets/img/addButton.png'; 
-
     // Setzt die Klickfunktion des FAB auf das Hinzufügen-Overlay
     document.querySelector('.fab-button').onclick = function() {
         openOverlay('addContactOverlayContainer', 'addContactCardOverlay');
@@ -240,8 +208,6 @@ function setFabToEditMode(contact) {
     isEditMode = true; 
     selectedContact = contact; 
     fabIcon.src = './assets/img/points.png'; 
-
-   
     document.querySelector('.fab-button').onclick = function() {
         openOverlay('editOverlayContainer', 'editContactCardOverlay', selectedContact);
     };
@@ -249,15 +215,11 @@ function setFabToEditMode(contact) {
 function addClickListenersToContacts() {
     const contactElements = document.querySelectorAll('.personInContactList');
     contactElements.forEach(contact => {
-        contact.addEventListener('click', function () {
-           
+        contact.addEventListener('click', function () {     
             contactElements.forEach(c => c.classList.remove('active'));
             contact.classList.add('active');
-
-           
             const selectedContact = getContactFromElement(contact);
             setFabToEditMode(selectedContact);
-
             if (window.matchMedia("(max-width: 1050px)").matches) {
                 showContactInFullscreen();
                 showMenuIcon();
@@ -265,6 +227,11 @@ function addClickListenersToContacts() {
         });
     });
 }
+
+function changeRespBurgerButton() {
+    //TODO:
+}
+
 function deselectContact() {
     hideContactDetails(); // Versteckt die Kontaktdetails
     setFabToAddMode(); // Setzt den FAB-Button zurück in den Hinzufügen-Modus

@@ -19,7 +19,7 @@ function validateName(inputRef, errorContainer = inputRef) {
 }
 
 function getUpperCaseName(nameInput="") {
-    let splitName = nameInput.split(' ');
+    let splitName = nameInput.trim().split(' ');
     splitName = splitName.map(name => name = name[0].toUpperCase() + name.slice(1));
     const upperCaseName = splitName[0] + " " + splitName[1];
     return upperCaseName
