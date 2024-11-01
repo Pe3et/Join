@@ -112,15 +112,18 @@
 }
 
 .overlayTaskTitle h3 {
-  font-size: 61px;
+  font-size: 36px;
   font-weight: 700;
   max-width: 445px;
+  max-height: 96px;
   overflow: auto;
+  word-wrap: break-word;
 }
 
 .overlayTaskDescription {
   max-width: 100%;
   overflow: auto;
+  word-wrap: break-word;
 }
 
 .overlayTaskDescription p {
@@ -301,7 +304,6 @@
   flex-direction: column;
   flex: 1;
   font-family: "Inter", sans-serif;
-  overflow: hidden;
   justify-content: space-between;
 }
 

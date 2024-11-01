@@ -10,7 +10,7 @@ function getTaskCardTemplate(task) {
               <h3>${task.title}</h3>
             </div>
             <div class="shortDescription">
-                ${task.description}...
+                ${task.description}
             </div>
             <div class="progressArea">
               <div class="progressBarContainer">
