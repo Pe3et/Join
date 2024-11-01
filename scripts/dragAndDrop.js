@@ -2,10 +2,15 @@ function allowDrop(ev) {
     ev.preventDefault();
     const highlightRef = ev.target.closest(".taskList");
     highlightRef.classList.add("dragHighlight");
+    removeOtherHighlights(highlightRef.id);
 }
 
-function removeHighlight(element) {
-    element.classList.remove("dragHighlight");
+function removeOtherHighlights(currentHighlightID) {
+    document.querySelectorAll('.taskList').forEach( tl => {
+        if (tl.id !== currentHighlightID) {
+            tl.classList.remove("dragHighlight");
+        }
+    })
 }
 
 function drag(ev) {
@@ -20,7 +25,7 @@ function drop(ev) {
     const newStatusRef = ev.target.closest(".taskList");
     const newStatus = newStatusRef.id.slice(0, -9);
     newStatusRef.append(document.getElementById(taskID));
-    removeHighlight(newStatusRef);
+    newStatusRef.classList.remove("dragHighlight");
     document.getElementById(taskID).classList.remove("dragRotate");
     tasks[taskIndex].status = newStatus;
     putToDB(newStatus, `tasks/${taskID}/status`);

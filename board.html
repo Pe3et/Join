@@ -40,9 +40,9 @@
         </div>
       </div>
       <div id="headerDropdown" class="dnone">
-          <a href="./legalNotice.html">Legal Notice</a>
-          <a href="./privacyPolicy.html">Privacy Policy</a>
-          <a href="./index.html" onclick="logOut()">Log out</a>
+        <a href="./legalNotice.html">Legal Notice</a>
+        <a href="./privacyPolicy.html">Privacy Policy</a>
+        <a href="./index.html" onclick="logOut()">Log out</a>
       </div>
     </header>
 
@@ -61,7 +61,7 @@
         </h1>
         <div class="searchAndAddTasksArea">
           <div class="searchbar" id="searchbarContainer">
-            <input id="search" type="text" placeholder="Find Task" oninput="searchBoard(this)"/>
+            <input id="search" type="text" placeholder="Find Task" oninput="searchBoard(this)" />
             <div class="searchButtonArea">
               <div class="searchButtonSpacer"></div>
               <div class="searchButton">
@@ -87,8 +87,7 @@
                   <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                 </svg>
               </div>
-              <div id="toDoContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
-                ondragleave="removeHighlight(this)">
+              <div id="toDoContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div id="toDoNoTasks" class="noTask">
                   <span>No tasks to do</span>
                 </div>
@@ -107,8 +106,7 @@
                   <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                 </svg>
               </div>
-              <div id="inProgressContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
-                ondragleave="removeHighlight(this)">
+              <div id="inProgressContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div id="inProgressNoTasks" class="noTask">
                   <span>No tasks in progress</span>
                 </div>
@@ -127,8 +125,7 @@
                   <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                 </svg>
               </div>
-              <div id="awaitFeedbackContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
-                ondragleave="removeHighlight(this)">
+              <div id="awaitFeedbackContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div id="awaitFeedbackNoTasks" class="noTask">
                   <span>No tasks await feedback</span>
                 </div>
@@ -140,8 +137,7 @@
               <div class="taskState">
                 <p>Done</p>
               </div>
-              <div id="doneContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)"
-                ondragleave="removeHighlight(this)">
+              <div id="doneContainer" class="taskList" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div id="doneNoTasks" class="noTask">
                   <span>No tasks done</span>
                 </div>
