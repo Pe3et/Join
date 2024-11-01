@@ -62,3 +62,7 @@ function logOut() {
     sessionStorage.clear();
     location.href = './index.html'
 }
+
+function goBack() {
+    window.history.back();
+    }
