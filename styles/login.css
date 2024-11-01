@@ -120,19 +120,13 @@ main {
     font-weight: 400;
     padding: 25px;
     border-radius: 20px;
-    position: relative;
-    bottom: 10svh;
+    position: absolute;
+    top: 50%;
     transition: all 200ms ease-in-out;
 }
 
-@media(min-width: 870px) {
-    .signUpSuccess {
-        bottom: 35svh;
-    }
-}
-
 .signupSuccessAnimationStartpoint {
-    bottom: -30svh;
+    top: 100%;
 }
 
 @media(max-width: 340px) {
