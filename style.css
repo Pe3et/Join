@@ -106,6 +106,7 @@ header {
   gap: 8px;
   top: 100%;
   right: 2%;
+  z-index: 9000;
 }
 
 #headerDropdown a {

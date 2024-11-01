@@ -49,6 +49,7 @@ function getRandomColor() {
 function toggleHeaderDropdown() {
     const headerDropdown = document.getElementById('headerDropdown');
     headerDropdown.classList.toggle('dnone');
+    headerDropdown.classList.contains('dnone') && addBoardZindexesAfterHeaderDropdown();
 }
 
 function closeHeaderDropdownCheck(event) {
@@ -56,7 +57,18 @@ function closeHeaderDropdownCheck(event) {
     const clickedElement = event.target;
     if ((!headerDropdown.classList.contains('dnone') && !headerDropdown.contains(clickedElement)) || document.querySelector('.userIcon').contains(clickedElement)) {
         toggleHeaderDropdown();
+        addBoardZindexesAfterHeaderDropdown()
     }
+}
+
+function removeBoardZindexesForCorrectHeaderDropdown() {
+    document.querySelectorAll('.taskState').forEach( ts => ts.style.zIndex = '0');
+    document.querySelectorAll('.taskList').forEach( ts => tl.style.zIndex = '0');
+}
+
+function addBoardZindexesAfterHeaderDropdown() {
+    document.querySelectorAll('.taskState').forEach( ts => ts.style.zIndex = '1');
+    document.querySelectorAll('.taskList').forEach( tl => tl.style.zIndex = '1');
 }
 
 function logOut() {
