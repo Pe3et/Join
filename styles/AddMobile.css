@@ -1,119 +1,141 @@
-@media(max-width: 3000px){
-    .closeButton svg{
+@media(max-width: 3000px) {
+    .closeButton svg {
         display: none;
     }
 }
 
-@media(max-width: 1050px){
-    #addContactCardOverlay{
+@media(max-width: 1050px) {
+    #addContactCardOverlay {
         display: flex;
         flex-direction: column;
         height: 595px;
         align-items: center;
-        
-        
     }
-    .closeButton svg{
+
+    .closeButton svg {
         display: block;
         height: 24px;
         width: 24px;
-
     }
 
-    .overlayContainer{
+    .overlayContainer {
         top: 0;
     }
-    .inputContainer{
-        height:30px ;
-        width: 310px;
+
+    .inputContainer {
+        height: 30px;
+        width: 305px;
         padding: 0px 5px 1px 14px;
+        display: flex;
+        align-items: center;
     }
-    .background{
+
+    .inputContainer img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .background {
         position: relative;
         height: 396px;
         width: 352px;
         border-bottom-left-radius: 0;
         border-top-right-radius: 30px;
     }
+
     .addContactForm {
         height: 396px;
         width: 352px;
     }
-    .profileImgAndForm{
+
+    .addContactFormContainer {
+        width: 100%;
+        position: relative;
+        left: 15px;
+        padding: 10px;
+    }
+
+    .profileImgAndForm {
         width: 356px;
         flex-direction: column;
     }
-    .backgroundText h2{
+
+    .backgroundText h2 {
         font-size: 45px;
     }
-    .backgroundLogo{
+
+    .backgroundLogo {
         display: none;
     }
-    .backgroundText p{
+
+    .backgroundText p {
         font-size: 18px;
     }
-    .backgroundText{
+
+    .backgroundText {
         gap: 8px;
     }
+
     .defaultProfileImg {
         height: 120px;
         width: 120px;
         position: absolute;
         top: 228px;
     }
-    .xButton svg{
+
+    .xButton svg {
         margin-bottom: 0;
         display: none;
     }
-    .imgContainer{
+
+    .imgContainer {
         padding-bottom: 0;
         margin-top: -129px;
     }
-    .addContactForm{
+
+    .addContactForm {
         padding-left: 0;
         padding: 12px;
         border-top-right-radius: 0;
         border-bottom-left-radius: 30px;
     }
-    .cancelButton{
+
+    .cancelButton {
         display: none;
     }
-    .inputArea{
+
+    .inputArea {
         align-items: center;
         gap: 19px;
         margin-top: 30px;
-       
     }
-    .inputFields{
-        width: 300px;
+
+    .inputFields {
+        width: 250px;
         font-size: 17px;
     }
-    .createContactButton{
+
+    .createContactButton {
         font-size: 20px;
     }
-    .xButton svg{
-        /* display: none; */
+
+    .xButton svg {
         margin-bottom: 300px;
     }
-    .inputFields:hover{
+
+    .inputFields:hover {
         cursor: pointer;
     }
-    
-   
-    
-    
 }
 
-@media(max-width: 480px){
-    #addContactCardOverlay{
+@media(max-width: 480px) {
+    #addContactCardOverlay {
         display: flex;
         flex-direction: column;
         height: 595px;
-        
         padding-left: 5%;
-        
-        
     }
+
     .background {
         position: relative;
         height: 396px;
@@ -121,57 +143,68 @@
         border-bottom-left-radius: 0;
         border-top-right-radius: 30px;
     }
+
     .addContactForm {
         height: 396px;
         width: 288px;
     }
-    .backgroundText H2{
+
+    .addContactFormContainer {
+        left: 0;
+    }
+
+    .backgroundText H2 {
         font-size: 33px;
     }
-    .backgroundText p{
+
+    .backgroundText p {
         font-size: 13px;
     }
+
     .inputContainer {
         height: 30px;
-        width: 282px;
         padding: 1px 4px 2px 0px;
+        width: 100%
     }
-    .inputFields{
-        width: 300px;
+
+    .inputFields {
+        width: 85%;
         font-size: 17px;
     }
-    
-    .xButton svg{
+
+    .xButton svg {
         display: none;
     }
+
     .defaultProfileImg {
         height: 120px;
         width: 120px;
         position: absolute;
         top: 253px;
     }
+
     .profileImgAndForm {
         width: 266px;
         flex-direction: column;
     }
+
     .inputArea {
         display: flex;
         flex-direction: column;
         gap: 12px;
         margin-top: 30px;
     }
+
     .closeButton svg {
         fill: white;
         width: 24px;
         height: 24px;
     }
-
-    
 }
 
 .background {
-    position: relative; 
-    background-color: #2f3e54; 
+    position: relative;
+    background-color: #2f3e54;
     padding: 20px;
     color: white;
     text-align: center;
@@ -179,20 +212,18 @@
 
 .closeButton {
     position: absolute;
-    top: 10px; 
-    right: 10px; 
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    z-index: 10; 
+    z-index: 10;
 }
 
 .closeButton svg {
     fill: white;
     transition: fill 0.2s ease;
 }
+
 .closeButton:active {
-    background-color: #27a0f7; 
+    background-color: #27a0f7;
     border-radius: 20px;
 }
-
-
-
