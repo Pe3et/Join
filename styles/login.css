@@ -73,9 +73,7 @@ main {
     }
 }
 
-.logoFill,
-.logo,
-#logoContainer {
+.logoFill, .logo, #logoContainer {
     transition: all 400ms ease-in-out 300ms;
 }
 
