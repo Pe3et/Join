@@ -167,7 +167,7 @@ async function editContact(contact) {
     const nameInput = getUpperCaseName(document.getElementById('editContactInputName').value);
     const emailInput = document.getElementById('editContactInputEmail').value;
     const phoneInput = document.getElementById('editContactInputPhone').value;
-    if (validateAddContact()) {
+    if (validateAddContact('editContactInputName', 'editContactInputEmail')) {
         await putToDB(nameInput, ("contacts/" + contact.id + "/name"));
         await putToDB(emailInput, ("contacts/" + contact.id + "/email"));
         await putToDB(phoneInput, ("contacts/" + contact.id + "/phone"));
@@ -183,10 +183,10 @@ function hardcloseEditOverlay() {
 }
 
 async function addContact() {
-    const nameInput = document.getElementById('addContactInputName').value;
+    const nameInput = getUpperCaseName(document.getElementById('addContactInputName').value);
     const emailInput = document.getElementById('addContactInputEmail').value;
     const phoneInput = document.getElementById('addContactInputPhone').value;
-    if (validateAddContact()) {
+    if (validateAddContact('addContactInputName', 'addContactInputEmail')) {
         const randomColor = getRandomColor();
         const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
         await postToDB(newContact, "contacts");
@@ -266,9 +266,9 @@ function deselectContact() {
     setFabToAddMode(); // Setzt den FAB-Button zurück in den Hinzufügen-Modus
 }
 
-function validateAddContact() {
-    const nameInputRef = document.getElementById('addContactInputName');
-    const emailInputRef = document.getElementById('addContactInputEmail');
+function validateAddContact(nameInputID, emailInputID) {
+    const nameInputRef = document.getElementById(nameInputID);
+    const emailInputRef = document.getElementById(emailInputID);
     validateName(nameInputRef, nameInputRef.closest('.inputContainer'));
     validateEmail(emailInputRef, emailInputRef.closest('.inputContainer'));
     if(validated.name && validated.email) {
