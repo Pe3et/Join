@@ -7,14 +7,14 @@ let validated = {
     category: false
 };
 
-function validateName(inputRef) {
+function validateName(inputRef, errorContainer = inputRef) {
     const name = inputRef.value;
     if (name.trim().split(' ').length == 2) {
         validated.name = true
-        removeErrorMessage(inputRef);
+        removeErrorMessage(errorContainer);
     } else {
         validated.name = false;
-        appendErrorMessage(inputRef, 'Please enter first and last name.');
+        appendErrorMessage(errorContainer, 'Please enter first and last name.');
     }
 }
 
@@ -25,14 +25,14 @@ function getUpperCaseName(nameInput="") {
     return upperCaseName
 }
 
-function validateEmail(inputRef) {
+function validateEmail(inputRef, errorContainer = inputRef) {
     const email = inputRef.value;
     if (email.includes('@') && email.includes('.')) {
         validated.email = true;
-        removeErrorMessage(inputRef);
+        removeErrorMessage(errorContainer);
     } else {
         validated.email = false;
-        appendErrorMessage(inputRef, 'Please enter valid email address.');
+        appendErrorMessage(errorContainer, 'Please enter valid email address.');
     }
 }
 

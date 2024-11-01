@@ -164,10 +164,10 @@ function emptyInputFields() {
 }
 
 async function editContact(contact) {
-    const nameInput = document.getElementById('editContactInputName').value;
+    const nameInput = getUpperCaseName(document.getElementById('editContactInputName').value);
     const emailInput = document.getElementById('editContactInputEmail').value;
     const phoneInput = document.getElementById('editContactInputPhone').value;
-    if (checkIfNameInputIsCorrect(nameInput)) {
+    if (validateAddContact()) {
         await putToDB(nameInput, ("contacts/" + contact.id + "/name"));
         await putToDB(emailInput, ("contacts/" + contact.id + "/email"));
         await putToDB(phoneInput, ("contacts/" + contact.id + "/phone"));
@@ -186,22 +186,13 @@ async function addContact() {
     const nameInput = document.getElementById('addContactInputName').value;
     const emailInput = document.getElementById('addContactInputEmail').value;
     const phoneInput = document.getElementById('addContactInputPhone').value;
-    if (checkIfNameInputIsCorrect(nameInput)) {
+    if (validateAddContact()) {
         const randomColor = getRandomColor();
         const newContact = { name: nameInput, email: emailInput, phone: phoneInput, color: randomColor };
         await postToDB(newContact, "contacts");
         loadContactList();
         closeOverlay("addContactOverlayContainer", "addContactCardOverlay");
         contactCreatedSuccess();
-    }
-}
-
-function checkIfNameInputIsCorrect(nameInput) {
-    if (nameInput.includes(" ") && nameInput.split(" ")[1][0] && nameInput != "Please enter first and last name.") {
-        return true;
-    } else {
-        document.getElementById('addContactInputName').value = "Please enter first and last name.";
-        return false;
     }
 }
 
@@ -276,6 +267,13 @@ function deselectContact() {
 }
 
 function validateAddContact() {
-    validateName(document.getElementById('addContactInputName'));
-    validateEmail(document.getElementById('addContactInputEmail'));
+    const nameInputRef = document.getElementById('addContactInputName');
+    const emailInputRef = document.getElementById('addContactInputEmail');
+    validateName(nameInputRef, nameInputRef.closest('.inputContainer'));
+    validateEmail(emailInputRef, emailInputRef.closest('.inputContainer'));
+    if(validated.name && validated.email) {
+        return true
+    } else {
+        return false
+    }
 }
