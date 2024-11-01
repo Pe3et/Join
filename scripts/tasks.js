@@ -50,6 +50,8 @@ function closeDropdownCheck(clickedElement, dropdownID) {
     try {
         if (!document.getElementById(dropdownID).contains(clickedElement) &&
             !document.getElementById(dropdownID + "Button").contains(clickedElement) &&
+            clickedElement.tagName != 'rect' &&
+            clickedElement.tagName != 'path' &&
             window.getComputedStyle(document.getElementById(dropdownID)).display != "none"
             ){
             toggleDropdown(dropdownID);
@@ -161,7 +163,7 @@ async function createTask() {
         newTask.description = document.getElementById("descriptionInput").value;
         newTask.dueDate = document.getElementById("dateInput").value;
         await postToDB(newTask,"tasks");
-        location.href = "../board.html";
+        taskCreatedSuccess();
     }
 }
 
@@ -199,4 +201,13 @@ function taskValidation(editMode = false) {
     } else {
         return false
     }
+}
+
+function taskCreatedSuccess() {
+    const taskSucces = document.createElement('div');
+    taskSucces.classList.add('taskSuccess');
+    taskSucces.innerText = 'Task added to board';
+    taskSucces.innerHTML += getBoardSVG();
+    document.body.append(taskSucces);
+    setTimeout(() => {location.href = "../board.html"}, 900); 
 }

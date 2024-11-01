@@ -6,7 +6,8 @@ const categoryColors = {
 
 async function initBoard() {
     await getTasksFromDB();
-    renderBoardTasks();
+    renderBoardTasks(tasks);
+    window.addEventListener('resize', responsiveAddTaskButtonFunctions);
 }
 
 async function getTasksFromDB() {
@@ -26,39 +27,49 @@ async function getTasksFromDB() {
     });
 }
 
-function renderBoardTasks() {
-    tasks.forEach(task => {
+function renderBoardTasks(renderTasks) {
+    renderTasks.forEach(task => {
         const containerRef = document.getElementById(`${task.status}Container`);
         containerRef.innerHTML += getTaskCardTemplate(task);
         calculateProgressBar(task);
-        renderContactIcons(task);
+        renderContactIconRow(task);
         const prioIconRef = document.getElementById("prioIcon" + task.id);
         prioIconRef.innerHTML = getPrioSVG(task.prio);
     });
-    checkNoTaskDisplayNone();
+    checkNoTaskDisplayNone(renderTasks);
 }
 
-function checkNoTaskDisplayNone() {
+function checkNoTaskDisplayNone(tasksToCheck) {
     let noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
-    tasks.forEach(task => noTasks[task.status] = false);
+    tasksToCheck.forEach(task => noTasks[task.status] = false);
     Object.keys(noTasks).forEach((noTask) => {
         const containerRef = document.getElementById(noTask + "NoTasks");
         noTasks[noTask] ? containerRef.classList.remove("dnone") : containerRef.classList.add("dnone");
     });
 }
 
-function renderContactIcons(task) {
+function renderContactIconRow(task) {
     const containerRef = document.getElementById("contactIconsArea" + task.id);
+    const assignedContacts = task.assignedContacts;
+    const iconRenderAmount = assignedContacts.length > 6 ? 5 : assignedContacts.length;
     let rightOffset = 0;
-    task.assignedContacts.forEach((contact) => {
-        const contactIcon = document.createElement("div");
-        contactIcon.classList.add("iconWithLetters");
-        contactIcon.style.background = contact.color;
-        contactIcon.innerText = contact.name[0] + contact.name.split(" ")[1][0];
-        contactIcon.style.right = rightOffset + "px";
-        containerRef.append(contactIcon);
+    for (let i = 0; i < iconRenderAmount; i++) {
+        const contact = assignedContacts[i];
+        const initials = contact.name[0] + contact.name.split(" ")[1][0]; 
+        const bgColor = contact.color;
+        renderContactIcon(initials, bgColor, containerRef, rightOffset);
         rightOffset += 8;
-    });
+    };
+    (assignedContacts.length > 6) && renderContactIcon(`+${assignedContacts.length-5}`, 'rgba(42, 54, 71, 1)', containerRef, rightOffset);
+}
+
+function renderContactIcon(iconText, bgColor, containerRef, rightOffset) {
+    const contactIcon = document.createElement("div");
+    contactIcon.classList.add("iconWithLetters");
+    contactIcon.style.background = bgColor;
+    contactIcon.innerText = iconText;
+    contactIcon.style.right = rightOffset + "px";
+    containerRef.append(contactIcon);
 }
 
 function getPrioSVG(prio) {
@@ -147,10 +158,10 @@ async function deleteTask(key) {
     reloadBoard();
 }
 
-function reloadBoard() {
+function reloadBoard(searchReload = false) {
     document.querySelectorAll(".boardTask").forEach(boardTask => boardTask.remove());
     noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
-    renderBoardTasks();
+    !searchReload && renderBoardTasks(tasks);
 }
 
 async function renderOverlayAddTaskCard() {
@@ -199,4 +210,30 @@ async function saveEditTask(key) {
         reloadBoard();
         renderOverlayTaskCard(tasks.find(t => t.id == key).id);
     }
+}
+
+function responsiveAddTaskButtonFunctions() {
+    const addTaskButtons = document.querySelectorAll('.plusButton');
+    if (window.innerWidth > 1050) {
+        addTaskButtons.forEach( b => b.setAttribute('onclick', 'redirectToAddTasks()'));
+    } else {
+        addTaskButtons.forEach( b => b.setAttribute('onclick', 'redirectToAddTasks()'));
+    }
+}
+
+function redirectToAddTasks() {
+    location.href = '../addTasks.html';
+}
+
+function searchBoard(searchRef) {
+    const searchText = searchRef.value;
+    const searchResult = tasks.filter( task => {
+        if(task.title.toLowerCase().includes(searchText) || task.description.toLowerCase().includes(searchText)){
+            return true
+        }
+    });
+    reloadBoard(searchReload = true);
+    renderBoardTasks(searchResult);
+    searchResult.length == 0 ? appendErrorMessage(searchRef.parentElement, 'No results found.') : removeErrorMessage(searchRef.parentElement)
+    searchRef.focus();
 }

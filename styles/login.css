@@ -1,5 +1,6 @@
 body {
     font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
 main {
@@ -15,7 +16,7 @@ main {
     overflow: hidden;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     main {
         padding: 64px;
     }
@@ -33,7 +34,7 @@ main {
     z-index: 1;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     #logoContainer {
         background-color: #f6f7f8;
     }
@@ -47,7 +48,7 @@ main {
     top: calc(50% - 61px);
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     .logo {
         width: 274px;
         height: 334px;
@@ -63,7 +64,7 @@ main {
     left: 0;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     .logoEndPoint {
         width: 100px;
         height: 122px;
@@ -72,13 +73,11 @@ main {
     }
 }
 
-.logoFill,
-.logo,
-#logoContainer {
+.logoFill, .logo, #logoContainer {
     transition: all 400ms ease-in-out 300ms;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     .logoFill {
         fill: #2A3647;
     }
@@ -94,13 +93,13 @@ main {
     background-color: rgb(0, 0, 0, 0.3);
 }
 
-@media(max-width: 768px) {
+@media(max-width: 870px) {
     .signUpSuccessBackground {
         background-color: transparent;
     }
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     .animationBackgroundColor {
         background-color: transparent;
     }
@@ -126,7 +125,7 @@ main {
     transition: all 200ms ease-in-out;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     .signUpSuccess {
         bottom: 35svh;
     }
@@ -156,7 +155,7 @@ main {
     position: relative;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     #contentContainer {
         padding: 48px 115px;
     }
@@ -206,6 +205,25 @@ input:hover {
     background-image: url(../assets/img/login_lock.svg);
     background-repeat: no-repeat;
     background-position: 95% 50%;
+    padding-right: 50px;
+}
+
+.passwordWrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.visibilityIcon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-1svw, -50%);
+    z-index: 1;
+}
+
+.visibilityIcon:hover {
+    cursor: pointer;
 }
 
 .rememberMe {
@@ -216,7 +234,7 @@ input:hover {
     padding-left: 10%;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     .rememberMe {
         padding-left: 0;
     }
@@ -238,7 +256,7 @@ input:hover {
     gap: 10px;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     .buttonContainer {
         flex-direction: row;
         gap: 35px;
@@ -298,7 +316,7 @@ input:hover {
     top: 32px;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     #signUpOption {
         position: absolute;
         top: 67px;
@@ -323,7 +341,7 @@ footer {
     bottom: 32px;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 870px) {
     footer {
         bottom: 64px;
     }

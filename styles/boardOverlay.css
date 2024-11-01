@@ -36,6 +36,48 @@
   max-height: 90%;
 }
 
+@media(max-width: 560px) {
+  .boardCardOverlay {
+    width: 90% !important;
+  }
+   
+  .boardCardOverlay h3 {
+    font-size: 36px !important;
+  }
+
+  .boardCardOverlay p {
+    font-size: 16px !important;
+  }
+
+  .addTaskColumn {
+    width: 74svw !important;
+  }
+}
+
+@media(max-width: 1110px) {
+  .spacer{
+    margin: 0 32px !important;
+  }
+
+  .addTaskForm {
+    margin: 0;
+  }
+
+  .buttonContainer {
+    padding-right: 32px;
+  }
+
+  .boardCardOverlay {
+    padding: 24px;
+  }
+}
+
+@media(max-width: 400px) {
+  .boardCardOverlay {
+    padding: 12px;
+  }
+}
+
 .overlayTaskCategory {
   padding: 4px 24px 4px 24px;
   background-color: rgba(0, 56, 255, 1);
@@ -69,10 +111,19 @@
   background-color: rgb(0, 0, 0, 0.069);
 }
 
-
 .overlayTaskTitle h3 {
-  font-size: 61px;
+  font-size: 36px;
   font-weight: 700;
+  max-width: 445px;
+  max-height: 96px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+.overlayTaskDescription {
+  max-width: 100%;
+  overflow: auto;
+  word-wrap: break-word;
 }
 
 .overlayTaskDescription p {
@@ -178,14 +229,25 @@
   gap: 4px;
   margin-top: 4px;
   max-height: 150px;
-  overflow: auto;
+  overflow-y: auto;
   width: 100%;
+  max-width: 100%;
 }
 
 .singleSubtask {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex: 1;
+  height: fit-content;
+  max-width: 404px;
+}
+
+.singleSubtask p{
+  max-width: 95%;
+  height: fit-content;
+  flex: 1;
+  word-wrap: break-word;
 }
 
 .subtaskCheckbox {
@@ -242,7 +304,6 @@
   flex-direction: column;
   flex: 1;
   font-family: "Inter", sans-serif;
-  overflow: hidden;
   justify-content: space-between;
 }
 
@@ -254,11 +315,14 @@
   width: 100%;
   justify-content: space-between;
   margin-bottom: 32px;
+  display: flex;
+  align-items: center;
 }
 
 /* Edit Task - Overlay */
 #editTaskContainer {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #editTaskContainer .addTaskForm {

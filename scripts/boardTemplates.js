@@ -1,6 +1,6 @@
 function getTaskCardTemplate(task) {
     return `
-        <div id="${task.id}" class="boardTask" onclick='openBoardOverlay(); renderOverlayTaskCard("${task.id}")' draggable="true" ondragstart="drag(event)">
+        <div id="${task.id}" class="boardTask" onclick='openBoardOverlay(); renderOverlayTaskCard("${task.id}")' draggable="true" ondragstart="drag(event)" ondragend="removeDragRotate(this)">
             <div class="taskCategoryArea">
               <div class="taskCategory" style="background:${categoryColors[task.category]}">
                 <p>${task.category}</p>
@@ -10,7 +10,7 @@ function getTaskCardTemplate(task) {
               <h3>${task.title}</h3>
             </div>
             <div class="shortDescription">
-                ${task.description}...
+                ${task.description}
             </div>
             <div class="progressArea">
               <div class="progressBarContainer">
