@@ -18,6 +18,12 @@ function drag(ev) {
     document.getElementById(ev.target.id).classList.add("dragRotate");
 }
 
+function removeDragRotate(element) {
+    element.classList.remove("dragRotate");
+    console.log('this fired');
+    console.log(element);
+}
+
 function drop(ev) {
     ev.preventDefault();
     const taskID = ev.dataTransfer.getData("text");
