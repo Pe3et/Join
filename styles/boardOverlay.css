@@ -322,6 +322,7 @@
 /* Edit Task - Overlay */
 #editTaskContainer {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #editTaskContainer .addTaskForm {

@@ -26,7 +26,7 @@ function getCheckboxSVG(status) {
 
 function getSubtaskListTemplate(subtask, index) {
     return `
-        <div class="subtaskListElement"><li id="subtaskLiElement${index}" onclick="editSubtaskMode(${index})" contenteditable=true>${subtask}</li>
+        <div class="subtaskListElement"><li id="subtaskLiElement${index}" onclick="editSubtaskMode(${index})" contenteditable=true onkeydown="if(event.key === 'Enter') exitEditSubtaskMode(${index})">${subtask}</li>
         <div class="subtaskListIcons">
             <div id="subtaskEditIcon${index}" class="subtaskInputIcon" onclick="editSubtaskMode(${index})">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
