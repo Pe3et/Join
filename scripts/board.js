@@ -6,7 +6,7 @@ const categoryColors = {
 
 async function initBoard() {
     await getTasksFromDB();
-    renderBoardTasks();
+    renderBoardTasks(tasks);
     window.addEventListener('resize', responsiveAddTaskButtonFunctions);
 }
 
@@ -27,8 +27,8 @@ async function getTasksFromDB() {
     });
 }
 
-function renderBoardTasks() {
-    tasks.forEach(task => {
+function renderBoardTasks(renderTasks) {
+    renderTasks.forEach(task => {
         const containerRef = document.getElementById(`${task.status}Container`);
         containerRef.innerHTML += getTaskCardTemplate(task);
         calculateProgressBar(task);
@@ -36,12 +36,12 @@ function renderBoardTasks() {
         const prioIconRef = document.getElementById("prioIcon" + task.id);
         prioIconRef.innerHTML = getPrioSVG(task.prio);
     });
-    checkNoTaskDisplayNone();
+    checkNoTaskDisplayNone(renderTasks);
 }
 
-function checkNoTaskDisplayNone() {
+function checkNoTaskDisplayNone(tasksToCheck) {
     let noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
-    tasks.forEach(task => noTasks[task.status] = false);
+    tasksToCheck.forEach(task => noTasks[task.status] = false);
     Object.keys(noTasks).forEach((noTask) => {
         const containerRef = document.getElementById(noTask + "NoTasks");
         noTasks[noTask] ? containerRef.classList.remove("dnone") : containerRef.classList.add("dnone");
@@ -158,10 +158,10 @@ async function deleteTask(key) {
     reloadBoard();
 }
 
-function reloadBoard() {
+function reloadBoard(searchReload = false) {
     document.querySelectorAll(".boardTask").forEach(boardTask => boardTask.remove());
     noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
-    renderBoardTasks();
+    !searchReload && renderBoardTasks(tasks);
 }
 
 async function renderOverlayAddTaskCard() {
@@ -223,4 +223,17 @@ function responsiveAddTaskButtonFunctions() {
 
 function redirectToAddTasks() {
     location.href = '../addTasks.html';
+}
+
+function searchBoard(searchRef) {
+    const searchText = searchRef.value;
+    const searchResult = tasks.filter( task => {
+        if(task.title.toLowerCase().includes(searchText) || task.description.toLowerCase().includes(searchText)){
+            return true
+        }
+    });
+    reloadBoard(searchReload = true);
+    renderBoardTasks(searchResult);
+    searchResult.length == 0 ? appendErrorMessage(searchRef.parentElement, 'No results found.') : removeErrorMessage(searchRef.parentElement)
+    searchRef.focus();
 }

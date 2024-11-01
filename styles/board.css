@@ -114,6 +114,11 @@ main {
   background: white;
 }
 
+#errorsearchbarContainer {
+  top: 100%;
+  z-index: 2;
+}
+
 .searchAndAddTasksArea {
   display: flex;
   align-items: center;
