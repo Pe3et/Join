@@ -102,6 +102,7 @@ textarea:focus {
 
 #subtaskInput {
   margin-bottom: 0;
+  padding-right: 80px;
 }
 
 .subtaskInputContainer {
@@ -316,8 +317,8 @@ textarea:focus {
 }
 
 #subtaskListContainer {
-  height: 100px;
-  overflow: auto;
+  height: 150px;
+  overflow-y: auto;
 }
 
 .subtaskListElement {
@@ -325,11 +326,14 @@ textarea:focus {
   justify-content: space-between;
   border-radius: 10px;
   padding: 4px 16px;
-  height: 32px;
+  min-height: 32px;
+  max-width: 404px;
 }
 
 .subtaskListElement li {
   flex: 1;
+  height: fit-content;
+  overflow-x: hidden;
 }
 
 .subtaskListElement:hover {
