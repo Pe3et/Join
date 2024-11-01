@@ -24,5 +24,5 @@ function drop(ev) {
     document.getElementById(taskID).classList.remove("dragRotate");
     tasks[taskIndex].status = newStatus;
     putToDB(newStatus, `tasks/${taskID}/status`);
-    checkNoTaskDisplayNone();
+    checkNoTaskDisplayNone(tasks);
 }
