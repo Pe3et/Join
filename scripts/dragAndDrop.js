@@ -20,8 +20,6 @@ function drag(ev) {
 
 function removeDragRotate(element) {
     element.classList.remove("dragRotate");
-    console.log('this fired');
-    console.log(element);
 }
 
 function drop(ev) {

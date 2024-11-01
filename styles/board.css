@@ -19,24 +19,6 @@ html, body {
   overflow-y: hidden;
 }
 
-@media(max-width: 1050px) {
-  .pageContent {
-    overflow-y: visible !important;
-    height: 160svh;
-  }
-
-  .scrollabeTaskContainerWrapper {
-    flex: 1;
-    max-height: none !important;
-    padding-left: 0 !important;
-    overflow-y: hidden !important;
-  }
-
-  .taskContainer {
-    overflow-y: visible !important;
-  }
-}
-
 main {
   flex: 1;
   overflow-x: hidden;
@@ -50,20 +32,6 @@ main {
   position: relative;
 }
 
-@media(max-width: 1200px) {
-  main {
-    padding-left: 152px;
-  }
-}
-
-@media(max-width: 1050px) {
-  main {
-    padding-left: 0;
-    height: 100%;
-    overflow-y: auto;
-  }
-}
-
 .headSection {
   display: flex;
   justify-content: space-between;
@@ -71,35 +39,6 @@ main {
   width: 1056px;
   padding-top: 79.5px;
   padding-left: 64px;
-}
-
-@media(max-width: 1333px) {
-  .headSection {
-    width: 100%;
-    padding-right: 64px;
-  }
-}
-
-@media(max-width: 1050px) {
-  .headSection h1 {
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
-    width: 100%; 
-  }
-
-  .headSection {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  .searchbar {
-    width: 256px !important;
-    
-  }
 }
 
 .searchbar {
@@ -152,16 +91,6 @@ main {
   align-items: center;
 }
 
-@media(max-width: 1050px) {
-  .respAddTaskButton{
-    display: flex;
-  }
-
-  #addTaskButton {
-    display: none;
-  }
-}
-
 .respAddTaskButton svg:hover {
   cursor: pointer;
 }
@@ -194,12 +123,6 @@ main {
   font-weight: 400;
   font-size: 20px;
   width: 220px;
-}
-
-@media (max-width: 1050px) {
-  #search {
-    width: 180px;
-  }
 }
 
 ::placeholder {
@@ -242,15 +165,6 @@ h1 {
   z-index: 1;
 }
 
-@media (max-width: 1439px) {
-  .taskState {
-    position: sticky;
-    left: 0;
-    padding-top: 16px;
-    padding-right: 32px;
-  }
-}
-
 .plusButton:hover {
   cursor: pointer;
 }
@@ -278,47 +192,6 @@ h1 {
   min-height: 75svh;
   max-height: 75svh;
   height: 100%;
-}
-
-@media(max-width: 1439px) {
-  .taskContainer {
-    flex-direction: column;
-    max-width: 100%;
-  }
-
-  .taskList {
-    flex-direction: row !important;
-    min-width: fit-content !important;
-    width: 100% !important;
-    justify-content: start;
-    z-index: 1;
-    padding-right: 10px;
-    overflow-y: hidden;
-  }
-
-  .tasksColumn {
-    width: 78svw;
-    overflow-x: auto;
-    padding-right: 8px;
-  }
-}
-
-@media(max-width: 1050px) {
-  .taskContainer {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .scrollabeTaskContainerWrapper {
-    padding-left: 16px;
-    max-height: none !important;
-    min-height: 130svh;
-  }
-
-  .tasksColumn {
-    width: 95svw;
-    padding-right: 16px;
-  }
 }
 
 .tasksColumn {
@@ -371,15 +244,6 @@ h1 {
   overflow: hidden;
 }
 
-@media(max-width: 1439px) {
-  .boardTask {
-    width: auto;
-    max-width: 256px;
-    height: 215px;
-    justify-content: space-around;
-  }
-}
-
 .boardTask:hover {
   cursor: pointer;
 }
@@ -419,12 +283,6 @@ h1 {
   font-size: 16px;
   font-weight: 400;
   overflow: hidden;
-}
-
-@media(max-width: 1440px) {
-  .shortDescription {
-    max-height: 40px;
-  }
 }
 
 .progressArea {
@@ -492,7 +350,6 @@ h1 {
 }
 
 .dragHighlight {
-  /* position: relative; */
   z-index: 1;
   border-radius: 20px;
   background : linear-gradient(-90deg, rgba(42, 54, 71, 1), #29ABE2, rgba(42, 54, 71, 1));
