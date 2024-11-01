@@ -32,7 +32,7 @@ function renderBoardTasks() {
         const containerRef = document.getElementById(`${task.status}Container`);
         containerRef.innerHTML += getTaskCardTemplate(task);
         calculateProgressBar(task);
-        renderContactIcons(task);
+        renderContactIconRow(task);
         const prioIconRef = document.getElementById("prioIcon" + task.id);
         prioIconRef.innerHTML = getPrioSVG(task.prio);
     });
@@ -48,18 +48,28 @@ function checkNoTaskDisplayNone() {
     });
 }
 
-function renderContactIcons(task) {
+function renderContactIconRow(task) {
     const containerRef = document.getElementById("contactIconsArea" + task.id);
+    const assignedContacts = task.assignedContacts;
+    const iconRenderAmount = assignedContacts.length > 6 ? 5 : assignedContacts.length;
     let rightOffset = 0;
-    task.assignedContacts.forEach((contact) => {
-        const contactIcon = document.createElement("div");
-        contactIcon.classList.add("iconWithLetters");
-        contactIcon.style.background = contact.color;
-        contactIcon.innerText = contact.name[0] + contact.name.split(" ")[1][0];
-        contactIcon.style.right = rightOffset + "px";
-        containerRef.append(contactIcon);
+    for (let i = 0; i < iconRenderAmount; i++) {
+        const contact = assignedContacts[i];
+        const initials = contact.name[0] + contact.name.split(" ")[1][0]; 
+        const bgColor = contact.color;
+        renderContactIcon(initials, bgColor, containerRef, rightOffset);
         rightOffset += 8;
-    });
+    };
+    (assignedContacts.length > 6) && renderContactIcon(`+${assignedContacts.length-5}`, 'rgba(42, 54, 71, 1)', containerRef, rightOffset);
+}
+
+function renderContactIcon(iconText, bgColor, containerRef, rightOffset) {
+    const contactIcon = document.createElement("div");
+    contactIcon.classList.add("iconWithLetters");
+    contactIcon.style.background = bgColor;
+    contactIcon.innerText = iconText;
+    contactIcon.style.right = rightOffset + "px";
+    containerRef.append(contactIcon);
 }
 
 function getPrioSVG(prio) {
