@@ -50,6 +50,8 @@ function closeDropdownCheck(clickedElement, dropdownID) {
     try {
         if (!document.getElementById(dropdownID).contains(clickedElement) &&
             !document.getElementById(dropdownID + "Button").contains(clickedElement) &&
+            clickedElement.tagName != 'rect' &&
+            clickedElement.tagName != 'path' &&
             window.getComputedStyle(document.getElementById(dropdownID)).display != "none"
             ){
             toggleDropdown(dropdownID);
