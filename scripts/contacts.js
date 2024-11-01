@@ -71,7 +71,7 @@ function hideContactInFullscreen() {
     let contents = document.getElementById('globalContentList')
     contents.classList.toggle('contactContainer');
     contactContent.classList.remove('fullscreen');
-    // showAddIcon();
+    showAddIcon();
 }
 
 
