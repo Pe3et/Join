@@ -275,4 +275,7 @@ function deselectContact() {
     setFabToAddMode(); // Setzt den FAB-Button zurück in den Hinzufügen-Modus
 }
 
-
+function validateAddContact() {
+    validateName(document.getElementById('addContactInputName'));
+    validateEmail(document.getElementById('addContactInputEmail'));
+}
