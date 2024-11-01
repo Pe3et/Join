@@ -155,5 +155,40 @@ function disableSignUpButton() {
     const signUpButton = document.getElementById('signUpButton');
     signUpButton.classList.add('disabledButton');
     signUpButton.removeEventListener('click', signUp);
+}
 
+function getPasswordVisibilityIcon(passwordInputRef) {
+    if (passwordInputRef.value) {
+        passwordInputRef.style.backgroundImage = 'none';
+        const visibilityIcon = createVisibilityIcon(false);
+        !passwordInputRef.closest('.passwordWrapper').querySelector('.visibilityIcon') && passwordInputRef.insertAdjacentElement('beforebegin', visibilityIcon);
+    } else {
+        passwordInputRef.closest('.passwordWrapper').querySelector('.visibilityIcon').remove();
+        passwordInputRef.style.backgroundImage = 'url(../assets/img/login_lock.svg)';
+    }
+}
+
+function createVisibilityIcon(isPasswordVisible = false) {
+    const visibilityIcon = document.createElement('div');
+    visibilityIcon.classList.add('visibilityIcon');
+    if (isPasswordVisible) {
+        visibilityIcon.innerHTML = getPasswordVisbilityOnSVG();
+    } else {
+        visibilityIcon.innerHTML = getPasswordVisibilityOffSVG();
+    }
+    return visibilityIcon;
+}
+
+function togglePasswordVisibility(svgRef) {
+    const passwordWrapperRef = svgRef.closest('.passwordWrapper');
+    const passwordInputRef = passwordWrapperRef.querySelector('input');
+    passwordWrapperRef.querySelector('.visibilityIcon').remove();
+    if (passwordInputRef.type == 'password') {
+        passwordWrapperRef.append(createVisibilityIcon(true));
+        passwordInputRef.type = 'text'
+    } else {
+        passwordWrapperRef.append(createVisibilityIcon(false));
+        passwordInputRef.type = 'password'
+    }
+    passwordInputRef.focus();
 }
