@@ -82,6 +82,9 @@ header {
   align-items: center;
   color: #29ABE2;
   padding: 10px;
+}
+
+.userIcon p {
   font-size: 20px;
   font-weight: 700;
 }
