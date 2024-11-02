@@ -116,12 +116,14 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .personInContactListData {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  word-break: break-word;
 }
 
 .personInContactListName {
@@ -213,6 +215,7 @@ main {
   display: flex;
   gap: 54px;
   align-items: center;
+  word-break: break-word;
 }
 
 .arrowIcon {
@@ -242,6 +245,7 @@ main {
   letter-spacing: 2px;
   background-color: orange;
   box-shadow: 0px 0px 4px 0px #0000001a;
+  flex-shrink: 0;
 }
 
 .contactDetailsIcon p {
@@ -263,13 +267,13 @@ main {
   font-size: 16px;
 }
 
-.contactDetailsOption:hover {
+.contactDetailsOption:hover, .respContactOptions div:hover {
   font-weight: bold;
   color: #29abe2;
   cursor: pointer;
 }
 
-.contactDetailsOption:hover path {
+.contactDetailsOption:hover path, .respContactOptions div:hover path {
   fill: #29abe2;
 }
 
@@ -286,6 +290,11 @@ main {
 
 .contactInformation {
   margin-top: 80px;
+}
+
+.contactDetailsEmail {
+  color:#007cee;
+  word-break: break-word;
 }
 
 .contactDetailsOptions svg {
@@ -338,13 +347,14 @@ main {
 }
 
 .contactDetailsOption:hover svg {
-  fill: blue;
+  fill: rgba(41, 171, 226, 1)
 }
 
 .contactSocials {
   display: flex;
   gap: 15px;
   flex-direction: column;
+  word-wrap: break-word;
 }
 
 .personInContactList :hover {
@@ -361,15 +371,14 @@ main {
 
 .fab {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 128px;
+  right: 32px;
   z-index: 100;
   display: none;
   padding: 12px;
-  margin-bottom: 80px;
 }
 
-.fab-button {
+.respButton {
   background-color: #2A3647;
   color: white;
   border: 1px;
@@ -385,204 +394,8 @@ main {
   transition: background-color 0.3s ease;
 }
 
-.fab-button:hover {
-  background-color: #555;
-}
-
-.fab img {
-  width: 28px;
-  height: 24px;
-  position: absolute;
-}
-
-@media(max-width: 1050px) {
-  .arrowIcon {
-    display: block;
-  }
-
-  .contactDetailsOptions {
-    display: none;
-  }
-}
-
-@media(max-width: 1152px) {
-  .contactHeading p {
-    font-size: 25px;
-  }
-}
-
-@media(max-width: 1048px) {
-  .fab {
-    display: block;
-  }
-}
-
-@media (max-width: 880px) {
-  .contactList {
-    width: 100%;
-  }
-}
-
-@media (max-width: 856px) {
-  #addContactButton b {
-    font-size: 10px;
-  }
-
-  .personInContactListMail {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 856px) {
-  #contactListContent {
-    font-size: 10px;
-  }
-
-  .personInContactListData b {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 720px) {
-  main {
-    padding-left: 0px;
-    padding-right: 0;
-  }
-}
-
-@media(min-width: 520px) {
-  .contactHeading {
-    margin-top: 40px;
-    position: relative;
-  }
-}
-
-@media (max-width: 720px) {
-  .pageContent {
-    width: 100%;
-  }
-}
-
-@media (max-width: 320px) {
-  .contactList {
-    width: 100%;
-  }
-
-  main {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-  }
-
-  #addContactButton {
-    width: 100%;
-  }
-}
-
-@media (max-width: 720px) {
-  .contactList {
-    width: 100%;
-  }
-
-  main {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-  }
-
-  #sidebar {
-    display: none;
-  }
-}
-
-@media (max-width: 390px) {
-  #addContactCardOverlay {
-    display: none;
-  }
-
-  .contactHeading h1 {
-    font-size: 47px;
-  }
-
-  .contactHeading p {
-    display: flex;
-    font-size: 20px;
-  }
-
-  .contactHeading {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-
-  .contactDetailsIcon {
-    border-radius: 70px;
-    border: 3px;
-    height: 80px;
-    width: 80px;
-  }
-
-  .contactDetailsIcon p {
-    font-size: 27px;
-  }
-
-  .contactDetailsName {
-    font-size: 30px;
-  }
-
-  .iconAndName {
-    flex-direction: row;
-    padding-left: 16px;
-  }
-
-  .contactInformation {
-    margin-top: 30px;
-    padding-left: 16px;
-  }
-
-  .contactContainer {
-    padding-left: 16px;
-  }
-
-  #contactDetails {
-    padding-left: 16px;
-  }
-
-  .contactSocials {
-    padding-left: 16px;
-  }
-
-  .arrowIcon {
-    position: absolute;
-    top: 18px;
-    height: 24px;
-    width: 24px;
-    right: 20px;
-  }
-
-  .arrowIcon:active {
-    transform: scale(1.4);
-    background-color: rgb(222, 219, 219);
-    border-radius: 40px;
-  }
-}
-
-@media(min-width: 320px) {
-  .contactHeading {
-    padding-right: 20%;
-    margin-top: 40px;
-    position: relative;
-  }
-
-  .iconAndName {
-    margin-top: 50px;
-  }
-}
-
-@media (max-width: 390px) {
-  .arrowIcon {
-    display: block;
-  }
+.respButton:hover {
+  background-color: rgba(41, 171, 226, 1);
 }
 
 #contactContent, .contactHeading {
@@ -590,9 +403,9 @@ main {
 }
 
 .arrowIcon {
-  position: absolute !important;
-  right: 0;
-  top: 32px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
 }
 
 /* Validation adapation */

@@ -35,6 +35,10 @@
     transform: translateX(-100vw);
 }
 
+.slideInBottom {
+    bottom: -10% !important;
+}
+
 .background {
     background: rgba(42, 54, 71, 1);
     height: 594px;

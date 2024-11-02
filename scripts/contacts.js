@@ -29,26 +29,6 @@ function getContactListPersonsTemplate(contact) {
     `;
 }
 
-// Funktion, die die Kontaktkarte im Vollbild anzeigt
-function showContactInFullscreen() {
-    const contactContent = document.getElementById('contactContent');
-    let content = document.getElementById('globalContentContainer')
-    content.classList.toggle('contactContainer');
-    let contents = document.getElementById('globalContentList')
-    contents.classList.toggle('contactContainer');
-    contactContent.classList.add('fullscreen'); // Vollbildklasse hinzufügen
-}
-
-function hideContactInFullscreen() {
-    const contactContent = document.getElementById('contactContent');
-    let content = document.getElementById('globalContentContainer')
-    content.classList.toggle('contactContainer');
-    let contents = document.getElementById('globalContentList')
-    contents.classList.toggle('contactContainer');
-    contactContent.classList.remove('fullscreen');
-    showAddIcon();
-}
-
 function getContactFromElement(contactElement) {
     const contactId = contactElement.getAttribute('data-contact-id');
     const contact = contactsArray.find(contact => contact.id === contactId);
@@ -80,7 +60,7 @@ function getContactsArray(contactRestults) {
             color: contactRestults[key].color
         });
     });
-    contacts.sort((a, b) => (a.name).localeCompare(b.name)); // das Array alphabetisch sortieren
+    contacts.sort((a, b) => (a.name).localeCompare(b.name)); // alphabetical order
     return contacts;
 }
 
@@ -89,22 +69,65 @@ function renderContactDetails(contact) {
     contentRef.style.transition = "none";
     contentRef.style.left = "100vw";
     contentRef.innerHTML = getContactDetailsTemplate(contact);
+    window.innerWidth <= 1050 && respContentToggle(contact);
     setTimeout(() => {
         contentRef.style.transition = "all 300ms ease-out";
         contentRef.style.left = "0";
     }, 1);
 }
 
+function respContentToggle(contact) {
+    const contactContainerRef = document.querySelector('.contactContainer');
+    const contactListRef = document.querySelector('.contactList');
+    contactListRef.classList.toggle('dnone');
+    swapRespBurgerButton(contact);
+}
+
+function swapRespBurgerButton(contact) {
+    const buttonRef = document.querySelector('.respButton');
+    const contactListRef = document.querySelector('.contactList');
+    if(contactListRef.classList.contains('dnone')) {
+        buttonRef.innerHTML = getRespBurgerButtonSVG();
+        buttonRef.onclick = () => toggleRespContextMenu(contact);
+    } else {
+        buttonRef.innerHTML = getRespAddContactButtonSVG();
+        buttonRef.onclick = () => openOverlay('addContactOverlayContainer', 'addContactCardOverlay');
+    }
+}
+
+function toggleRespContextMenu(contact) {
+    const respContactOptionsRef = document.querySelector('.respContactOptions');
+    const buttonRef = document.querySelector('.respButton');
+    buttonRef.classList.toggle('dnone');
+    respContactOptionsRef.classList.toggle('respContactOptionsSlideIn');
+    if(buttonRef.classList.contains('dnone')) {
+        setTimeout(() => document.addEventListener('click', closeRespContextMenuCheck), 0)
+        document.getElementById('respEditButton').onclick = () => openOverlay('editOverlayContainer', 'editContactCardOverlay', contact);
+        document.getElementById('respDeleteButton').onclick = () => {deleteContact(contact.id); respContentToggle()};
+    } else {
+        document.removeEventListener('click', closeRespContextMenuCheck)
+    }
+}
+
+function closeRespContextMenuCheck(event) {
+    const respContactOptionsRef = document.querySelector('.respContactOptions');
+    const buttonRef = document.querySelector('.respButton');
+    if(event.target != respContactOptionsRef && event.target != buttonRef) {
+        toggleRespContextMenu();
+    }
+}
+
 function openOverlay(containerRefID, cardRefId, contact) {
     document.getElementById(containerRefID).classList.add('overlayAppear');
     document.getElementById(containerRefID).classList.add('overlayBackgroundColor');
-    document.getElementById(cardRefId).classList.add('slideInRight');
+    window.innerWidth > 1050 ? document.getElementById(cardRefId).classList.add('slideInRight') : document.getElementById(cardRefId).classList.add('slideInBottom');
     contact != undefined && loadEditContactCard(contact);
 }
 
 function closeOverlay(containerRefID, cardRefId) {
     document.getElementById(containerRefID).classList.remove('overlayBackgroundColor');
     document.getElementById(cardRefId).classList.remove('slideInRight');
+    document.getElementById(cardRefId).classList.remove('slideInBottom');
     setTimeout(() => {
         document.getElementById(containerRefID).classList.remove('overlayAppear')
     }, 300);
@@ -145,7 +168,8 @@ async function editContact(contact) {
         await putToDB(emailInput, ("contacts/" + contact.id + "/email"));
         await putToDB(phoneInput, ("contacts/" + contact.id + "/phone"));
         await loadContactList();
-        // hardcloseEditOverlay();
+        //TODO: render edited Details
+        hardcloseEditOverlay();
     }
 }
 
@@ -183,58 +207,22 @@ async function deleteContact(key) {
 
 function contactCreatedSuccess() {
     const ref = document.getElementById('contactCreateSuccess');
+    const slideInDirectionClass = window.innerWidth > 1050 ? 'slideInRight' : 'slideInBottomSuccess';
     document.getElementById('addContactOverlayContainer').classList.remove('overlayBackgroundColor');
     document.getElementById('addContactCardOverlay').classList.remove('slideInRight');
     document.getElementById('addContactOverlayContainer').classList.remove('overlayAppear');
-    ref.classList.add("slideInRight");
-    setTimeout(() => { ref.classList.remove("slideInRight"); }, 800);
+    ref.classList.add(slideInDirectionClass);
+    setTimeout(() => { ref.classList.remove(slideInDirectionClass); }, 800);
 }
 
-let isEditMode = false; // Standardmäßig im Hinzufügen-Modus
-let selectedContact = null; // Speichert den aktuell ausgewählten Kontakt
-
-function setFabToAddMode() {
-    const fabIcon = document.querySelector('.fab-button img');
-    isEditMode = false; 
-    fabIcon.src = './assets/img/addButton.png'; 
-    // Setzt die Klickfunktion des FAB auf das Hinzufügen-Overlay
-    document.querySelector('.fab-button').onclick = function() {
-        openOverlay('addContactOverlayContainer', 'addContactCardOverlay');
-    };
-}
-
-function setFabToEditMode(contact) {
-    const fabIcon = document.querySelector('.fab-button img');
-    isEditMode = true; 
-    selectedContact = contact; 
-    fabIcon.src = './assets/img/points.png'; 
-    document.querySelector('.fab-button').onclick = function() {
-        openOverlay('editOverlayContainer', 'editContactCardOverlay', selectedContact);
-    };
-}
 function addClickListenersToContacts() {
     const contactElements = document.querySelectorAll('.personInContactList');
     contactElements.forEach(contact => {
         contact.addEventListener('click', function () {     
             contactElements.forEach(c => c.classList.remove('active'));
             contact.classList.add('active');
-            const selectedContact = getContactFromElement(contact);
-            setFabToEditMode(selectedContact);
-            if (window.matchMedia("(max-width: 1050px)").matches) {
-                showContactInFullscreen();
-                showMenuIcon();
-            }
         });
     });
-}
-
-function changeRespBurgerButton() {
-    //TODO:
-}
-
-function deselectContact() {
-    hideContactDetails(); // Versteckt die Kontaktdetails
-    setFabToAddMode(); // Setzt den FAB-Button zurück in den Hinzufügen-Modus
 }
 
 function validateAddContact(nameInputID, emailInputID) {
