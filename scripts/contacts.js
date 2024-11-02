@@ -5,15 +5,17 @@ function init() {
 async function loadContactList() {
     const contactResults = await getFromDB("contacts");
     document.getElementById("contactListContent").innerHTML = "";
-    contactsArray = getContactsArray(contactResults);
-    firstLettersArray = getFirstLettersArray(contactsArray);
-    firstLettersArray.forEach(letter => {
-        renderLetterSection(letter);
-        const contactsWithSameFirstLetter = contactsArray.filter(contact => contact.name[0] == letter);
-        contactsWithSameFirstLetter.forEach(contact => renderContactInList(contact))
-    });
-    // Füge Event-Listener hinzu, um den aktiven Kontakt bei Klick zu markieren
-    addClickListenersToContacts();
+    if(contactResults) {
+        contactsArray = getContactsArray(contactResults);
+        firstLettersArray = getFirstLettersArray(contactsArray);
+        firstLettersArray.forEach(letter => {
+            renderLetterSection(letter);
+            const contactsWithSameFirstLetter = contactsArray.filter(contact => contact.name[0] == letter);
+            contactsWithSameFirstLetter.forEach(contact => renderContactInList(contact))
+        });
+        // Füge Event-Listener hinzu, um den aktiven Kontakt bei Klick zu markieren
+        addClickListenersToContacts();
+    }
 }
 
 function renderContactInList(contact) {

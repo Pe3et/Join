@@ -51,12 +51,11 @@
     .addContactFormContainer {
         width: 100%;
         position: relative;
-        left: 15px;
         padding: 10px;
+        top: 50%;
     }
 
     .profileImgAndForm {
-        width: 356px;
         flex-direction: column;
     }
 
@@ -122,11 +121,11 @@
         margin-top: -55px;
     }
 
-    #editContactCardOverlay .xButton {
+    .xButton {
         display: none;
     } 
 
-    #editContactCardOverlay .profileImgAndForm {
+    .profileImgAndForm {
         width: 100%;
     }
 
@@ -327,7 +326,6 @@
     }
 
     .profileImgAndForm {
-        width: 266px;
         flex-direction: column;
     }
 

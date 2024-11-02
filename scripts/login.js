@@ -75,13 +75,15 @@ async function checkLoginSucces() {
     const password = document.getElementById('passwordInput').value;
     const contactResults = await getFromDB('contacts');
     let loginSucces = false;
-    Object.keys(contactResults).forEach(id => {
-        if (contactResults[id].email == email && contactResults[id].password == password) {
-            loginSucces = true;
-            localStoreActiveUser(contactResults[id].name);
-            location.href = "../summary.html"
-        }
-    });
+    if(contactResults) {
+        Object.keys(contactResults).forEach(id => {
+            if (contactResults[id].email == email && contactResults[id].password == password) {
+                loginSucces = true;
+                localStoreActiveUser(contactResults[id].name);
+                location.href = "../summary.html"
+            }
+        });
+    }
     (loginSucces == false) && loginError();
 }
 

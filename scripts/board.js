@@ -12,19 +12,21 @@ async function initBoard() {
 
 async function getTasksFromDB() {
     let fetchResult = await getFromDB("tasks");
-    Object.keys(fetchResult).forEach(key => {
-        tasks.push({
-            id: key,
-            assignedContacts: fetchResult[key].assignedContacts ?? [],
-            category: fetchResult[key].category,
-            description: fetchResult[key].description,
-            dueDate: fetchResult[key].dueDate,
-            prio: fetchResult[key].prio,
-            subtasks: fetchResult[key].subtasks ?? [],
-            title: fetchResult[key].title,
-            status: fetchResult[key].status
-        })
-    });
+    if(fetchResult) {
+        Object.keys(fetchResult).forEach(key => {
+            tasks.push({
+                id: key,
+                assignedContacts: fetchResult[key].assignedContacts ?? [],
+                category: fetchResult[key].category,
+                description: fetchResult[key].description,
+                dueDate: fetchResult[key].dueDate,
+                prio: fetchResult[key].prio,
+                subtasks: fetchResult[key].subtasks ?? [],
+                title: fetchResult[key].title,
+                status: fetchResult[key].status
+            })
+        });
+    }
 }
 
 function renderBoardTasks(renderTasks) {

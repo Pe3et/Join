@@ -24,8 +24,10 @@ async function renderContactsDropdown() {
     const dropdownRef = document.getElementById("assignedToDropdown");
     dropdownRef.innerHTML = "";
     const contactResults = await getFromDB("contacts");
-    contactsArray = getContactsArray(contactResults);
-    contactsArray.forEach(contact => dropdownRef.innerHTML += getContactDropdownTemplate(contact));
+    if(contactResults) {
+        contactsArray = getContactsArray(contactResults);
+        contactsArray.forEach(contact => dropdownRef.innerHTML += getContactDropdownTemplate(contact));
+    }
 }
 
 function setActivePrio(prio) {

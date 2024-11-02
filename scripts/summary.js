@@ -58,5 +58,7 @@ function renderUrgentStat() {
     const urgentCount = tasks.filter( task => task.prio == 'urgent').length;
     document.getElementById('urgentSummary').innerText = urgentCount;
     tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-    document.getElementById('urgentDate').innerText = tasks[0].dueDate
+    if (tasks[0]) {
+        document.getElementById('urgentDate').innerText = tasks[0].dueDate;
+    } 
 }
