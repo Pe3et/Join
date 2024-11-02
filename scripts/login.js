@@ -4,7 +4,7 @@ let policyAccepted = false;
 
 function initLogin() {
     startAnimation();
-    joinStorage.rememberMe == true ? location.href = '../summary.html' : renderLogin();
+    joinStorage.rememberMe == true ? location.href = 'summary.html' : renderLogin();
 }
 
 function startAnimation() {
@@ -80,7 +80,7 @@ async function checkLoginSucces() {
             if (contactResults[id].email == email && contactResults[id].password == password) {
                 loginSucces = true;
                 localStoreActiveUser(contactResults[id].name);
-                location.href = "../summary.html"
+                location.href = "summary.html"
             }
         });
     }
@@ -105,7 +105,7 @@ function loginGuest() {
     joinStorage = {iconInitials: 'G', rememberMe: false};
     localStorage.setItem('joinStorage', JSON.stringify(joinStorage));
     sessionStorage.setItem('loggedIn', JSON.stringify(true));
-    location.href = '../summary.html'
+    location.href = 'summary.html'
 }
 
 async function signUp() {
@@ -124,7 +124,7 @@ function signUpSuccessAnimationAndRedirect() {
     document.querySelector('.signUpSuccess').classList.remove('signupSuccessAnimationStartpoint');
     document.querySelector('.signUpSuccessBackground').classList.remove('hidden');
     document.querySelector('.signUpSuccessBackground').classList.remove('animationBackgroundColor');
-    setTimeout(()=>{location.href = '../summary.html'}, 1000)
+    setTimeout(()=>{location.href = 'summary.html'}, 1000)
 }
 
 function togglePolicyAccept() {
@@ -166,7 +166,7 @@ function getPasswordVisibilityIcon(passwordInputRef) {
         !passwordInputRef.closest('.passwordWrapper').querySelector('.visibilityIcon') && passwordInputRef.insertAdjacentElement('beforebegin', visibilityIcon);
     } else {
         passwordInputRef.closest('.passwordWrapper').querySelector('.visibilityIcon').remove();
-        passwordInputRef.style.backgroundImage = 'url(../assets/img/login_lock.svg)';
+        passwordInputRef.style.backgroundImage = 'url(./assets/img/login_lock.svg)';
     }
 }
 

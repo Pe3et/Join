@@ -211,5 +211,5 @@ function taskCreatedSuccess() {
     taskSucces.innerText = 'Task added to board';
     taskSucces.innerHTML += getBoardSVG();
     document.body.append(taskSucces);
-    setTimeout(() => {location.href = "../board.html"}, 900); 
+    setTimeout(() => {location.href = "board.html"}, 900); 
 }

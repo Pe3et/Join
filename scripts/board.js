@@ -224,7 +224,7 @@ function responsiveAddTaskButtonFunctions() {
 }
 
 function redirectToAddTasks() {
-    location.href = '../addTasks.html';
+    location.href = 'addTasks.html';
 }
 
 function searchBoard(searchRef) {
