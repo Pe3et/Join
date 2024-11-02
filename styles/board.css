@@ -282,6 +282,7 @@ h1 {
   color: rgba(168, 168, 168, 1);
   font-size: 16px;
   font-weight: 400;
+  min-height: 40px;
   overflow: hidden;
 }
 
