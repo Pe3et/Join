@@ -63,7 +63,7 @@ function closeHeaderDropdownCheck(event) {
 
 function removeBoardZindexesForCorrectHeaderDropdown() {
     document.querySelectorAll('.taskState').forEach( ts => ts.style.zIndex = '0');
-    document.querySelectorAll('.taskList').forEach( ts => tl.style.zIndex = '0');
+    document.querySelectorAll('.taskList').forEach( tl => tl.style.zIndex = '0');
 }
 
 function addBoardZindexesAfterHeaderDropdown() {

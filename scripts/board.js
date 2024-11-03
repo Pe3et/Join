@@ -7,6 +7,7 @@ const categoryColors = {
 async function initBoard() {
     await getTasksFromDB();
     renderBoardTasks(tasks);
+    responsiveAddTaskButtonFunctions();
     window.addEventListener('resize', responsiveAddTaskButtonFunctions);
 }
 
