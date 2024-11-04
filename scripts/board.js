@@ -4,6 +4,11 @@ const categoryColors = {
     "Technical Task": "#1FD7C1"
 };
 
+/**
+ * Initializes the board by fetching tasks from the database and rendering them.
+ * Also sets up event listeners for responsive design.
+ * @async
+ */
 async function initBoard() {
     await getTasksFromDB();
     renderBoardTasks(tasks);
@@ -11,6 +16,10 @@ async function initBoard() {
     window.addEventListener('resize', responsiveAddTaskButtonFunctions);
 }
 
+/**
+ * Fetches tasks from the database and populates the tasks array.
+ * @async
+ */
 async function getTasksFromDB() {
     let fetchResult = await getFromDB("tasks");
     if(fetchResult) {
@@ -30,6 +39,10 @@ async function getTasksFromDB() {
     }
 }
 
+/**
+ * Renders task cards for each task in the provided array.
+ * @param {Array} renderTasks - The array of tasks to render.
+ */
 function renderBoardTasks(renderTasks) {
     renderTasks.forEach(task => {
         const containerRef = document.getElementById(`${task.status}Container`);
@@ -42,6 +55,10 @@ function renderBoardTasks(renderTasks) {
     checkNoTaskDisplayNone(renderTasks);
 }
 
+/**
+ * Checks if there are no tasks in each status category and updates the display accordingly.
+ * @param {Array} tasksToCheck - The array of tasks to check.
+ */
 function checkNoTaskDisplayNone(tasksToCheck) {
     let noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
     tasksToCheck.forEach(task => noTasks[task.status] = false);
@@ -51,6 +68,11 @@ function checkNoTaskDisplayNone(tasksToCheck) {
     });
 }
 
+/**
+ * Renders a row of contact icons for a given task. Maximum 6 Icons - if there are more than 6
+ * assigned Contacts, then the "excess" users will be displayed as a number.
+ * @param {Object} task - The task object containing assigned contacts.
+ */
 function renderContactIconRow(task) {
     const containerRef = document.getElementById("contactIconsArea" + task.id);
     const assignedContacts = task.assignedContacts;
@@ -66,6 +88,14 @@ function renderContactIconRow(task) {
     (assignedContacts.length > 6) && renderContactIcon(`+${assignedContacts.length-5}`, 'rgba(42, 54, 71, 1)', containerRef, rightOffset);
 }
 
+/**
+ * Renders a contact icon with the provided text and background color.
+ * 
+ * @param {string} iconText - The text to be displayed inside the icon.
+ * @param {string} bgColor - The background color of the icon.
+ * @param {HTMLElement} containerRef - The container element where the icon will be appended.
+ * @param {number} rightOffset - The right offset of the icon in pixels.
+ */
 function renderContactIcon(iconText, bgColor, containerRef, rightOffset) {
     const contactIcon = document.createElement("div");
     contactIcon.classList.add("iconWithLetters");
@@ -75,6 +105,12 @@ function renderContactIcon(iconText, bgColor, containerRef, rightOffset) {
     containerRef.append(contactIcon);
 }
 
+/**
+ * Returns the SVG representation of a task's priority.
+ * 
+ * @param {string} prio - The priority of the task. Can be "low", "medium", or "urgent".
+ * @returns {string} The SVG representation of the task's priority.
+ */
 function getPrioSVG(prio) {
     let prioSVG = "";
     switch (prio) {
@@ -91,12 +127,18 @@ function getPrioSVG(prio) {
     return prioSVG
 }
 
+/**
+ * Opens the board overlay by adding the 'slideInRight' and 'overlayBackgroundColor' classes to the board overlay container and the 'slideInRight' class to the board card overlay.
+ */
 function openBoardOverlay() {
     document.getElementById("boardOverlayContainer").classList.add('slideInRight');
     document.getElementById("boardOverlayContainer").classList.add('overlayBackgroundColor');
     document.getElementById("boardCardOverlay").classList.add('slideInRight');
 }
 
+/**
+ * Closes the board overlay by removing the 'slideInRight' and 'overlayBackgroundColor' classes from the board overlay container and the 'slideInRight' class from the board card overlay.
+ */
 function closeBoardOverlay() {
     document.getElementById("boardOverlayContainer").classList.remove('overlayBackgroundColor');
     document.getElementById("boardCardOverlay").classList.remove('slideInRight');
@@ -105,6 +147,11 @@ function closeBoardOverlay() {
     }, 200);
 }
 
+/**
+ * Renders the task card overlay for a given task ID.
+ * 
+ * @param {string} taskID - The ID of the task to render.
+ */
 function renderOverlayTaskCard(taskID) {
     let task = tasks.find(t => t.id == taskID);
     const containerRef = document.getElementById('boardCardOverlay');
@@ -115,18 +162,34 @@ function renderOverlayTaskCard(taskID) {
     renderOverlaySubtasks(task);
 }
 
+/**
+ * Renders the task card overlay priority for a given task.
+ * 
+ * @param {Object} task - The task object containing priority information.
+ */
 function renderOverlayPrio(task) {
     const prioIconRef = document.getElementById('overlayPrio' + task.id);
     prioIconRef.innerHTML = getPrioSVG(task.prio);
 }
 
+/**
+ * Renders the assigned contacts list for a given task in the overlay.
+ * 
+ * @param {Object} task - The task object containing assigned contacts.
+ */
 function renderOverlayAssignedContactsList(task) {
     const contactsListRef = document.getElementById('overlayAssignedContactsList' + task.id);
+    contactsListRef.innerHTML = "";
     task.assignedContacts.forEach(contact => {
         contactsListRef.innerHTML += getOverlayContactTemplate(contact)
     });
 }
 
+/**
+ * Renders the subtasks for a given task in the overlay.
+ * 
+ * @param {Object} task - The task object containing subtasks.
+ */
 function renderOverlaySubtasks(task) {
     const subtasksRef = document.getElementById('overlaySubtasks' + task.id);
     subtasksRef.innerHTML = "";
@@ -137,6 +200,12 @@ function renderOverlaySubtasks(task) {
     });
 }
 
+/**
+ * Toggles the check status of a subtask.
+ * 
+ * @param {string} taskID - The ID of the task containing the subtask.
+ * @param {number} subtaskIndex - The index of the subtask to toggle.
+ */
 function toggleSubtaskCheck(taskID, subtaskIndex) {
     let task = tasks.find(t => t.id == taskID);
     let subtaskStatus = task.subtasks[subtaskIndex].status;
@@ -154,6 +223,12 @@ function toggleSubtaskCheck(taskID, subtaskIndex) {
     calculateProgressBar(task);
 }
 
+/**
+ * Deletes a task from the database and updates the tasks array.
+ * 
+ * @async
+ * @param {string} key - The ID of the task to delete.
+ */
 async function deleteTask(key) {
     await deleteFromDB("tasks/" + key);
     tasks = tasks.filter(task => task.id != key);
@@ -161,12 +236,26 @@ async function deleteTask(key) {
     reloadBoard();
 }
 
+/**
+ * Reloads the board by removing all task elements and re-rendering tasks.
+ * If searchReload is true, it will render the search results instead of all tasks.
+ * @param {boolean} searchReload - Whether to render search results or all tasks.
+ */
 function reloadBoard(searchReload = false) {
     document.querySelectorAll(".boardTask").forEach(boardTask => boardTask.remove());
     noTasks = { toDo: true, inProgress: true, awaitFeedback: true, done: true };
     !searchReload && renderBoardTasks(tasks);
 }
 
+/**
+ * Renders the task card overlay for adding a new task.
+ * 
+ * @async
+ * @description This function is responsible for rendering the task card overlay for adding a new task.
+ * It sets up the overlay container, renders the add task card template, and sets up event listeners for dropdowns.
+ * 
+ * @returns {void}
+ */
 async function renderOverlayAddTaskCard() {
     const containerRef = document.getElementById('boardCardOverlay');
     containerRef.innerHTML = getOverlayAddTaskCard();
@@ -177,6 +266,10 @@ async function renderOverlayAddTaskCard() {
     resetTaskJSON();
 }
 
+/**
+ * Calculates and updates the progress bar for a given task.
+ * @param {Object} task - The task object containing subtasks.
+ */
 function calculateProgressBar(task) {
     const barRef = document.getElementById(`progressBar${task.id}`);
     const counterRef = document.getElementById(`progressCounter${task.id}`);
@@ -187,6 +280,16 @@ function calculateProgressBar(task) {
     counterRef.innerText = `${checkedSubtaskCount}/${totalSubtaskCount} Subtasks`;
 }
 
+/**
+ * Renders the task card overlay for editing a given task.
+ * 
+ * @async
+ * @param {string} taskID - The ID of the task to render.
+ * @description This function is responsible for rendering the task card overlay for editing a task.
+ * It sets up the overlay container, renders the edit task card template, and sets up event listeners for dropdowns.
+ * 
+ * @returns {void}
+ */
 async function renderEditTask(taskID) {
     let task = tasks.find(t => t.id == taskID);
     const containerRef = document.getElementById('boardCardOverlay');
@@ -200,6 +303,16 @@ async function renderEditTask(taskID) {
     newTask.subtasks = task.subtasks;
 }
 
+/**
+ * Saves the edited task to the database and updates the tasks array.
+ * 
+ * @async
+ * @param {string} key - The ID of the task to save.
+ * @description This function is responsible for saving the edited task to the database and updating the tasks array.
+ * It validates the task, updates the task object, saves the task to the database, and re-renders the board.
+ * 
+ * @returns {void}
+ */
 async function saveEditTask(key) {
     if(taskValidation(editMode = true)) {
         newTask.title = document.getElementById("titleInput").value;
@@ -215,6 +328,15 @@ async function saveEditTask(key) {
     }
 }
 
+/**
+ * Handles responsive design for add task buttons.
+ * Sets the onclick attribute of add task buttons based on the window's inner width.
+ * If the window's inner width is greater than 1050, the onclick attribute is set to 'redirectToAddTasks()'.
+ * Otherwise, the onclick attribute is also set to 'redirectToAddTasks()'.
+ * 
+ * @function responsiveAddTaskButtonFunctions
+ * @returns {void}
+ */
 function responsiveAddTaskButtonFunctions() {
     const addTaskButtons = document.querySelectorAll('.plusButton');
     if (window.innerWidth > 1050) {
@@ -224,10 +346,21 @@ function responsiveAddTaskButtonFunctions() {
     }
 }
 
+/**
+ * Redirects the user to the add tasks page.
+ * 
+ * @description This function redirects the user to the add tasks page by setting the location.href to 'addTasks.html'.
+ * 
+ * @returns {void}
+ */
 function redirectToAddTasks() {
     location.href = 'addTasks.html';
 }
 
+/**
+ * Searches for tasks based on the input text and renders the results.
+ * @param {HTMLElement} searchRef - The search input element.
+ */
 function searchBoard(searchRef) {
     const searchText = searchRef.value;
     const searchResult = tasks.filter( task => {
