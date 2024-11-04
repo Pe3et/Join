@@ -1,3 +1,13 @@
+/**
+ * Object to store the validation status of each input field.
+ * @typedef {Object} ValidationStatus
+ * @property {boolean} name - Whether the name input is valid.
+ * @property {boolean} email - Whether the email input is valid.
+ * @property {boolean} password - Whether the password input is valid.
+ * @property {boolean} title - Whether the title input is valid.
+ * @property {boolean} dueDate - Whether the due date input is valid.
+ * @property {boolean} category - Whether the category input is valid.
+ */
 let validated = {
     name: false,
     email: false,
@@ -7,6 +17,11 @@ let validated = {
     category: false
 };
 
+/**
+ * Validates the name input field.
+ * @param {HTMLInputElement} inputRef - The input field to validate.
+ * @param {HTMLElement} [errorContainer=inputRef] - The container to display the error message.
+ */
 function validateName(inputRef, errorContainer = inputRef) {
     const name = inputRef.value;
     if (name.trim().split(' ').length == 2) {
@@ -18,6 +33,11 @@ function validateName(inputRef, errorContainer = inputRef) {
     }
 }
 
+/**
+ * Converts a name to uppercase.
+ * @param {string} [nameInput=""] - The name to convert.
+ * @returns {string} The name in uppercase.
+ */
 function getUpperCaseName(nameInput="") {
     let splitName = nameInput.trim().split(' ');
     splitName = splitName.map(name => name = name[0].toUpperCase() + name.slice(1));
@@ -25,6 +45,11 @@ function getUpperCaseName(nameInput="") {
     return upperCaseName
 }
 
+/**
+ * Validates the email input field.
+ * @param {HTMLInputElement} inputRef - The input field to validate.
+ * @param {HTMLElement} [errorContainer=inputRef] - The container to display the error message.
+ */
 function validateEmail(inputRef, errorContainer = inputRef) {
     const email = inputRef.value;
     if (email.includes('@') && email.includes('.')) {
@@ -36,6 +61,10 @@ function validateEmail(inputRef, errorContainer = inputRef) {
     }
 }
 
+/**
+ * Validates the confirmed password input field.
+ * @param {HTMLInputElement} inputRef - The input field to validate.
+ */
 function validateConfirmedPassword(inputRef) {
     const password = inputRef.value;
     const checkPassword = document.getElementById('passwordInput').value;
@@ -48,6 +77,10 @@ function validateConfirmedPassword(inputRef) {
     }
 }
 
+/**
+ * Validates an input field to ensure it is not empty.
+ * @param {HTMLInputElement} inputRef - The input field to validate.
+ */
 function validateInputNotEmpty(inputRef) {
     const inputValue = inputRef.value;
     const inputType = inputRef.id.slice(0, -5);
@@ -60,6 +93,9 @@ function validateInputNotEmpty(inputRef) {
     }
 }
 
+/**
+ * Validates the task category input field.
+ */
 function validateTaskCategory() {
     const categoryTextRef = document.querySelector('#categoryDropdownButton p');
     if (categoryTextRef.textContent != 'Select task category') {
@@ -73,7 +109,11 @@ function validateTaskCategory() {
     }
 }
 
-//to minimize html restructuring, this function wraps the input field in a div and creates the error message absolute below the wrapper
+/**
+ * Appends an error message to an input field.
+ * @param {HTMLInputElement} inputRef - The input field to append the error message to.
+ * @param {string} errorMessage - The error message to display.
+ */
 function appendErrorMessage(inputRef, errorMessage) {
     if(!inputRef.classList.contains('inputError')){
         const errorText = document.createElement('p');
@@ -89,6 +129,10 @@ function appendErrorMessage(inputRef, errorMessage) {
     }
 }
 
+/**
+ * Removes an error message from an input field.
+ * @param {HTMLInputElement} inputRef - The input field to remove the error message from.
+ */
 function removeErrorMessage(inputRef) {
     const errorText = document.getElementById('error' + inputRef.id);
     errorText && errorText.remove();
