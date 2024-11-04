@@ -46,7 +46,7 @@ function getContactDetailsTemplate(contact) {
                     <b>Email</b>
                     <a class="contactDetailsEmail">${contact.email}</a>
                     <b>Phone</b>
-                    <a>${contact.phone}</a>
+                    <a class="contactDetailsPhone">${contact.phone}</a>
                 </div>  
             </div>
         </div>

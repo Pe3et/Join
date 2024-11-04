@@ -170,7 +170,9 @@ async function editContact(contact) {
         await putToDB(emailInput, ("contacts/" + contact.id + "/email"));
         await putToDB(phoneInput, ("contacts/" + contact.id + "/phone"));
         await loadContactList();
-        //TODO: render edited Details
+        document.querySelector('.contactDetailsName').innerText = nameInput;
+        document.querySelector('.contactDetailsEmail').innerText = emailInput;
+        document.querySelector('.contactDetailsPhone').innerText = phoneInput;
         hardcloseEditOverlay();
     }
 }
