@@ -374,3 +374,22 @@ function taskCreatedSuccess() {
     document.body.append(taskSucces);
     setTimeout(() => {location.href = "board.html"}, 900); 
 }
+
+/**
+ * Sets the active priority for the task.
+ * 
+ * @param {string} prio - The priority to be set (e.g., "urgent", "medium", "low").
+ * 
+ * @description This function updates the task's priority by removing the active class from all priority elements, 
+ *              adding the active class to the selected priority element, and updating the task's priority property.
+ */
+function setActivePrio(prio) {
+    document.querySelectorAll(".prio").forEach(element => {
+        element.classList.remove("activePrio");
+        element.style.background = "white";
+    });
+    const clickedPrioRef = document.getElementById((prio) + "Prio");
+    clickedPrioRef.classList.add("activePrio");
+    clickedPrioRef.style.background = activePrioColors[prio];
+    newTask.prio = prio;
+}
