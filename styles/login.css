@@ -330,6 +330,7 @@ input:hover {
     width: 104px;
     height: none;
     padding: 15px 16px;
+    z-index: 2;
 }
 
 footer {
