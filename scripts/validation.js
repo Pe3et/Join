@@ -1,13 +1,3 @@
-/**
- * Object to store the validation status of each input field.
- * @typedef {Object} ValidationStatus
- * @property {boolean} name - Whether the name input is valid.
- * @property {boolean} email - Whether the email input is valid.
- * @property {boolean} password - Whether the password input is valid.
- * @property {boolean} title - Whether the title input is valid.
- * @property {boolean} dueDate - Whether the due date input is valid.
- * @property {boolean} category - Whether the category input is valid.
- */
 let validated = {
     name: false,
     email: false,
