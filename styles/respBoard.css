@@ -119,3 +119,9 @@
         padding-right: 16px;
     }
 }
+
+@media(max-width: 415px) {
+    #editTaskContainer .prioContainer {
+        flex-direction: column;
+    }
+}
