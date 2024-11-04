@@ -1,3 +1,9 @@
+/**
+ * Returns an SVG string representing a checkbox in the specified status.
+ * 
+ * @param {string} status - The status of the checkbox, either "checked" or "unchecked".
+ * @returns {string} An SVG string representing the checkbox.
+ */
 function getCheckboxSVG(status) {
     switch (status) {
         case "checked":
@@ -14,6 +20,11 @@ function getCheckboxSVG(status) {
     }
 }
 
+/**
+ * Returns the HTML template for the login page.
+ * 
+ * @returns {string} The HTML template for the login page.
+ */
 function getLoginTemplate() {
     return `
             <h1>Log in</h1>
@@ -37,6 +48,11 @@ function getLoginTemplate() {
     `
 }
 
+/**
+ * Returns the HTML template for the sign up page.
+ * 
+ * @returns {string} The HTML template for the sign up page.
+ */
 function getSignUpTemplate() {
     return `
             <div id="backArrow" onclick="renderLogin()">
@@ -66,6 +82,11 @@ function getSignUpTemplate() {
     `
 }
 
+/**
+ * Returns an SVG string representing the visibility off icon.
+ * 
+ * @returns {string} An SVG string representing the visibility off icon.
+ */
 function getPasswordVisibilityOffSVG() {
     return `
         <svg class="visibilityIcon" onclick="togglePasswordVisibility(this)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,6 +101,11 @@ function getPasswordVisibilityOffSVG() {
         </svg>`
 }
 
+/**
+ * Returns an SVG string representing the visibility on icon.
+ * 
+ * @returns {string} An SVG string representing the visibility on icon.
+ */
 function getPasswordVisbilityOnSVG() {
     return`
         <svg class="visibilityIcon" onclick="togglePasswordVisibility(this)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

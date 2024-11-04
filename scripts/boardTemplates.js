@@ -1,3 +1,9 @@
+/**
+ * Returns the HTML template for a task card.
+ * 
+ * @param {Object} task - The task object containing id, category, title, description, subtasks, and other properties.
+ * @returns {string} The HTML template for the task card.
+ */
 function getTaskCardTemplate(task) {
     return `
         <div id="${task.id}" class="boardTask" onclick='openBoardOverlay(); renderOverlayTaskCard("${task.id}")' draggable="true" ondragstart="drag(event)" ondragend="removeDragRotate(this)">
@@ -28,6 +34,11 @@ function getTaskCardTemplate(task) {
     `
 }
 
+/**
+ * Return the HTML template for the task card overlay.
+ * @param {Object} task -the task, which will be displayed in overlay
+ * @returns {string} The HTML Template for task card overlay
+ */
 function getOverlayTaskCard(task) {
     return `
         <div class="overlayCategoryAndCloseButtonContainer">
@@ -80,6 +91,12 @@ function getOverlayTaskCard(task) {
     `
 }
 
+/**
+ * Returns the HTML template for a single assigned contact in the task overlay.
+ * 
+ * @param {Object} contact - The contact object containing name and color properties.
+ * @returns {string} The HTML template for the single assigned contact.
+ */
 function getOverlayContactTemplate(contact) {
     return `
         <div class="singleAssignedContact">
@@ -91,6 +108,14 @@ function getOverlayContactTemplate(contact) {
     `
 }
 
+/**
+ * Returns the HTML template for a single subtask in the task overlay.
+ * 
+ * @param {string} subtaskText - The text of the subtask.
+ * @param {number} subtaskIndex - The index of the subtask.
+ * @param {Object} task - The task object containing id and other properties.
+ * @returns {string} The HTML template for the single subtask.
+ */
 function getOverlaySubtaskTemplate(subtaskText, subtaskIndex, task) {
     return `
         <div class="singleSubtask">
@@ -101,6 +126,11 @@ function getOverlaySubtaskTemplate(subtaskText, subtaskIndex, task) {
     `
 }
 
+/**
+ * Returns the HTML template for a low priority SVG icon.
+ * 
+ * @returns {string} The HTML template for the low priority SVG icon.
+ */
 function getPrioLowSVG() {
     return `
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,6 +140,11 @@ function getPrioLowSVG() {
     `
 }
 
+/**
+ * Returns the HTML template for a medium priority SVG icon.
+ * 
+ * @returns {string} The HTML template for the medium priority SVG icon.
+ */
 function getPrioMediumSVG() {
     return `
         <svg width="18" height="8" viewBox="0 0 18 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,6 +154,11 @@ function getPrioMediumSVG() {
     `
 }
 
+/**
+ * Returns the HTML template for an urgent priority SVG icon.
+ * 
+ * @returns {string} The HTML template for the urgent priority SVG icon.
+ */
 function getPrioUrgentSVG() {
     return `
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,6 +169,12 @@ function getPrioUrgentSVG() {
     `
 }
 
+/**
+ * Returns the HTML template for a subtask checkbox SVG icon based on the provided status.
+ * 
+ * @param {string} status - The status of the subtask, either "checked" or "unchecked".
+ * @returns {string} The HTML template for the subtask checkbox SVG icon.
+ */
 function getSubtaskCheckboxSVG(status) {
     switch (status) {
         case "checked":
@@ -145,6 +191,11 @@ function getSubtaskCheckboxSVG(status) {
     }
 }
 
+/**
+ * Returns the HTML template for the add task overlay.
+ * 
+ * @returns {string} The HTML template for the add task overlay.
+ */
 function getOverlayAddTaskCard() {
     return `
           <div class="addTaskContainer">
@@ -258,6 +309,11 @@ function getOverlayAddTaskCard() {
     `
 }
 
+/**
+ * Returns the HTML template for the edit task overlay.
+ * 
+ * @returns {string} The HTML template for the edit task overlay.
+ */
 function getOverlayEditTaskCard(task) {
     return `
         <div class="editTaskOverlayCloseButtonContainer">
