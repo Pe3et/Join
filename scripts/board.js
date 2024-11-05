@@ -340,7 +340,7 @@ async function saveEditTask(key) {
 function responsiveAddTaskButtonFunctions() {
     const addTaskButtons = document.querySelectorAll('.plusButton');
     if (window.innerWidth > 1050) {
-        addTaskButtons.forEach( b => b.setAttribute('onclick', 'redirectToAddTasks()'));
+        addTaskButtons.forEach( b => b.setAttribute('onclick', 'openBoardOverlay(); renderOverlayAddTaskCard()'));
     } else {
         addTaskButtons.forEach( b => b.setAttribute('onclick', 'redirectToAddTasks()'));
     }
