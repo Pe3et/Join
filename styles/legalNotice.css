@@ -23,16 +23,16 @@ h1 {
   width: 0;
 }
 
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .backButton {
-  position: fixed;
-  top: 225px;
-  left: 1920px;
-  border: hidden 1px;
+  position: static;
   height: 32px;
   width: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
 }
 
