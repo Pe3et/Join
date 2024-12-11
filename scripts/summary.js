@@ -76,7 +76,11 @@ async function getStats() {
     const category = ['toDo', 'done', 'inProgress', 'awaitFeedback']
     category.forEach( cat => renderStatusStat(cat));
     renderUrgentStat();
-    document.getElementById('totalTasksSummary').innerText = tasks.length;
+    if(tasks[0].title) {
+        document.getElementById('totalTasksSummary').innerText = tasks.length;
+    } else {
+        document.getElementById('totalTasksSummary').innerText = '0'
+    }
 }
 
 /**
@@ -99,7 +103,9 @@ function renderUrgentStat() {
     const urgentCount = tasks.filter( task => task.prio == 'urgent').length;
     document.getElementById('urgentSummary').innerText = urgentCount;
     tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-    if (tasks[0]) {
+    if (tasks[0].dueDate) {
         document.getElementById('urgentDate').innerText = tasks[0].dueDate;
-    } 
+    } else {
+        document.getElementById('urgentDate').innerText = '-';
+    }
 }
