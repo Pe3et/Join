@@ -1,4 +1,4 @@
-const BASE_URL = "https://join-37ebb-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL = "YOUR FIREBASE URL";
 
 /**
  * Retrieves data from the Firebase Realtime Database.

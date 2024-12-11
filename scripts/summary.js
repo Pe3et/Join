@@ -76,7 +76,7 @@ async function getStats() {
     const category = ['toDo', 'done', 'inProgress', 'awaitFeedback']
     category.forEach( cat => renderStatusStat(cat));
     renderUrgentStat();
-    if(tasks[0].title) {
+    if(tasks[0]) {
         document.getElementById('totalTasksSummary').innerText = tasks.length;
     } else {
         document.getElementById('totalTasksSummary').innerText = '0'
@@ -103,7 +103,7 @@ function renderUrgentStat() {
     const urgentCount = tasks.filter( task => task.prio == 'urgent').length;
     document.getElementById('urgentSummary').innerText = urgentCount;
     tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-    if (tasks[0].dueDate) {
+    if (tasks[0]) {
         document.getElementById('urgentDate').innerText = tasks[0].dueDate;
     } else {
         document.getElementById('urgentDate').innerText = '-';
